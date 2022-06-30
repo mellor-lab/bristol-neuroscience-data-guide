@@ -2,9 +2,11 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: documentation/Repository Management with GIN
-- file: documentation/Repository Management with GIN Web Interface
-- file: documentation/Repository Management with WinGIN
-- file: documentation/Repository Management with GIN Client
-- file: documentation/Repository Management with Git
+parts:
+- caption: Documentation
+  chapters:
+  - file: documentation/Repository Management with GIN
+  - file: documentation/Repository Management with GIN Web Interface
+  - file: documentation/Repository Management with WinGIN
+  - file: documentation/Repository Management with GIN Client
+  - file: documentation/Repository Management with Git
