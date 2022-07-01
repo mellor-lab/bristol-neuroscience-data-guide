@@ -30,3 +30,13 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+# Adjust the size of the navbar logo
+html:
+    extra_navbar: |
+        <div>
+            <a class="navbar-brand logo">
+              <img>
+              <p></p>
+            </a>
+        </div>
