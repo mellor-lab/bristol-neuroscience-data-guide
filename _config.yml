@@ -36,7 +36,7 @@ html:
     extra_navbar: |
         <div>
             <a class="navbar-brand logo">
-              <img>
+              <img src="logo.png" width="100px"/>
               <p></p>
             </a>
         </div>
