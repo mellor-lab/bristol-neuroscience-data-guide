@@ -151,12 +151,7 @@ const thebe_selector_output = ".output, .cell_output"
              <!-- To handle the deprecated key -->
             
             <div class="navbar_extra_footer">
-            <div>
-    <a class="navbar-brand logo">
-      <img src="logo.png" width="100px"/>
-      <p></p>
-    </a>
-</div>
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
             
         </div>
@@ -213,6 +208,51 @@ title="Fullscreen mode"
 
 </button>
 
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/dervinism/bristol-neuroscience-data-guide"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/dervinism/bristol-neuroscience-data-guide/issues/new?title=Issue%20on%20page%20%2Fdocumentation/Repository Management with GIN Web Interface.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
       aria-label="Download this page">
@@ -258,12 +298,36 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#register-your-account">
+   Register your account
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -275,6 +339,19 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#register-your-account">
+   Register your account
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -283,7 +360,14 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="repository-management-with-gin-web-interface">
-<h1>Repository Management with GIN Web Interface<a class="headerlink" href="#repository-management-with-gin-web-interface" title="Permalink to this headline">#</a></h1>
+<span id="doc-gin-web"></span><h1>Repository Management with GIN Web Interface<a class="headerlink" href="#repository-management-with-gin-web-interface" title="Permalink to this headline">#</a></h1>
+<section id="register-your-account">
+<span id="doc-gin-web-register"></span><h2>Register your account<a class="headerlink" href="#register-your-account" title="Permalink to this headline">#</a></h2>
+<p>If you are using local GIN, in your web browser type in <a class="reference external" href="https://www.bristol.ac.uk/bristolgin/">https://www.bristol.ac.uk/bristolgin/</a>. To create an account on the public GIN, type in <a class="reference external" href="https://gin.g-node.org/">https://gin.g-node.org/</a>. In the top menu click on Register. Type in your information to create an account.</p>
+<a class="reference internal image-reference" href="../_images/Fig01-registration.png" id="gin-web-register"><img alt="../_images/Fig01-registration.png" class="align-center" id="gin-web-register" src="../_images/Fig01-registration.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 1. Register your Account</strong></p>
+<p>If you are using the public GIN, you will be asked to verify your email. Once this is done, you can start using GIN.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
