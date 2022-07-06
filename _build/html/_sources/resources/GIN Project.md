@@ -1,0 +1,2 @@
+(resources-gin)=
+# GIN Project

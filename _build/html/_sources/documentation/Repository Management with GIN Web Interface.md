@@ -443,3 +443,21 @@ On your account settings page click on the Delete Account entry located at the b
 :align: center
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 47. Delete your Account**
+
+(doc-gin-web-report-issue)=
+## Report an Issue
+You can report any issue or leave a comment related to a particular repository by navigating to the repository page, clicking on the Issues pane, and pressing the green New Issue button. Any open (unsolved) and closed (solved) issues can also be found on this page. Before reporting an issue it is worth checking open issues if no one else has reported the same issue already.
+```{image} ../assets/images/documentation/repository-management-with-gin-web-interface/Fig48-report-issue1.png
+:name: fig-gin-web-report-issue1
+:width: 690px
+:align: center
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 48. Report an Issue with a Repository**
+
+When reporting an issue make sure you give an accurate and concise title to it. Give as much information about an issue as needed in order to understand the nature of an issue and also possibly replicate it on another computer. Press the green Create Issue button at the bottom of the issue page when ready to submit the issue.
+```{image} ../assets/images/documentation/repository-management-with-gin-web-interface/Fig49-report-issue2.png
+:name: fig-gin-web-report-issue2
+:width: 690px
+:align: center
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 49. Describe and Create an Issue**
