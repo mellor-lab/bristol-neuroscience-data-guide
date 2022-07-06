@@ -17,7 +17,7 @@ gin login [<username>]
 You should be prompted to enter your credentials. Once you are loged in, you can start managing your GIN repositories using command line tools.
 
 (doc-gin-client-create-repo)=
-## Create a Repository
+## Create a Bare Repository
 The difference of working with the GIN web interface and working with the GIN client is that instead of working directly with the remote repository residing on the server you are going to be working with the local repository residing on your computer first while periodically uploading changes to the remote repository second. Hence, you are going to have a local and remote repositories both tracking changes you make. Typically you would be synchronising your working files with the local repository frequently while synchronising with the remote repository occasionally. Having this in mind, you create a local repository on your computer by running a command
 ```
 gin create
@@ -26,7 +26,8 @@ or
 ```
 gin create [<repository-name>] [<'repository description'>]
 ```
-The repository will be created locally on your computer.
+The repository will be created locally on your computer. The new repository should contain a hidden folder .git that tracks local changes.
+%As a test, check if a hidden folder .git has been created inside your local repository.
 
 (doc-gin-client-find-repo)=
 ## Find a Repository
