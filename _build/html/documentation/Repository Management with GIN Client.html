@@ -119,6 +119,11 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="Installation%20Instructions.html">
+   Installation Instructions
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Repository%20Management%20with%20GIN.html">
    Repository Management with GIN
   </a>
@@ -198,8 +203,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../resources/Bristol%20GIN%20Presentations.html">
-   Bristol GIN Presentations
+  <a class="reference internal" href="../resources/Bristol%20GIN%20Project.html">
+   Bristol GIN Project
   </a>
  </li>
  <li class="toctree-l1">
@@ -390,8 +395,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#register-your-account">
-   Register your Account
+  <a class="reference internal nav-link" href="#login-to-your-account">
+   Login to your Account
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -529,8 +534,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#register-your-account">
-   Register your Account
+  <a class="reference internal nav-link" href="#login-to-your-account">
+   Login to your Account
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -660,11 +665,32 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="repository-management-with-gin-client">
 <span id="doc-gin-client"></span><h1>Repository Management with GIN Client<a class="headerlink" href="#repository-management-with-gin-client" title="Permalink to this headline">#</a></h1>
-<section id="register-your-account">
-<span id="doc-gin-client-register"></span><h2>Register your Account<a class="headerlink" href="#register-your-account" title="Permalink to this headline">#</a></h2>
+<p>This is the documentation on how to use GIN command line tools for research data management. Below is the description of some notation that is used here and that you may not be familiar with:
+[] - square brackets mean an optional argument
+&lt;&gt; - angle brackets mean that the text within should be replaced with an appropriate argument</p>
+<section id="login-to-your-account">
+<span id="doc-gin-client-login"></span><h2>Login to your Account<a class="headerlink" href="#login-to-your-account" title="Permalink to this headline">#</a></h2>
+<p>In order to login to GIN, you have to have a registered account on the <a class="reference external" href="https://www.bristol.ac.uk/bristolgin/">local GIN server</a> or on the <a class="reference external" href="https://gin.g-node.org/">public GIN server</a>. Instructions on how to do it are available <a class="reference internal" href="Repository%20Management%20with%20GIN%20Web%20Interface.html#doc-gin-web-register"><span class="std std-ref">here</span></a>. You login by typing in the terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">login</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">login</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You should be prompted to enter your credentials. Once you are loged in, you can start managing your GIN repositories using command line tools.</p>
 </section>
 <section id="create-a-repository">
 <span id="doc-gin-client-create-repo"></span><h2>Create a Repository<a class="headerlink" href="#create-a-repository" title="Permalink to this headline">#</a></h2>
+<p>The difference of working with the GIN web interface and working with the GIN client is that instead of working directly with the remote repository residing on the server you are going to be working with the local repository residing on your computer first while periodically uploading changes to the remote repository second. Hence, you are going to have a local and remote repositories both tracking changes you make. Typically you would be synchronising your working files with the local repository frequently while synchronising with the remote repository occasionally. Having this in mind, you create a local repository on your computer by running a command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">repository</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="s1">&#39;repository description&#39;</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The repository will be created locally on your computer.</p>
 </section>
 <section id="find-a-repository">
 <span id="doc-gin-client-find-repo"></span><h2>Find a Repository<a class="headerlink" href="#find-a-repository" title="Permalink to this headline">#</a></h2>

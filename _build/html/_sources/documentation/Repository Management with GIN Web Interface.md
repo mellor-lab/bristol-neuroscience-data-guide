@@ -266,7 +266,7 @@ You should be prompted to enter the name of the new organisation. Naming the org
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 27. Name the New Organisation**
 
-Once the organisation is created, you are brought to the Dashboard of the new organisation. If you click on the blue View org-name button in the top right corner, you are brought to the page of that organisation.
+Once the organisation is created, you are brought to the Dashboard of the new organisation. If you click on the blue View *organisation-name* button in the top right corner, you are brought to the page of that organisation.
 ```{image} ../assets/images/documentation/repository-management-with-gin-web-interface/Fig28-org-dashboard.png
 :name: fig-gin-web-org-dashboard
 :width: 690px
