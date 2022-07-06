@@ -1,7 +1,7 @@
 (doc-gin-client)=
 # Repository Management with GIN Client
-This is the documentation on how to use GIN command line tools for research data management. Below is the description of some notation that is used here and that you may not be familiar with:
-[] - square brackets mean an optional argument
+This is the documentation on how to use GIN command line tools for research data management. Below is the description of some notation that is used here and that you may not be familiar with: \
+[] - square brackets mean an optional argument \
 <> - angle brackets mean that the text within should be replaced with an appropriate argument
 
 (doc-gin-client-login)=
