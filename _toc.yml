@@ -13,12 +13,12 @@ parts:
   - file: documentation/Repository Management with Git
 - caption: Tutorials
   chapters:
-  - file: tutorials/UoB GIN via Graphical Interfaces
-  - file: tutorials/UoB GIN via Command Line
-  - file: tutorials/UoB GIN for Neuropixels Data
-  - file: tutorials/UoB GIN for Patch Clamp Data
-  - file: tutorials/UoB GIN for Calcium Imaging Data
-  - file: tutorials/UoB GIN for Neuroimaging Data
+  - file: tutorials/Bristol GIN via Graphical Interfaces
+  - file: tutorials/Bristol GIN via Command Line
+  - file: tutorials/Bristol GIN for Neuropixels Data
+  - file: tutorials/Bristol GIN for Patch Clamp Data
+  - file: tutorials/Bristol GIN for Calcium Imaging Data
+  - file: tutorials/Bristol GIN for Neuroimaging Data
   - file: tutorials/Converting to NWB
   - file: tutorials/Converting to BIDS
 - caption: Resources
