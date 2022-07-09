@@ -410,13 +410,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-local-only-repository">
-   Create a Local-only Repository
+  <a class="reference internal nav-link" href="#initialise-a-repository">
+   Initialise a Repository
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#find-a-repository">
    Find a Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#record-changes-to-a-local-repository-commit">
+   Record Changes to a Local Repository (commit)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -559,13 +564,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-local-only-repository">
-   Create a Local-only Repository
+  <a class="reference internal nav-link" href="#initialise-a-repository">
+   Initialise a Repository
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#find-a-repository">
    Find a Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#record-changes-to-a-local-repository-commit">
+   Record Changes to a Local Repository (commit)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -686,8 +696,8 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="repository-management-with-gin-client">
 <span id="doc-gin-client"></span><h1>Repository Management with GIN Client<a class="headerlink" href="#repository-management-with-gin-client" title="Permalink to this headline">#</a></h1>
 <p>This is the documentation on how to use GIN command line tools for research data management. Below is the description of some notation that is used here and that you may not be familiar with: <br />
-[] - square brackets mean an optional argument <br />
-&lt;&gt; - angle brackets mean that the text within should be replaced with an appropriate argument</p>
+[] - square brackets mean an optional argument (inclusive of brackets) <br />
+&lt;&gt; - angle brackets mean that the text within should be replaced with an appropriate argument (inclusive of brackets).</p>
 <section id="login-to-your-account">
 <span id="doc-gin-client-login"></span><h2>Login to your Account<a class="headerlink" href="#login-to-your-account" title="Permalink to this headline">#</a></h2>
 <p>In order to login to GIN, you have to have a registered account on the <a class="reference external" href="https://www.bristol.ac.uk/bristolgin/">local GIN server</a> or on the <a class="reference external" href="https://gin.g-node.org/">public GIN server</a>. Instructions on how to do it are available <a class="reference internal" href="Repository%20Management%20with%20GIN%20Web%20Interface.html#doc-gin-web-register"><span class="std std-ref">here</span></a>. You login by typing in the terminal</p>
@@ -702,7 +712,7 @@ title="Print to PDF"
 </section>
 <section id="create-a-bare-repository">
 <span id="doc-gin-client-create-repo"></span><h2>Create a Bare Repository<a class="headerlink" href="#create-a-bare-repository" title="Permalink to this headline">#</a></h2>
-<p>The difference of working with the GIN web interface and working with the GIN client is that instead of working directly with the remote repository residing on the server you are going to be working with the local repository residing on your computer first while periodically uploading changes to the remote repository second. Hence, you are going to have a local and remote repositories both tracking changes you make. Typically you would be synchronising your working files with the local repository frequently while synchronising with the remote repository occasionally. Having this in mind, you create a local repository on your computer and a remote repository on the GIN server by running a command</p>
+<p>You create a local repository on your computer and a remote repository on the GIN server by running a command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span>
 </pre></div>
 </div>
@@ -710,28 +720,67 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">repository</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="s1">&#39;repository description&#39;</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>The repository will be created on the remote repository and downloaded locally onto your computer inside a folder with the same name as the repository. The new local repository should contain a hidden folder .git that tracks local changes. If you want to use your current working directory as the root folder of the local repository, add a flag to the <code class="docutils literal notranslate"><span class="pre">create</span></code> command</p>
+<p>The repository will be created on the remote repository and downloaded locally onto your computer inside a folder with the same name as the repository. The new local repository should contain a hidden folder .git that tracks local changes when you explicitly record them (see <a class="reference internal" href="#doc-gin-client-update-local-repo"><span class="std std-ref">the section on commiting changes</span></a>). If you want to use your current working directory as the root folder of the local repository, add a flag to the <code class="docutils literal notranslate"><span class="pre">create</span></code> command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span> <span class="o">--</span><span class="n">here</span>
 </pre></div>
 </div>
 </section>
 <section id="create-a-remote-only-bare-repository">
 <span id="doc-gin-client-create-remote-repo"></span><h2>Create a Remote-only Bare Repository<a class="headerlink" href="#create-a-remote-only-bare-repository" title="Permalink to this headline">#</a></h2>
-<p>Throughout this chapter the repository residing on your local or public GIN server is refered to as a remote repository. It is the repository where you push changes from your local repository and where your collaborators do the same. To create a remote repository that does not have a local corresponding repository, like how you create a repository using the web interface, you call the <code class="docutils literal notranslate"><span class="pre">create</span></code> with a special flag like in the line below</p>
+<p>Throughout this chapter the repository residing on your local or public GIN server is refered to as a remote repository. It is the repository where you push changes from your local repository and where your collaborators do the same. To create a remote repository that does not have a local corresponding repository (a clone), like how you create a repository using the web interface, you call the <code class="docutils literal notranslate"><span class="pre">create</span></code> with a special flag like in the line below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">clone</span>
 </pre></div>
 </div>
 </section>
-<section id="create-a-local-only-repository">
-<span id="doc-gin-client-create-local-repo"></span><h2>Create a Local-only Repository<a class="headerlink" href="#create-a-local-only-repository" title="Permalink to this headline">#</a></h2>
-<p>In order to create a local empty repository that does not have a remote equivalent, in the terminal we type</p>
+<section id="initialise-a-repository">
+<span id="doc-gin-client-create-local-repo"></span><h2>Initialise a Repository<a class="headerlink" href="#initialise-a-repository" title="Permalink to this headline">#</a></h2>
+<p>In order to initialise a local repository that does not have a remote equivalent, in the terminal we type</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">init</span>
 </pre></div>
 </div>
-<p>This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository. As a test, check if a hidden folder .git has been created inside your working directory.</p>
+<p>This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository, unless you initialise the repository with a .gitignore file that explicitly states not to ignore certain files. As a test, check if a hidden folder .git has been created inside your working directory.</p>
 </section>
 <section id="find-a-repository">
-<span id="doc-gin-client-find-repo"></span><h2>Find a Repository<a class="headerlink" href="#find-a-repository" title="Permalink to this headline">#</a></h2>
+<span id="doc-gin-client-list-repos"></span><h2>Find a Repository<a class="headerlink" href="#find-a-repository" title="Permalink to this headline">#</a></h2>
+<p>If you want to list all remote repositories that you own, in the terminal type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">repos</span>
+</pre></div>
+</div>
+<p>You may see a smilar looking output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">dervinism</span><span class="o">/</span><span class="n">vr</span><span class="o">-</span><span class="n">setup</span><span class="o">-</span><span class="n">project</span>
+        <span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">dervinism</span><span class="o">/</span><span class="n">vr</span><span class="o">-</span><span class="n">setup</span><span class="o">-</span><span class="n">project</span>
+        <span class="n">Description</span><span class="p">:</span> <span class="n">A</span> <span class="n">mock</span> <span class="n">repository</span> <span class="n">containing</span> <span class="nb">all</span> <span class="n">files</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">building</span> <span class="ow">and</span> <span class="n">running</span> <span class="n">the</span> <span class="n">virtual</span> <span class="n">reality</span> <span class="n">experimental</span> <span class="nb">set</span><span class="o">-</span><span class="n">up</span><span class="o">.</span>
+
+<span class="o">*</span> <span class="n">dervinism</span><span class="o">/</span><span class="n">intracellular</span><span class="o">-</span><span class="n">rec</span><span class="o">-</span><span class="n">project</span>
+        <span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">dervinism</span><span class="o">/</span><span class="n">intracellular</span><span class="o">-</span><span class="n">rec</span><span class="o">-</span><span class="n">project</span>
+        <span class="n">Description</span><span class="p">:</span> <span class="n">Mock</span> <span class="n">intracellular</span> <span class="n">recordings</span> <span class="ow">and</span> <span class="n">analysis</span> <span class="n">code</span>
+
+<span class="o">*</span> <span class="n">dervinism</span><span class="o">/</span><span class="n">GIN</span><span class="o">-</span><span class="n">tutorial</span><span class="o">-</span><span class="n">Mellor</span><span class="o">-</span><span class="n">lab</span><span class="o">-</span><span class="n">retreat</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">2022</span>
+        <span class="n">Location</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">dervinism</span><span class="o">/</span><span class="n">GIN</span><span class="o">-</span><span class="n">tutorial</span><span class="o">-</span><span class="n">Mellor</span><span class="o">-</span><span class="n">lab</span><span class="o">-</span><span class="n">retreat</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">2022</span>
+        <span class="n">Description</span><span class="p">:</span> <span class="n">An</span> <span class="n">introductory</span> <span class="n">tutorial</span> <span class="n">to</span> <span class="n">GIN</span> <span class="p">(</span><span class="n">G</span><span class="o">-</span><span class="n">Node</span> <span class="n">Infrastructure</span><span class="p">)</span> <span class="n">neuroscience</span> <span class="n">data</span> <span class="n">sharing</span> <span class="n">platform</span> <span class="n">at</span> <span class="n">UoB</span>
+        <span class="n">This</span> <span class="n">repository</span> <span class="ow">is</span> <span class="n">public</span>
+</pre></div>
+</div>
+<p>To see all repositories that you are a member of, type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">repos</span> <span class="o">--</span><span class="nb">all</span>
+</pre></div>
+</div>
+<p>To see only repositories that you share with others (excluding own repositories), type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">repos</span> <span class="o">--</span><span class="n">shared</span>
+</pre></div>
+</div>
+</section>
+<section id="record-changes-to-a-local-repository-commit">
+<span id="doc-gin-client-update-local-repo"></span><h2>Record Changes to a Local Repository (commit)<a class="headerlink" href="#record-changes-to-a-local-repository-commit" title="Permalink to this headline">#</a></h2>
+<p>The action of updating the change tracking system of the local instance of your repository (located inside the .git folder) with changes that you made to your local files is called commiting. You commit changes by calling the commit command from the root folder of your repository</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="s2">&quot;message string&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Give an apt and succinct message describing what changes you made in comparison to the previous commit. If it is the initial commit, it would suffice to state so. Mind though that the commit action does not update the remote repository, your changes are still local. There may not even be a remote repository yet. This is different to using the web interface which only lets you to upload files simultaneously with the commit message.</p>
+<p>You may be specific and commit changes relating only to a few files by specifying file names with relative paths to them</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="s2">&quot;message string&quot;</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">filenames</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
+</pre></div>
+</div>
 </section>
 <section id="update-a-repository-upload-files">
 <span id="doc-gin-client-update-repo"></span><h2>Update a Repository (Upload Files)<a class="headerlink" href="#update-a-repository-upload-files" title="Permalink to this headline">#</a></h2>
