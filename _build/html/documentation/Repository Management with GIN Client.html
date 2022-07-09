@@ -405,6 +405,16 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-remote-only-bare-repository">
+   Create a Remote-only Bare Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-local-only-repository">
+   Create a Local-only Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#find-a-repository">
    Find a Repository
   </a>
@@ -541,6 +551,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-a-bare-repository">
    Create a Bare Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-remote-only-bare-repository">
+   Create a Remote-only Bare Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-local-only-repository">
+   Create a Local-only Repository
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -682,7 +702,7 @@ title="Print to PDF"
 </section>
 <section id="create-a-bare-repository">
 <span id="doc-gin-client-create-repo"></span><h2>Create a Bare Repository<a class="headerlink" href="#create-a-bare-repository" title="Permalink to this headline">#</a></h2>
-<p>The difference of working with the GIN web interface and working with the GIN client is that instead of working directly with the remote repository residing on the server you are going to be working with the local repository residing on your computer first while periodically uploading changes to the remote repository second. Hence, you are going to have a local and remote repositories both tracking changes you make. Typically you would be synchronising your working files with the local repository frequently while synchronising with the remote repository occasionally. Having this in mind, you create a local repository on your computer by running a command</p>
+<p>The difference of working with the GIN web interface and working with the GIN client is that instead of working directly with the remote repository residing on the server you are going to be working with the local repository residing on your computer first while periodically uploading changes to the remote repository second. Hence, you are going to have a local and remote repositories both tracking changes you make. Typically you would be synchronising your working files with the local repository frequently while synchronising with the remote repository occasionally. Having this in mind, you create a local repository on your computer and a remote repository on the GIN server by running a command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span>
 </pre></div>
 </div>
@@ -690,7 +710,25 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">repository</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="s1">&#39;repository description&#39;</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>The repository will be created locally on your computer. The new repository should contain a hidden folder .git that tracks local changes.</p>
+<p>The repository will be created on the remote repository and downloaded locally onto your computer inside a folder with the same name as the repository. The new local repository should contain a hidden folder .git that tracks local changes. If you want to use your current working directory as the root folder of the local repository, add a flag to the <code class="docutils literal notranslate"><span class="pre">create</span></code> command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span> <span class="o">--</span><span class="n">here</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-remote-only-bare-repository">
+<span id="doc-gin-client-create-remote-repo"></span><h2>Create a Remote-only Bare Repository<a class="headerlink" href="#create-a-remote-only-bare-repository" title="Permalink to this headline">#</a></h2>
+<p>Throughout this chapter the repository residing on your local or public GIN server is refered to as a remote repository. It is the repository where you push changes from your local repository and where your collaborators do the same. To create a remote repository that does not have a local corresponding repository, like how you create a repository using the web interface, you call the <code class="docutils literal notranslate"><span class="pre">create</span></code> with a special flag like in the line below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">clone</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-local-only-repository">
+<span id="doc-gin-client-create-local-repo"></span><h2>Create a Local-only Repository<a class="headerlink" href="#create-a-local-only-repository" title="Permalink to this headline">#</a></h2>
+<p>In order to create a local empty repository that does not have a remote equivalent, in the terminal we type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">init</span>
+</pre></div>
+</div>
+<p>This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository. As a test, check if a hidden folder .git has been created inside your working directory.</p>
 </section>
 <section id="find-a-repository">
 <span id="doc-gin-client-find-repo"></span><h2>Find a Repository<a class="headerlink" href="#find-a-repository" title="Permalink to this headline">#</a></h2>
