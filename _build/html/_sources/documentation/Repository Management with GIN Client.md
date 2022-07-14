@@ -16,6 +16,13 @@ gin login [<username>]
 ```
 You should be prompted to enter your credentials. Once you are loged in, you can start managing your GIN repositories using command line tools.
 
+(doc-gin-client-logout)=
+## Logout from your Account
+To logout from your GIN server account, type in the terminal
+```
+gin logout
+```
+
 (doc-gin-client-create-repo)=
 ## Create a Bare Repository
 You create a local repository on your computer and a remote repository on the GIN server by running a command
@@ -32,14 +39,14 @@ gin create --here
 ```
 
 (doc-gin-client-create-remote-repo)=
-## Create a Remote-only Bare Repository
-Throughout this chapter the repository residing on your local or public GIN server is refered to as a remote repository. It is the repository where you push changes from your local repository and where your collaborators do the same. To create a remote repository that does not have a local corresponding repository (a clone), like how you create a repository using the web interface, you call the ```create``` with a special flag like in the line below
+## Create a Remote Bare Repository
+Throughout this chapter the repository residing on your local or public GIN server is refered to as a remote repository. It is the repository where you push changes from your local repository and where your collaborators do the same. To create a remote repository that does not have a local corresponding repository (a clone), like how you create a repository using the web interface, you call the ```create``` command with a special flag like in the line below
 ```
 gin create --no-clone
 ```
 
 (doc-gin-client-create-local-repo)=
-## Initialise a Repository
+## Initialise a Local Repository
 In order to initialise a local repository that does not have a remote equivalent, in the terminal we type
 ```
 gin init
@@ -47,7 +54,7 @@ gin init
 This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository, unless you initialise the repository with a .gitignore file that explicitly states not to ignore certain files. As a test, check if a hidden folder .git has been created inside your working directory.
 
 (doc-gin-client-list-repos)=
-## Find a Repository
+## List repository (and find one)
 If you want to list all remote repositories that you own, in the terminal type
 ```
 gin repos
@@ -80,74 +87,120 @@ gin repos --shared
 ## Record Changes to a Local Repository (commit)
 The action of updating the change tracking system of the local instance of your repository (located inside the .git folder) with changes that you made to your local files is called commiting. You commit changes by calling the commit command from the root folder of your repository
 ```
-gin commit -m <"message string">
+gin commit . -m <"message string">
 ```
-Give an apt and succinct message describing what changes you made in comparison to the previous commit. If it is the initial commit, it would suffice to state so. Mind though that the commit action does not update the remote repository, your changes are still local. There may not even be a remote repository yet. This is different to using the web interface which only lets you to upload files simultaneously with the commit message.
+Give an apt and succinct message describing the changes you made since the previous commit. If it is the initial commit, it would suffice to state so. Mind though that the commit action does not update the remote repository, your changes are still local. There may not even be a remote repository yet. This is different to using the web interface which only lets you to upload files simultaneously with the commit message.
 
 You may be specific and commit changes relating only to a few files by specifying file names with relative paths to them
 ```
-gin commit -m <"message string"> [<filenames>]...
+gin commit . -m <"message string"> [<absolute or relative path to your files>]...
 ```
 
 (doc-gin-client-update-repo)=
-## Update a Repository (Upload Files)
+## Update a Remote Repository (Upload Files)
+Once you updated your local repository with a commit message, you can update your remote repository by pushing changes. The gin client command for doing that is
+```
+gin upload .
+```
+This command has to be called from within the root folder of your local repository and it will push all changes to the associated remote repository. To be more specific, you can specify files that you want to upload.
+```
+gin upload [<absolute or relative path to your files>]...
+```
+You can use wildcards when specifying filenames. For example,
+```
+gin upload *.npy
+```
+Finally, you can be specific about which remote repositories you want to push your changes to
+```
+gin upload . --to origin, repository-to-share
+```
 
 (doc-gin-client-dowload-repo)=
-## Download (Clone) a Repository
+## Download (Clone) a Remote Repository
+In order to download a copy (clone) of a full remote reposiotry onto your local machine, in your terminal type
+```
+gin get <repopath>
+cd <repo-name>
+gin get-content
+```
+where repopath is the path to a remote repository in the form of repo-owner/repo-name. The cloning action will create a new folder called repository-name and initialise with default options. All files within the remote repository will be downloaded locally. If you do not wish to download large files, you can skip the command ```get-content``` which will download placeholders only instead of full files. Alternatively, instead of ```get-content``` command one can use ```download --content``` command.
 
-(doc-gin-client-dowload-file)=
-## Download a File
+(doc-gin-client-update-local-repo-remote-content)=
+## Update a Local Repository with Remote Content
+If you are working collaboratively on a repository, it is a good idea to bring your local repository in sync with the remote repository prior starting working on your local instance. One way to do it is to change your working directory to the root folder of your local repository and call the ```download``` command
+```
+gin download --content
+```
+This command will download new files, update old ones, and delete any local files that were removed from the remote repository. Note that if you modified files in the local repository, the download command will fail and issue an error noting you that local files cannot be overwritten or merged. Local files can only be overwritten if these changes are tracked by the remote repository and, thus, are historically preceding the more recent remote changes. In order to download remote changes that clash with the local changes, you have to [upload your local changes to the remote repository](doc-gin-client-update-repo) first. In this way the remote reposiotry will be able to track the clashing changes.
 
-(doc-gin-client-delete-file)=
-## Delete a File
+(doc-gin-client-sync-repos)=
+## Synchronise Local and Remote Repositories
+Repository synchronisation performs download and upload actions simultaneously. Any local changes are uploaded onto the remote repository if they are not yet tracked by the remote repository. The reverse is also true: remote changes are downloaded onto the local repository if the local repository is not up to date with the remote repository. However, if the same files are being edited on both local and remote instances of the repository, you would have to issue the ```upload``` command in order to register these changes with the remote repository before you can synchronise the two repositoriesn (see [upload files section](doc-gin-client-update-repo)). In order to synchronise repositories, in the terminal type
+```
+gin sync --content
+```
 
-(doc-gin-client-create-file)=
-## Create a Text File
+(doc-gin-client-list-repo-vers)=
+## List Repository Versions
+One of the main functions of GIN is research data repository version control. In order to list repository versions in reverse order, type
+```
+gin version
+```
+This will list the last 10 repository versions and you will be prompted to enter the version number that you want to roll back to. The files will be restored to the current working directory. If you do not want to roll back to any particular version, press Ctrl+Z. To list versions going back further into the past, type
+```
+gin version --max-count <number>
+```
+or
+```
+gin version -n <number>
+```
+Setting number to equal to 0 will list all previous repository versions. Below is an example output
+```
+...
+[ 3]  b05338f * Thu Jul 14 11:26:22 2022 (+0100)
 
-(doc-gin-client-rename-repo)=
-## Rename a Repository
+    Modified the log file
 
-(doc-gin-client-repo-visibility)=
-## Change the Visibility of a Repository
+  Modified
+    mock_project/animal_ID/session1_2022-05-16/log.txt
+...
+```
+The output list displays the commit ID (hash), date and time of the commit, the commit message, and names of files that were modified. You can use the commit ID to [roll back repository version](doc-gin-client-rollback-repo). 
 
-(doc-gin-client-transfer-repo)=
-## Transfer the Ownership of a Repository
+(doc-gin-client-rollback-repo)=
+## Roll back a Repository to an Earlier Version
+One of the main functions of GIN is research data repository version control. In order to roll back repository to an earlier version, type
+```
+gin version
+```
+This will list the last 10 repository versions and prompt you to enter the version number you would like to roll back to. The files would be restored to the current working directory. Another way to roll back would be to explicitly specify commit id (hash; see how to find one [here](doc-gin-client-list-repo-vers)). Simply type
+```
+gin version --id <hash>
+```
+In order to restore a previous version of the repository to a different folder than the root repository folder, use the ```--copy-to``` flag by typing
+```
+gin version --copy-to <absolute or relative path to a system folder>
+```
+or
+```
+gin version --id <hash> --copy-to <absolute or relative path to a system folder>
+```
 
-(doc-gin-client-delete-repo)=
-## Delete a Repository
-
-(doc-gin-client-add-collaborator)=
-## Add Collaborators to a Repository
-
-(doc-gin-client-create-org)=
-## Create an Organisation
-
-(doc-gin-client-delete-org)=
-## Delete an Organisation
-
-(doc-gin-client-add-org-member)=
-## Add an Organisation Member
-
-(doc-gin-client-grant-org-ownership)=
-## Grant Organisation Ownership to a User
-
-(doc-gin-client-create-org-repo)=
-## Create a Repository under Organisation's Ownership
-
-(doc-gin-client-create-team)=
-## Create a Team
-
-(doc-gin-client-add-team-memebers)=
-## Add Team Members
-
-(doc-gin-client-add-team-repo)=
-## Add a Repository to a Team
-
-(doc-gin-client-delete-team)=
-## Delete a Team
-
-(doc-gin-client-delete-account)=
-## Delete an Account
-
-(doc-gin-client-report-issue)=
-## Report an Issue
+(doc-gin-client-rollback-part-repo)=
+## Roll back a Part of a Repository to an Earlier Version
+If you need to restore a part of a repository, like a file or a folder, to an earlier version, you can specify the path to the file or the folder relative to the repository root folder.
+```
+gin version <root-relative path to a file or a folder>
+```
+or
+```
+gin version --id <hash> <root-relative path to a file or a folder>
+```
+In case when you want to restore a file or a folder to a different location other than the root folder of the local repository, specify accordingly
+```
+gin version --copy-to <absolute or relative path to a system folder> <root-relative path to a file or a folder>
+```
+or
+```
+gin version --id <hash> --copy-to <absolute or relative path to a system folder> <root-relative path to a file or a folder>
+```
