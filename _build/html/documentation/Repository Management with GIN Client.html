@@ -395,6 +395,36 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-all-gin-client-commands">
+   List All GIN Client Commands
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#display-command-documentation">
+   Display Command Documentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configure-a-gin-server">
+   Configure a GIN Server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-configured-servers">
+   List Configured Servers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#change-the-default-server">
+   Change the Default Server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remove-a-configured-server">
+   Remove a Configured Server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#login-to-your-account">
    Login to your Account
   </a>
@@ -402,6 +432,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logout-from-your-account">
    Logout from your Account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-gin-user-info">
+   Get GIN User Info
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -421,17 +456,57 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#list-repository-and-find-one">
-   List repository (and find one)
+   List Repository (and Find one)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#display-repository-description">
+   Display Repository Description
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#record-changes-to-a-local-repository-commit">
-   Record Changes to a Local Repository (commit)
+   Record Changes to a Local Repository (Commit)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-the-status-of-local-repository-files">
+   List the Status of Local Repository Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-remote-repositories-associated-with-the-local-repository">
+   List Remote Repositories Associated with the Local Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#associate-a-remote-repository-with-the-local-repository">
+   Associate a Remote Repository with the Local Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#display-the-default-associated-remote-repository">
+   Display the Default Associated Remote Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#change-the-default-associated-remote-repository">
+   Change the Default Associated Remote Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remove-an-associated-remote-repository-from-the-local-repository">
+   Remove an Associated Remote Repository from the Local Repository
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#update-a-remote-repository-upload-files">
    Update a Remote Repository (Upload Files)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remove-the-content-of-local-files">
+   Remove the Content of Local Files
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -442,6 +517,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#update-a-local-repository-with-remote-content">
    Update a Local Repository with Remote Content
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update-local-files-with-remote-content">
+   Update Local Files with Remote Content
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -462,6 +542,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#roll-back-a-part-of-a-repository-to-an-earlier-version">
    Roll back a Part of a Repository to an Earlier Version
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prevent-local-file-or-a-folder-from-being-edited">
+   Prevent Local File or a Folder from Being Edited
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unlock-a-local-file-or-a-folder-for-editing">
+   Unlock a Local File or a Folder for Editing
   </a>
  </li>
 </ul>
@@ -484,6 +574,36 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-all-gin-client-commands">
+   List All GIN Client Commands
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#display-command-documentation">
+   Display Command Documentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configure-a-gin-server">
+   Configure a GIN Server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-configured-servers">
+   List Configured Servers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#change-the-default-server">
+   Change the Default Server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remove-a-configured-server">
+   Remove a Configured Server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#login-to-your-account">
    Login to your Account
   </a>
@@ -491,6 +611,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logout-from-your-account">
    Logout from your Account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-gin-user-info">
+   Get GIN User Info
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -510,17 +635,57 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#list-repository-and-find-one">
-   List repository (and find one)
+   List Repository (and Find one)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#display-repository-description">
+   Display Repository Description
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#record-changes-to-a-local-repository-commit">
-   Record Changes to a Local Repository (commit)
+   Record Changes to a Local Repository (Commit)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-the-status-of-local-repository-files">
+   List the Status of Local Repository Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-remote-repositories-associated-with-the-local-repository">
+   List Remote Repositories Associated with the Local Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#associate-a-remote-repository-with-the-local-repository">
+   Associate a Remote Repository with the Local Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#display-the-default-associated-remote-repository">
+   Display the Default Associated Remote Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#change-the-default-associated-remote-repository">
+   Change the Default Associated Remote Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remove-an-associated-remote-repository-from-the-local-repository">
+   Remove an Associated Remote Repository from the Local Repository
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#update-a-remote-repository-upload-files">
    Update a Remote Repository (Upload Files)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remove-the-content-of-local-files">
+   Remove the Content of Local Files
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -531,6 +696,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#update-a-local-repository-with-remote-content">
    Update a Local Repository with Remote Content
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update-local-files-with-remote-content">
+   Update Local Files with Remote Content
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -553,6 +723,16 @@ title="Print to PDF"
    Roll back a Part of a Repository to an Earlier Version
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prevent-local-file-or-a-folder-from-being-edited">
+   Prevent Local File or a Folder from Being Edited
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unlock-a-local-file-or-a-folder-for-editing">
+   Unlock a Local File or a Folder for Editing
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -567,7 +747,68 @@ title="Print to PDF"
 <span id="doc-gin-client"></span><h1>Repository Management with GIN Client<a class="headerlink" href="#repository-management-with-gin-client" title="Permalink to this headline">#</a></h1>
 <p>This is the documentation on how to use GIN command line tools for research data management. Below is the description of some notation that is used here and that you may not be familiar with: <br />
 [] - square brackets mean an optional argument (inclusive of brackets) <br />
-&lt;&gt; - angle brackets mean that the text within should be replaced with an appropriate argument (inclusive of brackets).</p>
+&lt;&gt; - angle brackets mean that the text within should be replaced with an appropriate argument (inclusive of brackets). <br />
+The use of dashes in command argument names indicates that the argument name does not allow for blank spaces.</p>
+<section id="list-all-gin-client-commands">
+<span id="doc-gin-client-list-commands"></span><h2>List All GIN Client Commands<a class="headerlink" href="#list-all-gin-client-commands" title="Permalink to this headline">#</a></h2>
+<p>To get the names of all commands available to use with the GIN client and their brief descriptions, type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">help</span>
+</pre></div>
+</div>
+</section>
+<section id="display-command-documentation">
+<span id="doc-gin-client-doc-help"></span><h2>Display Command Documentation<a class="headerlink" href="#display-command-documentation" title="Permalink to this headline">#</a></h2>
+<p>To print the documentation for a particular GIN client command, type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">help</span> <span class="n">command</span>
+</pre></div>
+</div>
+<p>where ‘command’ is the name of a specific command.</p>
+</section>
+<section id="configure-a-gin-server">
+<span id="doc-gin-client-configure-server"></span><h2>Configure a GIN Server<a class="headerlink" href="#configure-a-gin-server" title="Permalink to this headline">#</a></h2>
+<p>After installing the GIN client but before starting to use it, you have to configure the GIN client to work with a particular GIN server. In the most likely case where you want to use Bristol GIN, you have to issue the following commands in your terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">logout</span>
+<span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">server</span> <span class="o">--</span><span class="n">web</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">bristol</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">bristolgin</span><span class="p">:</span><span class="mi">2121</span> <span class="o">--</span><span class="n">git</span> <span class="n">git</span><span class="nd">@bristol</span><span class="o">.</span><span class="n">ac</span><span class="o">.</span><span class="n">uk</span><span class="o">/</span><span class="n">bristolgin</span><span class="p">:</span><span class="mi">22</span> <span class="n">bristol</span><span class="o">-</span><span class="n">gin</span>
+<span class="n">gin</span> <span class="n">use</span><span class="o">-</span><span class="n">server</span> <span class="n">bristol</span><span class="o">-</span><span class="n">gin</span>
+<span class="n">gin</span> <span class="n">login</span>
+</pre></div>
+</div>
+<p>In another likely case where you want to use the public GIN server, type in the following commands into your terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">logout</span>
+<span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">server</span> <span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">server</span> <span class="o">--</span><span class="n">web</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">443</span> <span class="o">--</span><span class="n">git</span> <span class="n">git</span><span class="nd">@gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">22</span> <span class="n">gin</span>
+<span class="n">gin</span> <span class="n">use</span><span class="o">-</span><span class="n">server</span> <span class="n">gin</span>
+<span class="n">gin</span> <span class="n">login</span>
+</pre></div>
+</div>
+<p>You are all set to use GIN. The use of the <code class="docutils literal notranslate"><span class="pre">use-server</span></code> command sets the configured server as default. All gin commands will work with the default server only. If you do not want to change your default server, skip the <code class="docutils literal notranslate"><span class="pre">use-server</span></code> command. Mind though that the above server configurations might change in the future.</p>
+</section>
+<section id="list-configured-servers">
+<span id="doc-gin-client-list-servers"></span><h2>List Configured Servers<a class="headerlink" href="#list-configured-servers" title="Permalink to this headline">#</a></h2>
+<p>If you want to see the list of servers that your GIN client is configured to work with, in your terminal type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">servers</span>
+</pre></div>
+</div>
+</section>
+<section id="change-the-default-server">
+<span id="doc-gin-client-change-server"></span><h2>Change the Default Server<a class="headerlink" href="#change-the-default-server" title="Permalink to this headline">#</a></h2>
+<p>If you want to change the default server that GIN client works with, in your terminal type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">use</span><span class="o">-</span><span class="n">server</span> <span class="n">alias</span>
+</pre></div>
+</div>
+<p>where ‘alias’ is the server name.</p>
+</section>
+<section id="remove-a-configured-server">
+<span id="doc-gin-client-remove-server"></span><h2>Remove a Configured Server<a class="headerlink" href="#remove-a-configured-server" title="Permalink to this headline">#</a></h2>
+<p>If you want to remove a server from the list of servers that your GIN client is configured to work with, in your terminal type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">server</span> <span class="n">alias</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">rm</span><span class="o">-</span><span class="n">server</span> <span class="n">alias</span>
+</pre></div>
+</div>
+<p>where ‘alias’ is the server name.</p>
+</section>
 <section id="login-to-your-account">
 <span id="doc-gin-client-login"></span><h2>Login to your Account<a class="headerlink" href="#login-to-your-account" title="Permalink to this headline">#</a></h2>
 <p>In order to login to GIN, you have to have a registered account on the <a class="reference external" href="https://www.bristol.ac.uk/bristolgin/">local GIN server</a> or on the <a class="reference external" href="https://gin.g-node.org/">public GIN server</a>. Instructions on how to do it are available <a class="reference internal" href="Repository%20Management%20with%20GIN%20Web%20Interface.html#doc-gin-web-register"><span class="std std-ref">here</span></a>. You login by typing in the terminal</p>
@@ -578,7 +819,11 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">login</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>You should be prompted to enter your credentials. Once you are loged in, you can start managing your GIN repositories using command line tools.</p>
+<p>You should be prompted to enter your credentials. If you want to login to an account on another server, include the <code class="docutils literal notranslate"><span class="pre">--server</span></code> flag, like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">login</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="p">]</span> <span class="o">--</span><span class="n">server</span> <span class="n">alias</span>
+</pre></div>
+</div>
+<p>where ‘alias’ is the name of a configured server. Once you are logged in, you can start managing your GIN repositories using command line tools.</p>
 </section>
 <section id="logout-from-your-account">
 <span id="doc-gin-client-logout"></span><h2>Logout from your Account<a class="headerlink" href="#logout-from-your-account" title="Permalink to this headline">#</a></h2>
@@ -586,6 +831,22 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">logout</span>
 </pre></div>
 </div>
+</section>
+<section id="get-gin-user-info">
+<span id="doc-gin-client-user-info"></span><h2>Get GIN User Info<a class="headerlink" href="#get-gin-user-info" title="Permalink to this headline">#</a></h2>
+<p>To display the currently logged in GIN user, type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">info</span>
+</pre></div>
+</div>
+<p>To display information about another GIN user, type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">info</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>To display information about another user located on another server, type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">info</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">server</span> <span class="n">alias</span>
+</pre></div>
+</div>
+<p>where ‘alias’ is the name of a configured server.</p>
 </section>
 <section id="create-a-bare-repository">
 <span id="doc-gin-client-create-repo"></span><h2>Create a Bare Repository<a class="headerlink" href="#create-a-bare-repository" title="Permalink to this headline">#</a></h2>
@@ -601,6 +862,11 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span> <span class="o">--</span><span class="n">here</span>
 </pre></div>
 </div>
+<p>If you want the remote instance of your repository to be located on a different server other than the default one, include the <code class="docutils literal notranslate"><span class="pre">--server</span></code> flag, like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">create</span> <span class="o">--</span><span class="n">server</span> <span class="n">alias</span>
+</pre></div>
+</div>
+<p>where ‘alias’ is the name of a configured server.</p>
 </section>
 <section id="create-a-remote-bare-repository">
 <span id="doc-gin-client-create-remote-repo"></span><h2>Create a Remote Bare Repository<a class="headerlink" href="#create-a-remote-bare-repository" title="Permalink to this headline">#</a></h2>
@@ -618,7 +884,7 @@ title="Print to PDF"
 <p>This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository, unless you initialise the repository with a .gitignore file that explicitly states not to ignore certain files. As a test, check if a hidden folder .git has been created inside your working directory.</p>
 </section>
 <section id="list-repository-and-find-one">
-<span id="doc-gin-client-list-repos"></span><h2>List repository (and find one)<a class="headerlink" href="#list-repository-and-find-one" title="Permalink to this headline">#</a></h2>
+<span id="doc-gin-client-list-repos"></span><h2>List Repository (and Find one)<a class="headerlink" href="#list-repository-and-find-one" title="Permalink to this headline">#</a></h2>
 <p>If you want to list all remote repositories that you own, in the terminal type</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">repos</span>
 </pre></div>
@@ -646,9 +912,27 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">repos</span> <span class="o">--</span><span class="n">shared</span>
 </pre></div>
 </div>
+<p>To list repositories located on another server, include the <code class="docutils literal notranslate"><span class="pre">--server</span></code> flag, like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">repos</span> <span class="o">--</span><span class="n">server</span> <span class="n">alias</span>
+</pre></div>
+</div>
+<p>where ‘alias’ is the name of a configured server.</p>
+</section>
+<section id="display-repository-description">
+<span id="doc-gin-client-repo-info"></span><h2>Display Repository Description<a class="headerlink" href="#display-repository-description" title="Permalink to this headline">#</a></h2>
+<p>If you want to obtain information about a specific repository, in the terminal type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">repoinfo</span> <span class="o">&lt;</span><span class="n">repopath</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>where repopath describes the repository path in the form of repo-owner/repo-name.
+To display information about a repository located on another server, type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">repoinfo</span> <span class="o">&lt;</span><span class="n">repopath</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">server</span> <span class="n">alias</span>
+</pre></div>
+</div>
+<p>where ‘alias’ is the name of a configured server.</p>
 </section>
 <section id="record-changes-to-a-local-repository-commit">
-<span id="doc-gin-client-update-local-repo"></span><h2>Record Changes to a Local Repository (commit)<a class="headerlink" href="#record-changes-to-a-local-repository-commit" title="Permalink to this headline">#</a></h2>
+<span id="doc-gin-client-update-local-repo"></span><h2>Record Changes to a Local Repository (Commit)<a class="headerlink" href="#record-changes-to-a-local-repository-commit" title="Permalink to this headline">#</a></h2>
 <p>The action of updating the change tracking system of the local instance of your repository (located inside the .git folder) with changes that you made to your local files is called commiting. You commit changes by calling the commit command from the root folder of your repository</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">commit</span> <span class="o">.</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="s2">&quot;message string&quot;</span><span class="o">&gt;</span>
 </pre></div>
@@ -658,6 +942,97 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">commit</span> <span class="o">.</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="s2">&quot;message string&quot;</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">files</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
 </pre></div>
 </div>
+</section>
+<section id="list-the-status-of-local-repository-files">
+<span id="doc-gin-client-file-status"></span><h2>List the Status of Local Repository Files<a class="headerlink" href="#list-the-status-of-local-repository-files" title="Permalink to this headline">#</a></h2>
+<p>You can request GIN to display the status of all files in the local repository by typing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">ls</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">status</span>
+</pre></div>
+</div>
+<p>or display the status of a specific file or files within a sub-folder by typing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">ls</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">status</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Multiple files will be displayed recursively. According to the GIN documentation, the meaning of the status abbreviations are as follows:
+OK: The file is part of the GIN repository and its contents are synchronised with the server.
+TC: The file has been locked or unlocked and the change has not been recorded yet (and it is unmodified).
+NC: The local file is a placeholder and its contents have not been downloaded.
+MD: The file has been modified locally and the changes have not been recorded yet.
+LC: The file has been modified locally, the changes have been recorded but they haven’t been uploaded.
+RM: The file has been removed from the repository.
+??: The file is not under repository control.</p>
+</section>
+<section id="list-remote-repositories-associated-with-the-local-repository">
+<span id="doc-gin-client-list-associated-remotes"></span><h2>List Remote Repositories Associated with the Local Repository<a class="headerlink" href="#list-remote-repositories-associated-with-the-local-repository" title="Permalink to this headline">#</a></h2>
+<p>A local repository can be associate with one or more remote repositories or with none at all. To list the available associated repositories where you can push local changes, in the terminal type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remotes</span>
+</pre></div>
+</div>
+<p>You may see a similar output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">::</span> <span class="n">Configured</span> <span class="n">remotes</span>
+ <span class="n">origin</span><span class="p">:</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">22</span><span class="o">/</span><span class="n">dervinism</span><span class="o">/</span><span class="n">dual</span><span class="o">-</span><span class="n">npx</span><span class="o">-</span><span class="n">project</span> <span class="p">[</span><span class="n">default</span><span class="p">]</span>
+ <span class="n">repo</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">share</span><span class="p">:</span> <span class="n">ssh</span><span class="p">:</span><span class="o">//</span><span class="n">git</span><span class="nd">@gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">22</span><span class="o">/</span><span class="n">dervinism</span><span class="o">/</span><span class="n">dual</span><span class="o">-</span><span class="n">npx</span><span class="o">-</span><span class="n">project</span><span class="o">-</span><span class="n">colab</span>
+</pre></div>
+</div>
+<p>The name ‘origin’ typically refers to a remote repository that is the origin of the local repository and where local changes are pushed by default. If there are more associated repositories, they all would also be listed.</p>
+</section>
+<section id="associate-a-remote-repository-with-the-local-repository">
+<span id="doc-gin-client-associate-remote"></span><h2>Associate a Remote Repository with the Local Repository<a class="headerlink" href="#associate-a-remote-repository-with-the-local-repository" title="Permalink to this headline">#</a></h2>
+<p>In order to associate a remote repository with a local repository, while located in the local repository root directory type the following command in the terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">remote</span> <span class="o">&lt;</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">alias</span><span class="p">:</span><span class="n">repo</span><span class="o">-</span><span class="n">path</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You can specify any ‘repo-name’ for your newly added repository except for the reserved keyword ‘all’ which, if specified, performs updates to all associated remotes. Alias can only be either ‘gin’ for a remote GIN repository or ‘dir’ for a remote repository residing on the local file system. If neither is specified, it is assumed to be the address of a git server. For remotes residing on a configured GIN server, the path is the location of the repository on the server, in the form of repository-owner/repository-name. For local remotes, it is the path to the storage directory.</p>
+<p>When a remote is added, but the specified name does not exist, the client will offer to create it.</p>
+<p>A new remote is set as the default for uploading if no other remotes are associated. To set any new remote as the
+default, use the flag <code class="docutils literal notranslate"><span class="pre">--default</span></code>.</p>
+<p>For example, you could type something like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">remote</span> <span class="n">repo</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">share</span> <span class="n">gin</span><span class="p">:</span><span class="n">dervinism</span><span class="o">/</span><span class="n">dual</span><span class="o">-</span><span class="n">npx</span><span class="o">-</span><span class="n">project</span><span class="o">-</span><span class="n">colab</span> <span class="o">--</span><span class="n">default</span>
+</pre></div>
+</div>
+<p>This would prompt you to create a new default remote repository for uploading local changes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:: Checking remote: not found
+Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exist. Would you like to create it?
+[c]reate / [a]dd anyway / a[b]ort: c
+:: Creating repository &#39;dervinism/dual-npx-project-colab&#39; OK
+:: Added new remote: repo-to-share [ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab]
+:: Default remote: repo-to-share
+</pre></div>
+</div>
+</section>
+<section id="display-the-default-associated-remote-repository">
+<span id="doc-gin-client-display-default-remote"></span><h2>Display the Default Associated Remote Repository<a class="headerlink" href="#display-the-default-associated-remote-repository" title="Permalink to this headline">#</a></h2>
+<p>In order to display the default remote, while located in the local repository root directory type the following command in the terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">use</span><span class="o">-</span><span class="n">remote</span>
+</pre></div>
+</div>
+</section>
+<section id="change-the-default-associated-remote-repository">
+<span id="doc-gin-client-change-default-remote"></span><h2>Change the Default Associated Remote Repository<a class="headerlink" href="#change-the-default-associated-remote-repository" title="Permalink to this headline">#</a></h2>
+<p>In order to change the default remote, while located in the local repository root directory type the following command in the terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">use</span><span class="o">-</span><span class="n">remote</span> <span class="o">&lt;</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="remove-an-associated-remote-repository-from-the-local-repository">
+<span id="doc-gin-client-remove-remote"></span><h2>Remove an Associated Remote Repository from the Local Repository<a class="headerlink" href="#remove-an-associated-remote-repository-from-the-local-repository" title="Permalink to this headline">#</a></h2>
+<p>In order to remove an associated remote repository from the local repository, within the root directory of the local repository type the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">remote</span> <span class="o">&lt;</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">rm</span><span class="o">-</span><span class="n">remote</span> <span class="o">&lt;</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The remote repository would still be available at its remote location but would no longer be associated with the local repository.</p>
 </section>
 <section id="update-a-remote-repository-upload-files">
 <span id="doc-gin-client-update-repo"></span><h2>Update a Remote Repository (Upload Files)<a class="headerlink" href="#update-a-remote-repository-upload-files" title="Permalink to this headline">#</a></h2>
@@ -674,9 +1049,25 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>Finally, you can be specific about which remote repositories you want to push your changes to</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">upload</span> <span class="o">.</span> <span class="o">--</span><span class="n">to</span> <span class="n">origin</span><span class="p">,</span> <span class="n">repository</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">share</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">upload</span> <span class="o">.</span> <span class="o">--</span><span class="n">to</span> <span class="n">origin</span><span class="p">,</span> <span class="n">repo</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">share</span>
 </pre></div>
 </div>
+</section>
+<section id="remove-the-content-of-local-files">
+<span id="doc-gin-client-remove-content"></span><h2>Remove the Content of Local Files<a class="headerlink" href="#remove-the-content-of-local-files" title="Permalink to this headline">#</a></h2>
+<p>When you <a class="reference internal" href="#doc-gin-client-update-repo"><span class="std std-ref">update a remote repository</span></a>, you may wish to remove the content of files residing in your local repository as they consume storage space. In order to do so, while inside the root folder of your local repository type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">content</span>
+</pre></div>
+</div>
+<p>or simply</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">rmc</span>
+</pre></div>
+</div>
+<p>All your local files should then be replaced with file pointers or symbolic links. Files or changes that were not uploaded onto the remote repository are kept. If you wish to remove the content of a specific sub-folder, change your working directory to this sub-folder and issue the same command. Another way to do that is to include the path of that folder or of a specific file, like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">content</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Again, if the file has not been uploaded onto the remote repository (even if specified explicitly), the contents of that file will not be removed. Files with removed content appear as ‘No Content’ when running the <code class="docutils literal notranslate"><span class="pre">gin</span> <span class="pre">ls</span></code> command.</p>
 </section>
 <section id="download-clone-a-remote-repository">
 <span id="doc-gin-client-dowload-repo"></span><h2>Download (Clone) a Remote Repository<a class="headerlink" href="#download-clone-a-remote-repository" title="Permalink to this headline">#</a></h2>
@@ -694,7 +1085,22 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">download</span> <span class="o">--</span><span class="n">content</span>
 </pre></div>
 </div>
-<p>This command will download new files, update old ones, and delete any local files that were removed from the remote repository. Note that if you modified files in the local repository, the download command will fail and issue an error noting you that local files cannot be overwritten or merged. Local files can only be overwritten if these changes are tracked by the remote repository and, thus, are historically preceding the more recent remote changes. In order to download remote changes that clash with the local changes, you have to <a class="reference internal" href="#doc-gin-client-update-repo"><span class="std std-ref">upload your local changes to the remote repository</span></a> first. In this way the remote reposiotry will be able to track the clashing changes.</p>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span><span class="o">-</span><span class="n">content</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">getc</span>
+</pre></div>
+</div>
+<p>These commands will download new files, update old ones, and delete any local files that were removed from the remote repository. Note that if you modified files in the local repository, the download command will fail and issue an error noting you that local files cannot be overwritten or merged. Local files can only be overwritten if these changes are tracked by the remote repository and, thus, are historically preceding the more recent remote changes. In order to download remote changes that clash with the local changes, you have to <a class="reference internal" href="#doc-gin-client-update-repo"><span class="std std-ref">upload your local changes to the remote repository</span></a> first. In this way the remote reposiotry will be able to track the clashing changes.</p>
+</section>
+<section id="update-local-files-with-remote-content">
+<span id="doc-gin-client-update-local-files-remote-content"></span><h2>Update Local Files with Remote Content<a class="headerlink" href="#update-local-files-with-remote-content" title="Permalink to this headline">#</a></h2>
+<p>If you want to update specific files or folders with remote content or if you want to restore the content to local files and folders with removed content, type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span><span class="o">-</span><span class="n">content</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 </section>
 <section id="synchronise-local-and-remote-repositories">
 <span id="doc-gin-client-sync-repos"></span><h2>Synchronise Local and Remote Repositories<a class="headerlink" href="#synchronise-local-and-remote-repositories" title="Permalink to this headline">#</a></h2>
@@ -767,6 +1173,24 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">copy</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">system</span> <span class="n">folder</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">root</span><span class="o">-</span><span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
+</section>
+<section id="prevent-local-file-or-a-folder-from-being-edited">
+<span id="doc-gin-client-lock-file"></span><h2>Prevent Local File or a Folder from Being Edited<a class="headerlink" href="#prevent-local-file-or-a-folder-from-being-edited" title="Permalink to this headline">#</a></h2>
+<p>While working with your local repository you may want to prevent certain files or folders from being edited. In order to do that, type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">lock</span> <span class="o">&lt;</span><span class="n">filenames</span><span class="o">&gt;...</span>
+<span class="n">gin</span> <span class="n">commit</span> <span class="o">.</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="s2">&quot;commit message&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Here ‘filenames’ could refer to one or multiple files or folders, including their absolute or relative paths. When you lock a file or a folder, you also have to use the <code class="docutils literal notranslate"><span class="pre">commit</span></code> command in order to update the local tracking system. Issueing the <code class="docutils literal notranslate"><span class="pre">lock</span></code> command replaces the local locked files with pointers or symbolic links if supported by the file system. Locked files that have not yet been committed are marked as ‘Lock status changed’ (short TC) in the output of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
+</section>
+<section id="unlock-a-local-file-or-a-folder-for-editing">
+<span id="doc-gin-client-unlock-file"></span><h2>Unlock a Local File or a Folder for Editing<a class="headerlink" href="#unlock-a-local-file-or-a-folder-for-editing" title="Permalink to this headline">#</a></h2>
+<p>If at some point you locked local files or folders to prevent them from being edited, you can unlock them by typing in the terminal</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">unlock</span> <span class="o">&lt;</span><span class="n">filenames</span><span class="o">&gt;...</span>
+<span class="n">gin</span> <span class="n">commit</span> <span class="o">.</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="s2">&quot;commit message&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Here ‘filenames’ could refer to one or multiple files or folders, including their absolute or relative paths. When you unlock a file or a folder, you also have to use the <code class="docutils literal notranslate"><span class="pre">commit</span></code> command in order to update the local tracking system. Issueing the <code class="docutils literal notranslate"><span class="pre">unlock</span></code> command should download full files locally in places where only file pointers exist. Unlocked files that have not yet been committed are marked as ‘Lock status changed’ (short TC) in the output of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
 </section>
 </section>
 
