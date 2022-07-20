@@ -1,9 +1,11 @@
 (doc-gin-client)=
 # Repository Management with GIN Client
-This is the documentation on how to use GIN command line tools for research data management. Below is the description of some notation that is used here and that you may not be familiar with: \
-[] - square brackets mean an optional argument (inclusive of brackets) \
-<> - angle brackets mean that the text within should be replaced with an appropriate argument (inclusive of brackets). \
-The use of dashes in command argument names indicates that the argument name does not allow for blank spaces.
+This is the documentation on how to use GIN command line tools for research data management. Below is the description of some notation that is used here and that you may not be familiar with:
+- []: square brackets mean an optional argument (inclusive of brackets)
+- <>: angle brackets mean that the text within should be replaced with an appropriate argument (inclusive of brackets).
+- Both types of brackets can be combined.
+- The use of dashes in command argument names indicates that the argument name does not allow for blank spaces.
+- Path arguments most often do not contain spaces. If your path does contain spaces, enclose your path argument within single or double quotations. For example, use either `gin some-command path/to/my/repository` or `gin some-command "path/to/my repository"`.
 
 (doc-gin-client-list-commands)=
 ## List All GIN Client Commands
@@ -32,7 +34,7 @@ gin login
 In another likely case where you want to use the public GIN server, type in the following commands into your terminal
 ```
 gin logout
-gin add-server gin add-server --web https://gin.g-node.org:443 --git git@gin.g-node.org:22 gin
+gin add-server --web https://gin.g-node.org:443 --git git@gin.g-node.org:22 gin
 gin use-server gin
 gin login
 ```
@@ -73,7 +75,7 @@ gin login
 ```
 or
 ```
-gin login [<username>]
+gin login <username>
 ```
 You should be prompted to enter your credentials. If you want to login to an account on another server, include the `--server` flag, like
 ```
@@ -137,7 +139,7 @@ In order to initialise a local repository that does not have a remote equivalent
 ```
 gin init
 ```
-This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository, unless you initialise the repository with a .gitignore file that explicitly states not to ignore certain files. As a test, check if a hidden folder .git has been created inside your working directory.
+This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository, unless you initialise the repository with a .gitignore file that explicitly states not to track certain files. As a test, check if a hidden folder .git has been created inside your working directory.
 
 (doc-gin-client-list-repos)=
 ## List Repository (and Find one)
@@ -195,9 +197,9 @@ gin commit . -m <"message string">
 ```
 Give an apt and succinct message describing the changes you made since the previous commit. If it is the initial commit, it would suffice to state so. Mind though that the commit action does not update the remote repository, your changes are still local. There may not even be a remote repository yet. This is different to using the web interface which only lets you to upload files simultaneously with the commit message.
 
-You may be specific and commit changes relating only to a few files by specifying file names with relative paths to them
+You may want to be specific and commit changes made only to a few files by specifying file names (or folder names) including paths
 ```
-gin commit . -m <"message string"> [<absolute or relative path to your files>]...
+gin commit . -m <"message string"> <absolute or relative path to your files or folders>...
 ```
 
 (doc-gin-client-file-status)=
@@ -219,17 +221,17 @@ or
 gin status <absolute or relative path to your file or folder>
 ```
 Multiple files will be displayed recursively. According to the GIN documentation, the meaning of the status abbreviations are as follows:
-  OK: The file is part of the GIN repository and its contents are synchronised with the server.
-  TC: The file has been locked or unlocked and the change has not been recorded yet (and it is unmodified).
-  NC: The local file is a placeholder and its contents have not been downloaded.
-  MD: The file has been modified locally and the changes have not been recorded yet.
-  LC: The file has been modified locally, the changes have been recorded but they haven't been uploaded.
-  RM: The file has been removed from the repository.
-  ??: The file is not under repository control.
+- OK: The file is part of the GIN repository and its contents are synchronised with the server.
+- TC: The file has been locked or unlocked and the change has not been recorded yet (and it is unmodified).
+- NC: The local file is a placeholder and its contents have not been downloaded.
+- MD: The file has been modified locally and the changes have not been recorded yet.
+- LC: The file has been modified locally, the changes have been recorded but they haven't been uploaded.
+- RM: The file has been removed from the repository.
+- ??: The file is not under repository control.
 
 (doc-gin-client-list-associated-remotes)=
 ## List Remote Repositories Associated with the Local Repository
-A local repository can be associate with one or more remote repositories or with none at all. To list the available associated repositories where you can push local changes, in the terminal type
+A local repository can be associated with one or more remote repositories or with none at all. To list the available associated repositories where you can push local changes, in the terminal type
 ```
 gin remotes
 ```
@@ -243,7 +245,7 @@ The name 'origin' typically refers to a remote repository that is the origin of 
 
 (doc-gin-client-associate-remote)=
 ## Associate a Remote Repository with the Local Repository
-In order to associate a remote repository with a local repository, while located in the local repository root directory type the following command in the terminal
+In order to associate a remote repository with the local repository, while located in the local repository root directory type the following command in the terminal
 ```
 gin add-remote <repo-name> <alias:repo-path>
 ```
@@ -302,16 +304,17 @@ gin upload .
 ```
 This command has to be called from within the root folder of your local repository and it will push all changes to the associated remote repository. To be more specific, you can specify files that you want to upload.
 ```
-gin upload [<absolute or relative path to your files>]...
+gin upload <absolute or relative path to your files>...
 ```
 You can use wildcards when specifying filenames. For example,
 ```
 gin upload *.npy
 ```
-Finally, you can be specific about which remote repositories you want to push your changes to
+Finally, you can be specific about which remote repositories you want to push your changes to. For example,
 ```
 gin upload . --to origin, repo-to-share
 ```
+The flag `--to` is used to indicate repository names to push changes to. The names 'origin' and 'repo-to-share' are just examples, but 'origin' typically referers to the remote repository that was downloaded (cloned) on the local file system.
 
 (doc-gin-client-remove-content)=
 ## Remove the Content of Local Files
@@ -327,21 +330,21 @@ All your local files should then be replaced with file pointers or symbolic link
 ```
 gin remove-content <absolute or relative path to file or folder>
 ```
-Again, if the file has not been uploaded onto the remote repository (even if specified explicitly), the contents of that file will not be removed. Files with removed content appear as 'No Content' when running the `gin ls` command.
+Again, if the file has not been uploaded onto the remote repository (even if specified explicitly), the contents of that file will not be removed. Files with removed content appear as 'No Content' or 'NC' when running the `gin ls` command.
 
 (doc-gin-client-dowload-repo)=
 ## Download (Clone) a Remote Repository
-In order to download a copy (clone) of a full remote reposiotry onto your local machine, in your terminal type
+In order to download a copy (clone) of a full remote repository onto your local machine, in your terminal type
 ```
 gin get <repopath>
 cd <repo-name>
 gin get-content
 ```
-where repopath is the path to a remote repository in the form of repo-owner/repo-name. The cloning action will create a new folder called repository-name and initialise with default options. All files within the remote repository will be downloaded locally. If you do not wish to download large files, you can skip the command `get-content` which will download placeholders only instead of full files. Alternatively, instead of `get-content` command one can use `download --content` command.
+where 'repopath' is the path to a remote repository in the form of repo-owner/repo-name. The cloning action will create a new folder called 'repo-name' and initialise with default options. All files within the remote repository will be downloaded locally. If you do not wish to download large files, you can skip the command `get-content`. In that case, placeholders will be downloaded instead of full files only. Alternatively, instead of `get-content` command one can use `download --content` command.
 
 (doc-gin-client-update-local-repo-remote-content)=
 ## Update a Local Repository with Remote Content
-If you are working collaboratively on a repository, it is a good idea to bring your local repository in sync with the remote repository prior starting working on your local instance. One way to do it is to change your working directory to the root folder of your local repository and call the `download` command
+If you are working collaboratively on a repository, it is a good idea to bring your local repository in sync with the remote repository prior to starting working on your local instance. One way to do this is to change your working directory to the root folder of your local repository and call the `download` command
 ```
 gin download --content
 ```
@@ -361,10 +364,11 @@ If you want to update specific files or folders with remote content or if you wa
 ```
 gin get-content <absolute or relative path to file or folder>
 ```
+This action will fail in instances when you make changes to your local files that were never uploaded onto a remote repository. [Upload local changes](doc-gin-client-update-repo) first before pulling any content from remote repositories.
 
 (doc-gin-client-sync-repos)=
 ## Synchronise Local and Remote Repositories
-Repository synchronisation performs download and upload actions simultaneously. Any local changes are uploaded onto the remote repository if they are not yet tracked by the remote repository. The reverse is also true: remote changes are downloaded onto the local repository if the local repository is not up to date with the remote repository. However, if the same files are being edited on both local and remote instances of the repository, you would have to issue the `upload` command in order to register these changes with the remote repository before you can synchronise the two repositoriesn (see [upload files section](doc-gin-client-update-repo)). In order to synchronise repositories, in the terminal type
+Repository synchronisation performs download and upload actions simultaneously. Any local changes are uploaded onto the remote repository if they are not yet tracked by the remote repository. The reverse is also true: remote changes are downloaded onto the local repository if the local repository is not up to date with the remote repository. However, if the same files are being edited on both local and remote instances of the repository, you would have to issue the `upload` command in order to register these changes with the remote repository before you can synchronise the two repositories (see [upload files section](doc-gin-client-update-repo)). In order to synchronise repositories, in the terminal type
 ```
 gin sync --content
 ```
@@ -383,7 +387,7 @@ or
 ```
 gin version -n <number>
 ```
-Setting number to equal to 0 will list all previous repository versions. Below is an example output
+Setting 'number' to equal to 0 will list all previous repository versions. Below is an example output
 ```
 ...
 [ 3]  b05338f * Thu Jul 14 11:26:22 2022 (+0100)
@@ -408,30 +412,30 @@ gin version --id <hash>
 ```
 In order to restore a previous version of the repository to a different folder than the root repository folder, use the `--copy-to` flag by typing
 ```
-gin version --copy-to <absolute or relative path to a system folder>
+gin version --copy-to <absolute or relative path to local file system folder>
 ```
 or
 ```
-gin version --id <hash> --copy-to <absolute or relative path to a system folder>
+gin version --id <hash> --copy-to <absolute or relative path to local file system folder>
 ```
 
 (doc-gin-client-rollback-part-repo)=
 ## Roll back a Part of a Repository to an Earlier Version
 If you need to restore a part of a repository, like a file or a folder, to an earlier version, you can specify the path to the file or the folder relative to the repository root folder.
 ```
-gin version <root-relative path to a file or a folder>
+gin version <root-relative path to file or folder>
 ```
 or
 ```
-gin version --id <hash> <root-relative path to a file or a folder>
+gin version --id <hash> <root-relative path to file or folder>
 ```
 In case when you want to restore a file or a folder to a different location other than the root folder of the local repository, specify accordingly
 ```
-gin version --copy-to <absolute or relative path to a system folder> <root-relative path to a file or a folder>
+gin version --copy-to <absolute or relative path to local file system folder> <remote repository root-relative path to file or folder>
 ```
 or
 ```
-gin version --id <hash> --copy-to <absolute or relative path to a system folder> <root-relative path to a file or a folder>
+gin version --id <hash> --copy-to <absolute or relative path to local file system folder> <remote repository root-relative path to file or folder>
 ```
 
 (doc-gin-client-lock-file)=
@@ -441,7 +445,7 @@ While working with your local repository you may want to prevent certain files o
 gin lock <filenames>...
 gin commit . -m <"commit message">
 ```
-Here 'filenames' could refer to one or multiple files or folders, including their absolute or relative paths. When you lock a file or a folder, you also have to use the `commit` command in order to update the local tracking system. Issueing the `lock` command replaces the local locked files with pointers or symbolic links if supported by the file system. Locked files that have not yet been committed are marked as 'Lock status changed' (short TC) in the output of the `ls` command.
+Here 'filenames' could refer to one or multiple files or folders, including their absolute or relative paths. When you lock a file or a folder, you also have to use the `commit` command in order to update the local tracking system. Issuing the `lock` command replaces the local locked files with pointers or symbolic links if supported by the file system. Locked files that have not yet been committed are marked as 'Lock status changed' or 'TC' in the output of the `ls` command.
 
 (doc-gin-client-unlock-file)=
 ## Unlock a Local File or a Folder for Editing
@@ -450,4 +454,4 @@ If at some point you locked local files or folders to prevent them from being ed
 gin unlock <filenames>...
 gin commit . -m <"commit message">
 ```
-Here 'filenames' could refer to one or multiple files or folders, including their absolute or relative paths. When you unlock a file or a folder, you also have to use the `commit` command in order to update the local tracking system. Issueing the `unlock` command should download full files locally in places where only file pointers exist. Unlocked files that have not yet been committed are marked as 'Lock status changed' (short TC) in the output of the `ls` command.
+Here 'filenames' could refer to one or multiple files or folders, including their absolute or relative paths. When you unlock a file or a folder, you also have to use the `commit` command in order to update the local tracking system. Issuing the `unlock` command should download full files locally in places where only file pointers exist. Unlocked files that have not yet been committed are marked as 'Lock status changed' or 'TC' in the output of the `ls` command.

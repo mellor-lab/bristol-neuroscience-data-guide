@@ -745,10 +745,14 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="repository-management-with-gin-client">
 <span id="doc-gin-client"></span><h1>Repository Management with GIN Client<a class="headerlink" href="#repository-management-with-gin-client" title="Permalink to this headline">#</a></h1>
-<p>This is the documentation on how to use GIN command line tools for research data management. Below is the description of some notation that is used here and that you may not be familiar with: <br />
-[] - square brackets mean an optional argument (inclusive of brackets) <br />
-&lt;&gt; - angle brackets mean that the text within should be replaced with an appropriate argument (inclusive of brackets). <br />
-The use of dashes in command argument names indicates that the argument name does not allow for blank spaces.</p>
+<p>This is the documentation on how to use GIN command line tools for research data management. Below is the description of some notation that is used here and that you may not be familiar with:</p>
+<ul class="simple">
+<li><p>[]: square brackets mean an optional argument (inclusive of brackets)</p></li>
+<li><p>&lt;&gt;: angle brackets mean that the text within should be replaced with an appropriate argument (inclusive of brackets).</p></li>
+<li><p>Both types of brackets can be combined.</p></li>
+<li><p>The use of dashes in command argument names indicates that the argument name does not allow for blank spaces.</p></li>
+<li><p>Path arguments most often do not contain spaces. If your path does contain spaces, enclose your path argument within single or double quotations. For example, use either <code class="docutils literal notranslate"><span class="pre">gin</span> <span class="pre">some-command</span> <span class="pre">path/to/my/repository</span></code> or <code class="docutils literal notranslate"><span class="pre">gin</span> <span class="pre">some-command</span> <span class="pre">&quot;path/to/my</span> <span class="pre">repository&quot;</span></code>.</p></li>
+</ul>
 <section id="list-all-gin-client-commands">
 <span id="doc-gin-client-list-commands"></span><h2>List All GIN Client Commands<a class="headerlink" href="#list-all-gin-client-commands" title="Permalink to this headline">#</a></h2>
 <p>To get the names of all commands available to use with the GIN client and their brief descriptions, type</p>
@@ -775,7 +779,7 @@ The use of dashes in command argument names indicates that the argument name doe
 </div>
 <p>In another likely case where you want to use the public GIN server, type in the following commands into your terminal</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">logout</span>
-<span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">server</span> <span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">server</span> <span class="o">--</span><span class="n">web</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">443</span> <span class="o">--</span><span class="n">git</span> <span class="n">git</span><span class="nd">@gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">22</span> <span class="n">gin</span>
+<span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">server</span> <span class="o">--</span><span class="n">web</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">443</span> <span class="o">--</span><span class="n">git</span> <span class="n">git</span><span class="nd">@gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="p">:</span><span class="mi">22</span> <span class="n">gin</span>
 <span class="n">gin</span> <span class="n">use</span><span class="o">-</span><span class="n">server</span> <span class="n">gin</span>
 <span class="n">gin</span> <span class="n">login</span>
 </pre></div>
@@ -816,7 +820,7 @@ The use of dashes in command argument names indicates that the argument name doe
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">login</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">login</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>You should be prompted to enter your credentials. If you want to login to an account on another server, include the <code class="docutils literal notranslate"><span class="pre">--server</span></code> flag, like</p>
@@ -881,7 +885,7 @@ The use of dashes in command argument names indicates that the argument name doe
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">init</span>
 </pre></div>
 </div>
-<p>This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository, unless you initialise the repository with a .gitignore file that explicitly states not to ignore certain files. As a test, check if a hidden folder .git has been created inside your working directory.</p>
+<p>This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository, unless you initialise the repository with a .gitignore file that explicitly states not to track certain files. As a test, check if a hidden folder .git has been created inside your working directory.</p>
 </section>
 <section id="list-repository-and-find-one">
 <span id="doc-gin-client-list-repos"></span><h2>List Repository (and Find one)<a class="headerlink" href="#list-repository-and-find-one" title="Permalink to this headline">#</a></h2>
@@ -938,8 +942,8 @@ To display information about a repository located on another server, type</p>
 </pre></div>
 </div>
 <p>Give an apt and succinct message describing the changes you made since the previous commit. If it is the initial commit, it would suffice to state so. Mind though that the commit action does not update the remote repository, your changes are still local. There may not even be a remote repository yet. This is different to using the web interface which only lets you to upload files simultaneously with the commit message.</p>
-<p>You may be specific and commit changes relating only to a few files by specifying file names with relative paths to them</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">commit</span> <span class="o">.</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="s2">&quot;message string&quot;</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">files</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
+<p>You may want to be specific and commit changes made only to a few files by specifying file names (or folder names) including paths</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">commit</span> <span class="o">.</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="s2">&quot;message string&quot;</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">files</span> <span class="ow">or</span> <span class="n">folders</span><span class="o">&gt;...</span>
 </pre></div>
 </div>
 </section>
@@ -961,18 +965,20 @@ To display information about a repository located on another server, type</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">status</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Multiple files will be displayed recursively. According to the GIN documentation, the meaning of the status abbreviations are as follows:
-OK: The file is part of the GIN repository and its contents are synchronised with the server.
-TC: The file has been locked or unlocked and the change has not been recorded yet (and it is unmodified).
-NC: The local file is a placeholder and its contents have not been downloaded.
-MD: The file has been modified locally and the changes have not been recorded yet.
-LC: The file has been modified locally, the changes have been recorded but they haven’t been uploaded.
-RM: The file has been removed from the repository.
-??: The file is not under repository control.</p>
+<p>Multiple files will be displayed recursively. According to the GIN documentation, the meaning of the status abbreviations are as follows:</p>
+<ul class="simple">
+<li><p>OK: The file is part of the GIN repository and its contents are synchronised with the server.</p></li>
+<li><p>TC: The file has been locked or unlocked and the change has not been recorded yet (and it is unmodified).</p></li>
+<li><p>NC: The local file is a placeholder and its contents have not been downloaded.</p></li>
+<li><p>MD: The file has been modified locally and the changes have not been recorded yet.</p></li>
+<li><p>LC: The file has been modified locally, the changes have been recorded but they haven’t been uploaded.</p></li>
+<li><p>RM: The file has been removed from the repository.</p></li>
+<li><p>??: The file is not under repository control.</p></li>
+</ul>
 </section>
 <section id="list-remote-repositories-associated-with-the-local-repository">
 <span id="doc-gin-client-list-associated-remotes"></span><h2>List Remote Repositories Associated with the Local Repository<a class="headerlink" href="#list-remote-repositories-associated-with-the-local-repository" title="Permalink to this headline">#</a></h2>
-<p>A local repository can be associate with one or more remote repositories or with none at all. To list the available associated repositories where you can push local changes, in the terminal type</p>
+<p>A local repository can be associated with one or more remote repositories or with none at all. To list the available associated repositories where you can push local changes, in the terminal type</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remotes</span>
 </pre></div>
 </div>
@@ -986,7 +992,7 @@ RM: The file has been removed from the repository.
 </section>
 <section id="associate-a-remote-repository-with-the-local-repository">
 <span id="doc-gin-client-associate-remote"></span><h2>Associate a Remote Repository with the Local Repository<a class="headerlink" href="#associate-a-remote-repository-with-the-local-repository" title="Permalink to this headline">#</a></h2>
-<p>In order to associate a remote repository with a local repository, while located in the local repository root directory type the following command in the terminal</p>
+<p>In order to associate a remote repository with the local repository, while located in the local repository root directory type the following command in the terminal</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">remote</span> <span class="o">&lt;</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">alias</span><span class="p">:</span><span class="n">repo</span><span class="o">-</span><span class="n">path</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -1041,17 +1047,18 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 </pre></div>
 </div>
 <p>This command has to be called from within the root folder of your local repository and it will push all changes to the associated remote repository. To be more specific, you can specify files that you want to upload.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">upload</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">files</span><span class="o">&gt;</span><span class="p">]</span><span class="o">...</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">upload</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">your</span> <span class="n">files</span><span class="o">&gt;...</span>
 </pre></div>
 </div>
 <p>You can use wildcards when specifying filenames. For example,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">upload</span> <span class="o">*.</span><span class="n">npy</span>
 </pre></div>
 </div>
-<p>Finally, you can be specific about which remote repositories you want to push your changes to</p>
+<p>Finally, you can be specific about which remote repositories you want to push your changes to. For example,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">upload</span> <span class="o">.</span> <span class="o">--</span><span class="n">to</span> <span class="n">origin</span><span class="p">,</span> <span class="n">repo</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">share</span>
 </pre></div>
 </div>
+<p>The flag <code class="docutils literal notranslate"><span class="pre">--to</span></code> is used to indicate repository names to push changes to. The names ‘origin’ and ‘repo-to-share’ are just examples, but ‘origin’ typically referers to the remote repository that was downloaded (cloned) on the local file system.</p>
 </section>
 <section id="remove-the-content-of-local-files">
 <span id="doc-gin-client-remove-content"></span><h2>Remove the Content of Local Files<a class="headerlink" href="#remove-the-content-of-local-files" title="Permalink to this headline">#</a></h2>
@@ -1067,21 +1074,21 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">content</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Again, if the file has not been uploaded onto the remote repository (even if specified explicitly), the contents of that file will not be removed. Files with removed content appear as ‘No Content’ when running the <code class="docutils literal notranslate"><span class="pre">gin</span> <span class="pre">ls</span></code> command.</p>
+<p>Again, if the file has not been uploaded onto the remote repository (even if specified explicitly), the contents of that file will not be removed. Files with removed content appear as ‘No Content’ or ‘NC’ when running the <code class="docutils literal notranslate"><span class="pre">gin</span> <span class="pre">ls</span></code> command.</p>
 </section>
 <section id="download-clone-a-remote-repository">
 <span id="doc-gin-client-dowload-repo"></span><h2>Download (Clone) a Remote Repository<a class="headerlink" href="#download-clone-a-remote-repository" title="Permalink to this headline">#</a></h2>
-<p>In order to download a copy (clone) of a full remote reposiotry onto your local machine, in your terminal type</p>
+<p>In order to download a copy (clone) of a full remote repository onto your local machine, in your terminal type</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span> <span class="o">&lt;</span><span class="n">repopath</span><span class="o">&gt;</span>
 <span class="n">cd</span> <span class="o">&lt;</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
 <span class="n">gin</span> <span class="n">get</span><span class="o">-</span><span class="n">content</span>
 </pre></div>
 </div>
-<p>where repopath is the path to a remote repository in the form of repo-owner/repo-name. The cloning action will create a new folder called repository-name and initialise with default options. All files within the remote repository will be downloaded locally. If you do not wish to download large files, you can skip the command <code class="docutils literal notranslate"><span class="pre">get-content</span></code> which will download placeholders only instead of full files. Alternatively, instead of <code class="docutils literal notranslate"><span class="pre">get-content</span></code> command one can use <code class="docutils literal notranslate"><span class="pre">download</span> <span class="pre">--content</span></code> command.</p>
+<p>where ‘repopath’ is the path to a remote repository in the form of repo-owner/repo-name. The cloning action will create a new folder called ‘repo-name’ and initialise with default options. All files within the remote repository will be downloaded locally. If you do not wish to download large files, you can skip the command <code class="docutils literal notranslate"><span class="pre">get-content</span></code>. In that case, placeholders will be downloaded instead of full files only. Alternatively, instead of <code class="docutils literal notranslate"><span class="pre">get-content</span></code> command one can use <code class="docutils literal notranslate"><span class="pre">download</span> <span class="pre">--content</span></code> command.</p>
 </section>
 <section id="update-a-local-repository-with-remote-content">
 <span id="doc-gin-client-update-local-repo-remote-content"></span><h2>Update a Local Repository with Remote Content<a class="headerlink" href="#update-a-local-repository-with-remote-content" title="Permalink to this headline">#</a></h2>
-<p>If you are working collaboratively on a repository, it is a good idea to bring your local repository in sync with the remote repository prior starting working on your local instance. One way to do it is to change your working directory to the root folder of your local repository and call the <code class="docutils literal notranslate"><span class="pre">download</span></code> command</p>
+<p>If you are working collaboratively on a repository, it is a good idea to bring your local repository in sync with the remote repository prior to starting working on your local instance. One way to do this is to change your working directory to the root folder of your local repository and call the <code class="docutils literal notranslate"><span class="pre">download</span></code> command</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">download</span> <span class="o">--</span><span class="n">content</span>
 </pre></div>
 </div>
@@ -1101,10 +1108,11 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span><span class="o">-</span><span class="n">content</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
+<p>This action will fail in instances when you make changes to your local files that were never uploaded onto a remote repository. <a class="reference internal" href="#doc-gin-client-update-repo"><span class="std std-ref">Upload local changes</span></a> first before pulling any content from remote repositories.</p>
 </section>
 <section id="synchronise-local-and-remote-repositories">
 <span id="doc-gin-client-sync-repos"></span><h2>Synchronise Local and Remote Repositories<a class="headerlink" href="#synchronise-local-and-remote-repositories" title="Permalink to this headline">#</a></h2>
-<p>Repository synchronisation performs download and upload actions simultaneously. Any local changes are uploaded onto the remote repository if they are not yet tracked by the remote repository. The reverse is also true: remote changes are downloaded onto the local repository if the local repository is not up to date with the remote repository. However, if the same files are being edited on both local and remote instances of the repository, you would have to issue the <code class="docutils literal notranslate"><span class="pre">upload</span></code> command in order to register these changes with the remote repository before you can synchronise the two repositoriesn (see <a class="reference internal" href="#doc-gin-client-update-repo"><span class="std std-ref">upload files section</span></a>). In order to synchronise repositories, in the terminal type</p>
+<p>Repository synchronisation performs download and upload actions simultaneously. Any local changes are uploaded onto the remote repository if they are not yet tracked by the remote repository. The reverse is also true: remote changes are downloaded onto the local repository if the local repository is not up to date with the remote repository. However, if the same files are being edited on both local and remote instances of the repository, you would have to issue the <code class="docutils literal notranslate"><span class="pre">upload</span></code> command in order to register these changes with the remote repository before you can synchronise the two repositories (see <a class="reference internal" href="#doc-gin-client-update-repo"><span class="std std-ref">upload files section</span></a>). In order to synchronise repositories, in the terminal type</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">sync</span> <span class="o">--</span><span class="n">content</span>
 </pre></div>
 </div>
@@ -1123,7 +1131,7 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Setting number to equal to 0 will list all previous repository versions. Below is an example output</p>
+<p>Setting ‘number’ to equal to 0 will list all previous repository versions. Below is an example output</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="p">[</span> <span class="mi">3</span><span class="p">]</span>  <span class="n">b05338f</span> <span class="o">*</span> <span class="n">Thu</span> <span class="n">Jul</span> <span class="mi">14</span> <span class="mi">11</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">22</span> <span class="mi">2022</span> <span class="p">(</span><span class="o">+</span><span class="mi">0100</span><span class="p">)</span>
 
@@ -1147,30 +1155,30 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 </pre></div>
 </div>
 <p>In order to restore a previous version of the repository to a different folder than the root repository folder, use the <code class="docutils literal notranslate"><span class="pre">--copy-to</span></code> flag by typing</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="n">copy</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">system</span> <span class="n">folder</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="n">copy</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">local</span> <span class="n">file</span> <span class="n">system</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">copy</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">system</span> <span class="n">folder</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">copy</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">local</span> <span class="n">file</span> <span class="n">system</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </section>
 <section id="roll-back-a-part-of-a-repository-to-an-earlier-version">
 <span id="doc-gin-client-rollback-part-repo"></span><h2>Roll back a Part of a Repository to an Earlier Version<a class="headerlink" href="#roll-back-a-part-of-a-repository-to-an-earlier-version" title="Permalink to this headline">#</a></h2>
 <p>If you need to restore a part of a repository, like a file or a folder, to an earlier version, you can specify the path to the file or the folder relative to the repository root folder.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">&lt;</span><span class="n">root</span><span class="o">-</span><span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">folder</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">&lt;</span><span class="n">root</span><span class="o">-</span><span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">root</span><span class="o">-</span><span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">folder</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">root</span><span class="o">-</span><span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>In case when you want to restore a file or a folder to a different location other than the root folder of the local repository, specify accordingly</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="n">copy</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">system</span> <span class="n">folder</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">root</span><span class="o">-</span><span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">folder</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="n">copy</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">local</span> <span class="n">file</span> <span class="n">system</span> <span class="n">folder</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">remote</span> <span class="n">repository</span> <span class="n">root</span><span class="o">-</span><span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">copy</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">system</span> <span class="n">folder</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">root</span><span class="o">-</span><span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">a</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">folder</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">copy</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">local</span> <span class="n">file</span> <span class="n">system</span> <span class="n">folder</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">remote</span> <span class="n">repository</span> <span class="n">root</span><span class="o">-</span><span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -1181,7 +1189,7 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 <span class="n">gin</span> <span class="n">commit</span> <span class="o">.</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="s2">&quot;commit message&quot;</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Here ‘filenames’ could refer to one or multiple files or folders, including their absolute or relative paths. When you lock a file or a folder, you also have to use the <code class="docutils literal notranslate"><span class="pre">commit</span></code> command in order to update the local tracking system. Issueing the <code class="docutils literal notranslate"><span class="pre">lock</span></code> command replaces the local locked files with pointers or symbolic links if supported by the file system. Locked files that have not yet been committed are marked as ‘Lock status changed’ (short TC) in the output of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
+<p>Here ‘filenames’ could refer to one or multiple files or folders, including their absolute or relative paths. When you lock a file or a folder, you also have to use the <code class="docutils literal notranslate"><span class="pre">commit</span></code> command in order to update the local tracking system. Issuing the <code class="docutils literal notranslate"><span class="pre">lock</span></code> command replaces the local locked files with pointers or symbolic links if supported by the file system. Locked files that have not yet been committed are marked as ‘Lock status changed’ or ‘TC’ in the output of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
 </section>
 <section id="unlock-a-local-file-or-a-folder-for-editing">
 <span id="doc-gin-client-unlock-file"></span><h2>Unlock a Local File or a Folder for Editing<a class="headerlink" href="#unlock-a-local-file-or-a-folder-for-editing" title="Permalink to this headline">#</a></h2>
@@ -1190,7 +1198,7 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 <span class="n">gin</span> <span class="n">commit</span> <span class="o">.</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="s2">&quot;commit message&quot;</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Here ‘filenames’ could refer to one or multiple files or folders, including their absolute or relative paths. When you unlock a file or a folder, you also have to use the <code class="docutils literal notranslate"><span class="pre">commit</span></code> command in order to update the local tracking system. Issueing the <code class="docutils literal notranslate"><span class="pre">unlock</span></code> command should download full files locally in places where only file pointers exist. Unlocked files that have not yet been committed are marked as ‘Lock status changed’ (short TC) in the output of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
+<p>Here ‘filenames’ could refer to one or multiple files or folders, including their absolute or relative paths. When you unlock a file or a folder, you also have to use the <code class="docutils literal notranslate"><span class="pre">commit</span></code> command in order to update the local tracking system. Issuing the <code class="docutils literal notranslate"><span class="pre">unlock</span></code> command should download full files locally in places where only file pointers exist. Unlocked files that have not yet been committed are marked as ‘Lock status changed’ or ‘TC’ in the output of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
 </section>
 </section>
 
