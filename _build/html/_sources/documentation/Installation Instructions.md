@@ -2,7 +2,8 @@
 # Installation Instructions
 
 (doc-install-wingin)=
-## WinGin Installation
+## WinGIN Installation
+Download [WinGIN-install.exe](https://gin.g-node.org/G-Node/wingin-installers/raw/master/WinGIN-install.exe) and [Setup.msi](https://gin.g-node.org/G-Node/wingin-installers/raw/master/Setup.msi) files to a local directory. Run WinGIN-install.exe and follow the steps. At the end of the installation, you will be asked to install Dokan. If Dokan is already installed, you may skip this step by either unchecking the checkbox or cancelling the Dokan (un)install window that will appear. Launch WinGIN and wait for it to download and extract GIN CLI. In your start menu WinGIN will appear as GinClientApp.
 
 (doc-install-gin-client)=
 ## GIN Client Installation

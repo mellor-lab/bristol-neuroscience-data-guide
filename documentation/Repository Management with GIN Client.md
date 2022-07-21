@@ -356,7 +356,10 @@ or
 ```
 gin getc
 ```
-These commands will download new files, update old ones, and delete any local files that were removed from the remote repository. Note that if you modified files in the local repository, the download command will fail and issue an error noting you that local files cannot be overwritten or merged. Local files can only be overwritten if these changes are tracked by the remote repository and, thus, are historically preceding the more recent remote changes. In order to download remote changes that clash with the local changes, you have to [upload your local changes to the remote repository](doc-gin-client-update-repo) first. In this way the remote reposiotry will be able to track the clashing changes.
+These commands will download new files, update old ones, and delete any local files that were removed from the remote repository.
+```{note}
+If you modified files in the local repository, the download command will fail and issue an error noting you that local files cannot be overwritten or merged. Local files can only be overwritten if these changes are tracked by the remote repository and, thus, are historically preceding the more recent remote changes. In order to download remote changes that clash with the local changes, you have to [upload your local changes to the remote repository](doc-gin-client-update-repo) first. In this way the remote reposiotry will be able to track the clashing changes.
+```
 
 (doc-gin-client-update-local-files-remote-content)=
 ## Update Local Files with Remote Content
@@ -447,6 +450,10 @@ gin commit . -m <"commit message">
 ```
 Here 'filenames' could refer to one or multiple files or folders, including their absolute or relative paths. When you lock a file or a folder, you also have to use the `commit` command in order to update the local tracking system. Issuing the `lock` command replaces the local locked files with pointers or symbolic links if supported by the file system. Locked files that have not yet been committed are marked as 'Lock status changed' or 'TC' in the output of the `ls` command.
 
+```{note}
+File locking only works with files larger than 10 MB.
+```
+
 (doc-gin-client-unlock-file)=
 ## Unlock a Local File or a Folder for Editing
 If at some point you locked local files or folders to prevent them from being edited, you can unlock them by typing in the terminal
@@ -455,3 +462,7 @@ gin unlock <filenames>...
 gin commit . -m <"commit message">
 ```
 Here 'filenames' could refer to one or multiple files or folders, including their absolute or relative paths. When you unlock a file or a folder, you also have to use the `commit` command in order to update the local tracking system. Issuing the `unlock` command should download full files locally in places where only file pointers exist. Unlocked files that have not yet been committed are marked as 'Lock status changed' or 'TC' in the output of the `ls` command.
+
+```{note}
+File locking only works with files larger than 10 MB.
+```

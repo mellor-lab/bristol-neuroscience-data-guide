@@ -1100,7 +1100,11 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">getc</span>
 </pre></div>
 </div>
-<p>These commands will download new files, update old ones, and delete any local files that were removed from the remote repository. Note that if you modified files in the local repository, the download command will fail and issue an error noting you that local files cannot be overwritten or merged. Local files can only be overwritten if these changes are tracked by the remote repository and, thus, are historically preceding the more recent remote changes. In order to download remote changes that clash with the local changes, you have to <a class="reference internal" href="#doc-gin-client-update-repo"><span class="std std-ref">upload your local changes to the remote repository</span></a> first. In this way the remote reposiotry will be able to track the clashing changes.</p>
+<p>These commands will download new files, update old ones, and delete any local files that were removed from the remote repository.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you modified files in the local repository, the download command will fail and issue an error noting you that local files cannot be overwritten or merged. Local files can only be overwritten if these changes are tracked by the remote repository and, thus, are historically preceding the more recent remote changes. In order to download remote changes that clash with the local changes, you have to <a class="reference internal" href="#doc-gin-client-update-repo"><span class="std std-ref">upload your local changes to the remote repository</span></a> first. In this way the remote reposiotry will be able to track the clashing changes.</p>
+</div>
 </section>
 <section id="update-local-files-with-remote-content">
 <span id="doc-gin-client-update-local-files-remote-content"></span><h2>Update Local Files with Remote Content<a class="headerlink" href="#update-local-files-with-remote-content" title="Permalink to this headline">#</a></h2>
@@ -1190,6 +1194,10 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 </pre></div>
 </div>
 <p>Here ‘filenames’ could refer to one or multiple files or folders, including their absolute or relative paths. When you lock a file or a folder, you also have to use the <code class="docutils literal notranslate"><span class="pre">commit</span></code> command in order to update the local tracking system. Issuing the <code class="docutils literal notranslate"><span class="pre">lock</span></code> command replaces the local locked files with pointers or symbolic links if supported by the file system. Locked files that have not yet been committed are marked as ‘Lock status changed’ or ‘TC’ in the output of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>File locking only works with files larger than 10 MB.</p>
+</div>
 </section>
 <section id="unlock-a-local-file-or-a-folder-for-editing">
 <span id="doc-gin-client-unlock-file"></span><h2>Unlock a Local File or a Folder for Editing<a class="headerlink" href="#unlock-a-local-file-or-a-folder-for-editing" title="Permalink to this headline">#</a></h2>
@@ -1199,6 +1207,10 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 </pre></div>
 </div>
 <p>Here ‘filenames’ could refer to one or multiple files or folders, including their absolute or relative paths. When you unlock a file or a folder, you also have to use the <code class="docutils literal notranslate"><span class="pre">commit</span></code> command in order to update the local tracking system. Issuing the <code class="docutils literal notranslate"><span class="pre">unlock</span></code> command should download full files locally in places where only file pointers exist. Unlocked files that have not yet been committed are marked as ‘Lock status changed’ or ‘TC’ in the output of the <code class="docutils literal notranslate"><span class="pre">ls</span></code> command.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>File locking only works with files larger than 10 MB.</p>
+</div>
 </section>
 </section>
 
