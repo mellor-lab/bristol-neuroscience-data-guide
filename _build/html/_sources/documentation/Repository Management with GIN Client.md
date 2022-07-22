@@ -142,7 +142,7 @@ gin init
 This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository, unless you initialise the repository with a .gitignore file that explicitly states not to track certain files. As a test, check if a hidden folder .git has been created inside your working directory.
 
 (doc-gin-client-list-repos)=
-## List Repository (and Find one)
+## List Repositories (and Find one)
 If you want to list all remote repositories that you own, in the terminal type
 ```
 gin repos
