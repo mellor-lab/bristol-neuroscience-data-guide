@@ -8,13 +8,13 @@ This is the full guide to repository management with GIN. Each section provides 
 
 (doc-gin-configure-server)=
 ## Configure a GIN Server
+[Configure a server using the WinGIN](doc-wingin-configure-server) \
 [Configure a server using the GIN client](doc-gin-client-configure-server)
-[Configure a server using the WinGIN](doc-wingin-configure-server)
 
 (doc-gin-list-servers)=
 ## List Configured Servers
+[Show servers using the WinGIN](doc-wingin-show-servers) \
 [List servers using the GIN client](doc-gin-client-list-servers)
-[Show servers using the WinGIN](doc-wingin-show-servers)
 
 (doc-gin-change-server)=
 ## Change the Default Server
@@ -26,8 +26,8 @@ This is the full guide to repository management with GIN. Each section provides 
 
 (doc-gin-login)=
 ## Login to your Account
+[Login using the WinGIN](doc-wingin-login) \
 [Login using the GIN client](doc-gin-client-login)
-[Login using the WinGIN](doc-wingin-login)
 
 (doc-gin-logout)=
 ## Logout from your Account
@@ -39,13 +39,13 @@ This is the full guide to repository management with GIN. Each section provides 
 
 (doc-gin-create-repo)=
 ## Create a Bare Repository
+[Create a repository using the WinGIN](doc-wingin-create-repo) \
 [Create a repository using the GIN client](doc-gin-client-create-repo)
-[Create a repository using the WinGIN](doc-wingin-create-repo)
 
 (doc-gin-create-remote-repo)=
 ## Create a Remote Bare Repository
+[Create a remote repository using the GIN web interface](doc-gin-web-create-repo) \
 [Create a remote repository using the GIN client](doc-gin-client-create-remote-repo)
-[Create a remote repository using the GIN web interface](doc-gin-web-create-repo)
 
 (doc-gin-delete-local-repo)=
 ## Delete a Local Repository
@@ -61,8 +61,8 @@ This is the full guide to repository management with GIN. Each section provides 
 
 (doc-gin-list-repos)=
 ## List Repositories (and Find one)
+[Find a repository using the GIN web interface](doc-gin-web-find-repo) \
 [List repositories using the GIN client](doc-gin-client-list-repos)
-[Find a repository using the GIN web interface](doc-gin-web-find-repo)
 
 (doc-gin-repo-info)=
 ## Display Repository Description
@@ -98,31 +98,31 @@ This is the full guide to repository management with GIN. Each section provides 
 
 (doc-gin-update-repo)=
 ## Update a Remote Repository (Upload Files)
+[Update a remote using the GIN web interface](doc-gin-web-update-repo) \
+[Update a remote using the WinGIN](doc-wingin-update-repo) \
 [Update a remote using the GIN client](doc-gin-client-update-repo)
-[Update a remote using the GIN web interface](doc-gin-web-update-repo)
-[Update a remote using the WinGIN](doc-wingin-update-repo)
 
 (doc-gin-remove-content)=
 ## Remove the Content of Local Files
+[Remove content using the WinGIN](doc-wingin-remove-content) \
 [Remove content using the GIN client](doc-gin-client-remove-content)
-[Remove content using the WinGIN](doc-wingin-remove-content)
 
 (doc-gin-dowload-repo)=
 ## Download (Clone) a Remote Repository
+[Download using the GIN web interface](doc-gin-web-dowload-repo) \
+[Download using the WinGIN](doc-wingin-dowload-repo) \
 [Download using the GIN client](doc-gin-client-dowload-repo)
-[Download using the GIN web interface](doc-gin-web-dowload-repo)
-[Download using the WinGIN](doc-wingin-dowload-repo)
 
 (doc-gin-update-local-repo-remote-content)=
 ## Update a Local Repository with Remote Content
+[Update the local repository using the WinGIN](doc-wingin-update-local-repo-remote-content) \
 [Update the local repository using the GIN client](doc-gin-client-update-local-repo-remote-content)
-[Update the local repository using the WinGIN](doc-wingin-update-local-repo-remote-content)
 
 (doc-gin-update-local-files-remote-content)=
 ## Update Local Files with Remote Content
+[Download a file using the GIN web interface](doc-gin-web-dowload-file) \
+[Update local files using the WinGIN](doc-wingin-update-local-files-remote-content) \
 [Update local files using the GIN client](doc-gin-client-update-local-files-remote-content)
-[Download a file using the GIN web interface](doc-gin-web-dowload-file)
-[Update local files using the WinGIN](doc-wingin-update-local-files-remote-content)
 
 (doc-gin-dowload-file)=
 ## Download a File
@@ -150,8 +150,8 @@ This is the full guide to repository management with GIN. Each section provides 
 
 (doc-gin-rollback-part-repo)=
 ## Roll back a Part of a Repository to an Earlier Version
+[Roll back a file using the WinGIN](doc-gin-client-rollback-file) \
 [Roll back part of a repository using the GIN client](doc-gin-client-rollback-part-repo)
-[Roll back a file using the WinGIN](doc-gin-client-rollback-file)
 
 (doc-gin-lock-file)=
 ## Prevent Local File or a Folder from Being Edited
