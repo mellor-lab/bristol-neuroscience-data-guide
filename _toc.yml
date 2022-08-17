@@ -3,9 +3,6 @@
 format: jb-book
 root: intro
 parts:
-- caption:
-  chapters:
-  - file: intro-continued
 - caption: Documentation
   chapters:
   - file: documentation/Installation Instructions
