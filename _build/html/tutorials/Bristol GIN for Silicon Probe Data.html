@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Bristol GIN for Neuropixels Data</title>
+    <title>Bristol GIN for Silicon Probe Data</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -112,7 +112,14 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro-continued.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Documentation
  </span>
@@ -172,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Bristol GIN for Neuropixels Data
+   Bristol GIN for Silicon Probe Data
   </a>
  </li>
  <li class="toctree-l1">
@@ -188,6 +195,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="Bristol%20GIN%20for%20Neuroimaging%20Data.html">
    Bristol GIN for Neuroimaging Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Converting%20to%20NIX.html">
+   Converting to NIX
   </a>
  </li>
  <li class="toctree-l1">
@@ -312,7 +324,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/dervinism/bristol-neuroscience-data-guide/issues/new?title=Issue%20on%20page%20%2Ftutorials/Bristol GIN for Neuropixels Data.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/dervinism/bristol-neuroscience-data-guide/issues/new?title=Issue%20on%20page%20%2Ftutorials/Bristol GIN for Silicon Probe Data.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -340,7 +352,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/tutorials/Bristol GIN for Neuropixels Data.md"
+        <a href="../_sources/tutorials/Bristol GIN for Silicon Probe Data.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -377,23 +389,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-repository-to-store-your-research-data">
+   Create a Repository to Store Your Research Data
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bristol GIN for Neuropixels Data</h1>
+                <h1>Bristol GIN for Silicon Probe Data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-repository-to-store-your-research-data">
+   Create a Repository to Store Your Research Data
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -401,8 +450,23 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="bristol-gin-for-neuropixels-data">
-<span id="tutorials-npx"></span><h1>Bristol GIN for Neuropixels Data<a class="headerlink" href="#bristol-gin-for-neuropixels-data" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="bristol-gin-for-silicon-probe-data">
+<span id="tutorials-silicon-probe"></span><h1>Bristol GIN for Silicon Probe Data<a class="headerlink" href="#bristol-gin-for-silicon-probe-data" title="Permalink to this headline">#</a></h1>
+<section id="create-a-repository-to-store-your-research-data">
+<span id="tutorials-silicon-probe-create-repo"></span><h2>Create a Repository to Store Your Research Data<a class="headerlink" href="#create-a-repository-to-store-your-research-data" title="Permalink to this headline">#</a></h2>
+<p>The example repository is organised according to the <a class="reference external" href="https://github.com/tonic-team/Tonic-Research-Project-Template">Tonic Research Project Template</a>. You can organise your data according to this template by following a few simple steps. First, go to your GIN web page (GIN-domain-name/your-username) and click on the Import Repository button.</p>
+<a class="reference internal image-reference" href="../_images/import-repo.png" id="fig-gin-silicon-import-repo"><img alt="../_images/import-repo.png" class="align-center" id="fig-gin-silicon-import-repo" src="../_images/import-repo.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 1. Import a Repository</strong></p>
+<p>You should be brought to the Import Repository page. As a Clone Address specify the Tonic template github page: <a class="reference external" href="https://github.com/tonic-team/Tonic-Research-Project-Template">https://github.com/tonic-team/Tonic-Research-Project-Template</a>. Give the name to your repository and a concise description of the kind of data stored in the repository. In my case I am creating a repository containing dual silicon probe recordings of spontaneous neural activity in various brain areas of the mouse. Then click the green Migrate Repository button.</p>
+<a class="reference internal image-reference" href="../_images/import-repo2.png" id="fig-gin-silicon-import-repo2"><img alt="../_images/import-repo2.png" class="align-center" id="fig-gin-silicon-import-repo2" src="../_images/import-repo2.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 2. Describe Your New Repository</strong></p>
+<p>You should see the template contents cloned under your new repository name.</p>
+<p>Now open the terminal and navigate to the folder on your local file system where you would like to keep your research data. Download the remote repository to that location by typing this command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span> <span class="n">dervinism</span><span class="o">/</span><span class="n">infraslow</span><span class="o">-</span><span class="n">dynamics</span>
+</pre></div>
+</div>
+<p>You can now use this empty repository to store all of your newly acquired research project data and documents. If you already have data that was generated in the past, you can copy it here.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

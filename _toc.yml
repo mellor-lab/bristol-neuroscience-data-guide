@@ -3,6 +3,9 @@
 format: jb-book
 root: intro
 parts:
+- caption:
+  chapters:
+  - file: intro-continued
 - caption: Documentation
   chapters:
   - file: documentation/Installation Instructions
@@ -16,7 +19,7 @@ parts:
   chapters:
   - file: tutorials/Bristol GIN via Graphical Interfaces
   - file: tutorials/Bristol GIN via Command Line
-  - file: tutorials/Bristol GIN for Neuropixels Data
+  - file: tutorials/Bristol GIN for Silicon Probe Data
   - file: tutorials/Bristol GIN for Patch Clamp Data
   - file: tutorials/Bristol GIN for Calcium Imaging Data
   - file: tutorials/Bristol GIN for Neuroimaging Data
