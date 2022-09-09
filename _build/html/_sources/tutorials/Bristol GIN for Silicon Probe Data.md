@@ -27,3 +27,9 @@ gin get dervinism/infraslow-dynamics
 ```
 You can now use this empty repository to store all of your newly acquired research project data and documents. If you already have data that was generated in the past, you can copy it here.
 
+## Set up Your Research Data Repository
+I am going to copy old research data to this newly created repository and make certain rearrangements within the existing folder structure to make it more suitable for already existing data structures created while carrying out my research project. I am also going to use mock research data to reduce the size of the repository so that repository management actions can be performed fast for this tutorial. The [mock data repository](https://gin.g-node.org/dervinism/mock-ecephys-project) is available to download on GIN. You can download it by typing the line below in your terminal:
+```
+gin get dervinism/mock-ecephys-project
+```
+Once downloaded, open the repository and copy the contents of the repository except for the .git folder. Delete the contents of the infraslow-dynamics repository and paste the copied contents from the mock-ecephys-project repository. Edit the README file accordingly to reflect the new name of the repository and other info.
