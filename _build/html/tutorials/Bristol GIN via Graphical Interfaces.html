@@ -382,12 +382,76 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-gin-account">
+   Create GIN Account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-repository">
+   Create Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repository-settings">
+   Repository Settings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uplpoad-research-data-files">
+   Uplpoad Research Data Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downlpoad-research-data-repositories-and-files">
+   Downlpoad Research Data Repositories and Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transfer-repository-ownership">
+   Transfer Repository Ownership
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-teams">
+   Create Teams
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-team-members">
+   Add Team Members
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -399,6 +463,59 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aims">
+   Aims
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-gin-account">
+   Create GIN Account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-repository">
+   Create Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#repository-settings">
+   Repository Settings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uplpoad-research-data-files">
+   Uplpoad Research Data Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downlpoad-research-data-repositories-and-files">
+   Downlpoad Research Data Repositories and Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transfer-repository-ownership">
+   Transfer Repository Ownership
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-teams">
+   Create Teams
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-team-members">
+   Add Team Members
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -408,6 +525,106 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="bristol-gin-via-graphical-interfaces">
 <span id="tutorials-gui"></span><h1>Bristol GIN via Graphical Interfaces<a class="headerlink" href="#bristol-gin-via-graphical-interfaces" title="Permalink to this headline">#</a></h1>
+<section id="aims">
+<span id="tutorials-gui-aims"></span><h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
+<p>The aim of this tutorial is to give you an introduction to using the GIN web interface. For this tutorial you will need to download a <a class="reference external" href="https://gin.g-node.org/dervinism/mockRepository">mock repository</a>.</p>
+<p>In this tutorial you will learn how to:</p>
+<ol class="simple">
+<li><p>Create a repository</p></li>
+<li><p>Upload files to a repository</p></li>
+<li><p>Download files from a repository onto your computer</p></li>
+<li><p>Transfer repository ownership to your organisation</p></li>
+<li><p>Create a collaborating team</p></li>
+<li><p>Assign the repository to the team</p></li>
+<li><p>Add members to the team</p></li>
+</ol>
+</section>
+<section id="create-gin-account">
+<span id="tutorials-gui-create-account"></span><h2>Create GIN Account<a class="headerlink" href="#create-gin-account" title="Permalink to this headline">#</a></h2>
+<p>For this tutorial you can either use our local <a class="reference external" href="https://bristol.ac.uk/bristolgin/">Bristol GIN</a> or the <a class="reference external" href="https://gin.g-node.org/">public GIN</a>: the two work the same. We start by registering an account with the GIN. You just need to follow the instructions on the screen, confirm your email, and your account is set up (<a class="reference internal" href="#fig-gin-gui-register-account"><span class="std std-ref">Figure 1</span></a>).</p>
+<a class="reference internal image-reference" href="../_images/register-account.png" id="fig-gin-gui-register-account"><img alt="../_images/register-account.png" class="align-center" id="fig-gin-gui-register-account" src="../_images/register-account.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 1. Register your Account</strong></p>
+<p>Once the registration is done, you should have an account open as shown in the figure below.</p>
+<a class="reference internal image-reference" href="../_images/fresh-account.png" id="fig-gin-gui-fresh-account"><img alt="../_images/fresh-account.png" class="align-center" id="fig-gin-gui-fresh-account" src="../_images/fresh-account.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 2. Fresh Account</strong></p>
+</section>
+<section id="create-repository">
+<span id="tutorials-gui-create-repo"></span><h2>Create Repository<a class="headerlink" href="#create-repository" title="Permalink to this headline">#</a></h2>
+<p>The next step is to create a repository.</p>
+<a class="reference internal image-reference" href="../_images/create-repo.png" id="fig-gin-gui-create-repo"><img alt="../_images/create-repo.png" class="align-center" id="fig-gin-gui-create-repo" src="../_images/create-repo.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 3. Create Repository</strong></p>
+<p>I am going to use mock Neuropixels data acquired during a single recording session using two silicon probes. Below is an example (<a class="reference internal" href="#fig-gin-gui-create-repo"><span class="std std-ref">Figure 3</span></a>) showing how to enter basic data describing a repository. I am not going to enter anything in the gitignore entry but one can indicate which files and folders of the local instance of the repository should not be synchronised with the remote repository by providing a <a class="reference external" href="https://git-scm.com/docs/gitignore">gitignore file</a>.</p>
+<p>By default the repository is private but it can be changed to public at any time (not yet true for Bristol GIN). You can also add collaborators at a later stage. Once the repository is created you should see the page below.</p>
+<a class="reference internal image-reference" href="../_images/fresh-repo.png" id="fig-gin-gui-fresh-repo"><img alt="../_images/fresh-repo.png" class="align-center" id="fig-gin-gui-fresh-repo" src="../_images/fresh-repo.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 4. Fresh Repository</strong></p>
+</section>
+<section id="repository-settings">
+<span id="tutorials-gui-repo-settings"></span><h2>Repository Settings<a class="headerlink" href="#repository-settings" title="Permalink to this headline">#</a></h2>
+<p>Repository properties can be modified via the Settings pane (<a class="reference internal" href="#fig-gin-gui-settings"><span class="std std-ref">Figure 5</span></a>). Figure below shows part of available settings. More advanced settings can be set up (revealed if you scroll down), as well as collaborators can be added to the repository who can be granted full or restricted access rights (<a class="reference internal" href="#fig-gin-gui-collaborations"><span class="std std-ref">Figure 6</span></a>).</p>
+<a class="reference internal image-reference" href="../_images/settings.png" id="fig-gin-gui-settings"><img alt="../_images/settings.png" class="align-center" id="fig-gin-gui-settings" src="../_images/settings.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 5. Repository Settings</strong>
+<br/><br/></p>
+<a class="reference internal image-reference" href="../_images/collaborations.png" id="fig-gin-gui-collaborations"><img alt="../_images/collaborations.png" class="align-center" id="fig-gin-gui-collaborations" src="../_images/collaborations.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 6. Setting up Collaborations</strong></p>
+</section>
+<section id="uplpoad-research-data-files">
+<span id="tutorials-gui-upload-files"></span><h2>Uplpoad Research Data Files<a class="headerlink" href="#uplpoad-research-data-files" title="Permalink to this headline">#</a></h2>
+<p>When we have a repository created and settings adjusted, the next step is to upload research data files. I have created a simple folder structure containing mock data that I would typically generate during a single recording session using two Neuropixels probes and a pupil camera but which also include pre-processing data generated during spike sorting with <a class="reference external" href="https://github.com/MouseLand/Kilosort">Kilosort</a> and <a class="reference external" href="https://github.com/cortex-lab/phy">Phy</a>. The files can be uploaded using the blue ‘upload file’ button (<a class="reference internal" href="#fig-gin-gui-fresh-repo"><span class="std std-ref">Figure 4</span></a>) which brings the ‘Commit changes’ page (<a class="reference internal" href="#fig-gin-gui-upload-files"><span class="std std-ref">Figure 7</span></a>). The files can then be uploaded by clicking the area marked by the blue dashed line or by dragging files or folders to that area. Note that the web interface limits the ammount and the size of files that can be uploaded. The proper more efficient way to manage multiple and large files is to use the <a class="reference internal" href="../documentation/Repository%20Management%20with%20GIN%20Client.html#doc-gin-client"><span class="std std-ref">GIN command line tools</span></a> which are covered in <a class="reference internal" href="Bristol%20GIN%20via%20Command%20Line.html#tutorials-cli"><span class="std std-ref">the next tutorial</span></a>.</p>
+<a class="reference internal image-reference" href="../_images/upload-files.png" id="fig-gin-gui-upload-files"><img alt="../_images/upload-files.png" class="align-center" id="fig-gin-gui-upload-files" src="../_images/upload-files.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 7. File Upload Page</strong></p>
+<p>In my case I simply drag-and-drop the contents of the repository root folder. This mock research data folder contains the following structure: <br />
+<code class="docutils literal notranslate"><span class="pre">mock_repository/mock_experiment/animal_ID/session1_2022-05-16/probe1</span></code> (all data pertaining to the recording probe 1) <br />
+<code class="docutils literal notranslate"><span class="pre">mock_repository/mock_experiment/animal_ID/session1_2022-05-16/probe2</span></code> (all data pertaining to the recording probe 2) <br />
+<code class="docutils literal notranslate"><span class="pre">mock_repository/mock_experiment/animal_ID/session1_2022-05-16</span></code> (data that is related to both recording probes like pupil video, for example). <br />
+I also add a commit message that succinctly describes the change that I am introducing to the repository.</p>
+<a class="reference internal image-reference" href="../_images/commit.png" id="fig-gin-gui-commit"><img alt="../_images/commit.png" class="align-center" id="fig-gin-gui-commit" src="../_images/commit.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 8. Commit Files to Repository</strong></p>
+<p>There are more than 100 files in this repository and so not all files could be uploaded at once. As we can see in the figure above, the very last files are crossed out to indicate that they cannot be uploaded. Therefore, we need to repeat this procedure with these remaining files making sure that the entire repository is fully uploaded.</p>
+</section>
+<section id="downlpoad-research-data-repositories-and-files">
+<span id="tutorials-gui-download-files"></span><h2>Downlpoad Research Data Repositories and Files<a class="headerlink" href="#downlpoad-research-data-repositories-and-files" title="Permalink to this headline">#</a></h2>
+<p>The repository now contains files which can be downloaded by your collaborators or by yourself, if you lose access to your local instance of the repository. Just press the download button indicated in <a class="reference internal" href="#fig-gin-gui-download-repo"><span class="std std-ref">Figure 9</span></a> to download the entire repository. Files larger than 10 megabytes will not be downloaded and only pointers will. Big files have to be downloaded individually. Alternatively, large files can be downloaded using <a class="reference internal" href="../documentation/Repository%20Management%20with%20GIN%20Client.html#doc-gin-client"><span class="std std-ref">GIN client</span></a> or <a class="reference external" href="https://git-annex.branchable.com/">git-annex</a> (command line tools). To download files individually, simply locate the file within the repository and click the Download button to the right of the file of interest (<a class="reference internal" href="#fig-gin-gui-download-files"><span class="std std-ref">Figure 10</span></a>). Similarly, you can delete a file by clicking the button with the bin symbol to the right of the Download button. If the file is a text file it can also be edited by pressing the button with the pen symbol. GIN allows creating new text files by pressing the blue New file button (<a class="reference internal" href="#fig-gin-gui-download-repo"><span class="std std-ref">Figure 9</span></a>). If you give an .md (Markdown) extension to the text file, it will allow you to use rich text editing tools just like in Github. These text editing tools are particularly useful when creating README files. Markdown text editing tools were used to create this tutorial.</p>
+<a class="reference internal image-reference" href="../_images/download-repo.png" id="fig-gin-gui-download-repo"><img alt="../_images/download-repo.png" class="align-center" id="fig-gin-gui-download-repo" src="../_images/download-repo.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 9. Download Repository</strong>
+<br/><br/></p>
+<a class="reference internal image-reference" href="../_images/download-files.png" id="fig-gin-gui-download-files"><img alt="../_images/download-files.png" class="align-center" id="fig-gin-gui-download-files" src="../_images/download-files.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 10. Download Individual Files</strong></p>
+</section>
+<section id="transfer-repository-ownership">
+<span id="tutorials-gui-transfer-ownership"></span><h2>Transfer Repository Ownership<a class="headerlink" href="#transfer-repository-ownership" title="Permalink to this headline">#</a></h2>
+<p>Non-text files can be modified by uploading a new version of the repository files. In this way the old files are not only being replaced by the new ones, but changes are being tracked and the entire history of repository modifications is being preserved. Furthermore, you can create new repositories, add another organisation and associate the repository with a particular organisation. When I created my account, I indicated my affiliation with the University of Bristol (UoB). Now I am going to transfer the ownership of this repository to UoB. In the repository settings (<a class="reference internal" href="#fig-gin-gui-settings"><span class="std std-ref">Figure 5</span></a>) I scroll down to the very bottom of the page passing the Advanced Settings all the way down to the Danger Zone where I carry out the transfer of ownership (<a class="reference internal" href="#fig-gin-gui-danger-zone"><span class="std std-ref">Figure 11</span></a>).</p>
+<a class="reference internal image-reference" href="../_images/danger-zone.png" id="fig-gin-gui-danger-zone"><img alt="../_images/danger-zone.png" class="align-center" id="fig-gin-gui-danger-zone" src="../_images/danger-zone.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 11. Danger Zone</strong></p>
+<p>Once the ownership transfer has been carried out, the repository name should become associated with the new owner: UoB (<a class="reference internal" href="#fig-gin-gui-repo-name"><span class="std std-ref">Figure 12</span></a>).</p>
+<a class="reference internal image-reference" href="../_images/repo-name.png" id="fig-gin-gui-repo-name"><img alt="../_images/repo-name.png" class="align-center" id="fig-gin-gui-repo-name" src="../_images/repo-name.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 12. Transferring Repository Ownership</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are transfering the ownership of your repository to an organisation, make sure that you have admin rights in that organisation. Even if you think this is the case, it is worth double-checking this. You may have given a name to your organisation that has already been taken and you may end up not having such rights. In such a scenario you may end up inadvertently losing access to your own repository. Be extremely careful in the Danger Zone!</p>
+</div>
+</section>
+<section id="create-teams">
+<span id="tutorials-gui-create-team"></span><h2>Create Teams<a class="headerlink" href="#create-teams" title="Permalink to this headline">#</a></h2>
+<p>If you go to the Dashboard of your account (see the top left corner of the <a class="reference internal" href="#fig-gin-gui-repo-name"><span class="std std-ref">Figure 12</span></a>), you can view activity that is associated with your account. There you can also see teams and organisations associated with the repositories you work with. If you click on the organisation that is associated with one of your repositories (<a class="reference internal" href="#fig-gin-gui-dashboard"><span class="std std-ref">Figure 13</span></a>), you will be taken to the organisation’s page (<a class="reference internal" href="#fig-gin-gui-org-page"><span class="std std-ref">Figure 14</span></a>) where you can create new teams of users. <a class="reference internal" href="#fig-gin-gui-create-team"><span class="std std-ref">Figure 15</span></a> shows an example of creating a team that works with Neuropixels recordings: carrying out experiments using Neuropixels probes and writing code to analyse data generated using these probes. As one of the final steps, you associate the team with a repository which would give anyone within that team elevated rights to manipulate the repository as indicated in the <a class="reference internal" href="#fig-gin-gui-associate-repo2team"><span class="std std-ref">Figure 16</span></a>. If you press the blue Join button, you become a member of this team.</p>
+<a class="reference internal image-reference" href="../_images/dashboard.png" id="fig-gin-gui-dashboard"><img alt="../_images/dashboard.png" class="align-center" id="fig-gin-gui-dashboard" src="../_images/dashboard.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 13. Finding your Organisation in Dashboard</strong>
+<br/><br/></p>
+<a class="reference internal image-reference" href="../_images/org-page.png" id="fig-gin-gui-org-page"><img alt="../_images/org-page.png" class="align-center" id="fig-gin-gui-org-page" src="../_images/org-page.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 14. Organisation Page</strong>
+<br/><br/></p>
+<a class="reference internal image-reference" href="../_images/create-team.png" id="fig-gin-gui-create-team"><img alt="../_images/create-team.png" class="align-center" id="fig-gin-gui-create-team" src="../_images/create-team.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 15. Create Team</strong>
+<br/><br/></p>
+<a class="reference internal image-reference" href="../_images/associate-repo2team.png" id="fig-gin-gui-associate-repo2team"><img alt="../_images/associate-repo2team.png" class="align-center" id="fig-gin-gui-associate-repo2team" src="../_images/associate-repo2team.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 16. Assign Repository to Team</strong></p>
+</section>
+<section id="add-team-members">
+<span id="tutorials-gui-add-team-member"></span><h2>Add Team Members<a class="headerlink" href="#add-team-members" title="Permalink to this headline">#</a></h2>
+<p>The team that you have created currently has no members. By pressing the blue Join button <a class="reference internal" href="#fig-gin-gui-associate-repo2team"><span class="std std-ref">Figure 16</span></a>, you can be the first member to join the team. You can also invite other members of your lab or external collaborators to join the team. If you press on the blue members text, you will be prompted to add new team members (<a class="reference internal" href="#fig-gin-gui-add-team-member"><span class="std std-ref">Figure 17</span></a>). Choose another member of your lab to add as a collaborating team member. The new team member will have access and elevated rights to control the repository.</p>
+<a class="reference internal image-reference" href="../_images/add-team-member.png" id="fig-gin-gui-add-team-member"><img alt="../_images/add-team-member.png" class="align-center" id="fig-gin-gui-add-team-member" src="../_images/add-team-member.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 17. Add New Team Meambers</strong></p>
+<p>Any issues relating to a particular repository can be reported under the Issues tab in the repository page (Figures <a class="reference internal" href="#fig-gin-gui-fresh-repo"><span class="std std-ref">4</span></a>, <a class="reference internal" href="#fig-gin-gui-download-repo"><span class="std std-ref">9</span></a>, and <a class="reference internal" href="#fig-gin-gui-repo-name"><span class="std std-ref">12</span></a>). Any requests to make changes to the repository can be approved under the Pull Requests tab (Figures <a class="reference internal" href="#fig-gin-gui-fresh-repo"><span class="std std-ref">4</span></a>, <a class="reference internal" href="#fig-gin-gui-download-repo"><span class="std std-ref">9</span></a>, and <a class="reference internal" href="#fig-gin-gui-repo-name"><span class="std std-ref">12</span></a>). A more extended description of how to use the GIN server web interface is available at the <a class="reference external" href="https://gin.g-node.org/G-Node/Info/wiki/Web+Interface">GIN web interface guide</a>. There is also <a class="reference internal" href="../documentation/Repository%20Management%20with%20WinGIN.html#doc-wingin"><span class="std std-ref">a Windows GIN client</span></a> available that functions as a GIN GUI for Windows systems. An external <a class="reference external" href="https://gin.g-node.org/G-Node/Info/wiki/WinGIN+Tutorial">WinGIN tutorial</a> provides additional useful guidance if you are interested in using it.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
