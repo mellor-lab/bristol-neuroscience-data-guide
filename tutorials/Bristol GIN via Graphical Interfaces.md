@@ -81,9 +81,9 @@ When we have a repository created and settings adjusted, the next step is to upl
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 7. File Upload Page**
 
 In my case I simply drag-and-drop the contents of the repository root folder. This mock research data folder contains the following structure: \
-```mock_repository/mock_experiment/animal_ID/session1_2022-05-16/probe1``` (all data pertaining to the recording probe 1) \
-```mock_repository/mock_experiment/animal_ID/session1_2022-05-16/probe2``` (all data pertaining to the recording probe 2) \
-```mock_repository/mock_experiment/animal_ID/session1_2022-05-16``` (data that is related to both recording probes like pupil video, for example). \
+```mockRepository/mockExperiment/animal_ID/session1_2022-05-16/probe1``` (all data pertaining to the recording probe 1) \
+```mockRepository/mockExperiment/animal_ID/session1_2022-05-16/probe2``` (all data pertaining to the recording probe 2) \
+```mockRepository/mockExperiment/animal_ID/session1_2022-05-16``` (data that is related to both recording probes like pupil video, for example). \
 I also add a commit message that succinctly describes the change that I am introducing to the repository.
 ```{image} ../assets/images/tutorials/bristol-gin-via-graphical-interfaces/commit.png
 :name: fig-gin-gui-commit
