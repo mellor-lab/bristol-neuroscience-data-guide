@@ -3,14 +3,14 @@
 This is the documentation on how to use WinGIN which is the graphical user interface for managing files on a GIN server for Windows operating system users. You can use it to manage files on Bristol GIN and on the public GIN server. It is a frontend to the GIN Client. For installation instructions refer to [WinGIN Installation](doc-install-wingin).
 
 (doc-wingin-login)=
-## Login to your Account
+## Login to Your Account
 In order to login to GIN, you have to have a registered account on the [local GIN server](https://www.bristol.ac.uk/bristolgin/) or on the [public GIN server](https://gin.g-node.org/). Instructions on how to do it are available [here](doc-gin-web-register). You login by launching the GinClientApp and entering your account credentials.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig01-login.png
 :name: fig-wingin-login
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 1. Login to your Account**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 1. Login to Your Account**
 
 When loging in for the first time, Gin Server Alias has only a single option pointing to the public GIN server. You can [add another GIN server](doc-wingin-configure-server) later.
 
@@ -38,24 +38,24 @@ Turning on **Download all Annex'ed Data** will download all files upon checkout 
 Clicking **Help** will open the GIN repository page containing all GIN info files.
 
 (doc-wingin-main-window)=
-## Bring up the Main Window
+## Bring up Main Window
 You can close the WinGIN window at any time without closing the app. WinGIN will still be running in the background and can be located in the taskbar. You can relaunch the main window by double-clicking the blue GIN icon or right-clicking the icon and chosing one of the three window panes to open. You can close the WinGIN app by right-clicking the icon in the taskbar and chosing the Exit option.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig03-locate-wingin.png
 :name: fig-wingin-locate
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 3. Locating WinGIN in the Taskbar**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 3. Locating WinGIN in Taskbar**
 
 (doc-wingin-configure-server)=
-## Configure a GIN Server
+## Configure GIN Server
 You can add a new server by opening the Login pane in the main window and clicking the Add Server button located on the right side of the window.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig04-add-server.png
 :name: fig-wingin-add-server
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 4. Add a New Server**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 4. Add New Server**
 
 You should be able to see the Add Gin Server window. In order to add the Bristol GIN server specify Server Alias as bristol-gin. In the web part of configuration set the protocol to https. Hostname should be set to https://www.bristol.ac.uk/bristolgin, while for the port type in 2121. In the Git part of configuration the user name should be set to git. Hostname should be set to git@bristol.ac.uk/bristolgin bristol-gin, while port should be chosen as 22. Once you enter all required configuration information, press the Save button to add a new server.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig05-configure-server.png
@@ -63,7 +63,7 @@ You should be able to see the Add Gin Server window. In order to add the Bristol
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 5. Configure a Server**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 5. Configure Server**
 
 (doc-wingin-show-servers)=
 ## Show Configured Servers
@@ -76,24 +76,24 @@ If you want to see the list of servers that your GinClientApp is configured to w
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 6. Show Configured Servers**
 
 (doc-wingin-change-server)=
-## Change the Default Server
+## Change Default Server
 If you want to change the default server that your GinClientApp works with, press the Set Default button in the Login pane
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig07-change-server.png
 :name: fig-wingin-change-server
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 7. Set your Default Server**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 7. Set Your Default Server**
 
 (doc-wingin-create-repo)=
-## Create a Bare Repository
+## Create Bare Repository
 In order to create an empty repository, open the repositories pane in the main WinGIN window and click the Create New button located at the bottom of the window.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig08-create-repo.png
 :name: fig-wingin-create-repo
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 8. Request to Create a New Repository**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 8. Request to Create New Repository**
 
 You should then be prompted to enter the new repository details as below.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig09-create-repo2.png
@@ -114,24 +114,24 @@ After clicking OK button the new repository should appear in your repositories w
 The new repository should appear on the GIN server, as well as a new folder should be created in your checkout and mountpoint directories.
 
 (doc-wingin-delete-repo)=
-## Delete a Local Repository
+## Delete Local Repository
 In order to delete the local instance of a repository, go to the Repositories pane in the main WinGIN window and click the Remove button located at the bottom of the window.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig11-delete-repo.png
 :name: fig-wingin-delete-repo
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 11. Delete a Repository**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 11. Delete Repository**
 
 (doc-wingin-update-repo)=
-## Update a Remote Repository (Upload Files)
+## Update Remote Repository (Upload Files)
 In order to update the remote repository with changes that were made in the local repository or to upload files to a remote repository, go to the Windows taskbar, right-click on the blue GIN icon, choose the repository you want to upload files to, and click on the Upload changes option.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig12-upload-repo.png
 :name: fig-wingin-upload-repo
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 12. Update a Remote Repository**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 12. Update Remote Repository**
 
 You should then see the Files to upload window showing all files to be updated/uploaded to the repository. Write down a succinct commit message at the bottom of the window. If it is an initial commit, it would suffice to say so. Once you click OK, the remote repository should be synchronised with the local one.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig13-upload-repo2.png
@@ -139,7 +139,7 @@ You should then see the Files to upload window showing all files to be updated/u
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 13. Commit Changes to a Remote Repository**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 13. Commit Changes to Remote Repository**
 
 Alternatively, you can right-click a file, go to the Gin Repository option and click on Upload file like it is shown below.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig14-upload-file.png
@@ -147,10 +147,10 @@ Alternatively, you can right-click a file, go to the Gin Repository option and c
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 14. Upload a File to a Remote Repository**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 14. Upload File to Remote Repository**
 
 (doc-wingin-remove-content)=
-## Remove the Content of Local Files
+## Remove Content of Local Files
 If your remote and local repositories are synchronised, you may want to remove the local content to free storage space. In order to do so, right-click the file of interest, then go to Gin Repository option and further choose the Remove local content option.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig15-remove-content.png
 :name: fig-wingin-remove-content
@@ -167,7 +167,7 @@ In order to download a copy (clone) of a full remote repository onto your local 
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 16. Request to Download a Repository**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 16. Request to Download Repository**
 
 Then specify details of an existing remote repository as in the example below.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig17-download-repo2.png
@@ -175,7 +175,7 @@ Then specify details of an existing remote repository as in the example below.
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 17. Specify Details of a Repository to Download**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 17. Specify Details of Repository to Download**
 
 The requested repository is then downloaded to your checkout directory and also should appear among your managed repositories as indicated by an arrow in the image below.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig18-download-repo3.png
@@ -189,14 +189,14 @@ Repository checkout does not download full files but only file pointers, unless 
 ```
 
 (doc-wingin-update-local-repo-remote-content)=
-## Update a Local Repository with Remote Changes
+## Update Local Repository with Remote Changes
 In order to update the local repository, go to the Windows taskbar, right-click the blue GIN icon, go to the repository of interest and select the Update option.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig19-update-local-repo.png
 :name: fig-wingin-update-local-repo
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 19. Update your Local Repository**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 19. Update Your Local Repository**
 
 You should be notified that your repository is up to date after updating completes.
 ```{note}
@@ -214,14 +214,14 @@ If you want to update a specific file with remote content or if you want to rest
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 20. Download File Content**
 
 (doc-gin-client-rollback-file)=
-## Roll back a File to an Earlier Version
+## Roll back File to Earlier Version
 In order to restore a file to an earlier version, right-click the file of interest, go to the Gin Repository option and further choose Get older version option.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig21-roll-back-version.png
 :name: fig-wingin-roll-back-version
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 21. Roll back a File to its Previous Version**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 21. Roll back File to its Previous Version**
 
 This should open the Select previous version window. Choose the version you would like to go back to and press the Restore button.
 ```{image} ../assets/images/documentation/repository-management-with-wingin/Fig22-select-version.png
@@ -229,7 +229,7 @@ This should open the Select previous version window. Choose the version you woul
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 22. Select the Version you Want to Roll Back to**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 22. Select Version you Want to Roll Back to**
 
 The older file is restored in the same folder as the new one, but with the date in the file name: "file name"-"date"
 ```{warning}

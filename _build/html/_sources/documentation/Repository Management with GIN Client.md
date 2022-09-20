@@ -23,7 +23,7 @@ gin help command
 where 'command' is the name of a specific command.
 
 (doc-gin-client-configure-server)=
-## Configure a GIN Server
+## Configure GIN Server
 After installing the GIN client but before starting to use it, you have to configure the GIN client to work with a particular GIN server. In the most likely case where you want to use Bristol GIN, you have to issue the following commands in your terminal
 ```
 gin logout
@@ -48,7 +48,7 @@ gin servers
 ```
 
 (doc-gin-client-change-server)=
-## Change the Default Server
+## Change Default Server
 If you want to change the default server that GIN client works with, in your terminal type
 ```
 gin use-server alias
@@ -56,7 +56,7 @@ gin use-server alias
 where 'alias' is the server name.
 
 (doc-gin-client-remove-server)=
-## Remove a Configured Server
+## Remove Configured Server
 If you want to remove a server from the list of servers that your GIN client is configured to work with, in your terminal type
 ```
 gin remove-server alias
@@ -68,7 +68,7 @@ gin rm-server alias
 where 'alias' is the server name.
 
 (doc-gin-client-login)=
-## Login to your Account
+## Login to Your Account
 In order to login to GIN, you have to have a registered account on the [local GIN server](https://www.bristol.ac.uk/bristolgin/) or on the [public GIN server](https://gin.g-node.org/). Instructions on how to do it are available [here](doc-gin-web-register). You login by typing in the terminal
 ```
 gin login
@@ -84,7 +84,7 @@ gin login [<username>] --server alias
 where 'alias' is the name of a configured server. Once you are logged in, you can start managing your GIN repositories using command line tools.
 
 (doc-gin-client-logout)=
-## Logout from your Account
+## Logout from Your Account
 To logout from your GIN server account, type in the terminal
 ```
 gin logout
@@ -107,7 +107,7 @@ gin info <username> --server alias
 where 'alias' is the name of a configured server.
 
 (doc-gin-client-create-repo)=
-## Create a Bare Repository
+## Create Bare Repository
 You create a local repository on your computer and a remote repository on the GIN server by running a command
 ```
 gin create
@@ -127,14 +127,14 @@ gin create --server alias
 where 'alias' is the name of a configured server.
 
 (doc-gin-client-create-remote-repo)=
-## Create a Remote Bare Repository
+## Create Remote Bare Repository
 Throughout this chapter the repository residing on your local or public GIN server is refered to as a remote repository. It is the repository where you push changes from your local repository and where your collaborators do the same. To create a remote repository that does not have a local corresponding repository (a clone), like how you create a repository using the web interface, you call the `create` command with a special flag like in the line below
 ```
 gin create --no-clone
 ```
 
 (doc-gin-client-create-local-repo)=
-## Initialise a Local Repository
+## Initialise Local Repository
 In order to initialise a local repository that does not have a remote equivalent, in the terminal we type
 ```
 gin init
@@ -142,7 +142,7 @@ gin init
 This command initialises the current working directory as the root folder of the new repository. All files within the root folder and and all subfolders are also initialised as part of the repository, unless you initialise the repository with a .gitignore file that explicitly states not to track certain files. As a test, check if a hidden folder .git has been created inside your working directory.
 
 (doc-gin-client-list-repos)=
-## List Repositories (and Find one)
+## List Repositories (and Find One)
 If you want to list all remote repositories that you own, in the terminal type
 ```
 gin repos
@@ -190,7 +190,7 @@ gin repoinfo <repopath> --server alias
 where 'alias' is the name of a configured server.
 
 (doc-gin-client-update-local-repo)=
-## Record Changes to a Local Repository (Commit)
+## Record Changes to Local Repository (Commit)
 The action of updating the change tracking system of the local instance of your repository (located inside the .git folder) with changes that you made to your local files is called commiting. You commit changes by calling the commit command from the root folder of your repository
 ```
 gin commit . -m <"message string">
@@ -230,7 +230,7 @@ Multiple files will be displayed recursively. According to the GIN documentation
 - ??: The file is not under repository control.
 
 (doc-gin-client-list-associated-remotes)=
-## List Remote Repositories Associated with the Local Repository
+## List Remote Repositories Associated with Local Repository
 A local repository can be associated with one or more remote repositories or with none at all. To list the available associated repositories where you can push local changes, in the terminal type
 ```
 gin remotes
@@ -244,7 +244,7 @@ You may see a similar output
 The name 'origin' typically refers to a remote repository that is the origin of the local repository and where local changes are pushed by default. If there are more associated repositories, they all would also be listed.
 
 (doc-gin-client-associate-remote)=
-## Associate a Remote Repository with the Local Repository
+## Associate Remote Repository with Local Repository
 In order to associate a remote repository with the local repository, while located in the local repository root directory type the following command in the terminal
 ```
 gin add-remote <repo-name> <alias:repo-path>
@@ -271,21 +271,21 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 ```
 
 (doc-gin-client-display-default-remote)=
-## Display the Default Associated Remote Repository
+## Display Default Associated Remote Repository
 In order to display the default remote, while located in the local repository root directory type the following command in the terminal
 ```
 gin use-remote
 ```
 
 (doc-gin-client-change-default-remote)=
-## Change the Default Associated Remote Repository
+## Change Default Associated Remote Repository
 In order to change the default remote, while located in the local repository root directory type the following command in the terminal
 ```
 gin use-remote <repo-name>
 ```
 
 (doc-gin-client-remove-remote)=
-## Remove an Associated Remote Repository from the Local Repository
+## Remove Associated Remote Repository from Local Repository
 In order to remove an associated remote repository from the local repository, within the root directory of the local repository type the following command
 ```
 gin remove-remote <repo-name>
@@ -297,7 +297,7 @@ gin rm-remote <repo-name>
 The remote repository would still be available at its remote location but would no longer be associated with the local repository.
 
 (doc-gin-client-update-repo)=
-## Update a Remote Repository (Upload Files)
+## Update Remote Repository (Upload Files)
 Once you updated your local repository with a commit message, you can update your remote repository by pushing changes. The gin client command for doing that is
 ```
 gin upload .
@@ -317,7 +317,7 @@ gin upload . --to origin, repo-to-share
 The flag `--to` is used to indicate repository names to push changes to. The names 'origin' and 'repo-to-share' are just examples, but 'origin' typically referers to the remote repository that was downloaded (cloned) on the local file system.
 
 (doc-gin-client-remove-content)=
-## Remove the Content of Local Files
+## Remove Content of Local Files
 When you [update a remote repository](doc-gin-client-update-repo), you may wish to remove the content of files residing in your local repository as they consume storage space. In order to do so, while inside the root folder of your local repository type
 ```
 gin remove-content
@@ -333,7 +333,7 @@ gin remove-content <absolute or relative path to file or folder>
 Again, if the file has not been uploaded onto the remote repository (even if specified explicitly), the contents of that file will not be removed. Files with removed content appear as 'No Content' or 'NC' when running the `gin ls` command.
 
 (doc-gin-client-dowload-repo)=
-## Download (Clone) a Remote Repository
+## Download (Clone) Remote Repository
 In order to download a copy (clone) of a full remote repository onto your local machine, in your terminal type
 ```
 gin get <repopath>
@@ -343,7 +343,7 @@ gin get-content
 where 'repopath' is the path to a remote repository in the form of repo-owner/repo-name. The cloning action will create a new folder called 'repo-name' and initialise with default options. All files within the remote repository will be downloaded locally. If you do not wish to download large files, you can skip the command `get-content`. In that case, placeholders will be downloaded instead of full files only. Alternatively, instead of `get-content` command one can use `download --content` command.
 
 (doc-gin-client-update-local-repo-remote-content)=
-## Update a Local Repository with Remote Content
+## Update Local Repository with Remote Content
 If you are working collaboratively on a repository, it is a good idea to bring your local repository in sync with the remote repository prior to starting working on your local instance. One way to do this is to change your working directory to the root folder of your local repository and call the `download` command
 ```
 gin download --content
@@ -404,7 +404,7 @@ Setting 'number' to equal to 0 will list all previous repository versions. Below
 The output list displays the commit ID (hash), date and time of the commit, the commit message, and names of files that were modified. You can use the commit ID to [roll back repository version](doc-gin-client-rollback-repo). 
 
 (doc-gin-client-rollback-repo)=
-## Roll back a Repository to an Earlier Version
+## Roll back Repository to Earlier Version
 One of the main functions of GIN is research data repository version control. In order to roll back repository to an earlier version, type
 ```
 gin version
@@ -423,7 +423,7 @@ gin version --id <hash> --copy-to <absolute or relative path to local file syste
 ```
 
 (doc-gin-client-rollback-part-repo)=
-## Roll back a Part of a Repository to an Earlier Version
+## Roll back Part of Repository to Earlier Version
 If you need to restore a part of a repository, like a file or a folder, to an earlier version, you can specify the path to the file or the folder relative to the repository root folder.
 ```
 gin version <root-relative path to file or folder>
@@ -442,7 +442,7 @@ gin version --id <hash> --copy-to <absolute or relative path to local file syste
 ```
 
 (doc-gin-client-lock-file)=
-## Prevent Local File or a Folder from Being Edited
+## Prevent Local File or Folder from Being Edited
 While working with your local repository you may want to prevent certain files or folders from being edited. In order to do that, type
 ```
 gin lock <filenames>...
@@ -455,7 +455,7 @@ File locking only works with files larger than 10 MB.
 ```
 
 (doc-gin-client-unlock-file)=
-## Unlock a Local File or a Folder for Editing
+## Unlock Local File or Folder for Editing
 If at some point you locked local files or folders to prevent them from being edited, you can unlock them by typing in the terminal
 ```
 gin unlock <filenames>...

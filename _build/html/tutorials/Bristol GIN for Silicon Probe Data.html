@@ -405,8 +405,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-repository-to-store-your-research-data">
-   Create a Repository to Store Your Research Data
+  <a class="reference internal nav-link" href="#create-repository-to-store-your-research-data">
+   Create Repository to Store Your Research Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -416,7 +416,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#record-your-local-research-data-repository-changes">
-   Record Your Local Research Data Repository changes
+   Record Your Local Research Data Repository Changes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -425,8 +425,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#remove-the-content-of-your-local-research-data-repository-copy">
-   Remove the content of your local research data repository copy
+  <a class="reference internal nav-link" href="#remove-content-of-your-local-research-data-repository">
+   Remove Content of Your Local Research Data Repository
   </a>
  </li>
 </ul>
@@ -449,8 +449,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-repository-to-store-your-research-data">
-   Create a Repository to Store Your Research Data
+  <a class="reference internal nav-link" href="#create-repository-to-store-your-research-data">
+   Create Repository to Store Your Research Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -460,7 +460,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#record-your-local-research-data-repository-changes">
-   Record Your Local Research Data Repository changes
+   Record Your Local Research Data Repository Changes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -469,8 +469,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#remove-the-content-of-your-local-research-data-repository-copy">
-   Remove the content of your local research data repository copy
+  <a class="reference internal nav-link" href="#remove-content-of-your-local-research-data-repository">
+   Remove Content of Your Local Research Data Repository
   </a>
  </li>
 </ul>
@@ -485,11 +485,11 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="bristol-gin-for-silicon-probe-data">
 <span id="tutorials-silicon-probe"></span><h1>Bristol GIN for Silicon Probe Data<a class="headerlink" href="#bristol-gin-for-silicon-probe-data" title="Permalink to this headline">#</a></h1>
-<section id="create-a-repository-to-store-your-research-data">
-<span id="tutorials-silicon-probe-create-repo"></span><h2>Create a Repository to Store Your Research Data<a class="headerlink" href="#create-a-repository-to-store-your-research-data" title="Permalink to this headline">#</a></h2>
+<section id="create-repository-to-store-your-research-data">
+<span id="tutorials-silicon-probe-create-repo"></span><h2>Create Repository to Store Your Research Data<a class="headerlink" href="#create-repository-to-store-your-research-data" title="Permalink to this headline">#</a></h2>
 <p>The example repository is organised according to the <a class="reference external" href="https://github.com/tonic-team/Tonic-Research-Project-Template">Tonic Research Project Template</a>. You can organise your data according to this template by following a few simple steps. First, go to your GIN web page (GIN-domain-name/your-username) and click on the Import Repository button.</p>
 <a class="reference internal image-reference" href="../_images/import-repo.png" id="fig-gin-silicon-import-repo"><img alt="../_images/import-repo.png" class="align-center" id="fig-gin-silicon-import-repo" src="../_images/import-repo.png" style="width: 690px;" /></a>
-<p>       <strong>Figure 1. Import a Repository</strong></p>
+<p>       <strong>Figure 1. Import Repository</strong></p>
 <p>You should be brought to the Import Repository page. As a Clone Address specify the Tonic template github page: <a class="reference external" href="https://github.com/tonic-team/Tonic-Research-Project-Template">https://github.com/tonic-team/Tonic-Research-Project-Template</a>. Give the name to your repository and a concise description of the kind of data stored in the repository. In my case I am creating a repository containing dual silicon probe recordings of spontaneous neural activity in various brain areas of the mouse. Then click the green Migrate Repository button.</p>
 <a class="reference internal image-reference" href="../_images/import-repo2.png" id="fig-gin-silicon-import-repo2"><img alt="../_images/import-repo2.png" class="align-center" id="fig-gin-silicon-import-repo2" src="../_images/import-repo2.png" style="width: 690px;" /></a>
 <p>       <strong>Figure 2. Describe Your New Repository</strong></p>
@@ -511,7 +511,7 @@ title="Print to PDF"
 <p>Once downloaded, open the repository and copy the contents of the repository except for the .git folder. Delete the contents of the infraslow-dynamics repository and paste the copied contents from the mock-ecephys-project repository. Edit the README file accordingly to reflect the new name of the repository and other info.</p>
 </section>
 <section id="record-your-local-research-data-repository-changes">
-<h2>Record Your Local Research Data Repository changes<a class="headerlink" href="#record-your-local-research-data-repository-changes" title="Permalink to this headline">#</a></h2>
+<h2>Record Your Local Research Data Repository Changes<a class="headerlink" href="#record-your-local-research-data-repository-changes" title="Permalink to this headline">#</a></h2>
 <p>Once your repository is set up (data folders organised, data files placed in right locations, etc.), you should register the state of your repository with the local version control system. By doing so you create the image of your repository that can always be reverted to in the future in case the need to do so arises. When commiting local repository changes to your version control system you typically provide a concise message describing the changes. By convention, the message length should not exceed 50 characters. As for the first record, we type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">commit</span> <span class="o">.</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Initial commit&quot;</span>
 </pre></div>
@@ -533,8 +533,8 @@ title="Print to PDF"
 <p>The limitation of using the web interface is that every time you update your remote repository, you will be limited to uploading 100 files at a time with each file being no larger than 10 gigabytes. Therefore, it is more effecient/effective to use the command line tools which have none of these limitations.</p>
 <p>When you use the web interface, you can specify the commit message title (no more than 50 characters by convention) and the commit message body (no more than 72 characters by convention).</p>
 </section>
-<section id="remove-the-content-of-your-local-research-data-repository-copy">
-<h2>Remove the content of your local research data repository copy<a class="headerlink" href="#remove-the-content-of-your-local-research-data-repository-copy" title="Permalink to this headline">#</a></h2>
+<section id="remove-content-of-your-local-research-data-repository">
+<h2>Remove Content of Your Local Research Data Repository<a class="headerlink" href="#remove-content-of-your-local-research-data-repository" title="Permalink to this headline">#</a></h2>
 <p>One advantage of using GIN for your data repository mangement is that you do not need to keep duplicate repositories in order to prevent accidental detrimental changes to your main repository. One reason for that is having version control system. The other reason is that you can safely remove the content of your local repository and replace it with pointers to original files. As a result you can save space on your local hard-drive. To remove the local content type the following line in your commend terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">content</span>
 </pre></div>

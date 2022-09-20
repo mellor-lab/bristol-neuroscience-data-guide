@@ -2,14 +2,14 @@
 # Bristol GIN for Silicon Probe Data
 
 (tutorials-silicon-probe-create-repo)=
-## Create a Repository to Store Your Research Data
+## Create Repository to Store Your Research Data
 The example repository is organised according to the [Tonic Research Project Template](https://github.com/tonic-team/Tonic-Research-Project-Template). You can organise your data according to this template by following a few simple steps. First, go to your GIN web page (GIN-domain-name/your-username) and click on the Import Repository button.
 ```{image} ../assets/images/tutorials/bristol-gin-for-silicon-probe-data/import-repo.png
 :name: fig-gin-silicon-import-repo
 :width: 690px
 :align: center
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 1. Import a Repository**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 1. Import Repository**
 
 You should be brought to the Import Repository page. As a Clone Address specify the Tonic template github page: https://github.com/tonic-team/Tonic-Research-Project-Template. Give the name to your repository and a concise description of the kind of data stored in the repository. In my case I am creating a repository containing dual silicon probe recordings of spontaneous neural activity in various brain areas of the mouse. Then click the green Migrate Repository button.
 ```{image} ../assets/images/tutorials/bristol-gin-for-silicon-probe-data/import-repo2.png
@@ -36,7 +36,7 @@ gin get-content
 ```
 Once downloaded, open the repository and copy the contents of the repository except for the .git folder. Delete the contents of the infraslow-dynamics repository and paste the copied contents from the mock-ecephys-project repository. Edit the README file accordingly to reflect the new name of the repository and other info.
 
-## Record Your Local Research Data Repository changes
+## Record Your Local Research Data Repository Changes
 Once your repository is set up (data folders organised, data files placed in right locations, etc.), you should register the state of your repository with the local version control system. By doing so you create the image of your repository that can always be reverted to in the future in case the need to do so arises. When commiting local repository changes to your version control system you typically provide a concise message describing the changes. By convention, the message length should not exceed 50 characters. As for the first record, we type:
 ```
 gin commit . -m "Initial commit"
@@ -63,7 +63,7 @@ The limitation of using the web interface is that every time you update your rem
 
 When you use the web interface, you can specify the commit message title (no more than 50 characters by convention) and the commit message body (no more than 72 characters by convention).
 
-## Remove the content of your local research data repository copy
+## Remove Content of Your Local Research Data Repository
 One advantage of using GIN for your data repository mangement is that you do not need to keep duplicate repositories in order to prevent accidental detrimental changes to your main repository. One reason for that is having version control system. The other reason is that you can safely remove the content of your local repository and replace it with pointers to original files. As a result you can save space on your local hard-drive. To remove the local content type the following line in your commend terminal:
 ```
 gin remove-content
