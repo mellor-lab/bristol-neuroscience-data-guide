@@ -11,7 +11,8 @@ parts:
   - file: documentation/Repository Management with WinGIN
   - file: documentation/Repository Management with GIN Client
   - file: documentation/Repository Management with Git
-  - file: documentation/Recording Metadata
+  - file: documentation/Recording Metadata with DANDI Schema
+  - file: documentation/Recording Metadata in odML Format
 - caption: Tutorials
   chapters:
   - file: tutorials/Bristol GIN via Graphical Interfaces
@@ -20,7 +21,6 @@ parts:
   - file: tutorials/Bristol GIN for Patch Clamp Data
   - file: tutorials/Bristol GIN for Calcium Imaging Data
   - file: tutorials/Bristol GIN for Neuroimaging Data
-  - file: tutorials/Converting to NIX
   - file: tutorials/Converting to NWB
   - file: tutorials/Converting to BIDS
 - caption: Resources

@@ -149,8 +149,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../documentation/Recording%20Metadata.html">
-   Recording Metadata
+  <a class="reference internal" href="../documentation/Recording%20Metadata%20with%20DANDI%20Schema.html">
+   Recording Metadata with DANDI Schema
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../documentation/Recording%20Metadata%20in%20odML%20Format.html">
+   Recording Metadata in odML Format
   </a>
  </li>
 </ul>
@@ -188,11 +193,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="Bristol%20GIN%20for%20Neuroimaging%20Data.html">
    Bristol GIN for Neuroimaging Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Converting%20to%20NIX.html">
-   Converting to NIX
   </a>
  </li>
  <li class="toctree-l1">
@@ -512,8 +512,63 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-pynwb">
+       Install PyNWB
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-record-metadata">
+       Record Metadata
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-electrodes-table">
+       Construct Electrodes Table
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-init-spiking-data">
+       Load and Initialise Spiking Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-load-waveforms">
+       Load Waveforms
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-units-table">
+       Construct Units Table
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-pupil-area">
+       Add Behavioural Module: Pupil Area Size
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-movement">
+       Add Behavioural Module: Total Facial Movement
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-save">
+       Save NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-read">
+       Read NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-validate">
        Validate NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-resources">
+       Resources
       </a>
      </li>
     </ul>
@@ -652,8 +707,63 @@ title="Print to PDF"
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-pynwb">
+       Install PyNWB
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-record-metadata">
+       Record Metadata
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-electrodes-table">
+       Construct Electrodes Table
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-init-spiking-data">
+       Load and Initialise Spiking Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-load-waveforms">
+       Load Waveforms
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-units-table">
+       Construct Units Table
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-pupil-area">
+       Add Behavioural Module: Pupil Area Size
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-movement">
+       Add Behavioural Module: Total Facial Movement
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-save">
+       Save NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-read">
+       Read NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-validate">
        Validate NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-silicon-probe-convert2nwb-py-resources">
+       Resources
       </a>
      </li>
     </ul>
@@ -931,7 +1041,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>The code initialises an empty table with given column labels. It then records the probe <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Device.html">Device</a> (which is an object itself) inside the NWBfile object. Next, we create an <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/ElectrodeGroup.html">ElectrodeGroup</a> object which is used to define electrode groupings within the probe. In our case we have a single shank probe and, therefore, we define all recording channels to be part of a single group. Though, grouping on some other basis is possible. You may have noticed that the <code class="docutils literal notranslate"><span class="pre">device</span></code> property is set as a Softlink object which is used to link to an already existing NWB object (in our case) or to an object within an NWB file using a path. Similarly, ElectrodeGroup is used to create an ObjectView object which works in a very similar way to the SoftLink object, and which is later used in constructing the <code class="docutils literal notranslate"><span class="pre">electrodes</span></code> table. The <code class="docutils literal notranslate"><span class="pre">position</span></code> property is a Matlab table array with columns being stereotaxic coordinates. Finally, the <code class="docutils literal notranslate"><span class="pre">electrodes</span></code> table is filled in channel by channel (rows) with channel subtables.</p>
-<p>The same procedure is then repeated for the probe 2. Finally, the combined table array is then converted into a DynamicTable object using <code class="docutils literal notranslate"><span class="pre">util.table2nwb</span></code> function:</p>
+<p>The same procedure is then repeated for the probe 2. Finally, the combined table array is then converted into a DynamicTable object using <code class="docutils literal notranslate"><span class="pre">util.table2nwb</span></code> function which also takes in the table description as the second argument:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="p">[</span><span class="n">tbl1</span><span class="p">;</span> <span class="n">tbl2</span><span class="p">];</span>
 <span class="n">electrode_table</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">table2nwb</span><span class="p">(</span><span class="n">tbl</span><span class="p">,</span> <span class="s1">&#39;all electrodes&#39;</span><span class="p">);</span>
 <span class="n">nwb</span><span class="o">.</span><span class="n">general_extracellular_ephys_electrodes</span> <span class="o">=</span> <span class="n">electrode_table</span><span class="p">;</span>
@@ -979,7 +1089,7 @@ title="Print to PDF"
   <span class="s1">&#39;peak_channel_index&#39;</span><span class="p">,</span><span class="s1">&#39;peak_channel_id&#39;</span><span class="p">,</span><span class="o">...</span> <span class="o">%</span> <span class="n">Provide</span> <span class="n">the</span> <span class="n">column</span> <span class="n">order</span><span class="o">.</span> <span class="n">All</span> <span class="n">column</span> <span class="n">names</span> <span class="n">have</span> <span class="n">to</span> <span class="n">be</span> <span class="n">defined</span> <span class="n">below</span>
   <span class="s1">&#39;local_peak_channel_id&#39;</span><span class="p">,</span><span class="s1">&#39;rel_horz_pos&#39;</span><span class="p">,</span><span class="s1">&#39;rel_vert_pos&#39;</span><span class="p">,</span><span class="o">...</span>
   <span class="s1">&#39;isi_violations&#39;</span><span class="p">,</span><span class="s1">&#39;isolation_distance&#39;</span><span class="p">,</span><span class="s1">&#39;area&#39;</span><span class="p">,</span><span class="s1">&#39;probe_id&#39;</span><span class="p">,</span><span class="o">...</span>
-  <span class="s1">&#39;electrode_group&#39;</span><span class="p">,</span><span class="s1">&#39;electrodes&#39;</span><span class="p">,</span><span class="s1">&#39;spike_times&#39;</span><span class="p">,</span><span class="s1">&#39;spike_times_index&#39;</span><span class="p">},</span> <span class="o">...</span>
+  <span class="s1">&#39;electrode_group&#39;</span><span class="p">,</span><span class="s1">&#39;spike_times&#39;</span><span class="p">,</span><span class="s1">&#39;spike_times_index&#39;</span><span class="p">},</span> <span class="o">...</span>
   <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;Units table&#39;</span><span class="p">,</span> <span class="o">...</span>
   <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">hdmf_common</span><span class="o">.</span><span class="n">ElementIdentifiers</span><span class="p">(</span> <span class="o">...</span>
   <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">int64</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">spikes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)),</span> <span class="o">...</span>
@@ -1015,7 +1125,7 @@ title="Print to PDF"
   <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;Cluster isolation distance (unit quality measure)&#39;</span><span class="p">),</span> <span class="o">...</span>
   <span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">hdmf_common</span><span class="o">.</span><span class="n">VectorData</span><span class="p">(</span> <span class="o">...</span>
   <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">{:,</span><span class="mi">11</span><span class="p">},</span> <span class="o">...</span>
-  <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Brain area where the unit is located. Internal thalamic&#39;</span> <span class="o">...</span>
+  <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Brain area where the unit is located. Internal thalamic &#39;</span> <span class="o">...</span>
   <span class="s1">&#39;nuclei divisions are not precise, because they are derived from unit locations on the probe.&#39;</span><span class="p">]),</span> <span class="o">...</span>
   <span class="s1">&#39;probe_id&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">hdmf_common</span><span class="o">.</span><span class="n">VectorData</span><span class="p">(</span> <span class="o">...</span>
   <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">{:,</span><span class="mi">12</span><span class="p">},</span> <span class="o">...</span>
@@ -1025,13 +1135,9 @@ title="Print to PDF"
   <span class="s1">&#39;electrode_group&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">hdmf_common</span><span class="o">.</span><span class="n">VectorData</span><span class="p">(</span> <span class="o">...</span>
   <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">{:,</span><span class="mi">13</span><span class="p">},</span> <span class="o">...</span>
   <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;Recording channel groups&#39;</span><span class="p">),</span> <span class="o">...</span>
-  <span class="s1">&#39;electrodes&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">hdmf_common</span><span class="o">.</span><span class="n">DynamicTableRegion</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="o">...</span>
-  <span class="n">types</span><span class="o">.</span><span class="n">untyped</span><span class="o">.</span><span class="n">ObjectView</span><span class="p">(</span><span class="s1">&#39;/general/extracellular_ephys/electrodes&#39;</span><span class="p">),</span> <span class="o">...</span>
-  <span class="s1">&#39;description&#39;</span><span class="p">,</span>  <span class="s1">&#39;Probe recording channels&#39;</span><span class="p">,</span> <span class="o">...</span>
-  <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">cell2mat</span><span class="p">(</span><span class="n">table2array</span><span class="p">(</span><span class="n">metadata</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)))),</span> <span class="o">...</span>
   <span class="s1">&#39;waveform_mean&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">hdmf_common</span><span class="o">.</span><span class="n">VectorData</span><span class="p">(</span> <span class="o">...</span>
   <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">cell2mat</span><span class="p">(</span><span class="n">waveformMeans</span><span class="p">),</span> <span class="o">...</span>
-  <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Mean waveforms on the probe channel with the largest waveform amplitude.&#39;</span> <span class="o">...</span>
+  <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Mean waveforms on the probe channel with the largest waveform amplitude. &#39;</span> <span class="o">...</span>
   <span class="s1">&#39;MUA waveforms are excluded. The order that waveforms are stored match the order of units in the unit table.&#39;</span><span class="p">])</span> <span class="o">...</span>
 <span class="p">);</span>
 </pre></div>
@@ -1053,9 +1159,9 @@ title="Print to PDF"
   <span class="s1">&#39;control&#39;</span><span class="p">,</span> <span class="n">uint8</span><span class="p">(</span><span class="n">acceptableSamples</span><span class="p">),</span><span class="o">...</span>
   <span class="s1">&#39;control_description&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;low quality samples that should be excluded from analyses&#39;</span><span class="p">;</span><span class="o">...</span>
   <span class="s1">&#39;acceptable quality samples&#39;</span><span class="p">},</span><span class="o">...</span>
-  <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Pupil area size over the recording session measured in pixels^2&#39;</span> <span class="o">...</span>
-  <span class="s1">&#39;Acceptable quality period starting and ending times are given by data_continuity parameter.&#39;</span> <span class="o">...</span>
-  <span class="s1">&#39;The full data range can be divided into multiple acceptable periods&#39;</span><span class="p">]</span> <span class="o">...</span>
+  <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Pupil area size over the recording session measured in pixels^2. &#39;</span> <span class="o">...</span>
+  <span class="s1">&#39;Acceptable quality period starting and ending times are given by data_continuity parameter. &#39;</span> <span class="o">...</span>
+  <span class="s1">&#39;The full data range can be divided into multiple acceptable periods.&#39;</span><span class="p">]</span> <span class="o">...</span>
 <span class="p">);</span>
 
 <span class="n">pupilTracking</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">PupilTracking</span><span class="p">(</span><span class="s1">&#39;TimeSeries&#39;</span><span class="p">,</span> <span class="n">pupilAreaSize</span><span class="p">);</span>
@@ -1158,8 +1264,45 @@ title="Print to PDF"
 </section>
 <section id="convert-to-nwb-using-python">
 <span id="tutorials-silicon-probe-convert2nwb-py"></span><h3>Convert to NWB Using Python<a class="headerlink" href="#convert-to-nwb-using-python" title="Permalink to this headline">#</a></h3>
+<section id="install-pynwb">
+<span id="tutorials-silicon-probe-convert2nwb-py-install"></span><h4>Install PyNWB<a class="headerlink" href="#install-pynwb" title="Permalink to this headline">#</a></h4>
+<p>To convert your extracellular electrophysiology data, you will need to install PyNWB first. To do so, type in your terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pynwb</span>
+</pre></div>
+</div>
+</section>
+<section id="tutorials-silicon-probe-convert2nwb-py-record-metadata">
+<span id="id1"></span><h4>Record Metadata<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-record-metadata" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="tutorials-silicon-probe-convert2nwb-py-electrodes-table">
+<span id="id2"></span><h4>Construct Electrodes Table<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-electrodes-table" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="tutorials-silicon-probe-convert2nwb-py-init-spiking-data">
+<span id="id3"></span><h4>Load and Initialise Spiking Data<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-init-spiking-data" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="tutorials-silicon-probe-convert2nwb-py-load-waveforms">
+<span id="id4"></span><h4>Load Waveforms<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-load-waveforms" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="tutorials-silicon-probe-convert2nwb-py-units-table">
+<span id="id5"></span><h4>Construct Units Table<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-units-table" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="tutorials-silicon-probe-convert2nwb-py-pupil-area">
+<span id="id6"></span><h4>Add Behavioural Module: Pupil Area Size<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-pupil-area" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="tutorials-silicon-probe-convert2nwb-py-movement">
+<span id="id7"></span><h4>Add Behavioural Module: Total Facial Movement<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-movement" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="tutorials-silicon-probe-convert2nwb-py-save">
+<span id="id8"></span><h4>Save NWB File<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-save" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="tutorials-silicon-probe-convert2nwb-py-read">
+<span id="id9"></span><h4>Read NWB File<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-read" title="Permalink to this headline">#</a></h4>
+</section>
 <section id="tutorials-silicon-probe-convert2nwb-py-validate">
-<span id="id1"></span><h4>Validate NWB File<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-validate" title="Permalink to this headline">#</a></h4>
+<span id="id10"></span><h4>Validate NWB File<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-validate" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="tutorials-silicon-probe-convert2nwb-py-resources">
+<span id="id11"></span><h4>Resources<a class="headerlink" href="#tutorials-silicon-probe-convert2nwb-py-resources" title="Permalink to this headline">#</a></h4>
 </section>
 </section>
 <section id="examine-nwb-file-structure-using-hdfview">
