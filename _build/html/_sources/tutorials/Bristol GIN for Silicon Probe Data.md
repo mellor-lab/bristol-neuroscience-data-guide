@@ -21,7 +21,7 @@ You should be brought to the Import Repository page. As a Clone Address specify 
 
 You should see the template contents cloned under your new repository name.
 
-Now open the terminal and navigate to the folder on your local file system where you would like to keep your research data. Download the remote repository to that location by typing this command:
+Now open the terminal and navigate to the folder on your local file system where you would like to keep your research data. Download the remote repository to that location by typing this command (replace the repository path with your own):
 ```
 gin get dervinism/infraslow-dynamics
 ```
@@ -85,7 +85,7 @@ To simply restore the file content type in
 ```
 gin get-content
 ```
-If you no longer need to work on your repository and its remote copy is up to date with the local copy, you can simply delete the local repository copy altogether. You should always be able to restore your repository and all of its contents on your local machine by executing these commands in your terminal:
+If you no longer need to work on your repository and its remote copy is up to date with the local copy, you can simply delete the local repository copy altogether. You should always be able to restore your repository and all of its contents on your local machine by executing these commands in your terminal (replace the repository path as appropriate):
 ```
 gin get dervinism/mock-ecephys-project
 cd mock-ecephys-project
@@ -94,7 +94,7 @@ gin get-content
 
 (tutorials-silicon-probe-compress)=
 ## Compress Raw Data
-Silicon probe recording raw data files take a lot of space, especially neuropixels recordings. Often these files consume most of the hard-disk space compared to any other files produced during the data processing. It is, therefore, advisable to compress them. The Internation Brain Laboratory has provided compression software for that purpose which is easy to use with instruction on how to install and compress your files provided [here](https://github.com/int-brain-lab/mtscomp). Briefly, you can install it by typing in your terminal:
+Silicon probe recording raw data files take a lot of space, especially neuropixels recordings. Often these files consume most of the hard-disk space compared to any other files produced during the data processing. It is, therefore, advisable to compress them. The International Brain Laboratory has provided compression software for that purpose which is easy to use with instructions on how to install and compress your files provided [here](https://github.com/int-brain-lab/mtscomp). Briefly, you can install it by typing in your terminal:
 ```
 pip install mtscomp
 ```
@@ -104,7 +104,7 @@ Once installed, the compression is straight forward. All you need is to specify 
 ```
 mtscomp <data-filename>.bin -n 385 -s 30000 -d int16
 ```
-The compression software will automatically load ```<data-filename>.meta``` file and read the necessary metadata parameters about the data file. It will then produce ```<data-filename>.cbin``` compressed file and ```<data-filename>.ch``` json metadata file describing the compression parameters. These two files should be preserved while the original data binary file can be deleted. To restore the original file, type
+The compression software will produce ```<data-filename>.cbin``` compressed file and ```<data-filename>.ch``` json metadata file describing the compression parameters. These two files should be preserved while the original data binary file can be deleted. To restore the original file, type
 ```
 mtsdecomp <data-filename>.cbin -o <data-filename>.bin
 ```
@@ -141,7 +141,7 @@ cd convert2nwbMatNpx
 gin get-content
 ```
 
-It will take some time to download the full repository. Once the download is complete you can open the ```convert2nwb.m``` file and and execute it right away. The script would load derived spiking and behavioural data from ```convert2nwbMatNpx/npx_derived_data/M200324_MD/M200324_MD.mat``` file, convert it to the NWB format, and save it inside ```convert2nwbMatNpx/inside npx_derived_data_nwb``` folder as ```ecephys_session_01.nwb``` file.
+It will take some time to download the full repository. Once the download is complete you can open the ```convert2nwb.m``` file and and execute it right away. The script would load derived spiking and behavioural data from ```convert2nwbMatNpx/npx_derived_data/M200324_MD/M200324_MD.mat``` file, convert it to the NWB format, and save it inside ```convert2nwbMatNpx/npx_derived_data_nwb``` folder as ```ecephys_session_01.nwb``` file.
 
 We will now analyse the conversion script in more detail. The script starts by executing three parameter files to initiate the conversion environment. The first parameter file ```nwbParams.m``` contains the most general type of parameters that apply to all animals and recording sessions of the experiment, like:
 ```
@@ -153,10 +153,10 @@ lab = 'Michael Okun lab';
 dataset = 'neuropixels';
 videoFrameRate = 25; % Hz
 ```
-The names of most of these parameters are self-explanatory. The videoFramRate variable contains the camera fram rate recording the animal's pupil. There are also input and output folders defined at the bottom of the parameter file. They include:
+The names of most of these parameters are self-explanatory. The videoFrameRate variable contains the camera's frame rate recording the animal's pupil. There are also input and output folders defined at the bottom of the parameter file. They include:
 - ```rawDataFolder``` which contains probe recording channel maps and unit waveform files;
 - ```derivedDataFolder``` which contains processed spiking data;
-- ```derivedDataFolderNWB``` whihc is the output folder where converted NWB files are saved.
+- ```derivedDataFolderNWB``` which is the output folder where converted NWB files are saved.
 
 As the name implies, ```nwbAnimalParams.m``` file contains parameters specific to a particular animal and common to all recording sessions for that animal. They include:
 ```
@@ -298,7 +298,7 @@ The next line of code loads processed spiking data from the Matlab MAT file by c
 ```
 [spikes, metadata, derivedData] = getSpikes(derivedData, animalID, sessionID{iSess}, tbl);
 ```
-This is a custom function containing the loading algorithm that very much depends on the processed data structure stored inside the MAT file. I will not go into the detail of how the function runs as your own data is very likely to be structured differently. However, you are welcome to explore the code yourself as it commented generously. It will suffice to say that the function outputs the ```spikes``` variable which is a 1-by-n cell array with unit spike times in seconds, where n is the number of units. Moreover, the function also outputs the ```metadataTbl``` variable which is a Matlab table array with rows corresponding to individual clusters (units) and columns to various metadata types describing unit properties, like ```cluster_id```, ```local_cluster_id```, ```type```, ```channel_index```, ```channel_id```, ```local_channel_id```, ```rel_horz_position```, ```rel_vert_position```, ```isi_violations```, ```isolation_distance```, ```area```, ```probe_id```, and ```electrode_group```. You can find the description of each of these properties in the ```getSpikes``` function definition.
+This is a custom function containing the loading algorithm that very much depends on the processed data structure stored inside the MAT file. I will not go into the detail of how the function runs as your own data is very likely to be structured differently. However, you are welcome to explore the code yourself as it is commented generously. It will suffice to say that the function outputs the ```spikes``` variable which is a 1-by-n cell array with unit spike times in seconds, where n is the number of units. Moreover, the function also outputs the ```metadataTbl``` variable which is a Matlab table array with rows corresponding to individual clusters (units) and columns to various metadata types describing unit properties, like ```cluster_id```, ```local_cluster_id```, ```type```, ```channel_index```, ```channel_id```, ```local_channel_id```, ```rel_horz_position```, ```rel_vert_position```, ```isi_violations```, ```isolation_distance```, ```area```, ```probe_id```, and ```electrode_group```. You can find the description of each of these properties in the ```getSpikes``` function definition.
 
 Once the spike times are extracted, we convert them into [VectorData](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/VectorData.html) and [VectorIndex](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/VectorIndex.html) objects by executing the line below:
 ```
@@ -315,7 +315,7 @@ Once the spike times are extracted, we convert them into [VectorData](https://ne
 
 (tutorials-silicon-probe-convert2nwb-matlab-load-waveforms)=
 #### Load Waveforms
-Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data is stored in the ```waveformMeans``` variable which is a cell array of avarage waveforms with cells corresponding individual units. The variable is constructed after loading and reshaping the waveforms located inside the convert2nwbMatNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat files:
+Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data is stored in the ```waveformMeans``` variable which is a cell array of avarage waveforms with cells corresponding to individual units. The variable is constructed after loading and reshaping the waveforms located inside the convert2nwbMatNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat files:
 ```
 % Load and reshape unit waveforms
 ...
@@ -395,7 +395,7 @@ VectorData objects should not have cell arrays of integers (cell arrays of strin
 
 (tutorials-silicon-probe-convert2nwb-matlab-pupil-area)=
 #### Add Behavioural Module: Pupil Area Size
-We load pupil area size data from the same file containing processed spiking data. We then convert this data into a [TimeSeries](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/TimeSeries.html) object which is designed to store any general purpose time series data. This object has a few mandatory properties, like ```data```, ```data_unit```, and ```starting_time_rate```, and a few optional ones, like ```timestamps```,```control```, ```control_description```, and ```description```. The ```data``` property can be stored as any 1-D, 2-D, 3-D, or 4-D array where the first dimension is time. We use it store our ```pupilAreaSize``` data vector. The ```data_unit``` property has to be a string, while the ```starting_time_rate``` property is a scalar of ```float32``` type. The ```timestamps``` property should give data sampling times and should be stored as a unidimensional number array of ```float64``` type. The ```control``` property is used for labeling data samples with integers. The length of this array should be the same as the length of the first data dimension representing time. In our case I am using integers 0 and 1 to mark acceptable quality data. The meaning of these labels is provided by the ```control_description``` property which is a cell array of strings with cells describing labels in the increasing order. The full code that converts the pupil area size data into the appropriate form is shown below:
+We load pupil area size data from the same file containing processed spiking data. We then convert this data into a [TimeSeries](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/TimeSeries.html) object which is designed to store any general purpose time series data. This object has a few mandatory properties, like ```data```, ```data_unit```, and ```starting_time_rate```, and a few optional ones, like ```timestamps```, ```control```, ```control_description```, and ```description```. The ```data``` property can be stored as any 1-D, 2-D, 3-D, or 4-D array where the first dimension is time. We use it to store our ```pupilAreaSize``` data vector. The ```data_unit``` property has to be a string, while the ```starting_time_rate``` property is a scalar of ```float32``` type. The ```timestamps``` property should give data sampling times and should be stored as a unidimensional number array of ```float64``` type. The ```control``` property is used for labeling data samples with integers. The length of this array should be the same as the length of the first data dimension representing time. In our case I am using integers 0 and 1 to mark acceptable quality data. The meaning of these labels is provided by the ```control_description``` property which is a cell array of strings with cells describing labels in the increasing order. The full code that converts the pupil area size data into the appropriate form is shown below:
 ```
 pupilAreaSize = types.core.TimeSeries( ...
   'data', pupilAreaSize, ...
@@ -448,7 +448,7 @@ Now if you want to open the NWB file that you just saved in Matlab, you can issu
 ```
 nwb2 = nwbRead('ecephys_session_01.nwb');
 ```
-which will read the file passively. The action is fast and it does not load all of the data at once but rather make it readily accessible. This is useful as it allows you read data selectively without loading the entire file content into the computer memory.
+which will read the file passively. The action is fast and it does not load all of the data at once but rather make it readily accessible. This is useful as it allows you to read data selectively without loading the entire file content into the computer memory.
 
 If you want to read the entire unit table which has all unit spiking data and associated metadata, the easiest way is to issue a command
 ```
@@ -499,7 +499,7 @@ electrodesTable = nwb2.general_extracellular_ephys_electrodes.toTable();
 
 (tutorials-silicon-probe-convert2nwb-matlab-validate)=
 #### Validate NWB File
-MatNWB does not provide its own NWB file validator. However, you can validate NWB files generated using Matlab in python. For instructions how to do it, refer to the corresponding [PyNWB validation section](tutorials-silicon-probe-convert2nwb-py-validate) of the tutorial.
+MatNWB does not provide its own NWB file validator. However, you can validate NWB files generated using Matlab in python. For instructions on how to do it, refer to the corresponding [PyNWB validation section](tutorials-silicon-probe-convert2nwb-py-validate) of the tutorial.
 
 (tutorials-silicon-probe-convert2nwb-matlab-resources)=
 #### Resources
