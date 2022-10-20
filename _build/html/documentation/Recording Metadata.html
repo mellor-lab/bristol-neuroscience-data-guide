@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Recording Metadata with DANDI Schema</title>
+    <title>Recording Metadata</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Recording Metadata in odML Format" href="Recording%20Metadata%20in%20odML%20Format.html" />
+    <link rel="next" title="Bristol GIN via Graphical Interfaces" href="../tutorials/Bristol%20GIN%20via%20Graphical%20Interfaces.html" />
     <link rel="prev" title="Repository Management with Git" href="Repository%20Management%20with%20Git.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -150,12 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Recording Metadata with DANDI Schema
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Recording%20Metadata%20in%20odML%20Format.html">
-   Recording Metadata in odML Format
+   Recording Metadata
   </a>
  </li>
 </ul>
@@ -213,6 +208,11 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../resources/Community.html">
+   Community
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../resources/Bristol%20GIN%20Project.html">
    Bristol GIN Project
   </a>
@@ -225,6 +225,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../resources/GIN-Tonic%20Project.html">
    GIN-Tonic Project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/NWB%20Project.html">
+   NWB Project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/BIDS%20Project.html">
+   BIDS Project
   </a>
  </li>
 </ul>
@@ -317,7 +327,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/dervinism/bristol-neuroscience-data-guide/issues/new?title=Issue%20on%20page%20%2Fdocumentation/Recording Metadata with DANDI Schema.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/dervinism/bristol-neuroscience-data-guide/issues/new?title=Issue%20on%20page%20%2Fdocumentation/Recording Metadata.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -345,7 +355,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/documentation/Recording Metadata with DANDI Schema.md"
+        <a href="../_sources/documentation/Recording Metadata.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -382,23 +392,110 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Recording Metadata
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recording-metadata-in-nwb-format">
+   Recording Metadata in NWB Format
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recording-metadata-in-bids-format">
+   Recording Metadata in BIDS Format
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recording-metadata-in-odml-format">
+   Recording Metadata in odML Format
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recording-metadata-in-dandi-schema">
+   Recording Metadata in DANDI Schema
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recording-metadata-in-openminds-format">
+   Recording Metadata in openMINDS Format
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Recording Metadata with DANDI Schema</h1>
+                <h1>Recording Metadata</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Recording Metadata
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recording-metadata-in-nwb-format">
+   Recording Metadata in NWB Format
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recording-metadata-in-bids-format">
+   Recording Metadata in BIDS Format
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recording-metadata-in-odml-format">
+   Recording Metadata in odML Format
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recording-metadata-in-dandi-schema">
+   Recording Metadata in DANDI Schema
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recording-metadata-in-openminds-format">
+   Recording Metadata in openMINDS Format
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -406,9 +503,44 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="recording-metadata-with-dandi-schema">
-<span id="doc-metadata-dandi"></span><h1>Recording Metadata with DANDI Schema<a class="headerlink" href="#recording-metadata-with-dandi-schema" title="Permalink to this headline">#</a></h1>
-<p>This page documents the recommended metadata format.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="recording-metadata">
+<span id="doc-metadata"></span><h1>Recording Metadata<a class="headerlink" href="#recording-metadata" title="Permalink to this headline">#</a></h1>
+<p>There are several metadata schemes currently being used to describe different types of neuroscience data but no single standard has emerged. For example, the <a class="reference external" href="https://www.nwb.org/">Neurodata Without Borders (NWB)</a> format that is becoming increasingly popular for storing neurophysiology and associated behavioural data generated by intracellular and extracellular electrophysiology experiments and optical physiology experiments also stores accompanying metadata in the same file. Moreover, the <a class="reference external" href="https://bids.neuroimaging.io/">Brain Imaging Data Structure (BIDS)</a> format widely used to structure neuroimaging and EEG data and associated behavioural and other data also has its own associated metadata standard. There are also efforts on the way to establish a more generic standard that could be suitable for any type of neuroscience data like the <a class="reference external" href="https://g-node.github.io/python-odml/">open metadataMarkup Language (odML)</a>.</p>
+<p>NWB and BIDS metadata formats may be particularly suitable for certain neuroscience data and they are becoming increasingly popular in their respective areas. For this reason it is advisable to follow their standard if you are working with neurophysiology or neuroimaging data. You can also follow the odML format which is less descriptive. You may also be using your own custom templates to record metadata and saving it in Matlab or Python files. If you are converting your neurophysiology data to the NWB format, you would also be converting your metadata into this format as part of it. Whichever approach you are using is your own choice and we are not going to make strict recommendations on how you should record your metadata. As long as metadata is rich and hierarchically organised or convertible to hierarchical form (e.g., dataset/experiment/subject/session/trial), it should be sufficient.</p>
+<p>There are, however, important advantages to avoiding custom approaches. Adopting a standard makes your data more accessible to your collaborators and other researchers. You would also increase your data interoperability and make it easier to integrate into a database. Moreover, adopting a <strong>minimal metadata schema</strong> at the dataset level would likely make your dataset more searchable and discoverable. Therefore, below we provide a brief description and resources for several emerging metadata standards.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="recording-metadata-in-nwb-format">
+<span id="doc-metadata-nwb"></span><h1>Recording Metadata in NWB Format<a class="headerlink" href="#recording-metadata-in-nwb-format" title="Permalink to this headline">#</a></h1>
+<p>The advantage of using the NWB format is having your metadata stored inside the same files containing your data. Available entries allow you to record rich metadata regarding the experiment, subjects, sessions, recording instruments, trials, and distinct datatypes. For example, you can record rich metadata regarding individual silicon probe channels and individual units in the extracellular electrophysiology context.</p>
+<p>The full description of available metadata classes and properties is given by the <a class="reference external" href="https://nwb-schema.readthedocs.io/en/latest/index.html">NWB Format Specification</a>.</p>
+<p>There is also a tutorial available online: <a class="reference external" href="https://training.incf.org/lesson/intracellular-electrophysiology-structured-metadata-nwb">Intracellular electrophysiology structured metadata in NWB</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This subsection is work in progress. It will be developed in parallel to the tutorials for different neuroscience data types.</p>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="recording-metadata-in-bids-format">
+<span id="doc-metadata-bids"></span><h1>Recording Metadata in BIDS Format<a class="headerlink" href="#recording-metadata-in-bids-format" title="Permalink to this headline">#</a></h1>
+<p>BIDS format uses JSON and TSV files to record metadata. You can read more about the usage of these formats within the BIDS context <a class="reference external" href="https://bids-standard.github.io/bids-starter-kit/folders_and_files/metadata.html">here</a>.</p>
+<p>BIDS starter kit is available <a class="reference external" href="https://bids-standard.github.io/bids-starter-kit/index.html">here</a>.</p>
+<p>The full BIDS documentation is available <a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/">here</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This subsection is work in progress. Currently not priority.</p>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="recording-metadata-in-odml-format">
+<span id="doc-metadata-odml"></span><h1>Recording Metadata in odML Format<a class="headerlink" href="#recording-metadata-in-odml-format" title="Permalink to this headline">#</a></h1>
+<p>The <a class="reference external" href="https://g-node.github.io/python-odml/">open metadataMarkup Language (odML)</a> is a comprehensive format that stores rich metadata at multiple description levels (e.g., dataset/experiment/subject/session/trial). Unlike NWB and BIDS however, it is intended to be broad enough to include all neuroscience data. Currently it is the only pure neuroscience metadata format with a schema that is not limited to the dataset description only. The downside of adopting this format is redundancy. If you are already organising your data according to NWB or BIDS schemas, you would be duplicating your efforts in terms of information storage, as well as the need to learn a new programming interface. If you have not adopted any of the two formats, then odML is worth considering.</p>
+<p>The entire metadata framework is called <a class="reference external" href="https://doi.org/10.3389/fninf.2019.00062">odMLtables</a>. It is based on the XML format but also supports JSON and YAML formats and can even be converted into tabular XLS and CSV formats. It has both Matlab and Python application programmming interfaces and a graphical user interface. There is both an online <a class="reference external" href="https://odmltables.readthedocs.io/en/latest/">documentation</a> and a <a class="reference external" href="https://odmltables.readthedocs.io/en/latest/tutorial.html">tutorial</a> explaining the basic uses of odMLtables for recording your metadata.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="recording-metadata-in-dandi-schema">
+<span id="doc-metadata-dandi"></span><h1>Recording Metadata in DANDI Schema<a class="headerlink" href="#recording-metadata-in-dandi-schema" title="Permalink to this headline">#</a></h1>
+<p>The <a class="reference external" href="https://github.com/dandi/schema">DANDI Schema</a> provides a <strong>minimal metadata schema</strong> for NWB and BIDS datasets and is intended to enhance searchability and visibility of these datasets. The DANDI Schema uses JSON for Linking Data (JASON-LD) format to encode metadata and, therefore, provides both human and machine readability. The metadata files are typically generated during the process of uploading a repository onto the <a class="reference external" href="https://dandiarchive.org/">DANDI Archive</a> which is a platform storing neuroscience data in both NWB and BIDS formats. Alternatively, metadata can be generated and validated using a Python programming interface available to download <a class="reference external" href="https://github.com/dandi/dandi-schema">here</a>. Currently this schema is limited to <a class="reference external" href="https://www.dandiarchive.org/handbook/11_view/#viewing-dandisets">dandisets</a> only and whether it gains bigger traction within the neuroscience community remains to be seen.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="recording-metadata-in-openminds-format">
+<span id="doc-metadata-openminds"></span><h1>Recording Metadata in openMINDS Format<a class="headerlink" href="#recording-metadata-in-openminds-format" title="Permalink to this headline">#</a></h1>
+<p>The <a class="reference external" href="https://ebrains.eu/news/new-openminds-metadata-models/">Open Metadata Initiative for Neuroscience Data Structures (openMINDS)</a> is a <strong>minimal metadata schema</strong> for neuroscience datasets developed by the <a class="reference external" href="https://www.humanbrainproject.eu/en/">Human Brain Project</a> and the <a class="reference external" href="https://ebrains.eu/">EBRAINS</a> data sharing platform. Its developement and adoption is intended to make neuroscience datasets easier to find, as well as expose other dataset level information. The openMINDS team has provided a <a class="reference external" href="https://github.com/HumanBrainProject/openMINDS_generator">Python package</a> to make their metadata schemes programmable. The <a class="reference external" href="https://github.com/HumanBrainProject/openMINDS">openMINDS project</a> is in its early stage and, therefore, is still largely in development. It remains to be seen whether this metadata format gains wider acceptance among neuroscientists.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -445,10 +577,10 @@ title="Print to PDF"
             <p class="prev-next-title">Repository Management with Git</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Recording%20Metadata%20in%20odML%20Format.html" title="next page">
+    <a class='right-next' id="next-link" href="../tutorials/Bristol%20GIN%20via%20Graphical%20Interfaces.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Recording Metadata in odML Format</p>
+        <p class="prev-next-title">Bristol GIN via Graphical Interfaces</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

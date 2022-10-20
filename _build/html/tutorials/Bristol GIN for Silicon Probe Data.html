@@ -149,13 +149,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../documentation/Recording%20Metadata%20with%20DANDI%20Schema.html">
-   Recording Metadata with DANDI Schema
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../documentation/Recording%20Metadata%20in%20odML%20Format.html">
-   Recording Metadata in odML Format
+  <a class="reference internal" href="../documentation/Recording%20Metadata.html">
+   Recording Metadata
   </a>
  </li>
 </ul>
@@ -213,6 +208,11 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../resources/Community.html">
+   Community
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../resources/Bristol%20GIN%20Project.html">
    Bristol GIN Project
   </a>
@@ -225,6 +225,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../resources/GIN-Tonic%20Project.html">
    GIN-Tonic Project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/NWB%20Project.html">
+   NWB Project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../resources/BIDS%20Project.html">
+   BIDS Project
   </a>
  </li>
 </ul>
@@ -911,7 +921,7 @@ title="Print to PDF"
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">projectName</span> <span class="o">=</span> <span class="s1">&#39;Brainwide Infraslow Activity Dynamics&#39;</span><span class="p">;</span>
 <span class="n">experimenter</span> <span class="o">=</span> <span class="s1">&#39;Martynas Dervinis&#39;</span><span class="p">;</span>
 <span class="n">institution</span> <span class="o">=</span> <span class="s1">&#39;University of Leicester&#39;</span><span class="p">;</span>
-<span class="n">publications</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="n">publications</span> <span class="o">=</span> <span class="s1">&#39;In preparation&#39;</span><span class="p">;</span>
 <span class="n">lab</span> <span class="o">=</span> <span class="s1">&#39;Michael Okun lab&#39;</span><span class="p">;</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="s1">&#39;neuropixels&#39;</span><span class="p">;</span>
 <span class="n">videoFrameRate</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span> <span class="o">%</span> <span class="n">Hz</span>
@@ -944,7 +954,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that follows next sets the remaining parameters that are common across recording sessions, like <code class="docutils literal notranslate"><span class="pre">electrodeName</span></code>, <code class="docutils literal notranslate"><span class="pre">electrodeDescription</span></code>, <code class="docutils literal notranslate"><span class="pre">electrodeManufacturer</span></code>, <code class="docutils literal notranslate"><span class="pre">nShanks</span></code> (number of probe shanks), <code class="docutils literal notranslate"><span class="pre">nChannelsPerShank</span></code> (number of recording channels per shank), <code class="docutils literal notranslate"><span class="pre">nCh</span></code> (total number of probe channels), <code class="docutils literal notranslate"><span class="pre">areas</span></code> (brain areas that probes span), <code class="docutils literal notranslate"><span class="pre">electrodeCoordinates</span></code> (electrode insertion coordinates), <code class="docutils literal notranslate"><span class="pre">electrodeLabel</span></code>, and <code class="docutils literal notranslate"><span class="pre">electrodeImplantationType</span></code> (i.e., acute or chronic).</p>
-<p>Most of the parameters defined in the three parameter files comprise metadata. The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like <a class="reference external" href="http://g-node.github.io/python-odml/">odML</a> or <a class="reference external" href="https://github.com/dandi/schema">DANDI Schema</a>. Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.</p>
+<p>Most of the parameters defined in the three parameter files comprise metadata. The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like <a class="reference external" href="http://g-node.github.io/python-odml/">odML</a>. Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.</p>
 <p>The initialisation process is completed by intialising the Matlab NWB classes by calling</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">generateCore</span><span class="p">;</span>
 </pre></div>
@@ -1302,7 +1312,7 @@ title="Print to PDF"
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">projectName</span> <span class="o">=</span> <span class="s1">&#39;Brainwide Infraslow Activity Dynamics&#39;</span>
 <span class="n">experimenter</span> <span class="o">=</span> <span class="s1">&#39;Martynas Dervinis&#39;</span>
 <span class="n">institution</span> <span class="o">=</span> <span class="s1">&#39;University of Leicester&#39;</span>
-<span class="n">publications</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">publications</span> <span class="o">=</span> <span class="s1">&#39;In preparation&#39;</span>
 <span class="n">lab</span> <span class="o">=</span> <span class="s1">&#39;Michael Okun lab&#39;</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="s1">&#39;neuropixels&#39;</span>
 <span class="n">videoFrameRate</span> <span class="o">=</span> <span class="mf">25.0</span> <span class="c1"># Hz</span>
@@ -1336,7 +1346,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that follows next sets the remaining parameters that are common across recording sessions, like <code class="docutils literal notranslate"><span class="pre">electrodeName</span></code>, <code class="docutils literal notranslate"><span class="pre">electrodeDescription</span></code>, <code class="docutils literal notranslate"><span class="pre">electrodeManufacturer</span></code>, <code class="docutils literal notranslate"><span class="pre">nShanks</span></code> (number of probe shanks), <code class="docutils literal notranslate"><span class="pre">nChannelsPerShank</span></code> (number of recording channels per shank), <code class="docutils literal notranslate"><span class="pre">nCh</span></code> (total number of probe channels), <code class="docutils literal notranslate"><span class="pre">areas</span></code> (brain areas that probes span), <code class="docutils literal notranslate"><span class="pre">electrodeCoordinates</span></code> (electrode insertion coordinates), <code class="docutils literal notranslate"><span class="pre">electrodeLabel</span></code>, and <code class="docutils literal notranslate"><span class="pre">electrodeImplantationType</span></code> (i.e., acute or chronic).</p>
-<p>Most of the parameters defined in the three parameter files comprise metadata. The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like <a class="reference external" href="http://g-node.github.io/python-odml/">odML</a> or <a class="reference external" href="https://github.com/dandi/schema">DANDI Schema</a>. Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.</p>
+<p>Most of the parameters defined in the three parameter files comprise metadata. The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like <a class="reference external" href="http://g-node.github.io/python-odml/">odML</a>. Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.</p>
 <p>The conversion process then goes through every recording session and generates NWB files individually for each session inside the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop of the <code class="docutils literal notranslate"><span class="pre">convert2nwb.py</span></code> file. We start by creating an <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.file.html#pynwb.file.NWBFile"><code class="docutils literal notranslate"><span class="pre">NWBFile</span></code></a> object and defining session metadata:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign NWB file fields</span>
 <span class="n">nwb</span> <span class="o">=</span> <span class="n">NWBFile</span><span class="p">(</span>
@@ -1651,7 +1661,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>in order to validate the file that was recently created. The output should be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Validating</span> <span class="n">test</span><span class="o">.</span><span class="n">nwb</span> <span class="n">against</span> <span class="n">cached</span> <span class="n">namespace</span> <span class="n">information</span> <span class="n">using</span> <span class="n">namespace</span> <span class="s1">&#39;core&#39;</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Validating</span> <span class="o">./</span><span class="n">nnx_derived_data_nwb</span><span class="o">/</span><span class="n">M190114_A_MD</span><span class="o">/</span><span class="n">ecephys_session_01</span><span class="o">.</span><span class="n">nwb</span> <span class="n">against</span> <span class="n">cached</span> <span class="n">namespace</span> <span class="n">information</span> <span class="n">using</span> <span class="n">namespace</span> <span class="s1">&#39;core&#39;</span><span class="o">.</span>
  <span class="o">-</span> <span class="n">no</span> <span class="n">errors</span> <span class="n">found</span><span class="o">.</span>
 </pre></div>
 </div>

@@ -11,8 +11,7 @@ parts:
   - file: documentation/Repository Management with WinGIN
   - file: documentation/Repository Management with GIN Client
   - file: documentation/Repository Management with Git
-  - file: documentation/Recording Metadata with DANDI Schema
-  - file: documentation/Recording Metadata in odML Format
+  - file: documentation/Recording Metadata
 - caption: Tutorials
   chapters:
   - file: tutorials/Bristol GIN via Graphical Interfaces
@@ -25,6 +24,9 @@ parts:
   - file: tutorials/Converting to BIDS
 - caption: Resources
   chapters:
+  - file: resources/Community
   - file: resources/Bristol GIN Project
   - file: resources/GIN Project
   - file: resources/GIN-Tonic Project
+  - file: resources/NWB Project
+  - file: resources/BIDS Project

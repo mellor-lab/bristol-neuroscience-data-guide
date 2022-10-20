@@ -148,7 +148,7 @@ We will now analyse the conversion script in more detail. The script starts by e
 projectName = 'Brainwide Infraslow Activity Dynamics';
 experimenter = 'Martynas Dervinis';
 institution = 'University of Leicester';
-publications = {};
+publications = 'In preparation';
 lab = 'Michael Okun lab';
 dataset = 'neuropixels';
 videoFrameRate = 25; % Hz
@@ -181,7 +181,7 @@ endCh{1}{2} = [41 091 138 217 304 384];
 ```
 The ```for``` loop that follows next sets the remaining parameters that are common across recording sessions, like ```electrodeName```, ```electrodeDescription```, ```electrodeManufacturer```, ```nShanks``` (number of probe shanks), ```nChannelsPerShank``` (number of recording channels per shank), ```nCh``` (total number of probe channels), ```areas``` (brain areas that probes span), ```electrodeCoordinates``` (electrode insertion coordinates), ```electrodeLabel```, and ```electrodeImplantationType``` (i.e., acute or chronic).
 
-Most of the parameters defined in the three parameter files comprise metadata. The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like [odML](http://g-node.github.io/python-odml/) or [DANDI Schema](https://github.com/dandi/schema). Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.
+Most of the parameters defined in the three parameter files comprise metadata. The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like [odML](http://g-node.github.io/python-odml/). Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.
 
 The initialisation process is completed by intialising the Matlab NWB classes by calling
 ```
@@ -555,7 +555,7 @@ We then execute three parameter files to initiate the conversion environment. Th
 projectName = 'Brainwide Infraslow Activity Dynamics'
 experimenter = 'Martynas Dervinis'
 institution = 'University of Leicester'
-publications = []
+publications = 'In preparation'
 lab = 'Michael Okun lab'
 dataset = 'neuropixels'
 videoFrameRate = 25.0 # Hz
@@ -589,7 +589,7 @@ endCh[0][1] = np.array([41, 91, 138, 217, 304, 384])
 ```
 The ```for``` loop that follows next sets the remaining parameters that are common across recording sessions, like ```electrodeName```, ```electrodeDescription```, ```electrodeManufacturer```, ```nShanks``` (number of probe shanks), ```nChannelsPerShank``` (number of recording channels per shank), ```nCh``` (total number of probe channels), ```areas``` (brain areas that probes span), ```electrodeCoordinates``` (electrode insertion coordinates), ```electrodeLabel```, and ```electrodeImplantationType``` (i.e., acute or chronic).
 
-Most of the parameters defined in the three parameter files comprise metadata. The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like [odML](http://g-node.github.io/python-odml/) or [DANDI Schema](https://github.com/dandi/schema). Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.
+Most of the parameters defined in the three parameter files comprise metadata. The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like [odML](http://g-node.github.io/python-odml/). Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.
 
 The conversion process then goes through every recording session and generates NWB files individually for each session inside the ```for``` loop of the ```convert2nwb.py``` file. We start by creating an [```NWBFile```](https://pynwb.readthedocs.io/en/stable/pynwb.file.html#pynwb.file.NWBFile) object and defining session metadata:
 ```python
@@ -915,7 +915,7 @@ python -m pynwb.validate ./npx_derived_data_nwb/M200324_MD/ecephys_session_01.nw
 ```
 in order to validate the file that was recently created. The output should be:
 ```
-Validating test.nwb against cached namespace information using namespace 'core'.
+Validating ./nnx_derived_data_nwb/M190114_A_MD/ecephys_session_01.nwb against cached namespace information using namespace 'core'.
  - no errors found.
 ```
 The program exit code should be 0. On error, the program exit code is 1 and the list of errors is outputted.
