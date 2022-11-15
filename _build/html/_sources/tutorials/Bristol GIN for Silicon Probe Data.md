@@ -1,6 +1,15 @@
 (tutorials-silicon-probe)=
 # Bristol GIN for Silicon Probe Data
 
+(tutorials-silicon-probe-create-account)=
+## Create GIN Account
+In order to be able to follow this tutorial, you need to have a GIN account either on Bristol GIN or on the public GIN service. GIN web interface documentation has it all explained [here](doc-gin-web-register).
+
+After creating the account, login to it by typing:
+```
+gin login
+```
+
 (tutorials-silicon-probe-create-repo)=
 ## Create Repository to Store Your Research Data
 The example repository is organised according to the [Tonic Research Project Template](https://github.com/tonic-team/Tonic-Research-Project-Template). You can organise your data according to this template by following a few simple steps. First, go to your GIN web page (GIN-domain-name/your-username) and click on the Import Repository button.
@@ -68,7 +77,7 @@ When you use the web interface, you can specify the commit message title (no mor
 
 (tutorials-silicon-probe-remove-content)=
 ## Remove Content of Your Local Research Data Repository
-One advantage of using GIN for your data repository mangement is that you do not need to keep duplicate repositories in order to prevent accidental detrimental changes to your main repository. One reason for that is having version control system. The other reason is that you can safely remove the content of your local repository and replace it with pointers to original files. As a result you can save space on your local hard-drive. To remove the local content type the following line in your commend terminal:
+One advantage of using GIN for your data repository mangement is that you do not need to keep duplicate repositories in order to prevent accidental detrimental changes to your main repository. One reason for that is having version control system. The other reason is that you can safely remove the content of your local repository and replace it with pointers to original files. As a result you can save space on your local hard-drive. To remove the local content type the following line in your terminal:
 ```
 gin remove-content
 ```
@@ -935,3 +944,60 @@ This section explained how you can use Python to convert your processed spiking 
 (tutorials-silicon-probe-convert2nwb-hdfview)=
 ### Examine NWB File Structure Using HDFView
 You can use [HDF View](https://www.hdfgroup.org/downloads/hdfview) software to visualise the structure of your NWB files using a simple graphical interface.
+
+(tutorials-silicon-probe-upload-nwb)=
+## Upload Your Standardised Data to Remote Repository
+Let's say that you have completed the conversion of your data to the NWB format and now want to upload them to the remote repository. First of all, copy the NWB files to appropriate folders within your local repository. For the Neuronexus and Neuropixels example data in this tutorial, the NWB files should be copied to these locations:
+```
+infraslow-dynamics\03_data\101_uol_neuronexus_exp_derived_data\M190114_A_MD
+infraslow-dynamics\03_data\102_uol_neuropixels_exp_derived_data\M200324_MD
+```
+Subsequently, navigate to the repository root folder and issue the following command in your terminal:
+```
+gin commit . -m "Converted derived data to NWB"
+```
+This will commit changes to the local repository. To upload them to the remote repository, just type:
+```
+gin upload .
+```
+
+(tutorials-silicon-probe-roll-back)=
+## Roll back Repository to an Earlier Version
+Now let's assume you are not happy with the converted NWB files and you want to roll back to an earlier version of your repository prior to the conversion. Before we can do that, we need to find out the latest commit IDs by typing:
+```
+gin version
+```
+You should see a terminal output that looks similar to this one:
+```
+[ 1]  798d1e6 * Fri Nov 11 10:11:41 2022 (+0000)
+
+    Converted derived data to NWB
+
+  Added
+    03_data/101_uol_neuronexus_exp_derived_data/M190114_A_MD/ecephys_session_01.nwb,
+    03_data/102_uol_neuropixels_exp_derived_data/M200324_MD/ecephys_session_01.nwb
+
+[ 2]  f288303 * Mon Sep 19 13:10:27 2022 (+0100)
+
+    Added a few larger files
+
+  Modified
+    03_data/001_uol_neuronexus_exp_raw_derived/M190114_A_MD/201901221911031/continuous.ap_CAR.cbin,
+    03_data/001_uol_neuronexus_exp_raw_derived/M190114_A_MD/201901221911031/continuous.lf.cbin,
+    03_data/001_uol_neuronexus_exp_raw_derived/M190114_A_MD/2019012219110326/continuous.ap_CAR.cbin,
+    03_data/001_uol_neuronexus_exp_raw_derived/M190114_A_MD/2019012219110326/continuous.lf.cbin,
+    03_data/001_uol_neuronexus_exp_raw_derived/M190114_A_MD/video_79938.mp4,
+    03_data/002_uol_neuropixels_exp_raw_derived/M200324_MD/202003241613491/continuous.ap_CAR.cbin,
+    03_data/002_uol_neuropixels_exp_raw_derived/M200324_MD/202003241613491/continuous.lf.cbin,
+    03_data/002_uol_neuropixels_exp_raw_derived/M200324_MD/202003241613492/continuous.ap_CAR.cbin,
+    03_data/002_uol_neuropixels_exp_raw_derived/M200324_MD/202003241613492/continuous.lf.cbin,
+    03_data/002_uol_neuropixels_exp_raw_derived/M200324_MD/video_67929_low_quality.mp4
+...
+```
+Obviously we are interested in restoring the repository to the version just prior to the conversion and its ID is f288303. Now we type:
+```
+gin version --id f288303
+```
+The local repository now should be rolled back to its previous version.
+
+Rolling back versions may produce some unintuitive results. Rolling back versions replaces new files with their earlier versions. However, if those files were not present in previous versions, they are kept in the rolled back version. Therefore, the new files have to be deleted manually after the roll back. This may seem a bug but it actually is an intentional behaviour.

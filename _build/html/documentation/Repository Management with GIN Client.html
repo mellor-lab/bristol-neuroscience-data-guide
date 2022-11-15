@@ -1186,6 +1186,7 @@ Remote ssh://git@gin.g-node.org:22/dervinism/dual-npx-project-colab does not exi
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="nb">id</span> <span class="o">&lt;</span><span class="nb">hash</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">copy</span><span class="o">-</span><span class="n">to</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">local</span> <span class="n">file</span> <span class="n">system</span> <span class="n">folder</span><span class="o">&gt;</span>
 </pre></div>
 </div>
+<p>Rolling back versions replaces new files with their earlier versions. However, if those files were not present in previous versions, they are kept in the rolled back version. Therefore, the new files have to be deleted manually after the roll back. This may seem a bug but it actually is an intentional behaviour.</p>
 </section>
 <section id="roll-back-part-of-repository-to-earlier-version">
 <span id="doc-gin-client-rollback-part-repo"></span><h2>Roll back Part of Repository to Earlier Version<a class="headerlink" href="#roll-back-part-of-repository-to-earlier-version" title="Permalink to this headline">#</a></h2>
