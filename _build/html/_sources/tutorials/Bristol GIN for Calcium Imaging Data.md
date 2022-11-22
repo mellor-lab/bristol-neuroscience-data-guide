@@ -18,7 +18,7 @@ gin get dervinism/calcium-imaging-mock-repo
 cd calcium-imaging-mock-repo
 gin get-content
 ```
-This is part of the real Ca2+ imaging data. The imaging was performed in hippocampal pyramidal cells during Schaffer collateral stimulation. Dendrites at different cell locations were two-photon linescan imaged. More about the project that this data is coming from can be read in the README file. The data is organised into individual recording sessions named using number IDs. It is further subdivided into slices and cells. Processed data is places in the Analysed folder inside the MAT file. The raw data is located in two separate folders: Ephysdata for electrophysiology data and Imgdata for imaging data. README files located in calcium-imaging-mock-repo\Exp_001_SCstim_DiffLocations\201204 session folder give more detail about what sort of data is stored, variable names and their meaning, and other relevant information.
+This is part of the real Ca2+ imaging data. The imaging was performed in hippocampal pyramidal cells during Schaffer collateral stimulation. Dendrites at different cell locations were two-photon linescan imaged. More about the project that this data is coming from can be read in the README file. The data is organised into individual imaging/recording sessions named using number IDs. It is further subdivided into slices and cells. Processed data is places in the Analysed folder inside the MAT file. The raw data is located in two separate folders: Ephysdata for electrophysiology data and Imgdata for imaging data. README files located in calcium-imaging-mock-repo\Exp_001_SCstim_DiffLocations\201204 session folder give more detail about what sort of data is stored, variable names and their meaning, and other relevant information.
 
 (tutorials-caimage-setup-repo)=
 ## Set up Your Research Data Repository
@@ -117,6 +117,143 @@ You can now start using MatNWB. MatNWB interface documentation can be accessed [
 
 (tutorials-caimage-convert2nwb-matlab-record-metadata)=
 #### Record Metadata
+Inside the calcium imaging repository there is a folder with the Matlab file that you can execute in order to convert the data of one particular imaging/recording session into the NWB format. The script is located inside the ```Exp_001_SCstim_DiffLocations/201204/Slice_00/Cell_001/nwb``` folder in the file named ```convert2nwbCaImg.m``` and, if executed, it would convert the data stored in the files below:
+```
+Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/201204__s2d1_004_ED__1 Botden_Analysed.mat
+Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/201204__s2d1_004_ED__1 Midden_Analysed.mat
+Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/201204__s2d1_004_ED__1 Topden_Analysed.mat
+```
+
+Initially, we start by recording the metadata associated with this experimental session. In this tutorial the metadata is divided into three types: Project, animal, and session metadata. The project metadata is common to all animals and experimental sessions and is defined by the part of the script below:
+```
+projectName = 'Intracellular Ca2+ dynamics during plateau potentials trigerred by Schaffer collateral stimulation';
+experimenter = 'Matt Udakis';
+institution = 'University of Bristol';
+publications = 'In preparation';
+lab = 'Jack Mellor lab';
+brainArea = 'Hippocampus CA1-2';
+greenIndicator = 'Fluo5f';
+redIndicator = 'Alexa594';
+```
+The names of most of these parameters are self-explanatory. The green and red indicators are calcium indicator types named based on the light wavelength they emit. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate imaging/recording sessions. The animal metadata is defined in the code snippet below:
+```
+animalID = 'm1';
+ageInDays = 100;
+age = ['P' num2str(ageInDays) 'D']; % Convert to ISO8601 format: https://en.wikipedia.org/wiki/ISO_8601#Durations
+strain = 'C57BL/6J';
+sex = 'M';
+species = 'Mus musculus';
+weight = [];
+description = '001'; % Animal testing order.
+```
+Names of these parameters are again self-explanatory. Finally, we define the subject level metadata in the code below:
+```
+startYear = 2020;
+startMonth = 12;
+startDay = 4;
+startTime = datetime(startYear, startMonth, startDay);
+...
+sliceNumber = 2;
+cellNumber = 1;
+imagingRate = 1/21; % A single linescan duration is 1sec with 20sec period in between linescans
+lineRate = 1000.; % A number of lines scanned in a second.
+sessionID = [animalID '_' year month day '_s' num2str(sliceNumber) ...
+  '_c' num2str(cellNumber)]; % mouse-id_time_slice-id_cell-id
+sessionDescription = 'Single cell imaging in a slice combined with somatic current clamp recordings and the stimulation of Schaffer collaterals';
+sessionNotes = ['201204 - Slice 2 Imaging 3 dendrite regions roughly in the SO SR and SLM regions   ' ...
+                'Same line scan with same intensity of stim (2.3V) at different locations along the cell   ' ...
+                'Ephys frames to match up with linescans   ' ...
+                'Frames   ' ...
+                '1-8 Bottom Den   ' ...
+                '10-19 Middle Den   ' ...
+                '22-28 Top Dendrite   ' ...
+                'Missed a few of the imaging with the ephys so more Ephys traces than linescans   ' ...
+                'by the end of the experiment the top or neuron started to bleb.'];
+```
+Again, these variables are mostly self-explanatory or commented in the code. The sessionNotes variable is coming from the ```Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/labbbook.txt``` file.
+
+The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like [odML](http://g-node.github.io/python-odml/). Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.
+
+The initialisation process is completed by intialising the Matlab NWB classes by calling
+```
+generateCore;
+```
+We start the conversion process by creating an [```NWBFile```](https://neurodatawithoutborders.github.io/matnwb/doc/NwbFile.html) object and defining session metadata:
+```
+% Assign NWB file fields
+nwb = NwbFile( ...
+  'session_description', sessionDescription, ...
+  'identifier', sessionID, ...
+  'session_start_time', startTime, ...
+  'general_experimenter', experimenter, ... % optional
+  'general_session_id', sessionID, ... % optional
+  'general_institution', institution, ... % optional
+  'general_related_publications', publications, ... % optional
+  'general_notes', sessionNotes, ... % optional
+  'general_lab', lab); % optional
+```
+Each file must have a ```session_description``` identifier and a ```session_start_time``` parameter. We then initialise the [```Subject```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Subject.html) object and the metadata it contains:
+```
+% Create subject object
+subject = types.core.Subject( ...
+  'subject_id', animalID, ...
+  'age', age, ...
+  'description', description, ...
+  'species', species, ...
+  'sex', sex);
+nwb.general_subject = subject;
+```
+
+(tutorials-caimage-convert2nwb-matlab-create_img_planes)=
+#### Create Imaging Planes
+In order to store optical imaging data, we need to create imaging planes. First, we create [```OpticalChannel```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/OpticalChannel.html) objects for each calcium indicator we use. The objects contain ```description``` and ```emission_lambda``` properties. In our case we use indicators Fluo5f and Alexa594 which have their maximum emission wavelengths at approximately 516 and 616 nanometers, respectively. These wavelength roughly correspond to green and red colours. Therefore, we name the channels based on the colours their corresponding calcium indicators emit.
+```
+green_optical_channel = types.core.OpticalChannel( ...
+  'description', ['green channel corresponding to ' greenIndicator], ...
+  'emission_lambda', 516.);
+
+red_optical_channel = types.core.OpticalChannel( ...
+  'description', ['red channel corresponding to ' redIndicator], ...
+  'emission_lambda', 616.);
+```
+Another needed prerequisite is the [```Device```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Device.html) object which is stored within the ```NWBFile``` object. Idealy, the ```Device``` object should have a ```description``` and ```manufacturer``` properties as defined below:
+```
+% Create the imaging device object
+device = types.core.Device(...
+  'description', 'Two-photon microscope', ...
+  'manufacturer', 'Scientifica');
+nwb.general_devices.set('2P_microscope', device);
+```
+We name the device as 2P_microscope but you are free to name it differently. Having created ```OpticalChannel``` and ```Device``` objects we can now create optical imaging planes corresponding to the green and red optical channels. We do this by executing the code below:
+```
+% Create imaging plane objects
+imaging_plane_name = 'green_imaging_plane';
+green_imaging_plane = types.core.ImagingPlane( ...
+  'optical_channel', green_optical_channel, ...
+  'description', 'The plane for imaging calcium indicator Fluo5f.', ...
+  'device', types.untyped.SoftLink(device), ...
+  'excitation_lambda', 810., ...
+  'imaging_rate', imagingRate, ...
+  'indicator', 'Fluo5f', ...
+  'location', brainArea);
+nwb.general_optophysiology.set(imaging_plane_name, green_imaging_plane);
+
+imaging_plane_name = 'red_imaging_plane';
+red_imaging_plane = types.core.ImagingPlane( ...
+  'optical_channel', red_optical_channel, ...
+  'description', 'The plane for imaging calcium indicator Alexa594.', ...
+  'device', types.untyped.SoftLink(device), ...
+  'excitation_lambda', 810., ...
+  'imaging_rate', imagingRate, ...
+  'indicator', 'Alexa594', ...
+  'location', brainArea);
+nwb.general_optophysiology.set(imaging_plane_name, red_imaging_plane);
+```
+The [```ImagingPlane```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/ImagingPlane.html) object defines various properties of imaging planes used to generate the optical physiology data. Required properties include ```excitation_lambda``` (the wavelength used to excite calcium indicators in nm), ```indicator```, ```location``` (brain area where the imaging plane is located), ```optical_channel``` (previously created ```OpticalChannel``` objects), and ```device``` (a link to the ```Device``` object defining the two-photon microscope). You may have noticed that the ```device``` property is set as a ```Softlink``` object which is used to link to an already existing NWB object (in our case) or to an object within an NWB file using a path. It is also useful to provide ```description```, ```imaging_rate``` (the rate at which individual linescans are obtained), and any other properties you deem necessary. Such properties may include ```origin_coords``` defining physical location of the first element of the imaging plane relative to some reference point (e.g., bregma; defined by the ```reference_frame``` property) and ```grid_spacing``` to define the distance between individual pixels within the imaging plane.
+
+(tutorials-caimage-convert2nwb-matlab-load-data)=
+#### Load Imaging/Recording Data
+
 
 ```{note}
 This section is work in progress. Current priority!
