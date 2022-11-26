@@ -508,7 +508,7 @@ electrodesTable = nwb2.general_extracellular_ephys_electrodes.toTable();
 
 (tutorials-silicon-probe-convert2nwb-matlab-validate)=
 #### Validate NWB File
-MatNWB does not provide its own NWB file validator. However, you can validate NWB files generated using Matlab in python. For instructions on how to do it, refer to the corresponding [PyNWB validation section](tutorials-silicon-probe-convert2nwb-py-validate) of the tutorial.
+MatNWB does not provide its own NWB file validator. However, you can validate NWB files generated using Matlab in Python. For instructions on how to do it, refer to the corresponding [PyNWB validation section](tutorials-silicon-probe-convert2nwb-py-validate) of the tutorial.
 
 (tutorials-silicon-probe-convert2nwb-matlab-resources)=
 #### Resources

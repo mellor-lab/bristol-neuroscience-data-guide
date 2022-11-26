@@ -469,6 +469,63 @@ title="Print to PDF"
        Load Imaging/Recording Data
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convert-fluorescence-data">
+       Convert Fluorescence Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convert-change-in-fluorescence-intensity-data">
+       Convert Change in Fluorescence Intensity Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convert-static-fluorescence-images">
+       Convert Static Fluorescence Images
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convert-intracellular-electrophysiology-recording-data">
+       Convert Intracellular Electrophysiology Recording Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#save-nwb-file">
+       Save NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#read-nwb-file">
+       Read NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#validate-nwb-file">
+       Validate NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#resources">
+       Resources
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-to-nwb-using-python">
+     Convert to NWB Using Python
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-pynwb">
+       Install PyNWB
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-caimage-convert2nwb-py-validate">
+       Validate NWB File
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -547,6 +604,63 @@ title="Print to PDF"
        Load Imaging/Recording Data
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convert-fluorescence-data">
+       Convert Fluorescence Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convert-change-in-fluorescence-intensity-data">
+       Convert Change in Fluorescence Intensity Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convert-static-fluorescence-images">
+       Convert Static Fluorescence Images
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convert-intracellular-electrophysiology-recording-data">
+       Convert Intracellular Electrophysiology Recording Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#save-nwb-file">
+       Save NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#read-nwb-file">
+       Read NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#validate-nwb-file">
+       Validate NWB File
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#resources">
+       Resources
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-to-nwb-using-python">
+     Convert to NWB Using Python
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-pynwb">
+       Install PyNWB
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tutorials-caimage-convert2nwb-py-validate">
+       Validate NWB File
+      </a>
+     </li>
     </ul>
    </li>
   </ul>
@@ -609,7 +723,7 @@ title="Print to PDF"
 <p>       <strong>Figure 2. Enter Repository Details Using Web Interface</strong></p>
 <p>Finally, you can upload files by clicking the blue Upload file button on the repository page.</p>
 <a class="reference internal image-reference" href="../_images/Fig03-upload-repo.png" id="fig-gin-caimage-upload-repo"><img alt="../_images/Fig03-upload-repo.png" class="align-center" id="fig-gin-caimage-upload-repo" src="../_images/Fig03-upload-repo.png" style="width: 690px;" /></a>
-<p>       <strong>Figure 3. Upload Reposiotry Files Using Web Interface</strong></p>
+<p>       <strong>Figure 3. Upload Repository Files Using Web Interface</strong></p>
 <p>The limitation of using the web interface is that every time you update your remote repository (upload files), you will be limited to uploading 100 files at a time with each file being no larger than 10 gigabytes. Therefore, it is more effecient/effective to use the command line tools which have none of these limitations.</p>
 <p>When you use the web interface, you can specify the commit message title (no more than 50 characters by convention) and the commit message body (no more than 72 characters by convention).</p>
 </section>
@@ -793,6 +907,358 @@ title="Print to PDF"
 </section>
 <section id="load-imaging-recording-data">
 <span id="tutorials-caimage-convert2nwb-matlab-load-data"></span><h4>Load Imaging/Recording Data<a class="headerlink" href="#load-imaging-recording-data" title="Permalink to this headline">#</a></h4>
+<p>The next part of the conversion script loads aggregated and preprocessed data stored inside the three MAT files in the <code class="docutils literal notranslate"><span class="pre">Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed</span></code> folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Load</span> <span class="n">data</span>
+<span class="n">dendrite</span> <span class="o">=</span> <span class="s1">&#39;Bot&#39;</span><span class="p">;</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="n">load</span><span class="p">([</span><span class="s1">&#39;..\Analysed</span><span class="se">\&#39;</span><span class="s1"> year month day &#39;</span><span class="n">__s</span><span class="s1">&#39; num2str(sliceNumber) ...</span>
+  <span class="s1">&#39;d&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">cellNumber</span><span class="p">)</span> <span class="s1">&#39;_004_ED__1 &#39;</span> <span class="n">dendrite</span> <span class="s1">&#39;den_Analysed.mat&#39;</span><span class="p">]);</span>
+<span class="n">dendrite</span> <span class="o">=</span> <span class="s1">&#39;Mid&#39;</span><span class="p">;</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="n">load</span><span class="p">([</span><span class="s1">&#39;..\Analysed</span><span class="se">\&#39;</span><span class="s1"> year month day &#39;</span><span class="n">__s</span><span class="s1">&#39; num2str(sliceNumber) ...</span>
+  <span class="s1">&#39;d&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">cellNumber</span><span class="p">)</span> <span class="s1">&#39;_004_ED__1 &#39;</span> <span class="n">dendrite</span> <span class="s1">&#39;den_Analysed.mat&#39;</span><span class="p">]);</span>
+<span class="n">dendrite</span> <span class="o">=</span> <span class="s1">&#39;Top&#39;</span><span class="p">;</span>
+<span class="n">data3</span> <span class="o">=</span> <span class="n">load</span><span class="p">([</span><span class="s1">&#39;..\Analysed</span><span class="se">\&#39;</span><span class="s1"> year month day &#39;</span><span class="n">__s</span><span class="s1">&#39; num2str(sliceNumber) ...</span>
+  <span class="s1">&#39;d&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">cellNumber</span><span class="p">)</span> <span class="s1">&#39;_004_ED__1 &#39;</span> <span class="n">dendrite</span> <span class="s1">&#39;den_Analysed.mat&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Three MAT files correspond to three imaged regions of interest (ROIs) of the neuron. The first region of interest, refered to as the bottom dendrite, is the pyramidal cell dendrite located in the Stratum Oriens (SO) of the CA1-2 region of the hippocampus. This information is available in the <code class="docutils literal notranslate"><span class="pre">sessionNotes</span></code> variable. The remaining two files refered to as middle and top dendrite data correspond to ROIs located in the Stratum Radiatum (SR) and Stratum Lacunosum Moleculare (SLM), respectively.</p>
+<p>The table below describes the variables inside the files.</p>
+<table class="colwidths-auto table" id="tutorials-caimage-convert2nwb-matlab-variable-table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ExpName</p></td>
+<td><p><em>The experiment ID.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>Line_nums</p></td>
+<td><p><em>A number of line scans for the experiment.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>Frame_nums</p></td>
+<td><p><em>A number of optical imaging frames (or electrophysiology recording sweeps) for the experiment.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>ROI_nums</p></td>
+<td><p><em>A number of regions of interest (ROIs) in the experiment.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>Ephys_Time</p></td>
+<td><p><em>Time points for electrophysiology recordings in ms.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ephys_Avg</p></td>
+<td><p><em>A membrane potential (mV) trace averaged over all sweeps for that ROI (see the lab book or <code class="docutils literal notranslate"><span class="pre">sessionNotes</span></code> for corresponding recording sweeps).</em></p></td>
+</tr>
+<tr class="row-even"><td><p>Calcium_Avg</p></td>
+<td><p><em>An average linescan calcium trace (denoised dF/F) (averaged over all linescans for that ROI).</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>Calcium_Time</p></td>
+<td><p><em>Time points for calcium imaging in ms.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>Calcium_deltaF</p></td>
+<td><p><em>Individual linescan calcium traces (denoised dF/F averaged across the width of the imaged dendrite).</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ephys_data</p></td>
+<td><p><em>Raw membrane potential (mV) data. Recording sweeps include all ROIs (see the lab book or <code class="docutils literal notranslate"><span class="pre">sessionNotes</span></code> for the corresponding sweeps for this particular ROI).</em></p></td>
+</tr>
+<tr class="row-even"><td><p>Flur5_denoised</p></td>
+<td><p><em>Individual linescan images of the calcium indicator Fluo5f data run through denoising algorithm (the image was cropped to the linescan region). Dimensions correspond to dendritic geometry (length and width). The length is also a time dimension.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>Alexa_denoised</p></td>
+<td><p><em>Individual linescan images of Alexa594 structure data run through denoising algorithm (the image was cropped to the linescan region). Dimensions have the same correspondance as for Flur5_denoised.</em></p></td>
+</tr>
+<tr class="row-even"><td><p>imaging_vars</p></td>
+<td><p><em>Variables from ScanImage software for the two-photon acquisitions.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>Neuron</p></td>
+<td><p><em>A stitched image of the filled neuron recorded from (a 3-channel colourmap image).</em></p></td>
+</tr>
+<tr class="row-even"><td><p>ROI_img</p></td>
+<td><p><em>An image of the ROI recorded from (a grayscale image).</em></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 1. Preprocessed Data</strong></p>
+<p>We are interested in <code class="docutils literal notranslate"><span class="pre">Ephys_Time</span></code>, <code class="docutils literal notranslate"><span class="pre">Calcium_Time</span></code>, <code class="docutils literal notranslate"><span class="pre">Calcium_deltaF</span></code>, <code class="docutils literal notranslate"><span class="pre">Ephys_data</span></code>, <code class="docutils literal notranslate"><span class="pre">Flur5_denoised</span></code>, <code class="docutils literal notranslate"><span class="pre">Alexa_denoised</span></code>, <code class="docutils literal notranslate"><span class="pre">Neuron</span></code>, and <code class="docutils literal notranslate"><span class="pre">ROI_img</span></code> and are going to work with these variables during the tutorial.</p>
+<p>As part of laoding the data, we also convert the variables with fluorescence data to the regular array form. For that purpose the array dimensions of data inside cell arrays have to be equalised by appending data using NaNs. This is done by passing cell arrays to the <code class="docutils literal notranslate"><span class="pre">appendLinescans</span></code> function which then outputs regular 3D arrays:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Append</span> <span class="n">raw</span> <span class="n">linescans</span> <span class="n">so</span> <span class="n">they</span> <span class="n">have</span> <span class="n">equal</span> <span class="n">widths</span>
+<span class="n">data1</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Flur5_denoised</span> <span class="o">=</span> <span class="n">appendLinescans</span><span class="p">(</span><span class="n">data1</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Flur5_denoised</span><span class="p">);</span>
+<span class="n">data1</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Alexa_denoised</span> <span class="o">=</span> <span class="n">appendLinescans</span><span class="p">(</span><span class="n">data1</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Alexa_denoised</span><span class="p">);</span>
+<span class="n">data2</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Flur5_denoised</span> <span class="o">=</span> <span class="n">appendLinescans</span><span class="p">(</span><span class="n">data2</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Flur5_denoised</span><span class="p">);</span>
+<span class="n">data2</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Alexa_denoised</span> <span class="o">=</span> <span class="n">appendLinescans</span><span class="p">(</span><span class="n">data2</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Alexa_denoised</span><span class="p">);</span>
+<span class="n">data3</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Flur5_denoised</span> <span class="o">=</span> <span class="n">appendLinescans</span><span class="p">(</span><span class="n">data3</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Flur5_denoised</span><span class="p">);</span>
+<span class="n">data3</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Alexa_denoised</span> <span class="o">=</span> <span class="n">appendLinescans</span><span class="p">(</span><span class="n">data3</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Alexa_denoised</span><span class="p">);</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="convert-fluorescence-data">
+<span id="tutorials-caimage-convert2nwb-matlab-convert-fluorescence"></span><h4>Convert Fluorescence Data<a class="headerlink" href="#convert-fluorescence-data" title="Permalink to this headline">#</a></h4>
+<p>We convert the fluorescence data by invoking <code class="docutils literal notranslate"><span class="pre">setTwoPhotonSeries</span></code> function as shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span><span class="o">.</span><span class="n">indicator</span> <span class="o">=</span> <span class="n">greenIndicator</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">imagingPlane</span> <span class="o">=</span> <span class="n">green_imaging_plane</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">imagingRate</span> <span class="o">=</span> <span class="n">imagingRate</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">lineRate</span> <span class="o">=</span> <span class="n">lineRate</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Flur5_denoised</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span> <span class="o">=</span> <span class="s1">&#39;bottom&#39;</span><span class="p">;</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">setTwoPhotonSeries</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="nb">input</span><span class="p">);</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>This is repeated six times to process fluorescence data for the two different calcium indicators and the three different ROIs (2x3). The conversion function body code is shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Create</span> <span class="n">image</span> <span class="n">series</span>
+<span class="n">image_series</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">TwoPhotonSeries</span><span class="p">(</span> <span class="o">...</span>
+  <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">input</span><span class="o">.</span><span class="n">indicator</span> <span class="s1">&#39; linescans of the &#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span> <span class="s1">&#39; dendrite&#39;</span><span class="p">],</span> <span class="o">...</span>
+  <span class="s1">&#39;imaging_plane&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">untyped</span><span class="o">.</span><span class="n">SoftLink</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">imagingPlane</span><span class="p">),</span> <span class="o">...</span>
+  <span class="s1">&#39;starting_time&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;starting_time_rate&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">imagingRate</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;scan_line_rate&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">lineRate</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;data_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;a.u.&#39;</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;data_continuity&#39;</span><span class="p">,</span> <span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;comments&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;This two-photon series contains &#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">indicator</span> <span class="s1">&#39; linescans of the &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span> <span class="s1">&#39; (ROI) with the first dimension corresponding to time &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;(or to individual linescans). Each linescan is 1-sec in duration with &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;20-sec intervals between two linescans. The second dimension corresponds &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;to individual lines spanning the length of the dendrite in the ROI. &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;The third dimension corresponds to the width of the dendrite. &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;Some linescans may contain appended NaN values to make &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;widths of different linescans be equal within the same ROI.&#39;</span><span class="p">]);</span>
+
+<span class="o">%</span> <span class="n">Name</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">the</span> <span class="n">two</span><span class="o">-</span><span class="n">photon</span> <span class="n">series</span> <span class="n">to</span> <span class="n">the</span> <span class="n">NWB</span> <span class="n">file</span>
+<span class="k">if</span> <span class="n">strcmpi</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">indicator</span><span class="p">,</span> <span class="s1">&#39;Fluo5f&#39;</span><span class="p">)</span>
+  <span class="n">opticalChannel</span> <span class="o">=</span> <span class="s1">&#39;Green&#39;</span><span class="p">;</span>
+<span class="n">elseif</span> <span class="n">strcmpi</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">indicator</span><span class="p">,</span> <span class="s1">&#39;Alexa594&#39;</span><span class="p">)</span>
+  <span class="n">opticalChannel</span> <span class="o">=</span> <span class="s1">&#39;Red&#39;</span><span class="p">;</span>
+<span class="n">end</span>
+<span class="k">if</span> <span class="n">strcmpi</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+  <span class="n">dendriteID</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>
+<span class="n">elseif</span> <span class="n">strcmpi</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span><span class="p">,</span> <span class="s1">&#39;middle&#39;</span><span class="p">)</span>
+  <span class="n">dendriteID</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span><span class="p">;</span>
+<span class="n">elseif</span> <span class="n">strcmpi</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">)</span>
+  <span class="n">dendriteID</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span><span class="p">;</span>
+<span class="n">end</span>
+<span class="n">nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">set</span><span class="p">([</span><span class="s1">&#39;TwoPhotonSeries&#39;</span> <span class="n">opticalChannel</span> <span class="n">dendriteID</span><span class="p">],</span> <span class="n">image_series</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The fluorescence data is added to the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> object by creating a <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/TwoPhotonSeries.html"><code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code></a> object. <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> object has the following required properties: <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">imaging_plane</span></code>, and <code class="docutils literal notranslate"><span class="pre">starting_time_rate</span></code>. In our case, the <code class="docutils literal notranslate"><span class="pre">data</span></code> property contains the actual fluorescence data in a 3D array form with its dimensions described in [Table 1].(tutorials-caimage-convert2nwb-matlab-variable-table) (<code class="docutils literal notranslate"><span class="pre">Flur5_denoised</span></code> and <code class="docutils literal notranslate"><span class="pre">Alexa_denoised</span></code> variables). The <code class="docutils literal notranslate"><span class="pre">imaging_plane</span></code> property uses the <code class="docutils literal notranslate"><span class="pre">SoftLink</span></code> object to link to a particular <code class="docutils literal notranslate"><span class="pre">ImagingPlane</span></code> object (in our case there are two: green and red). The <code class="docutils literal notranslate"><span class="pre">starting_time_rate</span></code> property corresponds to the rate at which individual linescans were acquired. However, it does not need to be organised this way and can refer to a different data dimension. Therefore, it is important to use <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">comments</span></code>, and <code class="docutils literal notranslate"><span class="pre">data_continuity</span></code> properties to explain how the data is organised. For example, data containing individual linescans is not continuous and should be described as having the step quality by the <code class="docutils literal notranslate"><span class="pre">data_continuity</span></code> property. The property <code class="docutils literal notranslate"><span class="pre">scan_line_rate</span></code> describes the rate at which individual image lines were obtained and corresponds to the second dimension of the data.</p>
+</section>
+<section id="convert-change-in-fluorescence-intensity-data">
+<span id="tutorials-caimage-convert2nwb-matlab-convert-fluorescence-intensity-change"></span><h4>Convert Change in Fluorescence Intensity Data<a class="headerlink" href="#convert-change-in-fluorescence-intensity-data" title="Permalink to this headline">#</a></h4>
+<p>In addition to converting the denoised fluorescence signal we are also going to convert the change in fluorescence intensity data (delta fluorescence). The delta F estimate is derived from the Alexa594 calcium indicator data or the red colour channel signal. It is stored using the <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> object similar to the denoised raw fluorescence data as described in the previous subsection. We perform conversion for all three ROIs as shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Add</span> <span class="n">optical</span> <span class="n">physiology</span> <span class="n">data</span><span class="p">:</span> <span class="n">delta</span> <span class="n">fluorescence</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">indicator</span> <span class="o">=</span> <span class="n">redIndicator</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">imagingPlane</span> <span class="o">=</span> <span class="n">red_imaging_plane</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">imagingRate</span> <span class="o">=</span> <span class="n">imagingRate</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">lineRate</span> <span class="o">=</span> <span class="n">lineRate</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Calcium_deltaF</span><span class="s1">&#39;;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span> <span class="o">=</span> <span class="s1">&#39;bottom&#39;</span><span class="p">;</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">setDeltaFSeries</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="nb">input</span><span class="p">);</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>The actual conversion is performed by the <code class="docutils literal notranslate"><span class="pre">setDeltaFSeries</span></code> function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Create</span> <span class="n">image</span> <span class="n">series</span>
+<span class="n">image_series</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">TwoPhotonSeries</span><span class="p">(</span> <span class="o">...</span>
+  <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Delta F data for the &#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span><span class="p">,</span> <span class="o">...</span>
+                  <span class="s1">&#39; calculated based on &#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">indicator</span> <span class="s1">&#39;.&#39;</span><span class="p">],</span> <span class="o">...</span>
+  <span class="s1">&#39;imaging_plane&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">untyped</span><span class="o">.</span><span class="n">SoftLink</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">imagingPlane</span><span class="p">),</span> <span class="o">...</span>
+  <span class="s1">&#39;starting_time&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;starting_time_rate&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">imagingRate</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;scan_line_rate&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">lineRate</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;data_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;normalised&#39;</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;data_continuity&#39;</span><span class="p">,</span> <span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;comments&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;This two-photon series contains delta F data calculated based on &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="nb">input</span><span class="o">.</span><span class="n">indicator</span> <span class="s1">&#39; for the &#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span> <span class="s1">&#39; (ROI) &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;with the first dimension corresponding to time &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;(or to individual linescans). Each linescan is 1-sec in duration with &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;20-sec intervals between two linescans. The second dimension corresponds &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;to individual lines spanning the length of the dendrite in the ROI. &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;The data is averaged across the dendritic width.&#39;</span><span class="p">]);</span>
+
+<span class="o">%</span> <span class="n">Name</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">the</span> <span class="n">two</span><span class="o">-</span><span class="n">photon</span> <span class="n">delta</span> <span class="n">F</span> <span class="n">series</span> <span class="n">to</span> <span class="n">the</span> <span class="n">NWB</span> <span class="n">file</span>
+<span class="k">if</span> <span class="n">strcmpi</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+  <span class="n">dendriteID</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">;</span>
+<span class="n">elseif</span> <span class="n">strcmpi</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span><span class="p">,</span> <span class="s1">&#39;middle&#39;</span><span class="p">)</span>
+  <span class="n">dendriteID</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span><span class="p">;</span>
+<span class="n">elseif</span> <span class="n">strcmpi</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">)</span>
+  <span class="n">dendriteID</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span><span class="p">;</span>
+<span class="n">end</span>
+<span class="n">nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">set</span><span class="p">([</span><span class="s1">&#39;TwoPhotonDeltaFSeries&#39;</span> <span class="n">dendriteID</span><span class="p">],</span> <span class="n">image_series</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The delta F data has only two dimensions as the signal is averaged across the dendritic width (<code class="docutils literal notranslate"><span class="pre">Calcium_deltaF</span></code> variable described in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>).</p>
+<p>All <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> objects are stored within the <code class="docutils literal notranslate"><span class="pre">acquisition</span></code> data interface of the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> object. However, this is not the only way of storing ROI fluorescence data. Alternatively, this type of data could be stored by defining an image mask used to extract ROI data from the wider fluorescence imaging data. If this is how you have obtained your own data, then it is worth consulting a different calcium imaging tutorial available <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/ophys.html">here</a>.</p>
+</section>
+<section id="convert-static-fluorescence-images">
+<span id="tutorials-caimage-convert2nwb-matlab-convert-images"></span><h4>Convert Static Fluorescence Images<a class="headerlink" href="#convert-static-fluorescence-images" title="Permalink to this headline">#</a></h4>
+<p>As a final step of converting your calcium imaging data you may want to add static neuron and ROI images to your NWB file. Static colour images can be stored as <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/RGBImage.html"><code class="docutils literal notranslate"><span class="pre">RGBImage</span></code></a> objects with the <code class="docutils literal notranslate"><span class="pre">data</span></code> property containing an array that has the spatial dimensions plus the third dimension corresponding to colour (three planes of RGB values; <code class="docutils literal notranslate"><span class="pre">Neuron</span></code> variable described in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">neuron_image</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">RGBImage</span><span class="p">(</span> <span class="o">...</span>
+    <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">data1</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Neuron</span><span class="p">,</span> <span class="o">...</span>  <span class="o">%</span> <span class="n">required</span><span class="p">:</span> <span class="p">[</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">colour</span><span class="p">]</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;RGB image of the full neuron.&#39;</span> <span class="o">...</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Similarly, grayscale ROI images can be stored using <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/GrayscaleImage.html"><code class="docutils literal notranslate"><span class="pre">GrayscaleImage</span></code></a> objects (<code class="docutils literal notranslate"><span class="pre">ROI_img</span></code> variable described in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bottom_dend_image</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">GrayscaleImage</span><span class="p">(</span> <span class="o">...</span>
+    <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">data1</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">ROI_img</span><span class="p">,</span> <span class="o">...</span>  <span class="o">%</span> <span class="n">required</span><span class="p">:</span> <span class="p">[</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">]</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;Grayscale image of the bottom dendrite.&#39;</span> <span class="o">...</span>
+<span class="p">);</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Images are then grouped together using the <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Images.html"><code class="docutils literal notranslate"><span class="pre">Images</span></code></a> object and added to the <code class="docutils literal notranslate"><span class="pre">acquisition</span></code> data interface of the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> object as an <code class="docutils literal notranslate"><span class="pre">ImageCollection</span></code> object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_collection</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Images</span><span class="p">(</span> <span class="o">...</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;A collection of neuron and dendrite images.&#39;</span><span class="o">...</span>
+<span class="p">);</span>
+<span class="n">image_collection</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;neuron_image&#39;</span><span class="p">,</span> <span class="n">neuron_image</span><span class="p">);</span>
+<span class="n">image_collection</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;dendrite1_image&#39;</span><span class="p">,</span> <span class="n">bottom_dend_image</span><span class="p">);</span>
+<span class="n">image_collection</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;dendrite2_image&#39;</span><span class="p">,</span> <span class="n">middle_dend_image</span><span class="p">);</span>
+<span class="n">image_collection</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;dendrite3_image&#39;</span><span class="p">,</span> <span class="n">top_dend_image</span><span class="p">);</span>
+
+<span class="n">nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;ImageCollection&#39;</span><span class="p">,</span> <span class="n">image_collection</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This completes the conversion of the calcium imaging data into the NWB format.</p>
+</section>
+<section id="convert-intracellular-electrophysiology-recording-data">
+<span id="tutorials-caimage-convert2nwb-matlab-convert-icephys"></span><h4>Convert Intracellular Electrophysiology Recording Data<a class="headerlink" href="#convert-intracellular-electrophysiology-recording-data" title="Permalink to this headline">#</a></h4>
+<p>The calcium imaging data during this experiment were acquired in parallel to simultaneous intracellular somatic current clamp recordings in the imaged neuron. The recording sweeps are stored in the <code class="docutils literal notranslate"><span class="pre">Ephys_data</span></code> variable described in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>. The variable contains recording sweeps corresponding to all three ROI imaging data. Note that the sweeps cover the first 950 ms of corresponding calcium imaging linescans. Analogously to the imaging data, we start by creating the recording device Amplifier_Multiclamp_700A:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Create</span> <span class="n">the</span> <span class="n">recording</span> <span class="n">device</span> <span class="nb">object</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Device</span><span class="p">(</span> <span class="o">...</span>
+  <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;Amplifier for recording current clamp data.&#39;</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;manufacturer&#39;</span><span class="p">,</span> <span class="s1">&#39;Molecular Devices&#39;</span><span class="p">);</span>
+<span class="n">nwb</span><span class="o">.</span><span class="n">general_devices</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Amplifier_Multiclamp_700A&#39;</span><span class="p">,</span> <span class="n">device</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Then follow this by creating the <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/IntracellularElectrode.html"><code class="docutils literal notranslate"><span class="pre">IntracellularElectrode</span></code></a> object while providing any relevant information about it including the associated <code class="docutils literal notranslate"><span class="pre">Device</span></code> object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">electrode</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">IntracellularElectrode</span><span class="p">(</span> <span class="o">...</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;A patch clamp electrode&#39;</span><span class="p">,</span> <span class="o">...</span>
+    <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;Cell soma in CA1-2 of hippocampus&#39;</span><span class="p">,</span> <span class="o">...</span>
+    <span class="s1">&#39;slice&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;slice #&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">sliceNumber</span><span class="p">)],</span> <span class="o">...</span>
+    <span class="s1">&#39;device&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">untyped</span><span class="o">.</span><span class="n">SoftLink</span><span class="p">(</span><span class="n">device</span><span class="p">));</span>
+<span class="n">nwb</span><span class="o">.</span><span class="n">general_intracellular_ephys</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;icephys_electrode&#39;</span><span class="p">,</span> <span class="n">electrode</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Finally, we convert the intracellular current clamp recordings using the <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/CurrentClampSeries.html"><code class="docutils literal notranslate"><span class="pre">CurrentClampSeries</span></code></a> object by passing data to the <code class="docutils literal notranslate"><span class="pre">setCClampSeries</span></code> function for all ROIs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span><span class="o">.</span><span class="n">ephysTime</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Ephys_Time</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">nSweeps</span> <span class="o">=</span> <span class="n">nFrames</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">Analysed_data</span><span class="o">.</span><span class="n">Ephys_data</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">imagingRate</span> <span class="o">=</span> <span class="n">imagingRate</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">electrode</span> <span class="o">=</span> <span class="n">electrode</span><span class="p">;</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span> <span class="o">=</span> <span class="s1">&#39;bottom&#39;</span><span class="p">;</span>
+<span class="n">nwb</span> <span class="o">=</span> <span class="n">setCClampSeries</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="nb">input</span><span class="p">);</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>The function code is given below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">current_clamp_series</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">CurrentClampSeries</span><span class="p">(</span> <span class="o">...</span>
+  <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Somatic current clamp recording corresponding to &#39;</span><span class="p">,</span> <span class="o">...</span>
+                  <span class="s1">&#39;the initial part of the calcium imaging period &#39;</span><span class="p">,</span> <span class="o">...</span>
+                  <span class="s1">&#39;at &#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span> <span class="s1">&#39; dendrite.&#39;</span><span class="p">],</span> <span class="o">...</span>
+  <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">data</span><span class="p">(:,</span><span class="n">sweeps</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="s1">&#39;, ...</span>
+  <span class="s1">&#39;data_continuity&#39;</span><span class="p">,</span> <span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;data_unit&#39;</span><span class="p">,</span> <span class="s1">&#39;millivolt&#39;</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;starting_time&#39;</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;starting_time_rate&#39;</span><span class="p">,</span> <span class="nb">input</span><span class="o">.</span><span class="n">imagingRate</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;electrode&#39;</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">untyped</span><span class="o">.</span><span class="n">SoftLink</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">electrode</span><span class="p">),</span> <span class="o">...</span>
+  <span class="s1">&#39;stimulus_description&#39;</span><span class="p">,</span> <span class="s1">&#39;N/A&#39;</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;timestamps&#39;</span><span class="p">,</span> <span class="n">timestamps</span><span class="p">,</span> <span class="o">...</span>
+  <span class="s1">&#39;comments&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Somatic current clamp recording corresponding to &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;the initial part of the calcium imaging period &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;at &#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">dendriteID</span> <span class="s1">&#39; dendrite.&#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;The first dimension corresponds to individual &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;recording sweeps. The second dimension corresponds to &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;individual sweep data samples. The associated timestamps &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;variable provides timestamps for the second dimension. &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;This variable has to be combined with starting_time and &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;starting_time_rate variables to get absolute timestamps &#39;</span><span class="p">,</span> <span class="o">...</span>
+               <span class="s1">&#39;for each data point&#39;</span><span class="p">]);</span>
+<span class="n">nwb</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">set</span><span class="p">([</span><span class="s1">&#39;CurrentClampSeries&#39;</span> <span class="n">dendriteID</span><span class="p">],</span>  <span class="n">current_clamp_series</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">CurrentClampSeries</span></code> is similar to the <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> object. The difference is that, while creating the former, we need to provide a link to the electrode object and, since there is no <code class="docutils literal notranslate"><span class="pre">scan_line_rate</span></code> property, we need to add the <code class="docutils literal notranslate"><span class="pre">timestamps</span></code> variable corresponding to the second dimension of the electrophysiology data (<code class="docutils literal notranslate"><span class="pre">Ephys_Time</span></code> and <code class="docutils literal notranslate"><span class="pre">Ephys_data</span></code> variables defined in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>, respectively).</p>
+</section>
+<section id="save-nwb-file">
+<span id="tutorials-caimage-convert2nwb-matlab-save"></span><h4>Save NWB File<a class="headerlink" href="#save-nwb-file" title="Permalink to this headline">#</a></h4>
+<p>We call the <code class="docutils literal notranslate"><span class="pre">nwbExport</span></code> function to save our data in the NWB format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span> <span class="n">Save</span> <span class="n">the</span> <span class="n">converted</span> <span class="n">NWB</span> <span class="n">file</span>
+<span class="n">nwbExport</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span> <span class="p">[</span><span class="n">sessionID</span> <span class="s1">&#39;.nwb&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</section>
+<section id="read-nwb-file">
+<span id="tutorials-caimage-convert2nwb-matlab-read"></span><h4>Read NWB File<a class="headerlink" href="#read-nwb-file" title="Permalink to this headline">#</a></h4>
+<p>Now if you want to open the NWB file that you just saved in Matlab, you can issue a command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nwb2</span> <span class="o">=</span> <span class="n">nwbRead</span><span class="p">(</span><span class="s1">&#39;m1_201204_s2_c1.nwb&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>which will read the file passively. The action is fast and it does not load all of the data at once but rather make it readily accessible. This is useful as it allows you to read data selectively without loading the entire file content into the computer memory.</p>
+<p>In order to access stored two-photon calcium imaging data stored inside <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> objects, execute the code given below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TwoPhotonSeriesGreen1</span> <span class="o">=</span> <span class="n">nwb2</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TwoPhotonSeriesGreen1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">loadAll</span><span class="o">.</span><span class="n">data</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Other properties can be accessed similarly by replacing the <code class="docutils literal notranslate"><span class="pre">data</span></code> property with a relevant property name (e.g., <code class="docutils literal notranslate"><span class="pre">scan_line_rate</span></code>).</p>
+<p>Stored images can be accessed by issuing the following command, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">neuronImage</span> <span class="o">=</span> <span class="n">nwb2</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ImageCollection&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;neuron_image&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">loadAll</span><span class="o">.</span><span class="n">data</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Finally, voltage clamp data is accessible in a similar way to the <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> objects. For example,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CurrentClampSeries1</span> <span class="o">=</span> <span class="n">nwb2</span><span class="o">.</span><span class="n">acquisition</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CurrentClampSeries1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">loadAll</span><span class="o">.</span><span class="n">data</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>will give you recording sweeps obtained while imaging the bottom dendrite.</p>
+<p>Some metadata is often directly available as properties of the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> object, like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sessionDescription</span> <span class="o">=</span> <span class="n">nwb2</span><span class="o">.</span><span class="n">session_description</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Subject metadata is available via the command, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">animalID</span> <span class="o">=</span> <span class="n">nwb2</span><span class="o">.</span><span class="n">general_subject</span><span class="o">.</span><span class="n">subject_id</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>More on reading optical physiology data stored in NWB files can be found in an external tutorial <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/ophys.html">here</a>.</p>
+</section>
+<section id="validate-nwb-file">
+<span id="tutorials-caimage-convert2nwb-matlab-validate"></span><h4>Validate NWB File<a class="headerlink" href="#validate-nwb-file" title="Permalink to this headline">#</a></h4>
+<p>MatNWB does not provide its own NWB file validator. However, you can validate NWB files generated using Matlab in Python. For instructions on how to do it, refer to the corresponding <a class="reference internal" href="#tutorials-caimage-convert2nwb-py-validate"><span class="std std-ref">PyNWB validation section</span></a> of the tutorial.</p>
+</section>
+<section id="resources">
+<span id="tutorials-caimage-convert2nwb-matlab-resources"></span><h4>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h4>
+<p>This section explained how you can use Matlab to convert your calcium imaging and accompanying current clamp data into NWB files. It is not an exhaustive overview of Matnwb toolbox optical physiology functionality. There are other potential use cases involving imaging in multiple neurons while simultaneously recording behavioural data, for example. There is a number of externally available tutorials covering some aspects of converting data obtained in optical physiology experiments to the NWB file format using Matlab:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/intro.html">Intro to NWB Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/ophys.html">MatNWB Optical Physiology Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/images.html">Storing Image Data in NWB</a></p></li>
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/icephys.html">Intracellular Electrophysiology Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/behavior.html">Behavior Data Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/index.html">MatNWB API Documentation</a></p></li>
+<li><p><a class="reference external" href="https://nwb-schema.readthedocs.io/en/latest/index.html">NWB Schema Overview</a></p></li>
+</ul>
+</section>
+</section>
+<section id="convert-to-nwb-using-python">
+<span id="tutorials-caimage-convert2nwb-py"></span><h3>Convert to NWB Using Python<a class="headerlink" href="#convert-to-nwb-using-python" title="Permalink to this headline">#</a></h3>
+<section id="install-pynwb">
+<span id="tutorials-caimage-convert2nwb-py-install"></span><h4>Install PyNWB<a class="headerlink" href="#install-pynwb" title="Permalink to this headline">#</a></h4>
+<p>To convert your extracellular electrophysiology data, you will need to install PyNWB first. To do so, type in your terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pynwb</span>
+</pre></div>
+</div>
+<p>Now you’re ready to start working with PyNWB. The full installation instructions are available <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/install_users.html">here</a>.</p>
+</section>
+<section id="tutorials-caimage-convert2nwb-py-validate">
+<span id="id1"></span><h4>Validate NWB File<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-validate" title="Permalink to this headline">#</a></h4>
+<p>For validating NWB files use command line and type in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pynwb</span><span class="o">.</span><span class="n">validate</span> <span class="n">m1_201204_s2_c1</span><span class="o">.</span><span class="n">nwb</span>
+</pre></div>
+</div>
+<p>in order to validate the file that was recently created. The output should be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Validating</span> <span class="n">m1_201204_s2_c1</span><span class="o">.</span><span class="n">nwb</span> <span class="n">against</span> <span class="n">cached</span> <span class="n">namespace</span> <span class="n">information</span> <span class="n">using</span> <span class="n">namespace</span> <span class="s1">&#39;core&#39;</span><span class="o">.</span>
+ <span class="o">-</span> <span class="n">no</span> <span class="n">errors</span> <span class="n">found</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The program exit code should be 0. On error, the program exit code is 1 and the list of errors is outputted.</p>
+<p>For more details on the validation process, refer to an external <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/validation.html">resource</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This section is work in progress. Current priority!</p>
