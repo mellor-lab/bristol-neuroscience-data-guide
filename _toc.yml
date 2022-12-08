@@ -5,7 +5,8 @@ root: intro
 parts:
 - caption: Documentation
   chapters:
-  - file: documentation/Installation Instructions
+  - file: documentation/Installation Instructions for GIN Client
+  - file: documentation/Installation Instructions for GIN Server
   - file: documentation/Repository Management with GIN
   - file: documentation/Repository Management with GIN Web Interface
   - file: documentation/Repository Management with WinGIN

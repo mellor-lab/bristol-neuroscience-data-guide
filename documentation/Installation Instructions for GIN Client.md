@@ -1,5 +1,5 @@
 (doc-install)=
-# Installation Instructions
+# Installation Instructions for GIN Client
 
 (doc-install-wingin)=
 ## WinGIN Installation
@@ -7,6 +7,7 @@ Download [WinGIN-install.exe](https://gin.g-node.org/G-Node/wingin-installers/ra
 
 (doc-install-gin-client)=
 ## GIN Client Installation
+(doc-install-gin-client-linux)=
 ### On Linux
 [Download the bundle file](https://gin.g-node.org/G-Node/gin-cli-releases/raw/master/gin-cli-latest.deb) containig GIN client, git, and git-annex. To install it, either double-click the file (if you are using graphical interface) or change your current working directory to the file location and execute the following line in the terminal
 ```
@@ -21,6 +22,7 @@ If you already have git and git-annex installed on your system, you can download
 
 (doc-install-git)=
 ## Git Installation
+(doc-install-git-linux)=
 ### On Linux
 To install git on a Linux machine, simply type in the terminal
 ```
@@ -33,6 +35,7 @@ git --version
 
 (doc-install-git-annex)=
 ## Git-Annex Installation
+(doc-install-git-annex-linux)=
 ### On Linux
 To install git-annex on a Linux machine, simply type in the terminal
 ```
