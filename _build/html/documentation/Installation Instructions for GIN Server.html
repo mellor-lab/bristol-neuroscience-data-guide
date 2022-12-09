@@ -445,15 +445,35 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#install-docker">
    Install Docker
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-apache-web-server">
+   Install Apache Web Server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-git-and-git-annex">
+   Install Git and Git-annex
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-gin">
+   Install GIN
+  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-kernel-based-virtual-machine-support">
-     Set-up Kernel-based Virtual Machine Support
+    <a class="reference internal nav-link" href="#install-gin-client">
+     Install GIN client
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-docker-compose">
-     Install Docker Compose
+    <a class="reference internal nav-link" href="#set-up-gin-installation-folders">
+     Set-up GIN Installation Folders
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prepare-gin-instance-file">
+     Prepare GIN Instance File
     </a>
    </li>
   </ul>
@@ -503,15 +523,35 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#install-docker">
    Install Docker
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-apache-web-server">
+   Install Apache Web Server
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-git-and-git-annex">
+   Install Git and Git-annex
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-gin">
+   Install GIN
+  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-kernel-based-virtual-machine-support">
-     Set-up Kernel-based Virtual Machine Support
+    <a class="reference internal nav-link" href="#install-gin-client">
+     Install GIN client
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-docker-compose">
-     Install Docker Compose
+    <a class="reference internal nav-link" href="#set-up-gin-installation-folders">
+     Set-up GIN Installation Folders
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prepare-gin-instance-file">
+     Prepare GIN Instance File
     </a>
    </li>
   </ul>
@@ -673,7 +713,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>You should see a similar output indicating that you have 5 OSDs (object storage devices), 5 daemons, and roughly 5TB of raw data storage available. The actual storage space is only 33% of the raw storage because the stored data is being replicated 3 times (see <code class="docutils literal notranslate"><span class="pre">size</span></code> parameter below) by default. It is a good idea to keep this set up which allows 3 out of 5 cluster nodes to fail without affecting the stored data in theory. You can check the parameters of your data storage pool by typing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo ceph osd pool get cephfs.gin-backend.data all
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo ceph osd pool get cephfs.gin-backend.data all
 size: 3
 min_size: 2
 pg_num: 32
@@ -720,12 +760,179 @@ pg_autoscale_mode: on
 </section>
 <section id="install-docker">
 <span id="doc-install-server-docker"></span><h2>Install Docker<a class="headerlink" href="#install-docker" title="Permalink to this headline">#</a></h2>
-<section id="set-up-kernel-based-virtual-machine-support">
-<span id="doc-install-server-docker-kvm"></span><h3>Set-up Kernel-based Virtual Machine Support<a class="headerlink" href="#set-up-kernel-based-virtual-machine-support" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://docs.docker.com/engine/">Docker Engine</a>, <a class="reference external" href="https://docs.docker.com/engine/reference/run/">Docker CLI</a>, and <a class="reference external" href="https://docs.docker.com/compose/">Docker Compose</a> are dependencies required for GIN installation on a server.</p>
+<p>You may already installed all of these Docker components earlier prior to installing Ceph. In that case you can skip this section. If you did not install Docker earlier, the installation instructions for Centos 7 are straight-forward. Just execute the commands below in the terminal on the client node (Server[0]):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span>
+<span class="n">sudo</span> <span class="n">yum</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">manager</span> \
+  <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">repo</span> \
+  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">centos</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="o">.</span><span class="n">repo</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="o">-</span><span class="n">cli</span> <span class="n">containerd</span><span class="o">.</span><span class="n">io</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">-</span><span class="n">plugin</span>
+</pre></div>
+</div>
+<p>The final command installs all of the needed Docker components.</p>
 </section>
-<section id="install-docker-compose">
-<span id="doc-install-server-docker-compose"></span><h3>Install Docker Compose<a class="headerlink" href="#install-docker-compose" title="Permalink to this headline">#</a></h3>
-<p><a class="reference external" href="https://docs.docker.com/compose/">Docker Compose</a></p>
+<section id="install-apache-web-server">
+<span id="doc-install-server-apache"></span><h2>Install Apache Web Server<a class="headerlink" href="#install-apache-web-server" title="Permalink to this headline">#</a></h2>
+<p>Apache web server has to be installed as a prerequisite for GIN installation. GIN is a web app and, as such, it needs a web server software to manage its access. To install Apache, enter the commands below into your terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">httpd</span>
+<span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">permanent</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">http</span>
+<span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">permanent</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">https</span>
+<span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">reload</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">httpd</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">httpd</span>
+</pre></div>
+</div>
+</section>
+<section id="install-git-and-git-annex">
+<span id="doc-install-server-git"></span><h2>Install Git and Git-annex<a class="headerlink" href="#install-git-and-git-annex" title="Permalink to this headline">#</a></h2>
+<p>GIN Client installation depends on git and git-annex version cotrol systems. Therefore, it is a good idea to get them sorted before proceeding with the rest of the GIN installation. Installing recent verions of this software on Centos 7 is a bit tricky. This is an example of how to download and install git version control system on your client node (Server[0]):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo yum install epel-release
+sudo yum install https://repo.ius.io/ius-release-el$(rpm -E &#39;%{rhel}&#39;).rpm
+sudo yum install yum-plugin-replace
+sudo yum install git
+sudo yum replace git --replace-with git236
+</pre></div>
+</div>
+<p>To download and install git-annex version control system, follow these steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">wget</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">downloads</span><span class="o">.</span><span class="n">kitenet</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">annex</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="n">rpms</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">annex</span><span class="o">-</span><span class="n">standalone</span><span class="o">-</span><span class="mf">10.20221004</span><span class="o">-</span><span class="mf">1.</span><span class="n">x86_64</span><span class="o">.</span><span class="n">rpm</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">localinstall</span> <span class="n">git</span><span class="o">-</span><span class="n">annex</span><span class="o">-</span><span class="n">standalone</span><span class="o">-</span><span class="mf">10.20221004</span><span class="o">-</span><span class="mf">1.</span><span class="n">x86_64</span><span class="o">.</span><span class="n">rpm</span>
+<span class="n">rm</span> <span class="n">git</span><span class="o">-</span><span class="n">annex</span><span class="o">-</span><span class="n">standalone</span><span class="o">-</span><span class="mf">10.20221004</span><span class="o">-</span><span class="mf">1.</span><span class="n">x86_64</span><span class="o">.</span><span class="n">rpm</span>
+</pre></div>
+</div>
+</section>
+<section id="install-gin">
+<span id="doc-install-server-gin"></span><h2>Install GIN<a class="headerlink" href="#install-gin" title="Permalink to this headline">#</a></h2>
+<p>GIN full server instalation instructions can be found <a class="reference external" href="https://gin.g-node.org/G-Node/in-house-gin#deploy-and-run-a-full-server-using-docker-compose">here</a>. We are going to go step by step through these installations adapted for our particular case.</p>
+<section id="install-gin-client">
+<span id="doc-install-server-gin-client"></span><h3>Install GIN client<a class="headerlink" href="#install-gin-client" title="Permalink to this headline">#</a></h3>
+<p>Download and install GIN client, so that you are able to download public GIN repositories needed for GIN server installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">silent</span> <span class="o">--</span><span class="n">remote</span><span class="o">-</span><span class="n">name</span> <span class="o">--</span><span class="n">location</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">G</span><span class="o">-</span><span class="n">Node</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">releases</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">linux</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">linux</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">sudo</span> <span class="n">mv</span> <span class="n">gin</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span>
+<span class="n">rm</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">rm</span> <span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">linux</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</section>
+<section id="set-up-gin-installation-folders">
+<span id="doc-install-server-gin-fodlers"></span><h3>Set-up GIN Installation Folders<a class="headerlink" href="#set-up-gin-installation-folders" title="Permalink to this headline">#</a></h3>
+<p>We need to set up certain user groups and users, as well as a particular directory structure in order to run GIN on Docker. The bash script file that will do exactly that is provided below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Provide the user that will use docker-compose to start the service</span>
+<span class="nv">DEPLOY_USER</span><span class="o">=</span>&lt;your-username-string&gt;
+
+<span class="c1"># Specify the GIN files root location</span>
+<span class="nv">DIR_GINROOT</span><span class="o">=</span>&lt;root-dir-path-string&gt;
+
+<span class="c1"># Postgres database password</span>
+<span class="nv">PGRES_PASS</span><span class="o">=</span>&lt;pgres-password-string&gt;
+
+<span class="c1"># Prepare a ginservice group if it does not exist</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>getent group ginservice<span class="k">)</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;group ginservice already exists.&quot;</span>
+<span class="k">else</span>
+  groupadd ginservice
+<span class="k">fi</span>
+
+<span class="c1"># Create dedicated &quot;ginuser&quot; user and add it to the &quot;docker&quot;</span>
+<span class="c1"># group; and the &quot;ginservice&quot; group; create all required </span>
+<span class="c1"># directories with this user and the &quot;ginservice&quot; group permission.</span>
+<span class="k">if</span> <span class="o">[</span> <span class="k">$(</span>getent passwd ginuser<span class="k">)</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;user ginuser already exists&quot;</span>
+<span class="k">else</span>
+    useradd -M -G docker,ginservice ginuser
+    <span class="c1"># Disable login for user ginuser</span>
+    usermod -L ginuser
+<span class="k">fi</span>
+
+<span class="c1"># Make sure to add the user running docker-compose to the ginservice group as well!</span>
+usermod -a -G ginservice <span class="nv">$DEPLOY_USER</span>
+
+<span class="c1"># Make sure that required directories are empty</span>
+rm -rf <span class="nv">$DIR_GINROOT</span>
+
+<span class="c1"># Required directories</span>
+<span class="nv">DIR_GINCONFIG</span><span class="o">=</span><span class="nv">$DIR_GINROOT</span>/config
+<span class="nv">DIR_GINVOLUMES</span><span class="o">=</span><span class="nv">$DIR_GINROOT</span>/volumes
+<span class="nv">DIR_GINDATA</span><span class="o">=</span><span class="nv">$DIR_GINROOT</span>/gindata
+
+<span class="c1"># Create gin specific directories</span>
+<span class="c1"># The &#39;notice&#39; directory may contain a banner.md file.</span>
+<span class="c1"># The content of this file is displayed on the GIN page without a service restart e.g.</span>
+<span class="c1">#  to inform users of an upcoming service downtime.</span>
+mkdir -vp <span class="nv">$DIR_GINCONFIG</span>/gogs/notice
+mkdir -vp <span class="nv">$DIR_GINCONFIG</span>/postgres
+
+mkdir -vp <span class="nv">$DIR_GINVOLUMES</span>/ginweb
+
+mkdir -vp <span class="nv">$DIR_GINDATA</span>/gin-repositories
+mkdir -vp <span class="nv">$DIR_GINDATA</span>/gin-postgresdb
+
+mkdir -vp <span class="nv">$DIR_GINROOT</span>/gin-dockerfile
+
+<span class="c1"># Create an env file to specify the docker compose project name</span>
+<span class="nb">echo</span> <span class="s2">&quot;COMPOSE_PROJECT_NAME=gin&quot;</span> &gt; <span class="nv">$DIR_GINROOT</span>/gin-dockerfile/.env
+
+<span class="c1"># Create postgres secret file</span>
+<span class="nb">echo</span> <span class="s2">&quot;POSTGRES_PASSWORD=</span><span class="si">${</span><span class="nv">PGRES_PASS</span><span class="si">}</span><span class="s2">&quot;</span> &gt; <span class="nv">$DIR_GINCONFIG</span>/postgres/pgressecrets.env
+
+<span class="c1"># make sure an empty gogs config file is available; technically only required for previous versions of gogs</span>
+touch <span class="nv">$DIR_GINCONFIG</span>/gogs/conf/app.ini
+</pre></div>
+</div>
+<p>Open a bash script file in your home directory, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="n">gin</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">folders</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Paste the contents of the file as shown above, save, and close the file. You have to provide only three parameters in this file: your username, password, and GIN installation directory. Execute this file by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sh</span> <span class="n">gin</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">folders</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</section>
+<section id="prepare-gin-instance-file">
+<span id="doc-install-server-gin-instance-file"></span><h3>Prepare GIN Instance File<a class="headerlink" href="#prepare-gin-instance-file" title="Permalink to this headline">#</a></h3>
+<p>We need to prepare the GIN Docker Compose instance file. First, let’s organise all GIN resources in a single folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span>
+<span class="n">mv</span> <span class="n">gin</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">folders</span><span class="o">.</span><span class="n">sh</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span>
+<span class="n">cd</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">G</span><span class="o">-</span><span class="n">Node</span><span class="o">/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">.</span><span class="n">git</span>
+<span class="n">mv</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">repo</span>
+</pre></div>
+</div>
+<p>Now copy, open, and prepare the actual file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">repo</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">sudo</span> <span class="n">nano</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<p>You need to adjust <code class="docutils literal notranslate"><span class="pre">PUID</span></code> which is the <code class="docutils literal notranslate"><span class="pre">ginuser</span></code> user ID. You can find it by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo cat /etc/passwd
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mark</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">1001</span><span class="p">:</span><span class="mi">1001</span><span class="p">:</span><span class="n">mark</span><span class="p">,,,:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">mark</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="p">[</span><span class="o">--</span><span class="p">]</span> <span class="o">-</span> <span class="p">[</span><span class="o">--</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="p">]</span> <span class="p">[</span><span class="o">-----</span><span class="p">]</span> <span class="p">[</span><span class="o">--------</span><span class="p">]</span> <span class="p">[</span><span class="o">--------</span><span class="p">]</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">|</span>    <span class="o">|</span>     <span class="o">|</span>         <span class="o">|</span>        <span class="o">|</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">|</span>    <span class="o">|</span>     <span class="o">|</span>         <span class="o">|</span>        <span class="o">+-&gt;</span> <span class="mf">7.</span> <span class="n">Login</span> <span class="n">shell</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">|</span>    <span class="o">|</span>     <span class="o">|</span>         <span class="o">+----------&gt;</span> <span class="mf">6.</span> <span class="n">Home</span> <span class="n">directory</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">|</span>    <span class="o">|</span>     <span class="o">+--------------------&gt;</span> <span class="mf">5.</span> <span class="n">GECOS</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">|</span>    <span class="o">+--------------------------&gt;</span> <span class="mf">4.</span> <span class="n">GID</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">+-------------------------------&gt;</span> <span class="mf">3.</span> <span class="n">UID</span>
+<span class="o">|</span>    <span class="o">+-----------------------------------&gt;</span> <span class="mf">2.</span> <span class="n">Password</span>
+<span class="o">+----------------------------------------&gt;</span> <span class="mf">1.</span> <span class="n">Username</span>
+</pre></div>
+</div>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">ginuser</span></code> line and pick the third entry (UID).</p>
+<p>PGID (<code class="docutils literal notranslate"><span class="pre">ginservice</span></code> group ID) is another entry that you need to specify. The following command will help you to find it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">group</span>
+</pre></div>
+</div>
+<p>Simlarly as before, locate the line starting with <code class="docutils literal notranslate"><span class="pre">ginservice</span></code> and pick the third entry.</p>
+<p>Next, make sure the set <code class="docutils literal notranslate"><span class="pre">ipv4_address</span></code> matches the IP set in your apache webserver configuration. Type in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ifconfig</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">eth0:inet</span></code> entry will give you your IP address. Enter this value into the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This section is work in progress. Current priority!</p>

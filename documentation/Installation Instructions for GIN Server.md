@@ -159,7 +159,7 @@ $ sudo ceph status
 ```
 You should see a similar output indicating that you have 5 OSDs (object storage devices), 5 daemons, and roughly 5TB of raw data storage available. The actual storage space is only 33% of the raw storage because the stored data is being replicated 3 times (see ```size``` parameter below) by default. It is a good idea to keep this set up which allows 3 out of 5 cluster nodes to fail without affecting the stored data in theory. You can check the parameters of your data storage pool by typing:
 ```
-$sudo ceph osd pool get cephfs.gin-backend.data all
+$ sudo ceph osd pool get cephfs.gin-backend.data all
 size: 3
 min_size: 2
 pg_num: 32
@@ -205,15 +205,184 @@ Reboot the node. You are now set for installing GIN on your computing cluster. `
 
 (doc-install-server-docker)=
 ## Install Docker
+[Docker Engine](https://docs.docker.com/engine/), [Docker CLI](https://docs.docker.com/engine/reference/run/), and [Docker Compose](https://docs.docker.com/compose/) are dependencies required for GIN installation on a server.
 
+You may already installed all of these Docker components earlier prior to installing Ceph. In that case you can skip this section. If you did not install Docker earlier, the installation instructions for Centos 7 are straight-forward. Just execute the commands below in the terminal on the client node (Server[0]):
+```
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+  --add-repo \
+  https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+The final command installs all of the needed Docker components.
 
-(doc-install-server-docker-kvm)=
-### Set-up Kernel-based Virtual Machine Support
+(doc-install-server-apache)=
+## Install Apache Web Server
+Apache web server has to be installed as a prerequisite for GIN installation. GIN is a web app and, as such, it needs a web server software to manage its access. To install Apache, enter the commands below into your terminal:
+```
+sudo yum install httpd
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --reload
+sudo systemctl start httpd
+sudo systemctl status httpd
+```
 
+(doc-install-server-git)=
+## Install Git and Git-annex
+GIN Client installation depends on git and git-annex version cotrol systems. Therefore, it is a good idea to get them sorted before proceeding with the rest of the GIN installation. Installing recent verions of this software on Centos 7 is a bit tricky. This is an example of how to download and install git version control system on your client node (Server[0]):
+```
+sudo yum install epel-release
+sudo yum install https://repo.ius.io/ius-release-el$(rpm -E '%{rhel}').rpm
+sudo yum install yum-plugin-replace
+sudo yum install git
+sudo yum replace git --replace-with git236
+```
 
-(doc-install-server-docker-compose)=
-### Install Docker Compose
-[Docker Compose](https://docs.docker.com/compose/)
+To download and install git-annex version control system, follow these steps:
+```
+sudo yum install wget
+wget https://downloads.kitenet.net/git-annex/linux/current/rpms/git-annex-standalone-10.20221004-1.x86_64.rpm
+sudo yum localinstall git-annex-standalone-10.20221004-1.x86_64.rpm
+rm git-annex-standalone-10.20221004-1.x86_64.rpm
+```
+
+(doc-install-server-gin)=
+## Install GIN
+GIN full server instalation instructions can be found [here](https://gin.g-node.org/G-Node/in-house-gin#deploy-and-run-a-full-server-using-docker-compose). We are going to go step by step through these installations adapted for our particular case.
+
+(doc-install-server-gin-client)=
+### Install GIN client
+Download and install GIN client, so that you are able to download public GIN repositories needed for GIN server installation:
+```
+curl --silent --remote-name --location https://gin.g-node.org/G-Node/gin-cli-releases/raw/master/gin-cli-latest-linux.tar.gz
+tar -xvf gin-cli-latest-linux.tar.gz
+sudo mv gin /usr/bin/
+rm README.md
+rm gin-cli-latest-linux.tar.gz
+```
+
+(doc-install-server-gin-fodlers)=
+### Set-up GIN Installation Folders
+We need to set up certain user groups and users, as well as a particular directory structure in order to run GIN on Docker. The bash script file that will do exactly that is provided below:
+```bash
+#!/bin/bash
+
+# Provide the user that will use docker-compose to start the service
+DEPLOY_USER=<your-username-string>
+
+# Specify the GIN files root location
+DIR_GINROOT=<root-dir-path-string>
+
+# Postgres database password
+PGRES_PASS=<pgres-password-string>
+
+# Prepare a ginservice group if it does not exist
+if [ $(getent group ginservice) ]; then
+  echo "group ginservice already exists."
+else
+  groupadd ginservice
+fi
+
+# Create dedicated "ginuser" user and add it to the "docker"
+# group; and the "ginservice" group; create all required 
+# directories with this user and the "ginservice" group permission.
+if [ $(getent passwd ginuser) ]; then
+    echo "user ginuser already exists"
+else
+    useradd -M -G docker,ginservice ginuser
+    # Disable login for user ginuser
+    usermod -L ginuser
+fi
+
+# Make sure to add the user running docker-compose to the ginservice group as well!
+usermod -a -G ginservice $DEPLOY_USER
+
+# Make sure that required directories are empty
+rm -rf $DIR_GINROOT
+
+# Required directories
+DIR_GINCONFIG=$DIR_GINROOT/config
+DIR_GINVOLUMES=$DIR_GINROOT/volumes
+DIR_GINDATA=$DIR_GINROOT/gindata
+
+# Create gin specific directories
+# The 'notice' directory may contain a banner.md file.
+# The content of this file is displayed on the GIN page without a service restart e.g.
+#  to inform users of an upcoming service downtime.
+mkdir -vp $DIR_GINCONFIG/gogs/notice
+mkdir -vp $DIR_GINCONFIG/postgres
+
+mkdir -vp $DIR_GINVOLUMES/ginweb
+
+mkdir -vp $DIR_GINDATA/gin-repositories
+mkdir -vp $DIR_GINDATA/gin-postgresdb
+
+mkdir -vp $DIR_GINROOT/gin-dockerfile
+
+# Create an env file to specify the docker compose project name
+echo "COMPOSE_PROJECT_NAME=gin" > $DIR_GINROOT/gin-dockerfile/.env
+
+# Create postgres secret file
+echo "POSTGRES_PASSWORD=${PGRES_PASS}" > $DIR_GINCONFIG/postgres/pgressecrets.env
+
+# make sure an empty gogs config file is available; technically only required for previous versions of gogs
+touch $DIR_GINCONFIG/gogs/conf/app.ini
+```
+Open a bash script file in your home directory, for example:
+```
+sudo nano gin-docker-folders.sh
+```
+Paste the contents of the file as shown above, save, and close the file. You have to provide only three parameters in this file: your username, password, and GIN installation directory. Execute this file by typing:
+```
+sudo sh gin-docker-folders.sh
+```
+
+(doc-install-server-gin-instance-file)=
+### Prepare GIN Instance File
+We need to prepare the GIN Docker Compose instance file. First, let's organise all GIN resources in a single folder:
+```
+mkdir in-house-gin-resources
+mv gin-docker-folders.sh in-house-gin-resources/
+cd in-house-gin-resources
+git clone https://gin.g-node.org/G-Node/in-house-gin.git
+mv in-house-gin in-house-gin-repo
+```
+Now copy, open, and prepare the actual file:
+```
+cp in-house-gin-repo/resources/docker-compose.yml docker-compose.yml
+sudo nano docker-compose.yml
+```
+You need to adjust ```PUID``` which is the ```ginuser``` user ID. You can find it by typing:
+```
+$ sudo cat /etc/passwd
+```
+```
+mark:x:1001:1001:mark,,,:/home/mark:/bin/bash
+[--] - [--] [--] [-----] [--------] [--------]
+|    |   |    |     |         |        |
+|    |   |    |     |         |        +-> 7. Login shell
+|    |   |    |     |         +----------> 6. Home directory
+|    |   |    |     +--------------------> 5. GECOS
+|    |   |    +--------------------------> 4. GID
+|    |   +-------------------------------> 3. UID
+|    +-----------------------------------> 2. Password
++----------------------------------------> 1. Username
+```
+Locate the ```ginuser``` line and pick the third entry (UID).
+
+PGID (```ginservice``` group ID) is another entry that you need to specify. The following command will help you to find it:
+```
+sudo cat /etc/group
+```
+Simlarly as before, locate the line starting with ```ginservice``` and pick the third entry.
+
+Next, make sure the set ```ipv4_address``` matches the IP set in your apache webserver configuration. Type in
+```
+ifconfig -a
+```
+```eth0:inet``` entry will give you your IP address. Enter this value into the ```docker-compose.yml``` file.
 
 ```{note}
 This section is work in progress. Current priority!
