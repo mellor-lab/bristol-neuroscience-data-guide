@@ -217,17 +217,273 @@ sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 The final command installs all of the needed Docker components.
 
-(doc-install-server-apache)=
-## Install Apache Web Server
-Apache web server has to be installed as a prerequisite for GIN installation. GIN is a web app and, as such, it needs a web server software to manage its access. To install Apache, enter the commands below into your terminal:
+(doc-install-server-openssl)=
+## Install OpenSSL
+Installing the latest OpenSSL is needed in order to install the latest Apache Web Server which supports HTTP/2 protocol. The later allows you to obtain an SSL cerificate and use https rather than http for accessing Bristol GIN. If you type in ```openssl version``` in your terminal, you would probably get ```OpenSSL 1.0.2k-fips``` as an answer which is not up to date for our purposes. Thus, start by installing prerequisites for the new installation:
 ```
-sudo yum install httpd
+sudo yum install libtool perl-core zlib-devel -y
+```
+Now download and install OpenSSL:
+```
+curl -O -L https://github.com/openssl/openssl/archive/OpenSSL_1_1_1s.tar.gz
+tar -zxvf OpenSSL_1_1_1s.tar.gz
+cd openssl-OpenSSL_1_1_1s
+./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl shared zlib
+make
+make test
+```
+You should expect tests to pass successfully (oterwise you would need to troubleshoot):
+```
+...
+All tests successful.
+Files=158, Tests=2650, 99 wallclock secs ( 1.41 usr  0.12 sys + 75.45 cusr 19.21 csys = 96.19 CPU)
+Result: PASS
+...
+```
+Install the software:
+```
+sudo make install
+```
+
+Add the new version to the path:
+```
+cd ..
+rm -rf OpenSSL_1_1_1s.tar.gz
+sudo nano /etc/profile.d/openssl.sh
+```
+Add the lines below to your file:
+```
+# /etc/profile.d/openssl.sh
+pathmunge /usr/local/openssl/bin
+```
+
+Link shared libraries by opening the following file:
+```
+sudo nano /etc/ld.so.conf.d/openssl-1.1.1c.conf
+```
+Add the lines below to your file:
+```
+# /etc/ld.so/conf.d/openssl-1.1.1c.conf
+/usr/local/openssl/lib
+```
+
+Finally, reload your shell and check the OpenSSL version:
+```
+$ exec bash
+$ openssl version
+OpenSSL 1.1.1s  1 Nov 2022
+```
+
+(doc-install-server-apache)=
+## Install and Configure Apache Web Server
+Apache web server has to be installed as a prerequisite for GIN installation. GIN is a web app and, as such, it needs a web server software to manage its access. The installation offered by the local package manager is out of data, so we are going to install Apache from the source code.
+
+(doc-install-server-apache-source)=
+### Get Source Code
+To start, make sure that the old version is removed:
+```
+sudo yum remove httpd -y
+```
+Install prerequisites:
+```
+sudo yum install autoconf expat-devel libtool libnghttp2-devel pcre-devel -y
+```
+
+Download and unpack the source code:
+```
+curl -O -L https://github.com/apache/httpd/archive/2.4.54.tar.gz
+curl -O -L https://github.com/apache/apr/archive/1.7.0.tar.gz
+curl -O -L https://github.com/apache/apr-util/archive/1.6.1.tar.gz
+tar -zxvf 2.4.54.tar.gz
+tar -zxvf 1.7.0.tar.gz
+tar -zxvf 1.6.1.tar.gz
+cp -r apr-1.7.0 httpd-2.4.54/srclib/apr
+cp -r apr-util-1.6.1 httpd-2.4.54/srclib/apr-util
+```
+
+(doc-install-server-apache-install)=
+### Install Apache
+Get inside httpd directory, compile, and install Apache:
+```
+cd httpd-2.4.54
+./buildconf
+./configure --enable-ssl --enable-so --enable-http2 --disable-v4-mapped --with-mpm=event --with-included-apr --with-ssl=/usr/local/openssl --prefix=/usr/local/apache2
+make
+sudo make install
+```
+Below is the meaning of ```configure``` options:
+- ```--enable-ssl``` will build Apache with SSL support, so you can enable HTTPS for Bristol GIN.
+- ```--enable-so``` will enable dynamically loaded modules, so you can enable and disable modules without recompilation.
+- ```--enable-http2``` will enable HTTP/2 support.
+- ```--disable-v4-mapped``` disables handling of IPv4 connections with an IPv6 socket.
+- ```--with-mpm``` will set multiprocessing modules for Apache.
+- ```--with-included-apr``` It will use APR library that you copied to srclib directory.
+- ```--with-ssl``` will point compiler to newer version of OpenSSL.
+- ```--prefix``` is the installation path for Apache httpd compiled package.
+
+Add Apache executables to the path by opening the following file:
+```
+sudo nano /etc/profile.d/httpd.sh
+```
+and paste there following contents:
+```
+pathmunge /usr/local/apache2/bin
+```
+
+Reload the terminal and cleanup:
+```
+exec bash
+cd ..
+rm -rf 1.7.0.tar.gz 1.6.1.tar.gz 2.4.54.tar.gz apr-1.7.0 apr-util-1.6.1
+```
+
+Finally, add systemd entry. Open the following file:
+```
+sudo nano /etc/systemd/system/httpd.service
+```
+and add the following text to it:
+```
+[Unit]
+Description=The Apache HTTP Server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/local/apache2/bin/apachectl -k start
+ExecReload=/usr/local/apache2/bin/apachectl -k graceful
+ExecStop=/usr/local/apache2/bin/apachectl -k graceful-stop
+PIDFile=/usr/local/apache2/logs/httpd.pid
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+```
+After saving, reload the systemctl daemon and start Apache:
+```
+sudo systemctl daemon-reload
+sudo systemctl enable httpd
+sudo systemctl start httpd
+```
+
+You can confirm that Apache is running if you type:
+```
+$ sudo systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/etc/systemd/system/httpd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Thu 2022-12-15 01:15:30 GMT; 26s ago
+  Process: 4084 ExecStart=/usr/local/apache2/bin/apachectl -k start (code=exited, status=0/SUCCESS)
+ Main PID: 4087 (httpd)
+   CGroup: /system.slice/httpd.service
+           ├─4087 /usr/local/apache2/bin/httpd -k start
+           ├─4088 /usr/local/apache2/bin/httpd -k start
+           ├─4089 /usr/local/apache2/bin/httpd -k start
+           └─4090 /usr/local/apache2/bin/httpd -k start
+
+Dec 15 01:15:30 caas-1c47-x0696.caas.bris.ac.uk systemd[1]: Starting The Apache HTTP Server...
+Dec 15 01:15:30 caas-1c47-x0696.caas.bris.ac.uk systemd[1]: Started The Apache HTTP Server.
+```
+To check that Apache is transfering data, type:
+```
+$ curl http://<ip-address-of-machine-with-apache-installation>
+<html><body><h1>It works!</h1></body></html>
+```
+
+(doc-install-server-apache-configure)=
+### Configure Apache
+We are going to create the basic configuration of Apache now by editing ```httpd.conf``` file:
+```
+sudo nano /usr/local/apache2/conf/httpd.conf
+```
+Inside the file replace the line
+```
+Listen 80
+```
+with these lines:
+```
+#Listen 80
+Listen [::]:80
+Listen 0.0.0.0:80
+```
+Replace the line defining ```ServerName```
+```
+#ServerName www.example.com:80
+```
+with the lines:
+```
+#ServerName www.example.com:80
+ServerName <ip-address-of-machine-with-apache-installation>
+```
+At the bottom of the file add the following definitions:
+```
+# Additional entries below
+# Hide Apache version from header and from error files
+ServerTokens prod
+ServerSignature off
+
+# Disable ETag to prevent disposing sensitive values like iNode
+FileETag none
+```
+
+Finally, allow Apache to communicate via the firewall:
+```
+sudo systemctl start firewalld
 sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --permanent --add-service=https
 sudo firewall-cmd --reload
-sudo systemctl start httpd
-sudo systemctl status httpd
+sudo systemctl restart httpd
 ```
+
+(doc-install-server-apache-test)=
+### Test Apache Connection
+Once Apache is installed and configured in the most basic manner, you should test whether you can connect to Apache remotely. On your own laptop with Linux or the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/) connected to the university VPN type the following command into the Linux terminal:
+```
+$ nmap -sT <ip-address-of-machine-with-apache-installation>
+Starting Nmap 7.80 ( https://nmap.org ) at 2022-12-15 14:01 GMT
+Nmap scan report for <ip-address-of-machine-with-apache-installation>
+Host is up (0.051s latency).
+Not shown: 996 filtered ports
+PORT     STATE  SERVICE
+22/tcp   open   ssh
+80/tcp   open   http
+443/tcp  closed https
+3389/tcp closed ms-wbt-server
+
+Nmap done: 1 IP address (1 host up) scanned in 5.84 seconds
+```
+Command ```nmap``` shows open ports on the server with Apache installation that are visible to a remote computer. Apache uses port 80 for HTTP communication and we have just established that it is not blocked by the host firewall.
+
+Another useful command that you can run on the host with Apache installation is
+```
+$ sudo netstat -tlpn
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 <host-ip>:3300          0.0.0.0:*               LISTEN      1517/ceph-mon
+tcp        0      0 <host-ip>:6789          0.0.0.0:*               LISTEN      1517/ceph-mon
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      11690/httpd
+tcp        0      0 0.0.0.0:6800            0.0.0.0:*               LISTEN      1496/ceph-mds
+tcp        0      0 0.0.0.0:6801            0.0.0.0:*               LISTEN      1496/ceph-mds
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1080/sshd
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1560/master
+tcp6       0      0 :::9100                 :::*                    LISTEN      1505/node_exporter
+tcp6       0      0 :::80                   :::*                    LISTEN      11690/httpd
+tcp6       0      0 :::22                   :::*                    LISTEN      1080/sshd
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1560/master
+```
+This command shows all network connections. The lines that are important in our case are the following:
+```
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      11690/httpd
+tcp6       0      0 :::80                   :::*                    LISTEN      11690/httpd
+```
+They tell us that IPv4 and IPv6 type connections via port 80 are unrestrictive and are reserved for Apache. Therefore, we should be able transfer data via these ports from/to our remote computer. On your laptop type:
+```
+$ curl http://<ip-address-of-machine-with-apache-installation>
+<html><body><h1>It works!</h1></body></html>
+```
+The above message indicates that connection is working fine. However, if you get the following reply instead:
+```
+curl: (56) Recv failure: Connection reset by peer
+```
+It indicates that your connection is being blocked by some process on the Apache host (possibly a firewall of some kind) and you need to troubleshoot.
 
 (doc-install-server-git)=
 ## Install Git and Git-annex
@@ -334,7 +590,7 @@ Open a bash script file in your home directory, for example:
 ```
 sudo nano gin-docker-folders.sh
 ```
-Paste the contents of the file as shown above, save, and close the file. You have to provide only three parameters in this file: your username, password, and GIN installation directory. Execute this file by typing:
+Paste the contents of the file as shown above, save, and close the file. You have to provide only three parameters in this file: your username, password, and GIN installation directory. In our case, the GIN installation directory is ```~/in-house-gin```. Execute this file by typing:
 ```
 sudo sh gin-docker-folders.sh
 ```
@@ -378,11 +634,137 @@ sudo cat /etc/group
 ```
 Simlarly as before, locate the line starting with ```ginservice``` and pick the third entry.
 
-Next, make sure the set ```ipv4_address``` matches the IP set in your apache webserver configuration. Type in
+Next, make sure the set ```ipv4_address``` (e.g., 12.34.56.78), ```subnet``` (e.g., 12.34.56.0/16), and ```gateway``` (e.g., 12.34.56.254) matches the IP set in your apache webserver (```ServerName``` entry in /etc/httpd/conf/httpd.conf file) configuration. Type in
 ```
 ifconfig -a
 ```
 ```eth0:inet``` entry will give you your IP address. Enter this value into the ```docker-compose.yml``` file.
+You should also change the location where repositories are being stored. Hence change the line below:
+```
+- ../gindata/gin-repositories:/data/repos:rw
+```
+into this line with repository location pointing to the Ceph storage:
+```
+- ../gindata/gin-repositories:/mnt/cephfs:rw
+```
+When GIN repositories are going to be stored in this location, they are going to be stored as "bare" git (annex) repositories.
+
+Once you finish editing the Docker Compose GIN instance file, copy the file to ```$DIR_GINROOT/gin-dockerfile``` directory, like:
+```
+sudo cp docker-compose.yml ~/in-house-gin/gin-dockerfile/
+```
+
+To ensure the docker services have access to the recently created directories, change all file ownership and permissions in those directories to ginservice group:
+```
+sudo chown -R ginuser:ginservice ~/in-house-gin
+sudo chmod -R g+rw ~/in-house-gin
+```
+
+(doc-install-server-gin-docker-containers)=
+### Launch GIN Docker Containers
+All required GIN Docker containers can be downloaded by executing the following commands:
+```
+cd ~/in-house-gin/gin-dockerfile/
+sudo docker compose pull
+```
+You should see the following output, if all goes successfully:
+```
+[+] Running 30/30
+ ⠿ web Pulled                                                                          19.1s
+   ⠿ cbdbe7a5bc2a Pull complete                                                         0.7s
+   ⠿ f80baed5aab5 Pull complete                                                         0.8s
+   ⠿ 89a388a79898 Pull complete                                                         4.0s
+   ⠿ ed5cc09825c1 Pull complete                                                         4.3s
+   ⠿ 5cb6da02d7ec Pull complete                                                         4.4s
+   ⠿ 43ec29b48c77 Pull complete                                                         4.5s
+   ⠿ 7e446e441c17 Pull complete                                                         5.0s
+   ⠿ defb6c422296 Pull complete                                                         8.0s
+   ⠿ 88d0869d42fa Pull complete                                                         8.1s
+   ⠿ b478dc392bf5 Pull complete                                                         8.2s
+   ⠿ 496764bd3222 Pull complete                                                         8.3s
+   ⠿ e92de83a3850 Pull complete                                                         8.4s
+   ⠿ c4ca3f12302e Pull complete                                                         8.5s
+   ⠿ 391654d516ba Pull complete                                                        15.2s
+   ⠿ 366413088261 Pull complete                                                        15.2s
+ ⠿ db Pulled                                                                           15.7s
+   ⠿ bff3e048017e Pull complete                                                         7.0s
+   ⠿ e3e180bf7c2b Pull complete                                                         7.3s
+   ⠿ 62eff3cc0cff Pull complete                                                         7.4s
+   ⠿ 3d90a128d4ff Pull complete                                                         7.5s
+   ⠿ ba4ce0c5ab29 Pull complete                                                         8.2s
+   ⠿ a8f4b87076a9 Pull complete                                                         8.3s
+   ⠿ 4b437d281a7e Pull complete                                                         8.4s
+   ⠿ f1841d9dcb17 Pull complete                                                         8.4s
+   ⠿ bf897300657d Pull complete                                                        11.3s
+   ⠿ 3bfdfb831df4 Pull complete                                                        11.4s
+   ⠿ c44ac1fcc543 Pull complete                                                        11.4s
+   ⠿ 9ad3441d354a Pull complete                                                        11.5s
+   ⠿ 2d79312566dd Pull complete                                                        11.5s
+```
+
+Launch the database container:
+```
+$ sudo docker compose up -d db
+[+] Running 3/3
+ ⠿ Network gin_net      Created                                                         0.2s
+ ⠿ Volume "gin_gintmp"  Created                                                         0.0s
+ ⠿ Container gin-db-1   Started                                                         0.3s
+```
+Set up the postgres database container:
+```
+sudo docker exec -it gin-db-1 /bin/bash
+su -l postgres
+createuser -P gin
+# enter a password for the new role and note it; it will later be used on the initial gin setup page
+createdb -O gin gin
+exit
+exit
+```
+
+Launch both the database and the web containers:
+```
+sudo docker compose up -d
+```
+Both database and web containers should now be running with no problem. You can see them by typing:
+```
+$ sudo docker compose ps
+NAME                COMMAND                  SERVICE             STATUS              PORTS
+gin-db-1            "docker-entrypoint.s…"   db                  running             5432/tcp
+gin-web-1           "/app/gogs/docker/st…"   web                 running             3000/tcp, 0.0.0.0:2121->22/tcp, :::2121->22/tcp
+```
+The command output indicates the running status of both containers. If this is not the case, you should identify the cause of it and relaunch the containers after fixing it. Condensed instruction for relaunching containers are provided in the next subsection. Otherwise, if containers are runnig fine, skip the next subsection, and connect to GIN service.
+
+(doc-install-server-gin-docker-containers-relaunch)=
+### Relaunch GIN Docker Containers
+In case something goes wrong with your GIN Docker containers and they need to be wiped out and reinstated, run the lines below while located in ```~/in-house-gin/gin-dockerfile``` directory (obviously make sure you fix the cause of the failure beforehand and reboot the machine if needed):
+```
+cd ~/in-house-gin/gin-dockerfile
+sudo systemctl start docker
+sudo docker compose down
+sudo docker system prune --all --force
+
+cd ~/in-house-gin-resources
+sudo sh gin-docker-folders.sh
+sudo cp docker-compose.yml ~/in-house-gin/gin-dockerfile/
+sudo chown -R ginuser:ginservice ~/in-house-gin
+sudo chmod -R g+rw ~/in-house-gin
+
+cd ~/in-house-gin/gin-dockerfile
+sudo docker compose pull
+sudo docker compose up -d db
+
+sudo docker exec -it gin-db-1 /bin/bash
+su -l postgres
+createuser -P gin
+createdb -O gin gin
+exit
+exit
+sudo docker compose up -d
+```
+
+(doc-install-server-gin-setup)=
+### Setup GIN Service
+
 
 ```{note}
 This section is work in progress. Current priority!
