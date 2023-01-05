@@ -107,7 +107,7 @@ sudo lvcreate -l 100%FREE -n lv1 vg1
 ```
 Reboot each server again following the setup.
 
-Now we can add the remaining hosts to the cluster. Login to the main Ceph node (Server[1]) and setup Ceph SSH access to all additional hosts:
+Now we can add the remaining hosts to the cluster. Login to the main Ceph node (Server[1]) and setup Ceph Secure Shell (SSH) access to all additional hosts:
 ```
 ssh-copy-id -f -i /etc/ceph/ceph.pub <your-username>@<backend-server2-ip>
 ssh-copy-id -f -i /etc/ceph/ceph.pub <your-username>@<backend-server3-ip>
@@ -207,13 +207,13 @@ Reboot the node. You are now set for installing GIN on your computing cluster. `
 ## Install Docker
 [Docker Engine](https://docs.docker.com/engine/), [Docker CLI](https://docs.docker.com/engine/reference/run/), and [Docker Compose](https://docs.docker.com/compose/) are dependencies required for GIN installation on a server.
 
-You may already installed all of these Docker components earlier prior to installing Ceph. In that case you can skip this section. If you did not install Docker earlier, the installation instructions for Centos 7 are straight-forward. Just execute the commands below in the terminal on the client node (Server[0]):
+You may have already installed all of these Docker components earlier prior to installing Ceph. In that case you can skip this section. If you did not install Docker earlier, the installation instructions for Centos 7 are straight-forward. Just execute the commands below in the terminal on the client node (Server[0]):
 ```
 sudo yum install -y yum-utils
 sudo yum-config-manager \
   --add-repo \
   https://download.docker.com/linux/centos/docker-ce.repo
-sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
 ```
 The final command installs all of the needed Docker components.
 
@@ -413,6 +413,11 @@ with the lines:
 #ServerName www.example.com:80
 ServerName <ip-address-of-machine-with-apache-installation>
 ```
+Uncomment lines for loading proxy server modules:
+```
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+```
 At the bottom of the file add the following definitions:
 ```
 # Additional entries below
@@ -422,6 +427,15 @@ ServerSignature off
 
 # Disable ETag to prevent disposing sensitive values like iNode
 FileETag none
+
+# Apache proxypass configuration
+ProxyPass "/"  "http://localhost:3000/"
+ProxyPassReverse "/"  "http://localhost:3000/"
+
+# Prevent exposing debug console
+<Location /debug>
+    Deny from  all
+</Location>
 ```
 
 Finally, allow Apache to communicate via the firewall:
@@ -435,7 +449,7 @@ sudo systemctl restart httpd
 
 (doc-install-server-apache-test)=
 ### Test Apache Connection
-Once Apache is installed and configured in the most basic manner, you should test whether you can connect to Apache remotely. On your own laptop with Linux or the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/) connected to the university VPN type the following command into the Linux terminal:
+Once Apache is installed and configured in the most basic manner, you should test whether you can connect to Apache remotely. On your own laptop with Linux or the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/) connected to the University of Bristol (UoB) VPN type the following command into the Linux terminal:
 ```
 $ nmap -sT <ip-address-of-machine-with-apache-installation>
 Starting Nmap 7.80 ( https://nmap.org ) at 2022-12-15 14:01 GMT
@@ -485,24 +499,62 @@ curl: (56) Recv failure: Connection reset by peer
 ```
 It indicates that your connection is being blocked by some process on the Apache host (possibly a firewall of some kind) and you need to troubleshoot.
 
+(doc-install-server-apache-ssh-tunnel)=
+### Set up SSH Tunneling
+Currently UoB Self-Service Virtual Machines do not allow HTTP or HTTPS connections. The only ports open are 22 (SSH), 80 (SSH), and 3389 (Internet Control Message Protocol, ICMP). Ports that are typically used by Apache for HTTP (port 80) and HTTPS (port 443) are currently reserved for SSH connections or blocked by the university IT Services, respectively. However, port 443 is planned to be opened for HTTPS connections some time in March. Meanwhile, for testing purposes port 80 can be used to set up SSH HTTP tunneling with local port forwarding. To do so, first we need to set up passwordless SSH access from our local computer (must be connected to the UoB VPN) to the university server with our Apache installation. Type in the following commands in the Linux terminal on your local computer:
+```
+cd ~/.ssh
+sudo ssh-keygen -t rsa
+sudo ssh-copy-id -i ~/.ssh/id_rsa.pub <username>@<ip-address-of-machine-with-apache-installation>
+ssh <username>@<ip-address-of-machine-with-apache-installation>
+```
+After typing in the last command you should be able to login instantly without being asked for your password. If that is not the case, you can try an alternative set of commands:
+```
+cd ~/.ssh
+sudo ssh-keygen -t rsa
+scp ~/.ssh/id_rsa.pub <username>@<ip-address-of-machine-with-apache-installation>:/tmp/id_rsa.pub
+ssh <username>@<ip-address-of-machine-with-apache-installation>
+sudo cat /tmp/id_rsa.pub >> ~/.ssh/authorized_keys
+sudo rm -rf /tmp/id_rsa.pub
+logout
+ssh <username>@<ip-address-of-machine-with-apache-installation>
+```
+The latter command should now log you in without prompting to enter your password. If none of these commands work, try repeating copying the public key and logging in again a number of times.
+
+To create the SSH tunnel, type in:
+```
+sudo ssh -L 9090:localhost:80 -Nf <username>@<ip-address-of-machine-with-apache-installation>
+```
+Now open a web browser and type in:
+```
+localhost:9090
+```
+This should open a web page on the server with the Apache installation saying "It works!". This set up works well for testing and developing the local GIN instance. However, it is not suitable for providing web services, because individual users need access rights to the server with the Apache installation so that SSH tunnels can be set up on invidual workstations.
+
+Given the considerations above and the lack of open ports on the Self Service Virtual Machines, we are going to switch off the local Apache instance:
+```
+sudo systemctl disable httpd && sudo systemctl stop httpd
+```
+
 (doc-install-server-git)=
 ## Install Git and Git-annex
 GIN Client installation depends on git and git-annex version cotrol systems. Therefore, it is a good idea to get them sorted before proceeding with the rest of the GIN installation. Installing recent verions of this software on Centos 7 is a bit tricky. This is an example of how to download and install git version control system on your client node (Server[0]):
 ```
-sudo yum install epel-release
-sudo yum install https://repo.ius.io/ius-release-el$(rpm -E '%{rhel}').rpm
-sudo yum install yum-plugin-replace
-sudo yum install git
-sudo yum replace git --replace-with git236
+sudo yum install epel-release -y
+sudo yum install https://repo.ius.io/ius-release-el$(rpm -E '%{rhel}').rpm -y
+sudo yum install yum-plugin-replace -y
+sudo yum install git -y
+sudo yum replace git --replace-with git236 -y
 ```
 
 To download and install git-annex version control system, follow these steps:
 ```
-sudo yum install wget
-wget https://downloads.kitenet.net/git-annex/linux/current/rpms/git-annex-standalone-10.20221004-1.x86_64.rpm
-sudo yum localinstall git-annex-standalone-10.20221004-1.x86_64.rpm
-rm git-annex-standalone-10.20221004-1.x86_64.rpm
+sudo yum install wget -y
+wget https://downloads.kitenet.net/git-annex/linux/current/rpms/git-annex-standalone-10.20221105-1.x86_64.rpm
+sudo yum localinstall git-annex-standalone-10.20221105-1.x86_64.rpm -y
+rm git-annex-standalone-10.20221105-1.x86_64.rpm
 ```
+If you get an error when downloading the RPM file, you may need to adjust the RPM filename to match the latest git-annex release available at ```https://downloads.kitenet.net/git-annex/linux/current/rpms/```.
 
 (doc-install-server-gin)=
 ## Install GIN
@@ -551,6 +603,13 @@ else
     # Disable login for user ginuser
     usermod -L ginuser
 fi
+if [ $(getent passwd <your-username>) ]; then
+    echo "user <your-username> already exists"
+else
+    useradd -M -G docker,ginservice <your-username>
+    # Disable login for user <your-username>
+    usermod -L <your-username>
+fi
 
 # Make sure to add the user running docker-compose to the ginservice group as well!
 usermod -a -G ginservice $DEPLOY_USER
@@ -584,13 +643,14 @@ echo "COMPOSE_PROJECT_NAME=gin" > $DIR_GINROOT/gin-dockerfile/.env
 echo "POSTGRES_PASSWORD=${PGRES_PASS}" > $DIR_GINCONFIG/postgres/pgressecrets.env
 
 # make sure an empty gogs config file is available; technically only required for previous versions of gogs
+mkdir $DIR_GINCONFIG/gogs/conf
 touch $DIR_GINCONFIG/gogs/conf/app.ini
 ```
 Open a bash script file in your home directory, for example:
 ```
 sudo nano gin-docker-folders.sh
 ```
-Paste the contents of the file as shown above, save, and close the file. You have to provide only three parameters in this file: your username, password, and GIN installation directory. In our case, the GIN installation directory is ```~/in-house-gin```. Execute this file by typing:
+Paste the contents of the file as shown above, save, and close the file. You have to provide only three parameters in this file: your username, password, and GIN installation directory. In our case, the GIN installation directory is ```/home/<your-username>/in-house-gin```. Execute this file by typing:
 ```
 sudo sh gin-docker-folders.sh
 ```
@@ -639,15 +699,28 @@ Next, make sure the set ```ipv4_address``` (e.g., 12.34.56.78), ```subnet``` (e.
 ifconfig -a
 ```
 ```eth0:inet``` entry will give you your IP address. Enter this value into the ```docker-compose.yml``` file.
+
 You should also change the location where repositories are being stored. Hence change the line below:
 ```
 - ../gindata/gin-repositories:/data/repos:rw
 ```
 into this line with repository location pointing to the Ceph storage:
 ```
-- ../gindata/gin-repositories:/mnt/cephfs:rw
+- /mnt/cephfs:/data/repos:rw
 ```
 When GIN repositories are going to be stored in this location, they are going to be stored as "bare" git (annex) repositories.
+
+Add the Apache container to the GIN instance file by adding the following lines at the bottom of the services list:
+```
+apache:
+  image: httpd:2.4.54
+  restart: always
+  ports:
+    - "80:80"
+    - "443:443"
+```
+
+Finally, comment out all ```networks``` entries in the GIN instance file.
 
 Once you finish editing the Docker Compose GIN instance file, copy the file to ```$DIR_GINROOT/gin-dockerfile``` directory, like:
 ```
@@ -665,41 +738,48 @@ sudo chmod -R g+rw ~/in-house-gin
 All required GIN Docker containers can be downloaded by executing the following commands:
 ```
 cd ~/in-house-gin/gin-dockerfile/
+sudo systemctl start docker
 sudo docker compose pull
 ```
 You should see the following output, if all goes successfully:
 ```
-[+] Running 30/30
- ⠿ web Pulled                                                                          19.1s
-   ⠿ cbdbe7a5bc2a Pull complete                                                         0.7s
-   ⠿ f80baed5aab5 Pull complete                                                         0.8s
-   ⠿ 89a388a79898 Pull complete                                                         4.0s
-   ⠿ ed5cc09825c1 Pull complete                                                         4.3s
-   ⠿ 5cb6da02d7ec Pull complete                                                         4.4s
-   ⠿ 43ec29b48c77 Pull complete                                                         4.5s
-   ⠿ 7e446e441c17 Pull complete                                                         5.0s
-   ⠿ defb6c422296 Pull complete                                                         8.0s
-   ⠿ 88d0869d42fa Pull complete                                                         8.1s
-   ⠿ b478dc392bf5 Pull complete                                                         8.2s
-   ⠿ 496764bd3222 Pull complete                                                         8.3s
-   ⠿ e92de83a3850 Pull complete                                                         8.4s
-   ⠿ c4ca3f12302e Pull complete                                                         8.5s
-   ⠿ 391654d516ba Pull complete                                                        15.2s
-   ⠿ 366413088261 Pull complete                                                        15.2s
- ⠿ db Pulled                                                                           15.7s
-   ⠿ bff3e048017e Pull complete                                                         7.0s
-   ⠿ e3e180bf7c2b Pull complete                                                         7.3s
-   ⠿ 62eff3cc0cff Pull complete                                                         7.4s
-   ⠿ 3d90a128d4ff Pull complete                                                         7.5s
-   ⠿ ba4ce0c5ab29 Pull complete                                                         8.2s
-   ⠿ a8f4b87076a9 Pull complete                                                         8.3s
-   ⠿ 4b437d281a7e Pull complete                                                         8.4s
-   ⠿ f1841d9dcb17 Pull complete                                                         8.4s
-   ⠿ bf897300657d Pull complete                                                        11.3s
-   ⠿ 3bfdfb831df4 Pull complete                                                        11.4s
-   ⠿ c44ac1fcc543 Pull complete                                                        11.4s
-   ⠿ 9ad3441d354a Pull complete                                                        11.5s
-   ⠿ 2d79312566dd Pull complete                                                        11.5s
+[+] Running 36/36
+ ⠿ db Pulled                                                                            16.8s
+   ⠿ bff3e048017e Pull complete                                                          8.5s
+   ⠿ e3e180bf7c2b Pull complete                                                          8.9s
+   ⠿ 62eff3cc0cff Pull complete                                                          9.0s
+   ⠿ 3d90a128d4ff Pull complete                                                          9.2s
+   ⠿ ba4ce0c5ab29 Pull complete                                                          9.9s
+   ⠿ a8f4b87076a9 Pull complete                                                         10.2s
+   ⠿ 4b437d281a7e Pull complete                                                         10.3s
+   ⠿ f1841d9dcb17 Pull complete                                                         10.4s
+   ⠿ bf897300657d Pull complete                                                         13.6s
+   ⠿ 3bfdfb831df4 Pull complete                                                         13.6s
+   ⠿ c44ac1fcc543 Pull complete                                                         13.7s
+   ⠿ 9ad3441d354a Pull complete                                                         13.7s
+   ⠿ 2d79312566dd Pull complete                                                         13.8s
+ ⠿ apache Pulled                                                                        13.4s
+   ⠿ 3f4ca61aafcd Pull complete                                                          8.0s
+   ⠿ 2e3d233b6299 Pull complete                                                          8.2s
+   ⠿ 6d859023da80 Pull complete                                                          8.6s
+   ⠿ f856a04699cc Pull complete                                                         10.3s
+   ⠿ ec3bbe99d2b1 Pull complete                                                         10.4s
+ ⠿ web Pulled                                                                           14.5s
+   ⠿ cbdbe7a5bc2a Pull complete                                                          0.7s
+   ⠿ f80baed5aab5 Pull complete                                                          0.9s
+   ⠿ 89a388a79898 Pull complete                                                          4.1s
+   ⠿ ed5cc09825c1 Pull complete                                                          4.4s
+   ⠿ 5cb6da02d7ec Pull complete                                                          4.5s
+   ⠿ 43ec29b48c77 Pull complete                                                          4.5s
+   ⠿ 7e446e441c17 Pull complete                                                          5.2s
+   ⠿ defb6c422296 Pull complete                                                         10.0s
+   ⠿ 88d0869d42fa Pull complete                                                         10.2s
+   ⠿ b478dc392bf5 Pull complete                                                         10.3s
+   ⠿ 496764bd3222 Pull complete                                                         10.4s
+   ⠿ e92de83a3850 Pull complete                                                         10.5s
+   ⠿ c4ca3f12302e Pull complete                                                         10.6s
+   ⠿ 391654d516ba Pull complete                                                         11.6s
+   ⠿ 366413088261 Pull complete                                                         11.7s
 ```
 
 Launch the database container:
@@ -721,22 +801,85 @@ exit
 exit
 ```
 
-Launch both the database and the web containers:
+Launch database, web, and apache containers:
 ```
-sudo docker compose up -d
+$ sudo docker compose up -d
+[+] Running 3/3
+ ⠿ Container gin-apache-1  Started                                                      0.5s
+ ⠿ Container gin-db-1      Running                                                      0.0s
+ ⠿ Container gin-web-1     Started                                                      0.6s
 ```
-Both database and web containers should now be running with no problem. You can see them by typing:
+Reconfigure the apache docker container. First, get the default configuration file from the apache container and edit it:
+```
+sudo docker cp gin-apache-1:/usr/local/apache2/conf/httpd.conf ~/in-house-gin-resources/
+sudo nano ~/in-house-gin-resources/httpd.conf
+```
+Inside the file replace the line
+```
+Listen 80
+```
+with these lines:
+```
+#Listen 80
+Listen [::]:80
+Listen 0.0.0.0:80
+```
+Comment the line giving away system admin email, like this:
+```
+#ServerAdmin you@example.com
+```
+Replace the line defining ```ServerName```
+```
+#ServerName www.example.com:80
+```
+with the lines:
+```
+#ServerName www.example.com:80
+ServerName <ip-address-of-machine-with-apache-installation>
+```
+Uncomment lines for loading proxy server modules:
+```
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+```
+At the bottom of the file add the following definitions:
+```
+# Additional entries below
+# Hide Apache version from header and from error files
+ServerTokens prod
+ServerSignature off
+
+# Disable ETag to prevent disposing sensitive values like iNode
+FileETag none
+
+# Apache proxypass configuration
+ProxyPass "/"  "http://gin-web-1:3000/"
+ProxyPassReverse "/"  "http://gin-web-1:3000/"
+
+# Prevent exposing debug console
+<Location /debug>
+    Deny from  all
+</Location>
+```
+Copy the edited Apache configuration to the docker apache container:
+```
+sudo docker cp ~/in-house-gin-resources/httpd.conf gin-apache-1:/usr/local/apache2/conf/httpd.conf
+sudo docker exec -it gin-apache-1 apachectl graceful
+```
+
+Both database, web, and apache containers should now be running with no problem. You can see them by typing (while inside the folder with the GIN instance file):
 ```
 $ sudo docker compose ps
-NAME                COMMAND                  SERVICE             STATUS              PORTS
-gin-db-1            "docker-entrypoint.s…"   db                  running             5432/tcp
-gin-web-1           "/app/gogs/docker/st…"   web                 running             3000/tcp, 0.0.0.0:2121->22/tcp, :::2121->22/tcp
+NAME          IMAGE                 COMMAND                 SERVICE  CREATED      STATUS      PORTS
+gin-apache-1  httpd:2.4.54          "httpd-foreground"      apache   2 hours ago  Up 2 hours  0.0.0.0:80->80/tcp, :::80->80/tcp
+gin-db-1      postgres:11           "docker-entrypoint.s…"  db       2 hours ago  Up 2 hours  5432/tcp
+gin-web-1     gnode/gin-web:latest  "/app/gogs/docker/st…"  web      2 hours ago  Up 2 hours  3000/tcp, 0.0.0.0:2121->22/tcp, :::2121->22/tcp
 ```
-The command output indicates the running status of both containers. If this is not the case, you should identify the cause of it and relaunch the containers after fixing it. Condensed instruction for relaunching containers are provided in the next subsection. Otherwise, if containers are runnig fine, skip the next subsection, and connect to GIN service.
+The command output indicates the running status of all containers. If this is not the case, you should identify the cause of it and relaunch the containers after fixing it. Condensed instruction for relaunching containers are provided in the next subsection. Otherwise, if containers are runnig fine, skip the next subsection, and connect to the GIN service.
 
 (doc-install-server-gin-docker-containers-relaunch)=
 ### Relaunch GIN Docker Containers
-In case something goes wrong with your GIN Docker containers and they need to be wiped out and reinstated, run the lines below while located in ```~/in-house-gin/gin-dockerfile``` directory (obviously make sure you fix the cause of the failure beforehand and reboot the machine if needed):
+In case something goes wrong with your GIN Docker containers and they need to be wiped out and reinstated, run the lines below (obviously make sure you fix the cause of the failure beforehand and reboot the machine if needed):
 ```
 cd ~/in-house-gin/gin-dockerfile
 sudo systemctl start docker
@@ -760,11 +903,80 @@ createdb -O gin gin
 exit
 exit
 sudo docker compose up -d
+
+sudo docker cp ~/in-house-gin-resources/httpd.conf gin-apache-1:/usr/local/apache2/conf/httpd.conf
+sudo docker exec -it gin-apache-1 apachectl graceful
 ```
 
 (doc-install-server-gin-setup)=
 ### Setup GIN Service
+To set up the GIN Service, you have to launch the install page. You would find it by typing the Bristol GIN domain name into the web browser followed by http or https port into the web browser:
+```
+<ip-address-of-machine-with-apache-installation>:<http-or-https-port>
+```
 
+On the setup page, set the following fields with the corresponding values. For other setup options please refer to the gogs documentation.
+- db: postgreSQL
+- host: gin-db-1:5432
+- user: gin
+- password: <used-during-database-setup-and-in-gin-docker-folders.sh-file>
+- database name: gin
+- app name: GIN dev
+- repo root: as defined in the GIN instance file on the container side (e.g., ```/data/repos```)
+- domain: ```<ip-address-of-machine-with-apache-installation>```
+
+Now go to the Bristol GIN domain and register a new account. This user will also have admin privileges. The figure below shows an example:
+```{image} ../assets/images/documentation/installation-instructions-for-gin-server/Fig01-gin-setup.png
+:name: fig-gin-server-setup
+:width: 690px
+:align: center
+```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Figure 1. Register Your Account**
+
+After signing in you should see an empty account. Next, stop all the Docker containers:
+```
+cd ~/in-house-gin/gin-dockerfile
+sudo docker compose down
+```
+and replace the old app.ini file with the one from ```~/in-house-gin-repo/resources```:
+```
+sudo mv ~/in-house-gin/config/gogs/conf/app.ini ~/in-house-gin-resources/old-app.ini
+cp in-house-gin-repo/resources/app.ini .
+sudo nano app.in
+```
+Set the following variables as below:
+```
+APP_NAME = GIN dev
+HOST = gin-db-1:5432
+PASSWD = <used-during-database-setup-and-in-gin-docker-folders.sh-file>
+DOMAIN = 172.18.18.50
+HTTP_PORT = 3000
+ROOT_URL = http://172.18.18.50
+SECRET_KEY = <old-value>
+```
+and copy the adjusted file to the right location:
+```
+sudo cp ~/in-house-gin-resources/app.ini ~/in-house-gin/config/gogs/conf/
+```
+Copy the ```public``` and ```templates``` directories from ```~/in-house-gin-repo``` to ```~/in-house-gin/config/gogs```:
+```
+sudo cp -r ~/in-house-gin-resources/in-house-gin-repo/public ~/in-house-gin/config/gogs/
+sudo cp -r ~/in-house-gin-resources/in-house-gin-repo/templates ~/in-house-gin/config/gogs/
+```
+This directory is specified via the docker-compose.yml file to hold custom frontend templates for the GIN instance.
+
+Adjust file permissions for all added and modified files on the server:
+```
+sudo chown -R ginuser:ginservice ~/in-house-gin
+```
+
+Stop any running container and restart the full service:
+```
+cd ~/in-house-gin/gin-dockerfile
+sudo docker compose down
+sudo docker compose up -d
+sudo docker compose logs -f
+```
 
 ```{note}
 This section is work in progress. Current priority!
