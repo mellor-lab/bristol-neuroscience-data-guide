@@ -170,7 +170,7 @@ sessionNotes = ['201204 - Slice 2 Imaging 3 dendrite regions roughly in the SO S
                 'Missed a few of the imaging with the ephys so more Ephys traces than linescans   ' ...
                 'by the end of the experiment the top or neuron started to bleb.'];
 ```
-Again, these variables are mostly self-explanatory or commented in the code. The sessionNotes variable is coming from the ```Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/labbbook.txt``` file.
+Again, these variables are mostly self-explanatory or commented in the code. The ```sessionNotes``` variable is coming from the ```Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/labbbook.txt``` file.
 
 The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like [odML](http://g-node.github.io/python-odml/). Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.
 
@@ -291,9 +291,9 @@ The table below describes the variables inside the files.
 ```
 **Table 1. Preprocessed Data**
 
-We are interested in ```Ephys_Time```, ```Calcium_Time```, ```Calcium_deltaF```, ```Ephys_data```, ```Flur5_denoised```, ```Alexa_denoised```, ```Neuron```, and ```ROI_img``` and are going to work with these variables during the tutorial.
+We are interested in ```Ephys_Time```, ```Calcium_deltaF```, ```Ephys_data```, ```Flur5_denoised```, ```Alexa_denoised```, ```Neuron```, and ```ROI_img``` and are going to work with these variables during the tutorial.
 
-As part of laoding the data, we also convert the variables with fluorescence data to the regular array form. For that purpose the array dimensions of data inside cell arrays have to be equalised by appending data using NaNs. This is done by passing cell arrays to the ```appendLinescans``` function which then outputs regular 3D arrays:
+As part of loading the data, we also convert the variables with fluorescence data to the regular array form. For that purpose the array dimensions of data inside cell arrays have to be equalised by appending data using NaNs. This is done by passing cell arrays to the ```appendLinescans``` function which then outputs regular 3D arrays:
 ```
 % Append raw linescans so they have equal widths
 data1.Analysed_data.Flur5_denoised = appendLinescans(data1.Analysed_data.Flur5_denoised);
@@ -563,6 +563,426 @@ pip install -U pynwb
 ```
 Now you're ready to start working with PyNWB. The full installation instructions are available [here](https://pynwb.readthedocs.io/en/stable/install_users.html).
 
+(tutorials-caimage-convert2nwb-py-record-metadata)=
+#### Record Metadata
+Inside the calcium imaging repository there is a folder with a Python file that you can execute in order to convert the data of one particular imaging/recording session into the NWB format. The script is located inside the ```Exp_001_SCstim_DiffLocations/201204/Slice_00/Cell_001/nwb``` folder in the file named ```convert2nwbCaImg.py``` and, if executed, it would convert the data stored in the files below:
+```
+Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/201204__s2d1_004_ED__1 Botden_Analysed.mat
+Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/201204__s2d1_004_ED__1 Midden_Analysed.mat
+Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/201204__s2d1_004_ED__1 Topden_Analysed.mat
+```
+
+We will now analyse the conversion script in more detail. The script starts by importing general and pynwb module dependencies, as well as custom functions located inside the ```localFunctions.py``` module file.
+```python
+import scipy.io
+import numpy as np
+from datetime import datetime
+
+from pynwb import NWBFile, NWBHDF5IO
+from pynwb.core import DynamicTable
+from pynwb.file import Subject
+from pynwb.ophys import OpticalChannel
+from pynwb.base import Images
+from pynwb.image import RGBImage, GrayscaleImage
+
+from localFunctions import appendLinescans, reshapeData, setTwoPhotonSeries, setDeltaFSeries, setCClampSeries
+```
+These are not all modules that we need. Some of them are loaded inside the ```localFunctions.py``` module file. These additional modules include:
+```python
+from pynwb.core import VectorData
+from pynwb.ophys import TwoPhotonSeries
+from pynwb.icephys import CurrentClampSeries
+```
+
+We then record metadata associated with this experimental session. In this tutorial the metadata is divided into three types: Project, animal, and session metadata. The project metadata is common to all animals and experimental sessions and is defined by the part of the script below:
+```python
+projectName = 'Intracellular Ca2+ dynamics during plateau potentials trigerred by Schaffer collateral stimulation'
+experimenter = 'Matt Udakis'
+institution = 'University of Bristol'
+publications = 'In preparation'
+lab = 'Jack Mellor lab'
+brainArea = 'Hippocampus CA1-2'
+greenIndicator = 'Fluo5f'
+redIndicator = 'Alexa594'
+```
+The names of most of these parameters are self-explanatory. The green and red indicators are calcium indicator types named based on the light wavelength they emit. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate imaging/recording sessions. The animal metadata is defined in the code snippet below:
+```python
+animalID = 'm1'
+ageInDays = 100
+age = 'P'+str(ageInDays)+'D' # Convert to ISO8601 format: https://en.wikipedia.org/wiki/ISO_8601#Durations
+strain = 'C57BL/6J'
+sex = 'M'
+species = 'Mus musculus'
+weight = []
+description = '001' # Animal testing order.
+```
+Names of these parameters are again self-explanatory. Finally, we define the subject level metadata in the code below:
+```python
+startYear = 2020
+startMonth = 12
+startDay = 4
+startTime = datetime(startYear, startMonth, startDay)
+year = str(startYear); year = year[2:4]
+month = str(startMonth)
+if len(month) == 1:
+  month = '0'+month
+day = str(startDay)
+if len(day) == 1:
+  day = '0'+day
+sliceNumber = 2
+cellNumber = 1
+imagingRate = 1/21 # A single linescan duration is 1sec with 20sec period in between linescans
+lineRate = 1000. # A number of lines scanned in a second.
+sessionID = animalID + '_' + year + month + day + '_s' + str(sliceNumber) + '_c' + str(cellNumber) # mouse-id_time_slice-id_cell-id
+sessionDescription = 'Single cell imaging in a slice combined with somatic current clamp recordings and the stimulation of Schaffer collaterals'
+sessionNotes = '201204 - Slice 2 Imaging 3 dendrite regions roughly in the SO SR and SLM regions   ' +\
+               'Same line scan with same intensity of stim (2.3V) at different locations along the cell   ' +\
+               'Ephys frames to match up with linescans   ' +\
+               'Frames   ' +\
+               '1-8 Bottom Den   ' +\
+               '10-19 Middle Den   ' +\
+               '22-28 Top Dendrite   ' +\
+               'Missed a few of the imaging with the ephys so more Ephys traces than linescans   ' +\
+               'by the end of the experiment the top or neuron started to bleb.'
+```
+Again, these variables are mostly self-explanatory or commented in the code. The ```sessionNotes``` variable is coming from the ```Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/labbbook.txt``` file.
+
+The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like [odML](http://g-node.github.io/python-odml/). Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.
+
+We start the conversion process by creating an [```NWBFile```](https://pynwb.readthedocs.io/en/stable/pynwb.file.html#pynwb.file.NWBFile) object and defining session metadata:
+```python
+# Assign NWB file fields
+nwb = NWBFile(
+  session_description = sessionDescription,
+  identifier = sessionID, 
+  session_start_time = startTime, 
+  experimenter = experimenter,  # optional
+  session_id = sessionID,  # optional
+  institution = institution,  # optional
+  related_publications = publications,  # optional
+  notes = sessionNotes,  # optional
+  lab = lab) # optional
+```
+Each file must have a ```session_description``` identifier and a ```session_start_time``` parameter. We then initialise the [```Subject```](https://pynwb.readthedocs.io/en/stable/pynwb.file.html#pynwb.file.Subject) object and the metadata it contains:
+```python
+# Create subject object
+nwb.subject = Subject(
+  subject_id = animalID,
+  age = age,
+  description = description,
+  species = species,
+  sex = sex)
+```
+
+(tutorials-caimage-convert2nwb-py-create_img_planes)=
+#### Create Imaging Planes
+In order to store optical imaging data, we need to create imaging planes. First, we create [```OpticalChannel```](https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.OpticalChannel) objects for each calcium indicator we use. The objects contain ```name```, ```description```, and ```emission_lambda``` properties. In our case we use indicators Fluo5f and Alexa594 which have their maximum emission wavelengths at approximately 516 and 616 nanometers, respectively. These wavelength roughly correspond to green and red colours. Therefore, we name the channels based on the colours their corresponding calcium indicators emit.
+```python
+green_optical_channel = OpticalChannel(
+  name = "OpticalChannel",
+  description = 'green channel corresponding to ' + greenIndicator,
+  emission_lambda=516.)
+
+red_optical_channel = OpticalChannel(
+  name = "OpticalChannel",
+  description = 'red channel corresponding to ' + redIndicator,
+  emission_lambda=616.)
+```
+Another needed prerequisite is the [```Device```](https://pynwb.readthedocs.io/en/stable/pynwb.device.html#pynwb.device.Device) object which is stored within the ```NWBFile``` object. Idealy, the ```Device``` object should have a ```name```, ```description```, and ```manufacturer``` properties as defined below:
+```python
+device = nwb.create_device(
+    name = '2P_microscope',
+    description = 'Two-photon microscope',
+    manufacturer = 'Scientifica')
+```
+We name the device as 2P_microscope but you are free to name it differently. Having created ```OpticalChannel``` and ```Device``` objects we can now create optical imaging planes corresponding to the green and red optical channels. We do this by executing the code below:
+```python
+# Create imaging plane objects
+green_imaging_plane = nwb.create_imaging_plane(
+  name = 'green_imaging_plane',
+  optical_channel = green_optical_channel,
+  imaging_rate = imagingRate,
+  description = 'The plane for imaging calcium indicator Fluo5f.',
+  device = device,
+  excitation_lambda = 810.,
+  indicator = 'Fluo5f',
+  location = brainArea)
+
+red_imaging_plane = nwb.create_imaging_plane(
+  name = 'red_imaging_plane',
+  optical_channel = red_optical_channel,
+  imaging_rate = imagingRate,
+  description = 'The plane for imaging calcium indicator Alexa594.',
+  device = device,
+  excitation_lambda = 810.,
+  indicator = 'Alexa594',
+  location = brainArea)
+```
+The [```ImagingPlane```](https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.ImagingPlane) object defines various properties of imaging planes used to generate the optical physiology data. Required properties include ```name```, ```excitation_lambda``` (the wavelength used to excite calcium indicators in nm), ```indicator```, ```location``` (brain area where the imaging plane is located), ```optical_channel``` (previously created ```OpticalChannel``` objects), and ```device``` (a link to the ```Device``` object defining the two-photon microscope). It is also useful to provide ```description```, ```imaging_rate``` (the rate at which individual linescans are obtained), and any other properties you deem necessary. Such properties may include ```origin_coords``` defining physical location of the first element of the imaging plane relative to some reference point (e.g., bregma; defined by the ```reference_frame``` property) and ```grid_spacing``` to define the distance between individual pixels within the imaging plane.
+
+(tutorials-caimage-convert2nwb-py-load-data)=
+#### Load Imaging/Recording Data
+The next part of the conversion script loads aggregated and preprocessed data stored inside the three MAT files in the ```Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed``` folder:
+```python
+# Load data
+dendrite = 'Bot'
+data1 = scipy.io.loadmat('../Analysed/' + year + month + day + '__s' + str(sliceNumber) + \
+  'd' + str(cellNumber) + '_004_ED__1 ' + dendrite + 'den_Analysed.mat', squeeze_me=True)['Analysed_data']
+dendrite = 'Mid'
+data2 = scipy.io.loadmat('../Analysed/' + year + month + day + '__s' + str(sliceNumber) + \
+  'd' + str(cellNumber) + '_004_ED__1 ' + dendrite + 'den_Analysed.mat', squeeze_me=True)['Analysed_data']
+dendrite = 'Top'
+data3 = scipy.io.loadmat('../Analysed/' + year + month + day + '__s' + str(sliceNumber) + \
+  'd' + str(cellNumber) + '_004_ED__1 ' + dendrite + 'den_Analysed.mat', squeeze_me=True)['Analysed_data']
+```
+Three MAT files correspond to three imaged regions of interest (ROIs) of the neuron. The first region of interest, refered to as the bottom dendrite, is the pyramidal cell dendrite located in the Stratum Oriens (SO) of the CA1-2 region of the hippocampus. This information can be accessed using the ```sessionNotes``` key. The remaining two files refered to as middle and top dendrite data correspond to ROIs located in the Stratum Radiatum (SR) and Stratum Lacunosum Moleculare (SLM), respectively. All of the available keys of ```data``` objects are described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table) of the corresponding Matlab NWB conversion [subsection](tutorials-caimage-convert2nwb-matlab-load-data).
+
+We are interested in ```Ephys_Time```, ```Calcium_deltaF```, ```Ephys_data```, ```Flur5_denoised```, ```Alexa_denoised```, ```Neuron```, and ```ROI_img``` and are going to work with these variables during the tutorial.
+
+As part of loading the data, we also convert the variables with fluorescence data to the regular array form. For that purpose the array dimensions of data inside irregular arrays have to be equalised by appending data using NaNs. This is done by passing the irregular arrays to the ```appendLinescans``` function which then outputs regular 3D arrays:
+```python
+# Append raw linescans so they have equal widths
+data1['Flur5_denoised'].fill(appendLinescans(data1['Flur5_denoised'].item()))
+data1['Alexa_denoised'].fill(appendLinescans(data1['Alexa_denoised'].item()))
+data2['Flur5_denoised'].fill(appendLinescans(data2['Flur5_denoised'].item()))
+data2['Alexa_denoised'].fill(appendLinescans(data2['Alexa_denoised'].item()))
+data3['Flur5_denoised'].fill(appendLinescans(data3['Flur5_denoised'].item()))
+data3['Alexa_denoised'].fill(appendLinescans(data3['Alexa_denoised'].item()))
+...
+```
+
+(tutorials-caimage-convert2nwb-py-convert-fluorescence)=
+#### Convert Fluorescence Data
+We convert the fluorescence data by invoking ```setTwoPhotonSeries``` function as shown below:
+```python
+input = {
+  'indicator': greenIndicator,
+  'imagingPlane': green_imaging_plane,
+  'imagingRate': imagingRate,
+  'lineRate': lineRate,
+  'data': reshapeData(data1['Flur5_denoised'].item()),
+  'dendriteID': 'bottom'}
+nwb = setTwoPhotonSeries(nwb, input)
+```
+We reshape the data using ```reshapeData``` function laoded from the ```localFunctions``` module, so that it is in the form a 3D array. The ```setTwoPhotonSeries``` function is invoked six times to process fluorescence data for the two different calcium indicators and the three different ROIs (2x3). The conversion function body code is shown below:
+```python
+# Name the two-photon series to the NWB file
+if input['indicator'] in 'Fluo5f':
+  opticalChannel = 'Green'
+elif input['indicator'] in 'Alexa594':
+  opticalChannel = 'Red'
+
+if input['dendriteID'] in 'bottom':
+  dendriteID = '1'
+elif input['dendriteID'] in 'middle':
+  dendriteID = '2'
+elif input['dendriteID'] in 'top':
+  dendriteID = '3'
+
+# Create image series
+image_series = TwoPhotonSeries(
+  name = 'TwoPhotonSeries' + opticalChannel + dendriteID,
+  description = input['indicator'] + ' linescans of the ' + input['dendriteID'] + ' dendrite',
+  imaging_plane = input['imagingPlane'],
+  starting_time = 0.0,
+  rate = input['imagingRate'],
+  scan_line_rate = input['lineRate'],
+  data = input['data'],
+  unit =  'a.u.',
+  comments = 'This two-photon series contains ' + input['indicator'] + ' linescans of the ' +\
+              input['dendriteID'] + ' (ROI) with the first dimension corresponding to time ' +\
+              '(or to individual linescans). Each linescan is 1-sec in duration with ' +\
+              '20-sec intervals between two linescans. The second dimension corresponds ' +\
+              'to individual lines spanning the length of the dendrite in the ROI. ' +\
+              'The third dimension corresponds to the width of the dendrite. ' +\
+              'Some linescans may contain appended NaN values to make ' +\
+              'widths of different linescans be equal within the same ROI.   ' +\
+              'data_continuity = step')
+
+nwb.add_acquisition(image_series)
+return nwb
+```
+The fluorescence data is added to the ```NWBFile``` object by creating a [```TwoPhotonSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.TwoPhotonSeries) object. ```TwoPhotonSeries``` object has the following required properties: ```name```, ```data```, ```imaging_plane```, and ```rate```. In our case, the ```data``` property contains the actual fluorescence data in a 3D array form with its dimensions described in [Table 1].(tutorials-caimage-convert2nwb-matlab-variable-table) (```Flur5_denoised``` and ```Alexa_denoised``` variables). The ```rate``` property corresponds to the rate at which individual linescans were acquired. However, it does not need to be organised this way and can refer to a different data dimension. Therefore, it is important to use ```description```, and ```comments``` properties to explain how the data is organised. For example, data containing individual linescans is not continuous and should be described as having the step quality. This is done by the ```data_continuity = step``` entry in the ```comments``` (unlike in pynwb, in matnwb this is a separate property). The property ```scan_line_rate``` describes the rate at which individual image lines were obtained and corresponds to the second dimension of the data.
+
+(tutorials-caimage-convert2nwb-py-convert-fluorescence-intensity-change)=
+#### Convert Change in Fluorescence Intensity Data
+In addition to converting the denoised fluorescence signal we are also going to convert the change in fluorescence intensity data (delta fluorescence). The delta F estimate is derived from the Alexa594 calcium indicator data or the red colour channel signal. It is stored using the ```TwoPhotonSeries``` object similar to the denoised raw fluorescence data as described in the previous subsection. We perform conversion for all three ROIs as shown below:
+```python
+# Add optical physiology data: Delta fluorescence
+input = {
+  'indicator': redIndicator,
+  'imagingPlane': red_imaging_plane,
+  'imagingRate': imagingRate,
+  'lineRate': lineRate,
+  'data': np.expand_dims(np.transpose(data1['Calcium_deltaF'].item()), axis=2),
+  'dendriteID': 'bottom'}
+nwb = setDeltaFSeries(nwb, input)
+```
+We transpose the data array so that individual linescans correspond to the first dimension. We also add the third empty dimension as the ```data``` property of the ```TwoPhotonSeries``` object has to have three dimensions at minimum. The actual conversion is performed by the ```setDeltaFSeries``` function loaded from the ```localFunctions``` module:
+```python
+# Name and add the two-photon delta F series to the NWB file
+if input['dendriteID'] in 'bottom':
+  dendriteID = '1'
+elif input['dendriteID'] in 'middle':
+  dendriteID = '2'
+elif input['dendriteID'] in 'top':
+  dendriteID = '3'
+
+# Create image series
+image_series = TwoPhotonSeries(
+  name = 'TwoPhotonDeltaFSeries' + dendriteID,
+  description = 'Delta F data for the ' + input['dendriteID'] +\
+                ' calculated based on ' + input['indicator'] + '.',
+  imaging_plane = input['imagingPlane'],
+  starting_time = 0.0,
+  rate = input['imagingRate'],
+  scan_line_rate = input['lineRate'],
+  data = input['data'],
+  unit = 'normalised',
+  comments = 'This two-photon series contains delta F data calculated based on ' +\
+              input['indicator'] + ' for the ' + input['dendriteID'] + ' (ROI) ' +\
+              'with the first dimension corresponding to time ' +\
+              '(or to individual linescans). Each linescan is 1-sec in duration with ' +\
+              '20-sec intervals between two linescans. The second dimension corresponds ' +\
+              'to individual lines spanning the length of the dendrite in the ROI. ' +\
+              'The data is averaged across the dendritic width.   ' +\
+              'data_continuity = step')
+
+nwb.add_acquisition(image_series)
+return nwb
+```
+The delta F data has only two dimensions as the signal is averaged across the dendritic width (```Calcium_deltaF``` variable described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)).
+
+All ```TwoPhotonSeries``` objects are stored within the ```acquisition``` data interface of the ```NWBFile``` object. However, this is not the only way of storing ROI fluorescence data. Alternatively, this type of data could be stored by defining an image mask used to extract ROI data from the wider fluorescence imaging data. If this is how you have obtained your own data, then it is worth consulting a different calcium imaging tutorial available [here](https://pynwb.readthedocs.io/en/stable/tutorials/domain/ophys.html#sphx-glr-tutorials-domain-ophys-py).
+
+(tutorials-caimage-convert2nwb-py-convert-images)=
+#### Convert Static Fluorescence Images
+As a final step of converting your calcium imaging data you may want to add static neuron and ROI images to your NWB file. Static colour images can be stored as [```RGBImage```](https://pynwb.readthedocs.io/en/stable/pynwb.image.html#pynwb.image.RGBImage) objects with the ```data``` property containing an array that has the spatial dimensions plus the third dimension corresponding to colour (three planes of RGB values; ```Neuron``` variable described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)):
+```python
+neuron_image = RGBImage(
+  name = 'neuron_image',
+  data = data1['Neuron'].item(), # required: [height, width, colour]
+  description = 'RGB image of the full neuron.')
+```
+Similarly, grayscale ROI images can be stored using [```GrayscaleImage```](https://pynwb.readthedocs.io/en/stable/pynwb.image.html#pynwb.image.GrayscaleImage) objects (```ROI_img``` variable described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)):
+```python
+bottom_dend_image = GrayscaleImage(
+  name = 'dendrite1_image',
+  data = data1['ROI_img'].item(), # required: [height, width]
+  description = 'Grayscale image of the bottom dendrite.')
+...
+```
+Images are then grouped together using the [```Images```](https://pynwb.readthedocs.io/en/stable/pynwb.base.html#pynwb.base.Images) object and added to the ```acquisition``` data interface of the ```NWBFile``` object as an ```ImageCollection``` object:
+```python
+image_collection = Images(
+  name = 'ImageCollection',
+  images = [neuron_image, bottom_dend_image, middle_dend_image, top_dend_image],
+  description = 'A collection of neuron and dendrite images.')
+
+nwb.add_acquisition(image_collection)
+```
+This completes the conversion of the calcium imaging data into the NWB format.
+
+(tutorials-caimage-convert2nwb-py-convert-icephys)=
+#### Convert Intracellular Electrophysiology Recording Data
+The calcium imaging data during this experiment were acquired in parallel to simultaneous intracellular somatic current clamp recordings in the imaged neuron. The recording sweeps are stored in the ```Ephys_data``` variable described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table). The variable contains recording sweeps corresponding to all three ROI imaging data. Note that the sweeps cover the first 950 ms of corresponding calcium imaging linescans. Analogously to the imaging data, we start by creating the recording device Amplifier_Multiclamp_700A:
+```python
+# Create the recording device object
+device = nwb.create_device(
+  name = 'Amplifier_Multiclamp_700A',
+  description = 'Amplifier for recording current clamp data.',
+  manufacturer = 'Molecular Devices')
+```
+Then follow this by creating the [```IntracellularElectrode```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.IntracellularElectrode) object while providing any relevant information about it including the associated ```Device``` object:
+```python
+electrode = nwb.create_icephys_electrode(
+  name = 'icephys_electrode',
+  description = 'A patch clamp electrode',
+  location = 'Cell soma in CA1-2 of hippocampus',
+  slice = 'slice #' + str(sliceNumber),
+  device = device)
+```
+Finally, we convert the intracellular current clamp recordings using the [```CurrentClampSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.CurrentClampSeries) object by passing data to the ```setCClampSeries``` function for all ROIs (imported from the ```localFunctions``` module):
+```python
+input = {
+  'ephysTime': data1['Ephys_Time'],
+  'nSweeps': nFrames,
+  'data': np.transpose(data1['Ephys_data'].item()),
+  'imagingRate': imagingRate,
+  'electrode': electrode,
+  'dendriteID': 'bottom'}
+nwb = setCClampSeries(nwb, input)
+...
+```
+The data is transposed os that individual recording sweeps correspond to the first dimension. The function code is given below:
+```python
+...
+if input['dendriteID'] in 'bottom':
+    nSweeps = input['nSweeps'][0]
+    sweeps = list(range(0, nSweeps))
+    dendriteID = '1'
+  elif input['dendriteID'] in 'middle':
+    nSweeps = input['nSweeps'][1]
+    sweeps = list(range(input['nSweeps'][0],input['nSweeps'][0]+nSweeps))
+    dendriteID = '2'
+  else:
+    nSweeps = input['nSweeps'][2]
+    sweeps = list(range(input['nSweeps'][0]+input['nSweeps'][1],input['nSweeps'][0]+input['nSweeps'][1]+nSweeps))
+    dendriteID = '3'
+
+  timestamps = input['ephysTime']/1000; # sec
+
+  current_clamp_series = CurrentClampSeries(
+    name = 'CurrentClampSeries' + dendriteID,
+    description = 'Somatic current clamp recording corresponding to ' +\
+                  'the initial part of the calcium imaging period ' +\
+                  'at ' + input['dendriteID'] + ' dendrite.',
+    data = input['data'][sweeps],
+    gain = 1.,
+    unit = 'millivolt',
+    electrode = input['electrode'],
+    stimulus_description = 'N/A',
+    timestamps = timestamps,
+    comments = 'Somatic current clamp recording corresponding to ' +\
+               'the initial part of the calcium imaging period ' +\
+               'at ' + input['dendriteID'] + ' dendrite.' +\
+               'The first dimension corresponds to individual ' +\
+               'recording sweeps. The second dimension corresponds to ' +\
+               'individual sweep data samples. The associated timestamps ' +\
+               'variable provides timestamps for the second dimension. ' +\
+               'This variable has to be combined with starting_time and ' +\
+               'rate variables to get absolute timestamps ' +\
+               'for each data point.   ' +\
+               'data_continuity = step.   ' +\
+               'rate = ' + str(input['imagingRate']))
+  
+  nwb.add_acquisition(current_clamp_series)
+  return nwb
+```
+The ```CurrentClampSeries``` is similar to the ```TwoPhotonSeries``` object. The difference is that, while creating the former, we need to provide a link to the electrode object and, since there is no ```scan_line_rate``` property, we need to add the ```timestamps``` variable corresponding to the second dimension of the electrophysiology data (```Ephys_Time``` and ```Ephys_data``` variables defined in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table), respectively).
+
+(tutorials-caimage-convert2nwb-py-save)=
+#### Save NWB File
+We use the ```NWBFile``` [```NWBHDF5IO``` object](https://pynwb.readthedocs.io/en/stable/pynwb.html?highlight=NWBHDF5IO#pynwb.NWBHDF5IO) to save our data in the NWB format:
+```python
+with NWBHDF5IO(sessionID + '.nwb', "w") as io:
+  io.write(nwb)
+```
+
+(tutorials-caimage-convert2nwb-py-read)=
+#### Read NWB File
+Reading NWB files in Python is done via the ```NWBHDF5IO``` class. Hence, import it by calling:
+```python
+from pynwb import NWBHDF5IO
+```
+Now if you want to open the NWB file that you just saved in Python, you can issue a command
+```python
+file_path = 'm1_201204_s2_c1.nwb'
+io = NWBHDF5IO(file_path, mode="r")
+nwb2 = io.read()
+```
+which will read the file passively. The action is fast and it does not load all of the data at once but rather make it readily accessible. This is useful as it allows you to read data selectively without loading the entire file content into the computer memory.
+
 (tutorials-caimage-convert2nwb-py-validate)=
 #### Validate NWB File
 For validating NWB files use command line and type in
@@ -577,6 +997,17 @@ Validating m1_201204_s2_c1.nwb against cached namespace information using namesp
 The program exit code should be 0. On error, the program exit code is 1 and the list of errors is outputted.
 
 For more details on the validation process, refer to an external [resource](https://pynwb.readthedocs.io/en/stable/validation.html).
+
+(tutorials-caimage-convert2nwb-py-resources)=
+#### Resources
+This section explained how you can use Python to convert your calcium imaging and accompanying current clamp data into NWB files. It is not an exhaustive overview of PyNWB module's optical physiology functionality. There are other potential use cases involving imaging in multiple neurons while simultaneously recording behavioural data, for example. There is a number of externally available tutorials covering some aspects of converting data obtained in optical physiology experiments to the NWB file format using Python:
+- [NWB File Basics Tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/general/file.html#sphx-glr-tutorials-general-file-py)
+- [PyNWB Calcium Imaging Data Tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/domain/ophys.html#sphx-glr-tutorials-domain-ophys-py)
+- [Storing Image Data in NWB](https://pynwb.readthedocs.io/en/stable/tutorials/domain/images.html#sphx-glr-tutorials-domain-images-py)
+- [Intracellular Electrophysiology Tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/domain/plot_icephys.html#sphx-glr-tutorials-domain-plot-icephys-py)
+- [Behavior Data Tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/domain/plot_behavior.html#sphx-glr-tutorials-domain-plot-behavior-py)
+- [PyNWB API Documentation](https://pynwb.readthedocs.io/en/stable/api_docs.html)
+- [NWB Schema Overview](https://nwb-schema.readthedocs.io/en/latest/index.html)
 
 ```{note}
 This section is work in progress. Current priority!
