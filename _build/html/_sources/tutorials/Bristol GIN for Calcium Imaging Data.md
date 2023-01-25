@@ -1046,7 +1046,47 @@ You can use [HDF View](https://www.hdfgroup.org/downloads/hdfview) software to v
 
 (tutorials-caimage-upload-nwb)=
 ## Upload Your Standardised Data to Remote Repository
-
+Let's say that you have completed the conversion of your data to the NWB format and now want to upload the converted file to the remote repository. First of all, move the NWB files to appropriate folder within your local repository:
+```
+mv m1_201204_s2_c1.nwb ../Analysed/
+```
+Subsequently, navigate to the repository root folder and issue the following command in your terminal:
+```
+gin commit . -m "Converted data to NWB"
+```
+This will commit changes to the local repository. To upload them to the remote repository, just type:
+```
+gin upload .
+```
 
 (tutorials-caimage-roll-back)=
 ## Roll back Repository to an Earlier Version
+Now let's assume you are not happy with the converted NWB file and you want to roll back to an earlier version of your repository prior to the conversion. Before we can do that, we need to find out the latest commit IDs by typing:
+```
+gin version --max-count 2
+```
+You should see a terminal output that looks similar to this one:
+```
+[1]  8c6df4c * Wed Jan 25 11:37:47 2023 (+0100)
+
+    Converted data to NWB
+
+  Added
+    Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/m1_201204_s2_c1.nwb
+
+[2]  2b0dfb3 * Wed Jan 25 11:20:33 2023 (+0100)
+
+    completed PyNWB part
+
+  Modified
+    Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/nwb/__pycache__/localFunctions.cpython-310.pyc,
+    Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/nwb/convert2nwbCaImg.py
+...
+```
+Obviously we are interested in restoring the repository to the version just prior to the conversion and its ID is 2b0dfb3. Now we type:
+```
+gin version --id 2b0dfb3
+```
+The local repository now should be rolled back to its previous version.
+
+Rolling back versions may produce some unintuitive results. Rolling back versions replaces new files with their earlier versions. However, if those files were not present in previous versions, they are kept in the rolled back version. Therefore, the new files have to be deleted manually after the roll back. This may seem like a bug but it actually is an intentional behaviour.

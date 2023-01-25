@@ -1000,4 +1000,4 @@ gin version --id f288303
 ```
 The local repository now should be rolled back to its previous version.
 
-Rolling back versions may produce some unintuitive results. Rolling back versions replaces new files with their earlier versions. However, if those files were not present in previous versions, they are kept in the rolled back version. Therefore, the new files have to be deleted manually after the roll back. This may seem a bug but it actually is an intentional behaviour.
+Rolling back versions may produce some unintuitive results. Rolling back versions replaces new files with their earlier versions. However, if those files were not present in previous versions, they are kept in the rolled back version. Therefore, the new files have to be deleted manually after the roll back. This may seem like a bug but it actually is an intentional behaviour.
