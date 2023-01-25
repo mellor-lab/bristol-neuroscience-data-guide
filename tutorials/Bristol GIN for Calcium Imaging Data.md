@@ -511,7 +511,7 @@ nwb2 = nwbRead('m1_201204_s2_c1.nwb');
 ```
 which will read the file passively. The action is fast and it does not load all of the data at once but rather make it readily accessible. This is useful as it allows you to read data selectively without loading the entire file content into the computer memory.
 
-In order to access stored two-photon calcium imaging data stored inside ```TwoPhotonSeries``` objects, execute the code given below:
+In order to access two-photon calcium imaging data stored inside ```TwoPhotonSeries``` objects, execute the code given below:
 ```
 TwoPhotonSeriesGreen1 = nwb2.acquisition.get('TwoPhotonSeriesGreen1').loadAll.data;
 ```
@@ -522,7 +522,7 @@ Stored images can be accessed by issuing the following command, for example:
 neuronImage = nwb2.acquisition.get('ImageCollection').image.get('neuron_image').loadAll.data;
 ```
 
-Finally, voltage clamp data is accessible in a similar way to the ```TwoPhotonSeries``` objects. For example,
+Finally, current clamp data is accessible in a similar way to the ```TwoPhotonSeries``` objects. For example,
 ```
 CurrentClampSeries1 = nwb2.acquisition.get('CurrentClampSeries1').loadAll.data;
 ```
@@ -536,7 +536,7 @@ Subject metadata is available via the command, for example:
 ```
 animalID = nwb2.general_subject.subject_id;
 ```
-More on reading optical physiology data stored in NWB files can be found in an external tutorial [here](https://neurodatawithoutborders.github.io/matnwb/tutorials/html/ophys.html).
+More on reading optical physiology data stored in NWB files can be found in an external tutorial [here](https://neurodatawithoutborders.github.io/matnwb/tutorials/html/ophys.html#H_3917738A).
 
 (tutorials-caimage-convert2nwb-matlab-validate)=
 #### Validate NWB File
@@ -718,7 +718,7 @@ red_imaging_plane = nwb.create_imaging_plane(
   indicator = 'Alexa594',
   location = brainArea)
 ```
-The [```ImagingPlane```](https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.ImagingPlane) object defines various properties of imaging planes used to generate the optical physiology data. Required properties include ```name```, ```excitation_lambda``` (the wavelength used to excite calcium indicators in nm), ```indicator```, ```location``` (brain area where the imaging plane is located), ```optical_channel``` (previously created ```OpticalChannel``` objects), and ```device``` (a link to the ```Device``` object defining the two-photon microscope). It is also useful to provide ```description```, ```imaging_rate``` (the rate at which individual linescans are obtained), and any other properties you deem necessary. Such properties may include ```origin_coords``` defining physical location of the first element of the imaging plane relative to some reference point (e.g., bregma; defined by the ```reference_frame``` property) and ```grid_spacing``` to define the distance between individual pixels within the imaging plane.
+The [```ImagingPlane```](https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.ImagingPlane) object defines various properties of imaging planes used to generate the optical physiology data. Required properties include ```name```, ```excitation_lambda``` (the wavelength used to excite calcium indicators in nm), ```indicator```, ```location``` (brain area where the imaging plane is located), ```optical_channel``` (previously created ```OpticalChannel``` objects), and ```device``` (a previously created ```Device``` object defining the two-photon microscope). It is also useful to provide ```description```, ```imaging_rate``` (the rate at which individual linescans are obtained), and any other properties you deem necessary. Such properties may include ```origin_coords``` defining physical location of the first element of the imaging plane relative to some reference point (e.g., bregma; defined by the ```reference_frame``` property) and ```grid_spacing``` to define the distance between individual pixels within the imaging plane.
 
 (tutorials-caimage-convert2nwb-py-load-data)=
 #### Load Imaging/Recording Data
@@ -763,9 +763,11 @@ input = {
   'data': reshapeData(data1['Flur5_denoised'].item()),
   'dendriteID': 'bottom'}
 nwb = setTwoPhotonSeries(nwb, input)
+...
 ```
-We reshape the data using ```reshapeData``` function laoded from the ```localFunctions``` module, so that it is in the form a 3D array. The ```setTwoPhotonSeries``` function is invoked six times to process fluorescence data for the two different calcium indicators and the three different ROIs (2x3). The conversion function body code is shown below:
+We reshape the data using ```reshapeData``` function loaded from the ```localFunctions``` module, so that it is in the form of a 3D array. The ```setTwoPhotonSeries``` function is invoked six times to process fluorescence data for the two different calcium indicators and the three different ROIs (2x3). The conversion function body code is shown below:
 ```python
+...
 # Name the two-photon series to the NWB file
 if input['indicator'] in 'Fluo5f':
   opticalChannel = 'Green'
@@ -802,7 +804,7 @@ image_series = TwoPhotonSeries(
 nwb.add_acquisition(image_series)
 return nwb
 ```
-The fluorescence data is added to the ```NWBFile``` object by creating a [```TwoPhotonSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.TwoPhotonSeries) object. ```TwoPhotonSeries``` object has the following required properties: ```name```, ```data```, ```imaging_plane```, and ```rate```. In our case, the ```data``` property contains the actual fluorescence data in a 3D array form with its dimensions described in [Table 1].(tutorials-caimage-convert2nwb-matlab-variable-table) (```Flur5_denoised``` and ```Alexa_denoised``` variables). The ```rate``` property corresponds to the rate at which individual linescans were acquired. However, it does not need to be organised this way and can refer to a different data dimension. Therefore, it is important to use ```description```, and ```comments``` properties to explain how the data is organised. For example, data containing individual linescans is not continuous and should be described as having the step quality. This is done by the ```data_continuity = step``` entry in the ```comments``` (unlike in pynwb, in matnwb this is a separate property). The property ```scan_line_rate``` describes the rate at which individual image lines were obtained and corresponds to the second dimension of the data.
+The fluorescence data is added to the ```NWBFile``` object by creating a [```TwoPhotonSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.TwoPhotonSeries) object. ```TwoPhotonSeries``` object has the following required properties: ```name```, ```data```, ```imaging_plane```, and ```rate```. In our case, the ```data``` property contains the actual fluorescence data in a 3D array form with its dimensions described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table) (```Flur5_denoised``` and ```Alexa_denoised``` keys). The ```rate``` property corresponds to the rate at which individual linescans were acquired. However, it does not need to be organised this way and can refer to a different data dimension. Therefore, it is important to use ```description``` and ```comments``` properties to explain how the data is organised. For example, data containing individual linescans is not continuous and should be described as having the step quality. This is done by the ```data_continuity = step``` entry in the ```comments``` (unlike in pynwb, in matnwb this is a separate property). The property ```scan_line_rate``` describes the rate at which individual image lines were obtained and corresponds to the second dimension of the data.
 
 (tutorials-caimage-convert2nwb-py-convert-fluorescence-intensity-change)=
 #### Convert Change in Fluorescence Intensity Data
@@ -817,9 +819,11 @@ input = {
   'data': np.expand_dims(np.transpose(data1['Calcium_deltaF'].item()), axis=2),
   'dendriteID': 'bottom'}
 nwb = setDeltaFSeries(nwb, input)
+...
 ```
 We transpose the data array so that individual linescans correspond to the first dimension. We also add the third empty dimension as the ```data``` property of the ```TwoPhotonSeries``` object has to have three dimensions at minimum. The actual conversion is performed by the ```setDeltaFSeries``` function loaded from the ```localFunctions``` module:
 ```python
+...
 # Name and add the two-photon delta F series to the NWB file
 if input['dendriteID'] in 'bottom':
   dendriteID = '1'
@@ -851,20 +855,20 @@ image_series = TwoPhotonSeries(
 nwb.add_acquisition(image_series)
 return nwb
 ```
-The delta F data has only two dimensions as the signal is averaged across the dendritic width (```Calcium_deltaF``` variable described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)).
+The delta F data has only two dimensions as the signal is averaged across the dendritic width (```Calcium_deltaF``` key described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)).
 
 All ```TwoPhotonSeries``` objects are stored within the ```acquisition``` data interface of the ```NWBFile``` object. However, this is not the only way of storing ROI fluorescence data. Alternatively, this type of data could be stored by defining an image mask used to extract ROI data from the wider fluorescence imaging data. If this is how you have obtained your own data, then it is worth consulting a different calcium imaging tutorial available [here](https://pynwb.readthedocs.io/en/stable/tutorials/domain/ophys.html#sphx-glr-tutorials-domain-ophys-py).
 
 (tutorials-caimage-convert2nwb-py-convert-images)=
 #### Convert Static Fluorescence Images
-As a final step of converting your calcium imaging data you may want to add static neuron and ROI images to your NWB file. Static colour images can be stored as [```RGBImage```](https://pynwb.readthedocs.io/en/stable/pynwb.image.html#pynwb.image.RGBImage) objects with the ```data``` property containing an array that has the spatial dimensions plus the third dimension corresponding to colour (three planes of RGB values; ```Neuron``` variable described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)):
+As a final step of converting your calcium imaging data you may want to add static neuron and ROI images to your NWB file. Static colour images can be stored as [```RGBImage```](https://pynwb.readthedocs.io/en/stable/pynwb.image.html#pynwb.image.RGBImage) objects with the ```data``` property containing an array that has the spatial dimensions plus the third dimension corresponding to colour (three planes of RGB values; ```Neuron``` key described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)):
 ```python
 neuron_image = RGBImage(
   name = 'neuron_image',
   data = data1['Neuron'].item(), # required: [height, width, colour]
   description = 'RGB image of the full neuron.')
 ```
-Similarly, grayscale ROI images can be stored using [```GrayscaleImage```](https://pynwb.readthedocs.io/en/stable/pynwb.image.html#pynwb.image.GrayscaleImage) objects (```ROI_img``` variable described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)):
+Similarly, grayscale ROI images can be stored using [```GrayscaleImage```](https://pynwb.readthedocs.io/en/stable/pynwb.image.html#pynwb.image.GrayscaleImage) objects (```ROI_img``` key described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)):
 ```python
 bottom_dend_image = GrayscaleImage(
   name = 'dendrite1_image',
@@ -914,7 +918,7 @@ input = {
 nwb = setCClampSeries(nwb, input)
 ...
 ```
-The data is transposed os that individual recording sweeps correspond to the first dimension. The function code is given below:
+The data is transposed so that individual recording sweeps correspond to the first dimension. The function code is given below:
 ```python
 ...
 if input['dendriteID'] in 'bottom':
@@ -959,11 +963,11 @@ if input['dendriteID'] in 'bottom':
   nwb.add_acquisition(current_clamp_series)
   return nwb
 ```
-The ```CurrentClampSeries``` is similar to the ```TwoPhotonSeries``` object. The difference is that, while creating the former, we need to provide a link to the electrode object and, since there is no ```scan_line_rate``` property, we need to add the ```timestamps``` variable corresponding to the second dimension of the electrophysiology data (```Ephys_Time``` and ```Ephys_data``` variables defined in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table), respectively).
+The ```CurrentClampSeries``` is similar to the ```TwoPhotonSeries``` object. The difference is that, while creating the former, we need to provide an electrode object and, since there is no ```scan_line_rate``` property, we need to add the ```timestamps``` key corresponding to the second dimension of the electrophysiology data (```Ephys_Time``` and ```Ephys_data``` variables defined in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table), respectively).
 
 (tutorials-caimage-convert2nwb-py-save)=
 #### Save NWB File
-We use the ```NWBFile``` [```NWBHDF5IO``` object](https://pynwb.readthedocs.io/en/stable/pynwb.html?highlight=NWBHDF5IO#pynwb.NWBHDF5IO) to save our data in the NWB format:
+We use the ```NWBFile``` [```NWBHDF5IO```](https://pynwb.readthedocs.io/en/stable/pynwb.html?highlight=NWBHDF5IO#pynwb.NWBHDF5IO) object to save our data in the NWB format:
 ```python
 with NWBHDF5IO(sessionID + '.nwb', "w") as io:
   io.write(nwb)
@@ -981,7 +985,34 @@ file_path = 'm1_201204_s2_c1.nwb'
 io = NWBHDF5IO(file_path, mode="r")
 nwb2 = io.read()
 ```
-which will read the file passively. The action is fast and it does not load all of the data at once but rather make it readily accessible. This is useful as it allows you to read data selectively without loading the entire file content into the computer memory.
+which will read the file passively. The action is fast and it does not load all of the data at once but rather makes it readily accessible. This is useful as it allows you to read data selectively without loading the entire file content into the computer memory.
+
+In order to access two-photon calcium imaging data stored inside ```TwoPhotonSeries``` objects, execute the code given below:
+```python
+TwoPhotonSeriesGreen1 = nwb2.acquisition['TwoPhotonSeriesGreen1'].data[:]
+```
+Other properties can be accessed similarly by replacing the ```data``` property with a relevant property name (e.g., ```scan_line_rate```).
+
+Stored images can be accessed by issuing the following command, for example:
+```python
+neuronImage = nwb2.acquisition['ImageCollection'].images['neuron_image'].data[:]
+```
+
+Finally, current clamp data is accessible in a similar way to the ```TwoPhotonSeries``` objects. For example,
+```python
+CurrentClampSeries1 = nwb2.acquisition['CurrentClampSeries1'].data[:]
+```
+will give you recording sweeps obtained while imaging the bottom dendrite.
+
+Some metadata is often directly available as properties of the ```NWBFile``` object, like:
+```python
+sessionDescription = nwb2.session_description
+```
+Subject metadata is available via the command, for example:
+```python
+animalID = nwb2.subject.subject_id
+```
+More on reading optical physiology data stored in NWB files can be found in an external tutorial [here](https://pynwb.readthedocs.io/en/stable/tutorials/domain/ophys.html#read-the-nwbfile).
 
 (tutorials-caimage-convert2nwb-py-validate)=
 #### Validate NWB File
@@ -1009,6 +1040,13 @@ This section explained how you can use Python to convert your calcium imaging an
 - [PyNWB API Documentation](https://pynwb.readthedocs.io/en/stable/api_docs.html)
 - [NWB Schema Overview](https://nwb-schema.readthedocs.io/en/latest/index.html)
 
-```{note}
-This section is work in progress. Current priority!
-```
+(tutorials-caimage-convert2nwb-hdfview)=
+### Examine NWB File Structure Using HDFView
+You can use [HDF View](https://www.hdfgroup.org/downloads/hdfview) software to visualise the structure of your NWB files using a simple graphical interface.
+
+(tutorials-caimage-upload-nwb)=
+## Upload Your Standardised Data to Remote Repository
+
+
+(tutorials-caimage-roll-back)=
+## Roll back Repository to an Earlier Version
