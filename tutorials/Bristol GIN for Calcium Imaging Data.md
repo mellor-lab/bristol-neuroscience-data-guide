@@ -1090,3 +1090,7 @@ gin version --id 2b0dfb3
 The local repository now should be rolled back to its previous version.
 
 Rolling back versions may produce some unintuitive results. Rolling back versions replaces new files with their earlier versions. However, if those files were not present in previous versions, they are kept in the rolled back version. Therefore, the new files have to be deleted manually after the roll back. This may seem like a bug but it actually is an intentional behaviour.
+
+(tutorials-caimage-acknowledge)=
+## Acknowledgements
+This tutorial was made possible with the kind help of [Matt Udakis](https://www.linkedin.com/in/matt-udakis-21070485/?originalSubdomain=uk) who provided calcium imaging/intracellular recording data samples.
