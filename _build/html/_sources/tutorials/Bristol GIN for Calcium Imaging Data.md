@@ -12,7 +12,7 @@ gin login
 
 (tutorials-caimage-download-data)=
 ## Download Mock Data
-We are going to download Ca2+ imaging data available in dervinism/calcium-imaging-mock-repo repository. To get the data, type in the lines below to your terminal:
+We are going to download Ca2+ imaging data available in [dervinism/calcium-imaging-mock-repo](https://gin.g-node.org/explore/repos?q=calcium-imaging-mock-repo) repository. To get the data, type in the lines below to your terminal:
 ```
 gin get dervinism/calcium-imaging-mock-repo
 cd calcium-imaging-mock-repo
