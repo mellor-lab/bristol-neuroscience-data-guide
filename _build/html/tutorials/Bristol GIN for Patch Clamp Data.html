@@ -397,12 +397,80 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-gin-account">
+   Create GIN Account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-mock-data">
+   Download Mock Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-your-research-data-repository">
+   Set up Your Research Data Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#upload-repository">
+   Upload Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remove-content-of-your-local-research-data-repository">
+   Remove Content of Your Local Research Data Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convert-your-data-to-standardised-format">
+   Convert Your Data to Standardised Format
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-to-nwb-using-matlab">
+     Convert to NWB Using Matlab
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-matnwb-toolbox">
+       Install MatNWB Toolbox
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#record-metadata">
+       Record Metadata
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -414,6 +482,63 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-gin-account">
+   Create GIN Account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-mock-data">
+   Download Mock Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-your-research-data-repository">
+   Set up Your Research Data Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#upload-repository">
+   Upload Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remove-content-of-your-local-research-data-repository">
+   Remove Content of Your Local Research Data Repository
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convert-your-data-to-standardised-format">
+   Convert Your Data to Standardised Format
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-to-nwb-using-matlab">
+     Convert to NWB Using Matlab
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#install-matnwb-toolbox">
+       Install MatNWB Toolbox
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#record-metadata">
+       Record Metadata
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -423,10 +548,121 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="bristol-gin-for-patch-clamp-data">
 <span id="tutorials-pclamp"></span><h1>Bristol GIN for Patch Clamp Data<a class="headerlink" href="#bristol-gin-for-patch-clamp-data" title="Permalink to this headline">#</a></h1>
+<section id="create-gin-account">
+<span id="tutorials-pclamp-create-account"></span><h2>Create GIN Account<a class="headerlink" href="#create-gin-account" title="Permalink to this headline">#</a></h2>
+<p>In order to be able to follow this tutorial, you need to have a GIN account either on Bristol GIN or on the public GIN service. GIN web interface documentation has it all explained <a class="reference internal" href="../documentation/Repository%20Management%20with%20GIN%20Web%20Interface.html#doc-gin-web-register"><span class="std std-ref">here</span></a>.</p>
+<p>After creating the account, login to it by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">login</span>
+</pre></div>
+</div>
+</section>
+<section id="download-mock-data">
+<span id="tutorials-pclamp-download-data"></span><h2>Download Mock Data<a class="headerlink" href="#download-mock-data" title="Permalink to this headline">#</a></h2>
+<p>We are going to download intracellular electrophysiology recording data available in <a class="reference external" href="https://gin.g-node.org/dervinism/icephys_mock_repo">dervinism/icephys_mock_repo</a> repository. To get the data, type in the lines below to your terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span> <span class="n">dervinism</span><span class="o">/</span><span class="n">icephys_mock_repo</span>
+<span class="n">cd</span> <span class="n">icephys_mock_repo</span>
+<span class="n">gin</span> <span class="n">get</span><span class="o">-</span><span class="n">content</span>
+</pre></div>
+</div>
+<p>This is part of the real intracellular electrophysiology recording data. The data has been recorded in pyramidal cells in the CA1 region of the hippocampus in vitro. AMPA and NMDA receptors were blocked using NBQX and AP5, respectively. During the recording a stimulating electrode was also placed in the pyramidal layer of the hippocampus roughly 100 um away from the recording site. In addition to the electrical stimulation, optogenetic stimulation was used to excite parvalbumin (PV) expressing interneurons in the pyramidal layer using channelrhodopsin. Both electrical stimulation and optogenetic stimulation were applied interchangeably every 5 seconds using two 5-millisecond light pulses or two action potentials separated by 50 milliseconds while the cell was voltage-clamped (the baseline stimulation regime). Then the cell was switched to the current clamp and the neural plasticity inducing protocal was applied. The plasticity protocol consisted of a burst of 4 action potentials paired with a 5-millisecond light pulse applied at the onset of the first action potential. The plasticity inducing stimulation was applied 100 times every 200 milliseconds. Then the cell was switched back to the voltage clamp and the baseline stimulation regime was resumed. The experiment is described in more detail in the README file.</p>
+<p>The data inside the repository is organised based on recording sessions and has the following structure: <code class="docutils literal notranslate"><span class="pre">recording-session-date/brain-slice-number/cell-number</span></code>. Each recording session has a lab book file containing comments relevant for that particular recording session. Each cell recording has:</p>
+<ul class="simple">
+<li><p>An image of the recorded slice.</p></li>
+<li><p>A CSF file containing raw trace data exported from the aquisition CED Signal software.</p></li>
+<li><p>A MAT file containing exported version of the CSF file readable in Matlab. Only the traces relevant for the experiment are stored in this file.</p></li>
+</ul>
+</section>
+<section id="set-up-your-research-data-repository">
+<span id="tutorials-pclamp-setup-repo"></span><h2>Set up Your Research Data Repository<a class="headerlink" href="#set-up-your-research-data-repository" title="Permalink to this headline">#</a></h2>
+<p>You should rename your repository, delete the .git folder located inside the repository root folder, and update your README file if needed. Once this is done, issue the command below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">init</span>
+</pre></div>
+</div>
+<p>This would intialise the local repository.</p>
+</section>
+<section id="upload-repository">
+<span id="tutorials-pclamp-upload-repo"></span><h2>Upload Repository<a class="headerlink" href="#upload-repository" title="Permalink to this headline">#</a></h2>
+<p>The next step is to create a remote repository with the same name and associate it with the local repository. You can simply do it by typing in your terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">remote</span> <span class="n">your</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span> <span class="n">gin</span><span class="p">:</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">/</span><span class="n">your</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span> <span class="o">--</span><span class="n">default</span>
+</pre></div>
+</div>
+<p>In this case, the remote repository is going to be created since it does not exist. You can now type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">commit</span> <span class="o">.</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Initial commit&quot;</span>
+<span class="n">gin</span> <span class="n">upload</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>The first command would record local changes with the local version control system. By doing so you create the image of your repository that can always be reverted to in the future in case the need to do so arises. When commiting local repository changes to your version control system you typically provide a concise message describing the changes. By convention, the message length should not exceed 50 characters. Dot means that the command is executed on the contents of the current working directory; therefore, make sure that you are inside the root folder of your repository when carrying out this action. The flag -m is used to pass the commit message. When you make new changes to the repository, whether editing text files or manipulating your data files, you should commit these changes periodically to your local versioning system. Finally, the <code class="docutils literal notranslate"><span class="pre">upload</span></code> command updates the remote instance of the repository with the changes that were commited locally up to this point.</p>
+<p>Alternatively, you can create a repository using the GIN web interface. You do it by clicking the plus sign in the top menu and then clicking and chosing the New Repository option.</p>
+<a class="reference internal image-reference" href="../_images/Fig01-create-repo11.png" id="fig-gin-pclamp-create-repo1"><img alt="../_images/Fig01-create-repo11.png" class="align-center" id="fig-gin-pclamp-create-repo1" src="../_images/Fig01-create-repo11.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 1. Create Repository Using Web Interface</strong></p>
+<p>You should see the New Repository window where you enter the name of the repository and its description as shown below.</p>
+<a class="reference internal image-reference" href="../_images/Fig02-create-repo21.png" id="fig-gin-pclamp-create-repo2"><img alt="../_images/Fig02-create-repo21.png" class="align-center" id="fig-gin-pclamp-create-repo2" src="../_images/Fig02-create-repo21.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 2. Enter Repository Details Using Web Interface</strong></p>
+<p>Finally, you can upload files by clicking the blue Upload file button on the repository page.</p>
+<a class="reference internal image-reference" href="../_images/Fig03-upload-repo1.png" id="fig-gin-pclamp-upload-repo"><img alt="../_images/Fig03-upload-repo1.png" class="align-center" id="fig-gin-pclamp-upload-repo" src="../_images/Fig03-upload-repo1.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 3. Upload Repository Files Using Web Interface</strong></p>
+<p>The limitation of using the web interface is that every time you update your remote repository (upload files), you will be limited to uploading 100 files at a time with each file being no larger than 10 gigabytes. Therefore, it is more effecient/effective to use the command line tools which have none of these limitations.</p>
+<p>When you use the web interface, you can specify the commit message title (no more than 50 characters by convention) and the commit message body (no more than 72 characters by convention).</p>
+</section>
+<section id="remove-content-of-your-local-research-data-repository">
+<span id="tutorials-pclamp-remove-content"></span><h2>Remove Content of Your Local Research Data Repository<a class="headerlink" href="#remove-content-of-your-local-research-data-repository" title="Permalink to this headline">#</a></h2>
+<p>One advantage of using GIN for your data repository mangement is that you do not need to keep duplicate repositories in order to prevent accidental detrimental changes to your main repository. One reason for that is having version control system. The other reason is that you can safely remove the content of your local repository and replace it with pointers to original files. As a result you can save space on your local hard-drive. To remove the local content type the following line in your terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">content</span>
+</pre></div>
+</div>
+<p>Local files larger than 10 megabytes should be replaced by symbolic links. In case you want to remove the content of specific files only, you can type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">content</span> <span class="o">&lt;</span><span class="n">absolute</span> <span class="ow">or</span> <span class="n">relative</span> <span class="n">path</span> <span class="n">to</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">folder</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For example, to remove particular raw research data from our calcium imaging data repository, we type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">content</span> <span class="s1">&#39;180126/Slice1/Cell1/180126 s1c1.jpg&#39;</span>
+<span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">content</span> <span class="mi">180126</span><span class="o">/</span><span class="n">Slice1</span><span class="o">/</span><span class="n">Cell1</span><span class="o">/</span><span class="mi">180126</span><span class="n">__s1c1_001</span><span class="o">.</span><span class="n">cfs</span>
+</pre></div>
+</div>
+<p>To simply restore the file content type in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span><span class="o">-</span><span class="n">content</span>
+</pre></div>
+</div>
+<p>If you no longer need to work on your repository and its remote copy is up to date with the local copy, you can simply delete the local repository copy altogether. You should always be able to restore your repository and all of its contents on your local machine by executing these commands in your terminal (replace the repository path as appropriate):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span> <span class="n">dervinism</span><span class="o">/</span><span class="n">icepys_mock_repo</span>
+<span class="n">cd</span> <span class="n">icepys_mock_repo</span>
+<span class="n">gin</span> <span class="n">get</span><span class="o">-</span><span class="n">content</span>
+</pre></div>
+</div>
+</section>
+<section id="convert-your-data-to-standardised-format">
+<span id="tutorials-pclamp-convert2nwb"></span><h2>Convert Your Data to Standardised Format<a class="headerlink" href="#convert-your-data-to-standardised-format" title="Permalink to this headline">#</a></h2>
+<p>In order to increase your research data’s adherence to the <a class="reference external" href="https://www.go-fair.org/fair-principles/">FAIR principles</a> of scientific data management and, in particular, to increase the interoperability of your data and chances of it being reused beyond its original purpose of collection, it is highly advisable to convert your data into one of the more popular standard file formats for neuroscience data. One such format is the <a class="reference external" href="https://www.nwb.org/">Neurodata Without Borders (NWB)</a> which is highly suitable for most of the neurophysiology data. Programming interfaces in both Matlab and Python are available for converting your data. Here we are going to provide explanations of how you can convert your data in both programming languages. While showing you examples of that, we will continue our focus on the intracellular electrophysiology data.</p>
+<section id="convert-to-nwb-using-matlab">
+<span id="tutorials-pclamp-convert2nwb-matlab"></span><h3>Convert to NWB Using Matlab<a class="headerlink" href="#convert-to-nwb-using-matlab" title="Permalink to this headline">#</a></h3>
+<section id="install-matnwb-toolbox">
+<span id="tutorials-pclamp-convert2nwb-matlab-install-matnwb"></span><h4>Install MatNWB Toolbox<a class="headerlink" href="#install-matnwb-toolbox" title="Permalink to this headline">#</a></h4>
+<p>To begin with the Matlab demonstration, you would need to install <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/">MatNWB toolbox</a>. To download the toolbox, type in your terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NeurodataWithoutBorders</span><span class="o">/</span><span class="n">matnwb</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Move the downloaded repository to the folder where you keep your code libraries. Then type the following in the Matlab command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">matnwb</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="n">pwd</span><span class="p">));</span>
+<span class="n">generateCore</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>You can now start using MatNWB. MatNWB interface documentation can be accessed <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/index.html">here</a>.</p>
+</section>
+<section id="record-metadata">
+<span id="tutorials-pclamp-convert2nwb-matlab-record-metadata"></span><h4>Record Metadata<a class="headerlink" href="#record-metadata" title="Permalink to this headline">#</a></h4>
+<p>Inside the intracellular electrophysiology repository there is a folder with the Matlab file that you can execute in order to convert the data of one particular imaging/recording session into the NWB format. The script is located inside the <code class="docutils literal notranslate"><span class="pre">180126/Slice1/Cell1/180126/nwb</span></code> folder in the file named <code class="docutils literal notranslate"><span class="pre">convert2nwbpClamp.m</span></code> and, if executed, it would convert the data stored in the file <code class="docutils literal notranslate"><span class="pre">180126/Slice1/Cell1/180126__s1c1_001_ED.mat</span></code>.</p>
+<p>Initially, we start by recording the metadata associated with this experimental session. In this tutorial the metadata is divided into three types: Project, animal, and session metadata. The project metadata is common to all animals and experimental sessions and is defined by the part of the script below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This section is work in progress. Current priority!</p>
 </div>
+</section>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
