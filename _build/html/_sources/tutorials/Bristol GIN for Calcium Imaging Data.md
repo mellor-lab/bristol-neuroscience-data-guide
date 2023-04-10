@@ -108,7 +108,7 @@ To begin with the Matlab demonstration, you would need to install [MatNWB toolbo
 git clone https://github.com/NeurodataWithoutBorders/matnwb.git
 ```
 Move the downloaded repository to the folder where you keep your code libraries. Then type the following in the Matlab command line:
-```
+```matlab
 cd matnwb
 addpath(genpath(pwd));
 generateCore();
@@ -125,7 +125,7 @@ Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/201204__s2d1_004
 ```
 
 Initially, we start by recording the metadata associated with this experimental session. In this tutorial the metadata is divided into three types: Project, animal, and session metadata. The project metadata is common to all animals and experimental sessions and is defined by the part of the script below:
-```
+```matlab
 projectName = 'Intracellular Ca2+ dynamics during plateau potentials trigerred by Schaffer collateral stimulation';
 experimenter = 'Matt Udakis';
 institution = 'University of Bristol';
@@ -136,7 +136,7 @@ greenIndicator = 'Fluo5f';
 redIndicator = 'Alexa594';
 ```
 The names of most of these parameters are self-explanatory. The green and red indicators are calcium indicator types named based on the light wavelength they emit. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate imaging/recording sessions. The animal metadata is defined in the code snippet below:
-```
+```matlab
 animalID = 'm1';
 ageInDays = 100;
 age = ['P' num2str(ageInDays) 'D']; % Convert to ISO8601 format: https://en.wikipedia.org/wiki/ISO_8601#Durations
@@ -147,7 +147,7 @@ weight = [];
 description = '001'; % Animal testing order.
 ```
 Names of these parameters are again self-explanatory. Finally, we define the subject level metadata in the code below:
-```
+```matlab
 startYear = 2020;
 startMonth = 12;
 startDay = 4;
@@ -175,11 +175,11 @@ Again, these variables are mostly self-explanatory or commented in the code. The
 The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like [odML](http://g-node.github.io/python-odml/). Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.
 
 The initialisation process is completed by intialising the Matlab NWB classes by calling
-```
+```matlab
 generateCore;
 ```
 We start the conversion process by creating an [```NWBFile```](https://neurodatawithoutborders.github.io/matnwb/doc/NwbFile.html) object and defining session metadata:
-```
+```matlab
 % Assign NWB file fields
 nwb = NwbFile( ...
   'session_description', sessionDescription, ...
@@ -193,7 +193,7 @@ nwb = NwbFile( ...
   'general_lab', lab); % optional
 ```
 Each file must have a ```session_description``` identifier and a ```session_start_time``` parameter. We then initialise the [```Subject```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Subject.html) object and the metadata it contains:
-```
+```matlab
 % Create subject object
 subject = types.core.Subject( ...
   'subject_id', animalID, ...
@@ -207,7 +207,7 @@ nwb.general_subject = subject;
 (tutorials-caimage-convert2nwb-matlab-create_img_planes)=
 #### Create Imaging Planes
 In order to store optical imaging data, we need to create imaging planes. First, we create [```OpticalChannel```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/OpticalChannel.html) objects for each calcium indicator we use. The objects contain ```description``` and ```emission_lambda``` properties. In our case we use indicators Fluo5f and Alexa594 which have their maximum emission wavelengths at approximately 516 and 616 nanometers, respectively. These wavelength roughly correspond to green and red colours. Therefore, we name the channels based on the colours their corresponding calcium indicators emit.
-```
+```matlab
 green_optical_channel = types.core.OpticalChannel( ...
   'description', ['green channel corresponding to ' greenIndicator], ...
   'emission_lambda', 516.);
@@ -217,7 +217,7 @@ red_optical_channel = types.core.OpticalChannel( ...
   'emission_lambda', 616.);
 ```
 Another needed prerequisite is the [```Device```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Device.html) object which is stored within the ```NWBFile``` object. Idealy, the ```Device``` object should have a ```description``` and ```manufacturer``` properties as defined below:
-```
+```matlab
 % Create the imaging device object
 device = types.core.Device(...
   'description', 'Two-photon microscope', ...
@@ -225,7 +225,7 @@ device = types.core.Device(...
 nwb.general_devices.set('2P_microscope', device);
 ```
 We name the device as 2P_microscope but you are free to name it differently. Having created ```OpticalChannel``` and ```Device``` objects we can now create optical imaging planes corresponding to the green and red optical channels. We do this by executing the code below:
-```
+```matlab
 % Create imaging plane objects
 imaging_plane_name = 'green_imaging_plane';
 green_imaging_plane = types.core.ImagingPlane( ...
@@ -254,7 +254,7 @@ The [```ImagingPlane```](https://neurodatawithoutborders.github.io/matnwb/doc/+t
 (tutorials-caimage-convert2nwb-matlab-load-data)=
 #### Load Imaging/Recording Data
 The next part of the conversion script loads aggregated and preprocessed data stored inside the three MAT files in the ```Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed``` folder:
-```
+```matlab
 % Load data
 dendrite = 'Bot';
 data1 = load(['..\Analysed\' year month day '__s' num2str(sliceNumber) ...
@@ -294,7 +294,7 @@ The table below describes the variables inside the files.
 We are interested in ```Ephys_Time```, ```Calcium_deltaF```, ```Ephys_data```, ```Flur5_denoised```, ```Alexa_denoised```, ```Neuron```, and ```ROI_img``` and are going to work with these variables during the tutorial.
 
 As part of loading the data, we also convert the variables with fluorescence data to the regular array form. For that purpose the array dimensions of data inside cell arrays have to be equalised by appending data using NaNs. This is done by passing cell arrays to the ```appendLinescans``` function which then outputs regular 3D arrays:
-```
+```matlab
 % Append raw linescans so they have equal widths
 data1.Analysed_data.Flur5_denoised = appendLinescans(data1.Analysed_data.Flur5_denoised);
 data1.Analysed_data.Alexa_denoised = appendLinescans(data1.Analysed_data.Alexa_denoised);
@@ -308,7 +308,7 @@ data3.Analysed_data.Alexa_denoised = appendLinescans(data3.Analysed_data.Alexa_d
 (tutorials-caimage-convert2nwb-matlab-convert-fluorescence)=
 #### Convert Fluorescence Data
 We convert the fluorescence data by invoking ```setTwoPhotonSeries``` function as shown below:
-```
+```matlab
 input.indicator = greenIndicator;
 input.imagingPlane = green_imaging_plane;
 input.imagingRate = imagingRate;
@@ -319,7 +319,7 @@ nwb = setTwoPhotonSeries(nwb, input);
 ...
 ```
 This is repeated six times to process fluorescence data for the two different calcium indicators and the three different ROIs (2x3). The conversion function body code is shown below:
-```
+```matlab
 % Create image series
 image_series = types.core.TwoPhotonSeries( ...
   'description', [input.indicator ' linescans of the ' input.dendriteID ' dendrite'], ...
@@ -359,7 +359,7 @@ The fluorescence data is added to the ```NWBFile``` object by creating a [```Two
 (tutorials-caimage-convert2nwb-matlab-convert-fluorescence-intensity-change)=
 #### Convert Change in Fluorescence Intensity Data
 In addition to converting the denoised fluorescence signal we are also going to convert the change in fluorescence intensity data (delta fluorescence). The delta F estimate is derived from the Alexa594 calcium indicator data or the red colour channel signal. It is stored using the ```TwoPhotonSeries``` object similar to the denoised raw fluorescence data as described in the previous subsection. We perform conversion for all three ROIs as shown below:
-```
+```matlab
 % Add optical physiology data: delta fluorescence
 input.indicator = redIndicator;
 input.imagingPlane = red_imaging_plane;
@@ -371,7 +371,7 @@ nwb = setDeltaFSeries(nwb, input);
 ...
 ```
 The actual conversion is performed by the ```setDeltaFSeries``` function:
-```
+```matlab
 % Create image series
 image_series = types.core.TwoPhotonSeries( ...
   'description', ['Delta F data for the ' input.dendriteID, ...
@@ -408,14 +408,14 @@ All ```TwoPhotonSeries``` objects are stored within the ```acquisition``` data i
 (tutorials-caimage-convert2nwb-matlab-convert-images)=
 #### Convert Static Fluorescence Images
 As a final step of converting your calcium imaging data you may want to add static neuron and ROI images to your NWB file. Static colour images can be stored as [```RGBImage```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/RGBImage.html) objects with the ```data``` property containing an array that has the spatial dimensions plus the third dimension corresponding to colour (three planes of RGB values; ```Neuron``` variable described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)):
-```
+```matlab
 neuron_image = types.core.RGBImage( ...
     'data', data1.Analysed_data.Neuron, ...  % required: [height, width, colour]
     'description', 'RGB image of the full neuron.' ...
 );
 ```
 Similarly, grayscale ROI images can be stored using [```GrayscaleImage```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/GrayscaleImage.html) objects (```ROI_img``` variable described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table)):
-```
+```matlab
 bottom_dend_image = types.core.GrayscaleImage( ...
     'data', data1.Analysed_data.ROI_img, ...  % required: [height, width]
     'description', 'Grayscale image of the bottom dendrite.' ...
@@ -423,7 +423,7 @@ bottom_dend_image = types.core.GrayscaleImage( ...
 ...
 ```
 Images are then grouped together using the [```Images```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Images.html) object and added to the ```acquisition``` data interface of the ```NWBFile``` object as an ```ImageCollection``` object:
-```
+```matlab
 image_collection = types.core.Images( ...
     'description', 'A collection of neuron and dendrite images.'...
 );
@@ -439,15 +439,15 @@ This completes the conversion of the calcium imaging data into the NWB format.
 (tutorials-caimage-convert2nwb-matlab-convert-icephys)=
 #### Convert Intracellular Electrophysiology Recording Data
 The calcium imaging data during this experiment were acquired in parallel to simultaneous intracellular somatic current clamp recordings in the imaged neuron. The recording sweeps are stored in the ```Ephys_data``` variable described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table). The variable contains recording sweeps corresponding to all three ROI imaging data. Note that the sweeps cover the first 950 ms of corresponding calcium imaging linescans. Analogously to the imaging data, we start by creating the recording device Amplifier_Multiclamp_700A:
-```
+```matlab
 % Create the recording device object
 device = types.core.Device( ...
   'description', 'Amplifier for recording current clamp data.', ...
   'manufacturer', 'Molecular Devices');
 nwb.general_devices.set('Amplifier_Multiclamp_700A', device);
 ```
-Then follow this by creating the [```IntracellularElectrode```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/IntracellularElectrode.html) object while providing any relevant information about it including the associated ```Device``` object:
-```
+Then follow this by creating the [```IntracellularElectrode```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/IntracellularElectrode.html) object while providing any relevant information about it including the associated [```Device```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Device.html) object:
+```matlab
 electrode = types.core.IntracellularElectrode( ...
     'description', 'A patch clamp electrode', ...
     'location', 'Cell soma in CA1-2 of hippocampus', ...
@@ -456,7 +456,7 @@ electrode = types.core.IntracellularElectrode( ...
 nwb.general_intracellular_ephys.set('icephys_electrode', electrode);
 ```
 Finally, we convert the intracellular current clamp recordings using the [```CurrentClampSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/CurrentClampSeries.html) object by passing data to the ```setCClampSeries``` function for all ROIs:
-```
+```matlab
 input.ephysTime = data1.Analysed_data.Ephys_Time;
 input.nSweeps = nFrames;
 input.data = data1.Analysed_data.Ephys_data;
@@ -467,7 +467,7 @@ nwb = setCClampSeries(nwb, input);
 ...
 ```
 The function code is given below:
-```
+```matlab
 ...
 current_clamp_series = types.core.CurrentClampSeries( ...
   'description', ['Somatic current clamp recording corresponding to ', ...
@@ -498,7 +498,7 @@ The ```CurrentClampSeries``` is similar to the ```TwoPhotonSeries``` object. The
 (tutorials-caimage-convert2nwb-matlab-save)=
 #### Save NWB File
 We call the ```nwbExport``` function to save our data in the NWB format:
-```
+```matlab
 %% Save the converted NWB file
 nwbExport(nwb, [sessionID '.nwb']);
 ```
@@ -506,34 +506,34 @@ nwbExport(nwb, [sessionID '.nwb']);
 (tutorials-caimage-convert2nwb-matlab-read)=
 #### Read NWB File
 Now if you want to open the NWB file that you just saved in Matlab, you can issue a command
-```
+```matlab
 nwb2 = nwbRead('m1_201204_s2_c1.nwb');
 ```
 which will read the file passively. The action is fast and it does not load all of the data at once but rather make it readily accessible. This is useful as it allows you to read data selectively without loading the entire file content into the computer memory.
 
 In order to access two-photon calcium imaging data stored inside ```TwoPhotonSeries``` objects, execute the code given below:
-```
+```matlab
 TwoPhotonSeriesGreen1 = nwb2.acquisition.get('TwoPhotonSeriesGreen1').loadAll.data;
 ```
 Other properties can be accessed similarly by replacing the ```data``` property with a relevant property name (e.g., ```scan_line_rate```).
 
 Stored images can be accessed by issuing the following command, for example:
-```
+```matlab
 neuronImage = nwb2.acquisition.get('ImageCollection').image.get('neuron_image').loadAll.data;
 ```
 
 Finally, current clamp data is accessible in a similar way to the ```TwoPhotonSeries``` objects. For example,
-```
+```matlab
 CurrentClampSeries1 = nwb2.acquisition.get('CurrentClampSeries1').loadAll.data;
 ```
 will give you recording sweeps obtained while imaging the bottom dendrite.
 
 Some metadata is often directly available as properties of the ```NWBFile``` object, like:
-```
+```matlab
 sessionDescription = nwb2.session_description;
 ```
 Subject metadata is available via the command, for example:
-```
+```matlab
 animalID = nwb2.general_subject.subject_id;
 ```
 More on reading optical physiology data stored in NWB files can be found in an external tutorial [here](https://neurodatawithoutborders.github.io/matnwb/tutorials/html/ophys.html#H_3917738A).
@@ -967,7 +967,7 @@ The ```CurrentClampSeries``` is similar to the ```TwoPhotonSeries``` object. The
 
 (tutorials-caimage-convert2nwb-py-save)=
 #### Save NWB File
-We use the ```NWBFile``` [```NWBHDF5IO```](https://pynwb.readthedocs.io/en/stable/pynwb.html?highlight=NWBHDF5IO#pynwb.NWBHDF5IO) object to save our data in the NWB format:
+We use the ```NWBFile``` [```NWBHDF5IO```](https://pynwb.readthedocs.io/en/stable/pynwb.html?highlight=NWBHDF5IO#pynwb.NWBHDF5IO) class to save our data in the NWB format:
 ```python
 with NWBHDF5IO(sessionID + '.nwb', "w") as io:
   io.write(nwb)

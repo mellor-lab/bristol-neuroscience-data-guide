@@ -1,5 +1,5 @@
-(tutorials-nauroimage)=
-# Bristol GIN for Neuroimaging Data
+(tutorials-eeg)=
+# Bristol GIN for Electroencephalogram Data
 
 ```{note}
 This section is work in progress. Not priority!

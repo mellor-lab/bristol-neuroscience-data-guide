@@ -20,7 +20,7 @@ parts:
   - file: tutorials/Bristol GIN for Silicon Probe Data
   - file: tutorials/Bristol GIN for Patch Clamp Data
   - file: tutorials/Bristol GIN for Calcium Imaging Data
-  - file: tutorials/Bristol GIN for Neuroimaging Data
+  - file: tutorials/Bristol GIN for Electroencephalogram Data
   - file: tutorials/Converting to NWB
   - file: tutorials/Converting to BIDS
 - caption: Resources

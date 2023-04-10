@@ -132,7 +132,7 @@ To begin with the Matlab demonstration, you would need to install [MatNWB toolbo
 git clone https://github.com/NeurodataWithoutBorders/matnwb.git
 ```
 Move the downloaded repository to the folder where you keep your code libraries. Then type the following in the Matlab command line:
-```
+```matlab
 cd matnwb
 addpath(genpath(pwd));
 generateCore();
@@ -153,7 +153,7 @@ gin get-content
 It will take some time to download the full repository. Once the download is complete you can open the ```convert2nwb.m``` file and and execute it right away. The script would load derived spiking and behavioural data from ```convert2nwbMatNpx/npx_derived_data/M200324_MD/M200324_MD.mat``` file, convert it to the NWB format, and save it inside ```convert2nwbMatNpx/npx_derived_data_nwb``` folder as ```ecephys_session_01.nwb``` file.
 
 We will now analyse the conversion script in more detail. The script starts by executing three parameter files to initiate the conversion environment. The first parameter file ```nwbParams.m``` contains the most general type of parameters that apply to all animals and recording sessions of the experiment, like:
-```
+```matlab
 projectName = 'Brainwide Infraslow Activity Dynamics';
 experimenter = 'Martynas Dervinis';
 institution = 'University of Leicester';
@@ -168,7 +168,7 @@ The names of most of these parameters are self-explanatory. The videoFrameRate v
 - ```derivedDataFolderNWB``` which is the output folder where converted NWB files are saved.
 
 As the name implies, ```nwbAnimalParams.m``` file contains parameters specific to a particular animal and common to all recording sessions for that animal. They include:
-```
+```matlab
 animalID = 'M200324_MD';
 dob = '20200206'; % yyyymmdd
 ...
@@ -181,7 +181,7 @@ description = '025'; % Animal testing order.
 Names of these parameters are self-explanatory. The script also defines input and output folders specifically for the animal of interest.
 
 The ```nwbSessionParams.m``` file stores parameters about recording sessions. Some of these parameters are defined at the top of the file explicitly for each individual session and some even explicitly for each recording probe, like:
-```
+```matlab
 sessionID = {'20200324161349'};
 sessionDescription = {'anaesthesia'};
 sessionNotes = {'...'};
@@ -193,13 +193,13 @@ The ```for``` loop that follows next sets the remaining parameters that are comm
 Most of the parameters defined in the three parameter files comprise metadata. The way you define your metadata may be different. For example, you may have your own custom scripts that contain the metadata or you may store your metadata in files organised according to one of standard neuroscientific metadata formats like [odML](http://g-node.github.io/python-odml/). Whichever your preference is, this part of the NWB conversion procedure will vary depending on the individual researcher.
 
 The initialisation process is completed by intialising the Matlab NWB classes by calling
-```
+```matlab
 generateCore;
 ```
 within the ```convert2nwb.m``` script file.
 
 The conversion process then goes through every recording session and generates NWB files individually for each session inside the ```for``` loop. We start by creating an [```NWBFile```](https://neurodatawithoutborders.github.io/matnwb/doc/NwbFile.html) object and defining session metadata:
-```
+```matlab
 % Assign NWB file fields
 nwb = NwbFile( ...
   'session_description', sessionDescription{iSess},...
@@ -213,7 +213,7 @@ nwb = NwbFile( ...
   'general_lab', lab); % optional
 ```
 Each file must have a ```session_description``` identifier and a ```session_start_time``` parameter. We then initialise the [```Subject```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Subject.html) object and the metadata it contains:
-```
+```matlab
 % Create subject object
 subject = types.core.Subject( ...
   'subject_id', animalID, ...
@@ -227,7 +227,7 @@ nwb.general_subject = subject;
 (tutorials-silicon-probe-convert2nwb-matlab-electrodes-table)=
 #### Construct Electrodes Table
 Storing extracellular electrophysiology data is not possible without defining the ```electrodes``` table which is a [```DynamicTable```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/DynamicTable.html) object. We do it first by creating a [Matlab table array](https://uk.mathworks.com/help/matlab/tables.html) using a code wrapped inside the ```createElectrodeTable``` function. We put the table generation code inside the function, because it is going to be reused for each probe. The function call for probe 1 is executed by the code below:
-```
+```matlab
 % Create electrode tables: Info about each recording channel
 input.iElectrode = 1;
 input.electrodeDescription = electrodeDescription{iSess};
@@ -246,7 +246,7 @@ end
 ```
 
 The table array for the probe 1 is then created within the function:
-```
+```matlab
 % Create a table with given column labels
 variables = {'channel_id', 'channel_local_index', 'x', 'y', 'z', 'imp', 'location', 'filtering', 'group', 'channel_label', 'probe_label'};
 tbl = cell2table(cell(0, length(variables)), 'VariableNames', variables);
@@ -292,7 +292,7 @@ end
 The code initialises an empty table with given column labels. It then records the probe [```Device```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Device.html) (which is an object itself) inside the ```NWBFile``` object. Next, we create an [```ElectrodeGroup```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/ElectrodeGroup.html) object which is used to define electrode groupings within the probe. In our case we have a single shank probe and, therefore, we define all recording channels to be part of a single group. Though, grouping on some other basis is possible. You may have noticed that the ```device``` property is set as a ```Softlink``` object which is used to link to an already existing NWB object (in our case) or to an object within an NWB file using a path. Similarly, ```ElectrodeGroup``` is used to create an ObjectView object which works in a very similar way to the SoftLink object, and which is later used in constructing the ```electrodes``` table. The ```position``` property is a Matlab table array with columns being stereotaxic coordinates. Finally, the ```electrodes``` table is filled in channel by channel (rows) with channel subtables.
 
 The same procedure is then repeated for the probe 2. Finally, the combined table array is then converted into a ```DynamicTable``` object using ```util.table2nwb``` function which also takes in the table description as the second argument:
-```
+```matlab
 tbl = [tbl1; tbl2];
 electrode_table = util.table2nwb(tbl, 'all electrodes');
 nwb.general_extracellular_ephys_electrodes = electrode_table;
@@ -304,13 +304,13 @@ You can add any number of custom columns to a ```DynamicTable``` object and, the
 (tutorials-silicon-probe-convert2nwb-matlab-init-spiking-data)=
 #### Load and Initialise Spiking Data
 The next line of code loads processed spiking data from the Matlab MAT file by calling the ```getSpikes``` function:
-```
+```matlab
 [spikes, metadata, derivedData] = getSpikes(derivedData, animalID, sessionID{iSess}, tbl);
 ```
 This is a custom function containing the loading algorithm that very much depends on the processed data structure stored inside the MAT file. I will not go into the detail of how the function runs as your own data is very likely to be structured differently. However, you are welcome to explore the code yourself as it is commented generously. It will suffice to say that the function outputs the ```spikes``` variable which is a 1-by-n cell array with unit spike times in seconds, where n is the number of units. Moreover, the function also outputs the ```metadataTbl``` variable which is a Matlab table array with rows corresponding to individual clusters (units) and columns to various metadata types describing unit properties, like ```cluster_id```, ```local_cluster_id```, ```type```, ```channel_index```, ```channel_id```, ```local_channel_id```, ```rel_horz_position```, ```rel_vert_position```, ```isi_violations```, ```isolation_distance```, ```area```, ```probe_id```, and ```electrode_group```. You can find the description of each of these properties in the ```getSpikes``` function definition.
 
 Once the spike times are extracted, we convert them into [VectorData](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/VectorData.html) and [VectorIndex](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/VectorIndex.html) objects by executing the line below:
-```
+```matlab
 [spike_times_vector, spike_times_index] = util.create_indexed_column(spikes);
 ```
 ```spike_times_vector.data``` property is simply a vector of spike times where unit spike times are consequtively arranged into this single vector grouped on a unit basis. Meanwhile, ```spike_times_index.data``` property is a vector of indices which are then used to index the end of corresponding unit spike times data (i.e., row breaks). In conjunction, VectorData and VectorIndex objects can be used to encode ragged arrays. Ragged arrays have rows with different number of columns. All units taken together and their spike times form such a ragged array which is illustrated in the figure below.
@@ -325,7 +325,7 @@ Once the spike times are extracted, we convert them into [VectorData](https://ne
 (tutorials-silicon-probe-convert2nwb-matlab-load-waveforms)=
 #### Load Waveforms
 Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data is stored in the ```waveformMeans``` variable which is a cell array of average waveforms with cells corresponding to individual units. The variable is constructed after loading and reshaping the waveforms located inside the ```convert2nwbMatNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat``` files:
-```
+```matlab
 % Load and reshape unit waveforms
 ...
 for iWave = 1:numel(waveformMeans)
@@ -338,7 +338,7 @@ end
 (tutorials-silicon-probe-convert2nwb-matlab-units-table)=
 #### Construct Units Table
 In order to store spiking data and other related data, we construct the [```units``` table](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Units.html) which is, like the ```electrodes``` table, a ```DynamicTable``` object. As such it supports addition of additional metadata columns. The code that constructs the ```units``` table is shown below:
-```
+```matlab
 nwb.units = types.core.Units( ...
   'colnames', {'cluster_id','local_cluster_id','type',...
   'peak_channel_index','peak_channel_id',... % Provide the column order. All column names have to be defined below
@@ -405,7 +405,7 @@ VectorData objects should not have cell arrays of integers (cell arrays of strin
 (tutorials-silicon-probe-convert2nwb-matlab-pupil-area)=
 #### Add Behavioural Module: Pupil Area Size
 We load pupil area size data from the same file containing processed spiking data. We then convert this data into a [```TimeSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/TimeSeries.html) object which is designed to store any general purpose time series data. This object has a few mandatory properties, like ```data```, ```data_unit```, and ```starting_time_rate```, and a few optional ones, like ```timestamps```, ```control```, ```control_description```, and ```description```. The ```data``` property can be stored as any 1-D, 2-D, 3-D, or 4-D array where the first dimension is time. We use it to store our ```pupilAreaSize``` data vector. The ```data_unit``` property has to be a string, while the ```starting_time_rate``` property is a scalar of ```float32``` type. The ```timestamps``` property should give data sampling times and should be stored as a unidimensional number array of ```float64``` type. The ```control``` property is used for labeling data samples with integers. The length of this array should be the same as the length of the first data dimension representing time. In our case I am using integers 0 and 1 to mark acceptable quality data. The meaning of these labels is provided by the ```control_description``` property which is a cell array of strings with cells describing labels in the increasing order. The full code that converts the pupil area size data into the appropriate form is shown below:
-```
+```matlab
 pupilAreaSize = types.core.TimeSeries( ...
   'data', pupilAreaSize, ...
   'timestamps', videoFrameTimes, ...
@@ -428,22 +428,22 @@ As you will notice, our ```TimeSeries``` object is assigned to a [```PupilTracki
 (tutorials-silicon-probe-convert2nwb-matlab-movement)=
 #### Add Behavioural Module: Total Facial Movement
 The facial movement data conversion process into appropriate form for NWB storage is almost identical to the conversion process applied to the pupil area size data. First, we load the data and store it inside the ```TimeSeries``` object. The steps are identical. Next, we store our ```TimeSeries``` object inside the [```BehavioralTimeSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/BehavioralTimeSeries.html) object designed for holding one or more ```TimeSeries``` objects:
-```
+```matlab
 behavioralTimeSeries = types.core.BehavioralTimeSeries('TimeSeries', totalFaceMovement);
 ```
 We then create a ```nwbdatainterface.BehavioralTimeSeries``` property with our ```BehavioralTimeSeries``` object within the ```ProcessingModule``` container object:
-```
+```matlab
 behaviorModule.nwbdatainterface.set('BehavioralTimeSeries', behavioralTimeSeries);
 ```
 Finally, we create the behaviour module within the ```NWBFile``` object:
-```
+```matlab
 nwb.processing.set('behavior', behaviorModule);
 ```
 
 (tutorials-silicon-probe-convert2nwb-matlab-save)=
 #### Save NWB File
 We call the ```nwbExport``` function to save our data in the NWB format:
-```
+```matlab
 if iSess < 10
   nwbExport(nwb, [animalDerivedDataFolderNWB filesep 'ecephys_session_0' num2str(iSess) '.nwb']);
 else
@@ -454,34 +454,34 @@ end
 (tutorials-silicon-probe-convert2nwb-matlab-read)=
 #### Read NWB File
 Now if you want to open the NWB file that you just saved in Matlab, you can issue a command
-```
+```matlab
 nwb2 = nwbRead('ecephys_session_01.nwb');
 ```
 which will read the file passively. The action is fast and it does not load all of the data at once but rather make it readily accessible. This is useful as it allows you to read data selectively without loading the entire file content into the computer memory.
 
 If you want to read the entire unit table which has all unit spiking data and associated metadata, the easiest way is to issue a command
-```
+```matlab
 unitsTable = nwb2.units.loadAll.toTable();
 ```
 which will convert the ```DynamicTable``` object into a Matlab table array. The latter is a common Matlab data type and can be manipulated easily using regular Matlab syntax and indexing.
 
 In contrast, if you are interested in a single unit data, you can load it using the following line of code:
-```
+```matlab
 unitRow = nwb2.units.getRow(1);
 ```
 
 To load only spiking data for the same unit, the following line of code will do:
-```
+```matlab
 unitRowSpikeTimes = nwb2.units.getRow(1).spike_times{1};
 ```
 
 If you want to load mean unit waveforms, the following line of code will load them as a floating-point number array:
-```
+```matlab
 unitsWaveforms = nwb2.units.waveform_mean.loadAll.data;
 ```
 
 Meanwhile, behavioural data can be accessed by running the code below:
-```
+```matlab
 pupilAreaSize = nwb2.processing.get('behavior'). ...
     nwbdatainterface.get('PupilTracking'). ...
     timeseries.get('TimeSeries').data(:);
@@ -493,15 +493,15 @@ totalFacialMovement = nwb2.processing.get('behavior'). ...
 Other associated behavioural properties can be accessed by replacing the ```data``` property by ```timestamps``` or ```control``` and so on.
 
 Some metadata is often directly available as properties of the ```NWBFile``` object, like:
-```
+```matlab
 sessionDescription = nwb2.session_description;
 ```
 Subject metadata is available via the command, for example:
-```
+```matlab
 animalID = nwb2.general_subject.subject_id;
 ```
 While the electrode metadata can be accessed in the following way:
-```
+```matlab
 electrodesTable = nwb2.general_extracellular_ephys_electrodes.toTable();
 ```
 ```electrodes``` table is a ```DynamicTable``` object and, therefore, methods of accessing it are the same as those discussed for accessing the ```units``` table. For more detailed account of how you can access and manipulate ```DynamicTable``` objects refer to an external [MatNWB DynamicTables Tutorial](https://neurodatawithoutborders.github.io/matnwb/tutorials/html/dynamic_tables.html).
