@@ -127,7 +127,7 @@ Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/201204__s2d1_004
 Initially, we start by recording the metadata associated with this experimental session. In this tutorial the metadata are divided into three types: Project, animal, and session metadata. The project metadata are common to all animals and experimental sessions and is defined by the part of the script below:
 ```matlab
 projectName = 'Intracellular Ca2+ dynamics during plateau potentials trigerred by Schaffer collateral stimulation';
-experimenter = 'Matt Udakis';
+experimenter = 'MU';
 institution = 'University of Bristol';
 publications = 'In preparation';
 lab = 'Jack Mellor lab';
@@ -597,7 +597,7 @@ from pynwb.icephys import CurrentClampSeries
 We then record metadata associated with this experimental session. In this tutorial the metadata are divided into three types: Project, animal, and session metadata. The project metadata are common to all animals and experimental sessions and is defined by the part of the script below:
 ```python
 projectName = 'Intracellular Ca2+ dynamics during plateau potentials trigerred by Schaffer collateral stimulation'
-experimenter = 'Matt Udakis'
+experimenter = 'MU'
 institution = 'University of Bristol'
 publications = 'In preparation'
 lab = 'Jack Mellor lab'
