@@ -766,7 +766,13 @@ MatNWB does not provide its own NWB file validator. However, you can validate NW
 
 (tutorials-pclamp-convert2nwb-matlab-resources)=
 #### Resources
-
+This section explained how you can use Matlab to convert your intracellular electrophysiology data into NWB files. It is not an exhaustive overview of Matnwb toolbox icephys functionality and there is a number of externally available tutorials covering some aspects of converting data obtained using voltage and/or current clamp to the NWB file format using Matlab or other related aspects:
+- [Intro to NWB Tutorial](https://neurodatawithoutborders.github.io/matnwb/tutorials/html/intro.html)
+- [Intracellular Electrophysiology Tutorial](https://neurodatawithoutborders.github.io/matnwb/tutorials/html/icephys.html)
+- [Storing Image Data in NWB](https://neurodatawithoutborders.github.io/matnwb/tutorials/html/images.html)
+- [MatNWB DynamicTables Tutorial](https://neurodatawithoutborders.github.io/matnwb/tutorials/html/dynamic_tables.html)
+- [MatNWB API Documentation](https://neurodatawithoutborders.github.io/matnwb/doc/index.html)
+- [NWB Schema Overview](https://nwb-schema.readthedocs.io/en/latest/index.html)
 
 (tutorials-pclamp-convert2nwb-py)=
 ### Convert to NWB Using Python
@@ -1273,7 +1279,7 @@ Reading NWB files in Python is done via the ```NWBHDF5IO``` class. Hence, import
 ```python
 from pynwb import NWBHDF5IO
 ```
-Now if you want to open the NWB file that you just saved in Python, you can issue a command
+Now if you want to open the NWB file that you just saved in Python, you can issue the commands below:
 ```python
 file_path = '180126__s1c1.nwb'
 io = NWBHDF5IO(file_path, mode="r")
@@ -1335,7 +1341,13 @@ For more details on the validation process, refer to an external [resource](http
 
 (tutorials-pclamp-convert2nwb-py-resources)=
 #### Resources
-
+This section explained how you can use Matlab to convert your intracellular electrophysiology data into NWB files. It is not an exhaustive overview of Matnwb toolbox icephys functionality and there is a number of externally available tutorials covering some aspects of converting data obtained using voltage and/or current clamp to the NWB file format using Matlab or other related aspects:
+- [NWB File Basics Tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/general/file.html#sphx-glr-tutorials-general-file-py)
+- [Intracellular Electrophysiology Tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/domain/plot_icephys.html#sphx-glr-tutorials-domain-plot-icephys-py)
+- [Storing Image Data in NWB](https://pynwb.readthedocs.io/en/stable/tutorials/domain/images.html#sphx-glr-tutorials-domain-images-py)
+- [HDMF DynamicTable Tutorial](https://hdmf.readthedocs.io/en/stable/tutorials/plot_dynamictable_tutorial.html#sphx-glr-tutorials-plot-dynamictable-tutorial-py)
+- [PyNWB API Documentation](https://pynwb.readthedocs.io/en/stable/api_docs.html)
+- [NWB Schema Overview](https://nwb-schema.readthedocs.io/en/latest/index.html)
 
 (tutorials-pclamp-convert2nwb-hdfview)=
 ### Examine NWB File Structure Using HDFView
@@ -1343,16 +1355,12 @@ You can use [HDF View](https://www.hdfgroup.org/downloads/hdfview) software to v
 
 (tutorials-pclamp-upload-nwb)=
 ## Upload Your Standardised Data to Remote Repository
-
+A very similar [subsection](tutorials-silicon-probe-upload-nwb) is available for extracellular electrophysiology data, as well as a [subsection](tutorials-caimage-upload-nwb) dealing with calcium imaging data. Analogously, you should be able to apply them to your intracellular electrophysiology data.
 
 (tutorials-pclamp-roll-back)=
 ## Roll back Repository to an Earlier Version
-
+A similar [subsection](tutorials-silicon-probe-roll-back) is available for extracellular electrophysiology data, as well as a [subsection](tutorials-caimage-roll-back) dealing with calcium imaging data. Analogously, you should be able to apply them to your intracellular electrophysiology data.
 
 (tutorials-pclamp-acknowledge)=
 ## Acknowledgements
 This tutorial was made possible with the kind help of [Matt Udakis](https://www.linkedin.com/in/matt-udakis-21070485/?originalSubdomain=uk) who provided intracellular recording data samples.
-
-```{note}
-This section is work in progress. Current priority!
-```

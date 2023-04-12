@@ -1660,6 +1660,15 @@ title="Print to PDF"
 </section>
 <section id="resources">
 <span id="tutorials-pclamp-convert2nwb-matlab-resources"></span><h4>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h4>
+<p>This section explained how you can use Matlab to convert your intracellular electrophysiology data into NWB files. It is not an exhaustive overview of Matnwb toolbox icephys functionality and there is a number of externally available tutorials covering some aspects of converting data obtained using voltage and/or current clamp to the NWB file format using Matlab or other related aspects:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/intro.html">Intro to NWB Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/icephys.html">Intracellular Electrophysiology Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/images.html">Storing Image Data in NWB</a></p></li>
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/dynamic_tables.html">MatNWB DynamicTables Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/index.html">MatNWB API Documentation</a></p></li>
+<li><p><a class="reference external" href="https://nwb-schema.readthedocs.io/en/latest/index.html">NWB Schema Overview</a></p></li>
+</ul>
 </section>
 </section>
 <section id="convert-to-nwb-using-python">
@@ -2153,7 +2162,7 @@ title="Print to PDF"
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
 </pre></div>
 </div>
-<p>Now if you want to open the NWB file that you just saved in Python, you can issue a command</p>
+<p>Now if you want to open the NWB file that you just saved in Python, you can issue the commands below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;180126__s1c1.nwb&#39;</span>
 <span class="n">io</span> <span class="o">=</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="n">nwb2</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -2208,6 +2217,15 @@ title="Print to PDF"
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-resources">
 <span id="id14"></span><h4>Resources<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-resources" title="Permalink to this headline">#</a></h4>
+<p>This section explained how you can use Matlab to convert your intracellular electrophysiology data into NWB files. It is not an exhaustive overview of Matnwb toolbox icephys functionality and there is a number of externally available tutorials covering some aspects of converting data obtained using voltage and/or current clamp to the NWB file format using Matlab or other related aspects:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pynwb.readthedocs.io/en/stable/tutorials/general/file.html#sphx-glr-tutorials-general-file-py">NWB File Basics Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://pynwb.readthedocs.io/en/stable/tutorials/domain/plot_icephys.html#sphx-glr-tutorials-domain-plot-icephys-py">Intracellular Electrophysiology Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://pynwb.readthedocs.io/en/stable/tutorials/domain/images.html#sphx-glr-tutorials-domain-images-py">Storing Image Data in NWB</a></p></li>
+<li><p><a class="reference external" href="https://hdmf.readthedocs.io/en/stable/tutorials/plot_dynamictable_tutorial.html#sphx-glr-tutorials-plot-dynamictable-tutorial-py">HDMF DynamicTable Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://pynwb.readthedocs.io/en/stable/api_docs.html">PyNWB API Documentation</a></p></li>
+<li><p><a class="reference external" href="https://nwb-schema.readthedocs.io/en/latest/index.html">NWB Schema Overview</a></p></li>
+</ul>
 </section>
 </section>
 <section id="examine-nwb-file-structure-using-hdfview">
@@ -2217,17 +2235,15 @@ title="Print to PDF"
 </section>
 <section id="upload-your-standardised-data-to-remote-repository">
 <span id="tutorials-pclamp-upload-nwb"></span><h2>Upload Your Standardised Data to Remote Repository<a class="headerlink" href="#upload-your-standardised-data-to-remote-repository" title="Permalink to this headline">#</a></h2>
+<p>A very similar <a class="reference internal" href="Bristol%20GIN%20for%20Silicon%20Probe%20Data.html#tutorials-silicon-probe-upload-nwb"><span class="std std-ref">subsection</span></a> is available for extracellular electrophysiology data, as well as a <a class="reference internal" href="Bristol%20GIN%20for%20Calcium%20Imaging%20Data.html#tutorials-caimage-upload-nwb"><span class="std std-ref">subsection</span></a> dealing with calcium imaging data. Analogously, you should be able to apply them to your intracellular electrophysiology data.</p>
 </section>
 <section id="roll-back-repository-to-an-earlier-version">
 <span id="tutorials-pclamp-roll-back"></span><h2>Roll back Repository to an Earlier Version<a class="headerlink" href="#roll-back-repository-to-an-earlier-version" title="Permalink to this headline">#</a></h2>
+<p>A similar <a class="reference internal" href="Bristol%20GIN%20for%20Silicon%20Probe%20Data.html#tutorials-silicon-probe-roll-back"><span class="std std-ref">subsection</span></a> is available for extracellular electrophysiology data, as well as a <a class="reference internal" href="Bristol%20GIN%20for%20Calcium%20Imaging%20Data.html#tutorials-caimage-roll-back"><span class="std std-ref">subsection</span></a> dealing with calcium imaging data. Analogously, you should be able to apply them to your intracellular electrophysiology data.</p>
 </section>
 <section id="acknowledgements">
 <span id="tutorials-pclamp-acknowledge"></span><h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
 <p>This tutorial was made possible with the kind help of <a class="reference external" href="https://www.linkedin.com/in/matt-udakis-21070485/?originalSubdomain=uk">Matt Udakis</a> who provided intracellular recording data samples.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This section is work in progress. Current priority!</p>
-</div>
 </section>
 </section>
 
