@@ -226,7 +226,7 @@ nwb.general_subject = subject;
 
 (tutorials-silicon-probe-convert2nwb-matlab-electrodes-table)=
 #### Construct Electrodes Table
-Storing extracellular electrophysiology data is not possible without defining the ```electrodes``` table which is a [```DynamicTable```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/DynamicTable.html) object. We do it first by creating a [Matlab table array](https://uk.mathworks.com/help/matlab/tables.html) using a code wrapped inside the ```createElectrodeTable``` function. We put the table generation code inside the function, because it is going to be reused for each probe. The function call for probe 1 is executed by the code below:
+Storing extracellular electrophysiology data are not possible without defining the ```electrodes``` table which is a [```DynamicTable```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/DynamicTable.html) object. We do it first by creating a [Matlab table array](https://uk.mathworks.com/help/matlab/tables.html) using a code wrapped inside the ```createElectrodeTable``` function. We put the table generation code inside the function, because it is going to be reused for each probe. The function call for probe 1 is executed by the code below:
 ```matlab
 % Create electrode tables: Info about each recording channel
 input.iElectrode = 1;
@@ -307,7 +307,7 @@ The next line of code loads processed spiking data from the Matlab MAT file by c
 ```matlab
 [spikes, metadata, derivedData] = getSpikes(derivedData, animalID, sessionID{iSess}, tbl);
 ```
-This is a custom function containing the loading algorithm that very much depends on the processed data structure stored inside the MAT file. I will not go into the detail of how the function runs as your own data is very likely to be structured differently. However, you are welcome to explore the code yourself as it is commented generously. It will suffice to say that the function outputs the ```spikes``` variable which is a 1-by-n cell array with unit spike times in seconds, where n is the number of units. Moreover, the function also outputs the ```metadataTbl``` variable which is a Matlab table array with rows corresponding to individual clusters (units) and columns to various metadata types describing unit properties, like ```cluster_id```, ```local_cluster_id```, ```type```, ```channel_index```, ```channel_id```, ```local_channel_id```, ```rel_horz_position```, ```rel_vert_position```, ```isi_violations```, ```isolation_distance```, ```area```, ```probe_id```, and ```electrode_group```. You can find the description of each of these properties in the ```getSpikes``` function definition.
+This is a custom function containing the loading algorithm that very much depends on the processed data structure stored inside the MAT file. I will not go into the detail of how the function runs as your own data are very likely to be structured differently. However, you are welcome to explore the code yourself as it is commented generously. It will suffice to say that the function outputs the ```spikes``` variable which is a 1-by-n cell array with unit spike times in seconds, where n is the number of units. Moreover, the function also outputs the ```metadataTbl``` variable which is a Matlab table array with rows corresponding to individual clusters (units) and columns to various metadata types describing unit properties, like ```cluster_id```, ```local_cluster_id```, ```type```, ```channel_index```, ```channel_id```, ```local_channel_id```, ```rel_horz_position```, ```rel_vert_position```, ```isi_violations```, ```isolation_distance```, ```area```, ```probe_id```, and ```electrode_group```. You can find the description of each of these properties in the ```getSpikes``` function definition.
 
 Once the spike times are extracted, we convert them into [VectorData](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/VectorData.html) and [VectorIndex](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/VectorIndex.html) objects by executing the line below:
 ```matlab
@@ -324,7 +324,7 @@ Once the spike times are extracted, we convert them into [VectorData](https://ne
 
 (tutorials-silicon-probe-convert2nwb-matlab-load-waveforms)=
 #### Load Waveforms
-Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data is stored in the ```waveformMeans``` variable which is a cell array of average waveforms with cells corresponding to individual units. The variable is constructed after loading and reshaping the waveforms located inside the ```convert2nwbMatNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat``` files:
+Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data are stored in the ```waveformMeans``` variable which is a cell array of average waveforms with cells corresponding to individual units. The variable is constructed after loading and reshaping the waveforms located inside the ```convert2nwbMatNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat``` files:
 ```matlab
 % Load and reshape unit waveforms
 ...
@@ -492,11 +492,11 @@ totalFacialMovement = nwb2.processing.get('behavior'). ...
 ```
 Other associated behavioural properties can be accessed by replacing the ```data``` property by ```timestamps``` or ```control``` and so on.
 
-Some metadata is often directly available as properties of the ```NWBFile``` object, like:
+Some metadata are often directly available as properties of the ```NWBFile``` object, like:
 ```matlab
 sessionDescription = nwb2.session_description;
 ```
-Subject metadata is available via the command, for example:
+Subject metadata are available via the command, for example:
 ```matlab
 animalID = nwb2.general_subject.subject_id;
 ```
@@ -627,7 +627,7 @@ nwb.subject = Subject(
 
 (tutorials-silicon-probe-convert2nwb-py-electrodes-table)=
 #### Construct Electrodes Table
-Storing extracellular electrophysiology data is not possible without defining the ```electrodes``` table which is a [```DynamicTable```](https://hdmf.readthedocs.io/en/stable/hdmf.common.table.html#hdmf.common.table.DynamicTable) object. We do it first by creating a numpy array object using a code wrapped inside the ```createElectrodeTable``` function. We put the table generation code inside the function, because it is going to be reused for each probe. The function call for probe 1 is executed by the code below:
+Storing extracellular electrophysiology data are not possible without defining the ```electrodes``` table which is a [```DynamicTable```](https://hdmf.readthedocs.io/en/stable/hdmf.common.table.html#hdmf.common.table.DynamicTable) object. We do it first by creating a numpy array object using a code wrapped inside the ```createElectrodeTable``` function. We put the table generation code inside the function, because it is going to be reused for each probe. The function call for probe 1 is executed by the code below:
 ```python
 input = {
   "iElectrode": 0,
@@ -747,7 +747,7 @@ The next line of code loads processed spiking data from the Matlab MAT file by c
 ```python
 (spikes, metadata, derivedData, columnLabels, columnDescription) = getSpikes(derivedData, animalID, sessionID[iSess], tbl)
 ```
-This is a custom function containing the loading algorithm that very much depends on the processed data structure stored inside the MAT file. I will not go into the detail of how the function runs as your own data is very likely to be structured differently. However, you are welcome to explore the code yourself as it is commented generously. It will suffice to say that the function outputs the ```spikes``` variable which is a a 1-by-n list of numpy arrays of unit spike times in seconds, where n is the number of units. Moreover, the function also outputs the ```metadata``` variable which is a numpy array with rows corresponding to individual clusters (units) and columns to various metadata types describing unit properties, like ```cluster_id```, ```local_cluster_id```, ```type```, ```peak_channel_index```, ```peak_channel_id```, ```local_peak_channel_id```, ```rel_horz_position```, ```rel_vert_position```, ```isi_violations```, ```isolation_distance```, ```area```, ```probe_id```, and ```electrode_group```. You can find the description of each of these properties inside the ```getSpikes``` function definition.
+This is a custom function containing the loading algorithm that very much depends on the processed data structure stored inside the MAT file. I will not go into the detail of how the function runs as your own data are very likely to be structured differently. However, you are welcome to explore the code yourself as it is commented generously. It will suffice to say that the function outputs the ```spikes``` variable which is a a 1-by-n list of numpy arrays of unit spike times in seconds, where n is the number of units. Moreover, the function also outputs the ```metadata``` variable which is a numpy array with rows corresponding to individual clusters (units) and columns to various metadata types describing unit properties, like ```cluster_id```, ```local_cluster_id```, ```type```, ```peak_channel_index```, ```peak_channel_id```, ```local_peak_channel_id```, ```rel_horz_position```, ```rel_vert_position```, ```isi_violations```, ```isolation_distance```, ```area```, ```probe_id```, and ```electrode_group```. You can find the description of each of these properties inside the ```getSpikes``` function definition.
 
 For convenience and computational efficiency, the function also outputs the already loaded MAT file which can be reused later (the ```derivedData``` variable). The column labels of the metadata array and their descriptions are also provided as ```columnLabels``` and ```columnDescription``` variables, respectively.
 
@@ -757,7 +757,7 @@ Spike times are stored as a ragged array inside the NWB file. Because each unit 
 
 (tutorials-silicon-probe-convert2nwb-py-load-waveforms)=
 #### Load Waveforms
-Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data is stored in the ```waveformMeans``` variable which is a numpy array of average waveforms with rows corresponding to individual units (MUAs are stored as NANs). The variable is constructed after loading and reshaping the waveforms located inside the ```convert2nwbPyNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat``` files by calling the ```reshapeWaveforms``` function:
+Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data are stored in the ```waveformMeans``` variable which is a numpy array of average waveforms with rows corresponding to individual units (MUAs are stored as NANs). The variable is constructed after loading and reshaping the waveforms located inside the ```convert2nwbPyNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat``` files by calling the ```reshapeWaveforms``` function:
 ```python
 # Load data fields
 if len(waveforms):
@@ -902,11 +902,11 @@ totalFacialMovement = nwb2.processing['behavior']['BehavioralTimeSeries']['TimeS
 ```
 Other associated behavioural properties can be accessed by replacing the ```data``` property by ```timestamps``` or ```control``` and so on.
 
-Some metadata is often directly available as properties of the ```NWBFile``` object, like:
+Some metadata are often directly available as properties of the ```NWBFile``` object, like:
 ```python
 sessionDescription = nwb2.session_description
 ```
-Subject metadata is available via the command, for example:
+Subject metadata are available via the command, for example:
 ```python
 animalID = nwb2.subject.subject_id
 ```
@@ -915,6 +915,8 @@ While the electrode metadata can be accessed in the following way:
 electrodesTable = nwb2.ec_electrodes.to_dataframe()
 ```
 ```electrodes``` table is a pandas ```DataFrame``` object and, therefore, methods of accessing it are the same as those discussed for accessing the ```units``` table.
+
+For more detailed account of how you can access and manipulate ```DynamicTable``` objects refer to an external [HDMF DynamicTable Tutorial](https://hdmf.readthedocs.io/en/stable/tutorials/plot_dynamictable_tutorial.html#sphx-glr-tutorials-plot-dynamictable-tutorial-py).
 
 (tutorials-silicon-probe-convert2nwb-py-validate)=
 #### Validate NWB File
@@ -937,6 +939,7 @@ This section explained how you can use Python to convert your processed spiking 
 - [NWB File Basics Tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/general/file.html#sphx-glr-tutorials-general-file-py)
 - [Extracellular Electrophysiology Data Tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/domain/ecephys.html#sphx-glr-tutorials-domain-ecephys-py)
 - [Reading and Exploring an NWB File Tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/general/read_basics.html#sphx-glr-tutorials-general-read-basics-py)
+- [HDMF DynamicTable Tutorial](https://hdmf.readthedocs.io/en/stable/tutorials/plot_dynamictable_tutorial.html#sphx-glr-tutorials-plot-dynamictable-tutorial-py)
 - [Validating NWB files](https://pynwb.readthedocs.io/en/stable/validation.html)
 - [PyNWB API Documentation](https://pynwb.readthedocs.io/en/stable/api_docs.html)
 - [NWB Schema Overview](https://nwb-schema.readthedocs.io/en/latest/index.html)

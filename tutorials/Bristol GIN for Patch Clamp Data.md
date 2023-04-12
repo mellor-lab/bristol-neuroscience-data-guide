@@ -124,7 +124,7 @@ You can now start using MatNWB. MatNWB interface documentation can be accessed [
 #### Record Metadata
 Inside the intracellular electrophysiology repository there is a folder with the Matlab file that you can execute in order to convert the data of one particular imaging/recording session into the NWB format. The script is located inside the ```180126/Slice1/Cell1/180126/nwb``` folder in the file named ```convert2nwbpClamp.m``` and, if executed, it would convert the data stored in the file ```180126/Slice1/Cell1/180126__s1c1_001_ED.mat```.
 
-Initially, we start by recording the metadata associated with this experimental session. In this tutorial the metadata is divided into three types: Project, animal, and session metadata. The project metadata is common to all animals and experimental sessions and is defined by the part of the script below:
+Initially, we start by recording the metadata associated with this experimental session. In this tutorial the metadata are divided into three types: Project, animal, and session metadata. The project metadata are common to all animals and experimental sessions and is defined by the part of the script below:
 ```matlab
 projectName = 'Inhibitory plasticity experiment in CA1';
 experimenter = 'MU';
@@ -134,7 +134,7 @@ lab = 'Jack Mellor lab';
 brainArea = 'Hippocampus CA1';
 ```
 
-The names of most of these parameters are self-explanatory. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate recording sessions. The animal metadata is defined in the code snippet below:
+The names of most of these parameters are self-explanatory. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate recording sessions. The animal metadata are defined in the code snippet below:
 ```matlab
 animalID = '180126';
 ageInDays = 34;
@@ -326,7 +326,7 @@ electrode = types.core.IntracellularElectrode( ...
 nwb.general_intracellular_ephys.set('icephys_electrode', electrode);
 ```
 
-The actual data conversion occurs when we specify and store [```CurrentClampStimulusSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/CurrentClampStimulusSeries.html), [```CurrentClampSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/CurrentClampSeries.html), [```VoltageClampStimulusSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/VoltageClampStimulusSeries.html), and [```VoltageClampSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/VoltageClampSeries.html) objects. These are subclasses of the [```PatchClampSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/PatchClampSeries.html) class that are specifically adapted to store current clamp and voltage clamp (responses) data and associated stimulation time series data (stimuli). When creating these objects you are required to specify the ```data``` property which typically would be a single recording sweep with the first dimension corresponding to time. It is also useful to provide the ```description``` of the data, describe the stimulus using ```stimulus_description``` property, provide ```data_continuity``` property specifying if the data is continuous, instantaneous, or step-like, specify ```data_unit```, provide time info by speficying ```starting_time``` and ```starting_time_rate``` properties, and link the data to the ```electrode``` using the ```SoftLink``` function. The code that creates stimulus and data series objects is given below:
+The actual data conversion occurs when we specify and store [```CurrentClampStimulusSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/CurrentClampStimulusSeries.html), [```CurrentClampSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/CurrentClampSeries.html), [```VoltageClampStimulusSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/VoltageClampStimulusSeries.html), and [```VoltageClampSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/VoltageClampSeries.html) objects. These are subclasses of the [```PatchClampSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/PatchClampSeries.html) class that are specifically adapted to store current clamp and voltage clamp (responses) data and associated stimulation time series data (stimuli). When creating these objects you are required to specify the ```data``` property which typically would be a single recording sweep with the first dimension corresponding to time. It is also useful to provide the ```description``` of the data, describe the stimulus using ```stimulus_description``` property, provide ```data_continuity``` property specifying if the data are continuous, instantaneous, or step-like, specify ```data_unit```, provide time info by speficying ```starting_time``` and ```starting_time_rate``` properties, ```sweep_number```, and link the data to the ```electrode``` using the ```SoftLink``` function. The code that creates stimulus and data series objects is given below:
 ```matlab
 % Add current and voltage clamp data
 stimulusObjectViews = [];
@@ -340,21 +340,23 @@ for sweep = 1:nSweeps
   input.stimState = sweepStates(sweep);
   input.unit = runUnits{run};
   input.condition = runs{run};
+  input.sweepOrder = sweepIDs(sweep);
   if strcmpi(runs{run}, 'plasticity')
     input.data = input.data*ccScaleFactor;
     [stimulusObject, responseObject] = setCClampSeries(input);
-    nwb.stimulus_presentation.set(['CurrentClampStimulusSeries' ...
-      num2str(run) '_' runs{run} '_sweep' num2str(sweepIDs(sweep))], stimulusObject);
-    nwb.acquisition.set(['CurrentClampSeries' ...
-      num2str(run) '_' runs{run} '_sweep' num2str(sweepIDs(sweep))], responseObject);
   else
     input.data = input.data*vcScaleFactor;
     [stimulusObject, responseObject] = setVClampSeries(input);
-    nwb.stimulus_presentation.set(['VoltageClampStimulusSeries' ...
-      num2str(run) '_' runs{run} '_sweep' num2str(sweepIDs(sweep))], stimulusObject);
-    nwb.acquisition.set(['VoltageClampSeries' ...
-      num2str(run) '_' runs{run} '_sweep' num2str(sweepIDs(sweep))], responseObject);
   end
+  if sweep < 10
+    prefix = '00';
+  elseif sweep < 100
+    prefix = '0';
+  else
+    prefix = '';
+  end
+  nwb.stimulus_presentation.set(['PatchClampSeries' prefix num2str(sweep)], stimulusObject);
+  nwb.acquisition.set(['PatchClampSeries' prefix num2str(sweep)], responseObject);
   stimulusObjectViews = [stimulusObjectViews; types.untyped.ObjectView(stimulusObject)];
   responseObjectViews = [responseObjectViews; types.untyped.ObjectView(responseObject)];
 end
@@ -372,7 +374,8 @@ CCSS = types.core.CurrentClampStimulusSeries( ...
   'starting_time', input.startTime, ...
   'starting_time_rate', input.samplingRate, ...
   'electrode', types.untyped.SoftLink(input.electrode), ...
-  'stimulus_description', 'Plasticity protocol: Simultaneous current and light stimulation');
+  'stimulus_description', 'Plasticity protocol: Simultaneous current and light stimulation', ...
+  'sweep_number', input.sweepOrder);
 
 CCS = types.core.CurrentClampSeries( ...
   'description', 'Plasticity condition', ...
@@ -383,8 +386,9 @@ CCS = types.core.CurrentClampSeries( ...
   'starting_time', input.startTime, ...
   'starting_time_rate', input.samplingRate, ...
   'electrode', types.untyped.SoftLink(input.electrode), ...
-  'stimulus_description', 'Plasticity protocol: Simultaneous current and light stimulation');
-end
+  'stimulus_description', 'Plasticity protocol: Simultaneous current and light stimulation', ...
+  'sweep_number', input.sweepOrder);
+...
 ```
 and the code for ```setVClampSeries``` function is given here:
 ```matlab
@@ -411,7 +415,8 @@ VCSS = types.core.VoltageClampStimulusSeries( ...
   'starting_time', input.startTime, ...
   'starting_time_rate', input.samplingRate, ...
   'electrode', types.untyped.SoftLink(input.electrode), ...
-  'stimulus_description', stimDescription);
+  'stimulus_description', stimDescription, ...
+  'sweep_number', input.sweepOrder);
 
 VCS = types.core.VoltageClampSeries( ...
   'description', description, ...
@@ -422,8 +427,9 @@ VCS = types.core.VoltageClampSeries( ...
   'starting_time', input.startTime, ...
   'starting_time_rate', input.samplingRate, ...
   'electrode', types.untyped.SoftLink(input.electrode), ...
-  'stimulus_description', stimDescription);
-end
+  'stimulus_description', stimDescription, ...
+  'sweep_number', input.sweepOrder);
+...
 ```
 We use the same data for stimuli and responses as stimuli data has not been recorded. Later when creating recordings table we are going to indicate that stimulation data does not really exist.
 
@@ -712,7 +718,47 @@ nwbExport(nwb, [sessionID '.nwb']);
 
 (tutorials-pclamp-convert2nwb-matlab-read)=
 #### Read NWB File
+Now if you want to open the NWB file that you just saved in Matlab, you can issue a command
+```matlab
+nwb2 = nwbRead('180126__s1c1.nwb');
+```
+which will read the file passively. The action is fast and it does not load all of the data at once but rather make it readily accessible. This is useful as it allows you to read data selectively without loading the entire file content into the computer memory.
 
+Current and voltage clamp data are accessible using commands below:
+```matlab
+CurrentOrVoltageClampSeries = nwb2.acquisition.get('PatchClampSeries001').loadAll.data;
+```
+
+If you want to read any of the ```DynamicTable``` objects stored in the file, the following example command will give you the entire table:
+```matlab
+sweepMetadata = nwb2.general_intracellular_ephys_intracellular_recordings.dynamictable.get('sweeps').loadAll.toTable()
+```
+
+To load data for one particular sweep, type in:
+```matlab
+sweep1Metadata = nwb2.general_intracellular_ephys_intracellular_recordings.dynamictable.get('sweeps').getRow(1)
+```
+
+To obtain a column of interest for all sweeps or just for a single one, respectively type:
+```matlab
+sweepLabels = nwb2.general_intracellular_ephys_intracellular_recordings.dynamictable.get('sweeps').loadAll.toTable().label
+sweep1Label = nwb2.general_intracellular_ephys_intracellular_recordings.dynamictable.get('sweeps').getRow(1).label{1}
+```
+
+Finally, the stored slice image can be accessed by issuing the following command:
+```matlab
+neuronImage = nwb2.acquisition.get('ImageCollection').image.get('slice_image').loadAll.data;
+```
+
+Some metadata are often directly available as properties of the ```NWBFile``` object, like:
+```matlab
+sessionDescription = nwb2.session_description;
+```
+Subject metadata are available via the command, for example:
+```matlab
+animalID = nwb2.general_subject.subject_id;
+```
+For more detailed account of how you can access and manipulate ```DynamicTable``` objects refer to an external [MatNWB DynamicTables Tutorial](https://neurodatawithoutborders.github.io/matnwb/tutorials/html/dynamic_tables.html).
 
 (tutorials-pclamp-convert2nwb-matlab-validate)=
 #### Validate NWB File
@@ -758,7 +804,7 @@ from pynwb.icephys import CurrentClampSeries, CurrentClampStimulusSeries, Voltag
 from typing import TypedDict, Any
 ```
 
-We then record metadata associated with this experimental session. In this tutorial the metadata is divided into three types: Project, animal, and session metadata. The project metadata is common to all animals and experimental sessions and is defined by the part of the script below:
+We then record metadata associated with this experimental session. In this tutorial the metadata are divided into three types: Project, animal, and session metadata. The project metadata are common to all animals and experimental sessions and is defined by the part of the script below:
 ```python
 projectName = 'Inhibitory plasticity experiment in CA1'
 experimenter = 'MU'
@@ -768,7 +814,7 @@ lab = 'Jack Mellor lab'
 brainArea = 'Hippocampus CA1'
 ```
 
-The names of most of these parameters are self-explanatory. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate recording sessions. The animal metadata is defined in the code snippet below:
+The names of most of these parameters are self-explanatory. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate recording sessions. The animal metadata are defined in the code snippet below:
 ```python
 animalID = '180126'
 ageInDays = 34
@@ -927,7 +973,7 @@ electrode = nwb.create_icephys_electrode(
   device = device)
 ```
 
-The actual data conversion occurs when we specify and store [```CurrentClampStimulusSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.CurrentClampStimulusSeries), [```CurrentClampSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.CurrentClampSeries), [```VoltageClampStimulusSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.VoltageClampStimulusSeries), and [```VoltageClampSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.VoltageClampSeries) objects. These are subclasses of the [```PatchClampSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.PatchClampSeries) class that are specifically adapted to store current clamp and voltage clamp (responses) data and associated stimulation time series data (stimuli). When creating these objects you are required to specify the ```data``` property which typically would be a single recording sweep with the first dimension corresponding to time. It is also useful to provide the ```description``` of the data, describe the stimulus using ```stimulus_description``` property, specify ```data_unit```, provide time info by speficying ```starting_time``` and ```starting_time_rate``` properties, and link the data to the ```electrode```. The code that creates stimulus and data series objects is given below:
+The actual data conversion occurs when we specify and store [```CurrentClampStimulusSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.CurrentClampStimulusSeries), [```CurrentClampSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.CurrentClampSeries), [```VoltageClampStimulusSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.VoltageClampStimulusSeries), and [```VoltageClampSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.VoltageClampSeries) objects. These are subclasses of the [```PatchClampSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.PatchClampSeries) class that are specifically adapted to store current clamp and voltage clamp (responses) data and associated stimulation time series data (stimuli). When creating these objects you are required to specify the ```data``` property which typically would be a single recording sweep with the first dimension corresponding to time. It is also useful to provide the ```description``` of the data, describe the stimulus using ```stimulus_description``` property, specify ```data_unit```, provide time info by speficying ```starting_time``` and ```starting_time_rate``` properties, ```sweep_number```, and link the data to the ```electrode```. The code that creates stimulus and data series objects is given below:
 ```python
 # Add current and voltage clamp data
 stimulusObjects = list()
@@ -942,8 +988,7 @@ for sweep in range(nSweeps):
     'condition': runs[run],
     'stimState': sweepStates[sweep],
     'unit': runUnits[run],
-    'conditionOrder': run,
-    'sweepOrder':sweepIDs[sweep]}
+    'sweepOrder': [sweep+1, sweepIDs[sweep]]}
   if runs[run] == 'plasticity':
     input.pop('stimState')
     input['data'] = input['data']*ccScaleFactor
@@ -958,8 +1003,15 @@ for sweep in range(nSweeps):
 It packages the needed parameters for setting up these time series objects inside the ```input``` dictionary and passes them into local ```setCClampSeries``` and ```setVClampSeries``` functions which output stimulus and response objects. These objects are appended to their corresponding lists, so that we can annotate these time series objects and organise them hierarchically. The code for ```setCClampSeries``` function is given below:
 ```python
 ...
+if input['sweepOrder'][0] < 10:
+  prefix = '00'
+elif input['sweepOrder'][0] < 100:
+  prefix = '0'
+else:
+  prefix = ''
+
 currentClampStimulusSeries = CurrentClampStimulusSeries(
-  name = 'CurrentClampStimulusSeries' + str(input['conditionOrder']+1) + '_' + input['condition'] + '_sweep' + str(input['sweepOrder']),
+  name = 'PatchClampSeries' + prefix + str(input['sweepOrder'][0]),
   description = 'Plasticity condition',
   data = input['data'],
   gain = 1.,
@@ -967,10 +1019,11 @@ currentClampStimulusSeries = CurrentClampStimulusSeries(
   electrode = input['electrode'],
   stimulus_description = 'Plasticity protocol: Simultaneous current and light stimulation',
   starting_time = input['startTime'],
-  rate = input['samplingRate'])
+  rate = input['samplingRate'],
+  sweep_number = input['sweepOrder'][1])
 
 currentClampSeries = CurrentClampSeries(
-  name = 'CurrentClampSeries' + str(input['conditionOrder']+1) + '_' + input['condition'] + '_sweep' + str(input['sweepOrder']),
+  name = 'PatchClampSeries' + prefix + str(input['sweepOrder'][0]),
   description = 'Plasticity condition',
   data = input['data'],
   gain = 1.,
@@ -978,13 +1031,21 @@ currentClampSeries = CurrentClampSeries(
   electrode = input['electrode'],
   stimulus_description = 'Plasticity protocol: Simultaneous current and light stimulation',
   starting_time = input['startTime'],
-  rate = input['samplingRate'])
+  rate = input['samplingRate'],
+  sweep_number = input['sweepOrder'][1])
 
 return currentClampStimulusSeries, currentClampSeries
 ```
 and the code for ```setVClampSeries``` function is given here:
 ```python
 ...
+if input['sweepOrder'][0] < 10:
+  prefix = '00'
+elif input['sweepOrder'][0] < 100:
+  prefix = '0'
+else:
+  prefix = ''
+
 if input['condition'] == 'baseline':
   if input['stimState'] == 0:
     description = 'Baseline condition: Light stimulation'
@@ -997,7 +1058,7 @@ elif input['condition'] == 'break':
   stimDescription = 'No stimulation.'
 
 voltageClampStimulusSeries = VoltageClampStimulusSeries(
-  name = 'VoltageClampStimulusSeries' + str(input['conditionOrder']+1) + '_' + input['condition'] + '_sweep' + str(input['sweepOrder']),
+  name = 'PatchClampSeries' + prefix + str(input['sweepOrder'][0]),
   description = description,
   data = input['data'],
   gain = 1.,
@@ -1005,10 +1066,11 @@ voltageClampStimulusSeries = VoltageClampStimulusSeries(
   electrode = input['electrode'],
   stimulus_description = stimDescription,
   starting_time = input['startTime'],
-  rate = input['samplingRate'])
+  rate = input['samplingRate'],
+  sweep_number = input['sweepOrder'][1])
 
 voltageClampSeries = VoltageClampSeries(
-  name = 'VoltageClampSeries' + str(input['conditionOrder']+1) + '_' + input['condition'] + '_sweep' + str(input['sweepOrder']),
+  name = 'PatchClampSeries' + prefix + str(input['sweepOrder'][0]),
   description = description,
   data = input['data'],
   gain = 1.,
@@ -1016,7 +1078,8 @@ voltageClampSeries = VoltageClampSeries(
   electrode = input['electrode'],
   stimulus_description = stimDescription,
   starting_time = input['startTime'],
-  rate = input['samplingRate'])
+  rate = input['samplingRate'],
+  sweep_number = input['sweepOrder'][1])
 
 return voltageClampStimulusSeries, voltageClampSeries
 ```
@@ -1206,7 +1269,54 @@ with NWBHDF5IO(sessionID + '.nwb', "w") as io:
 
 (tutorials-pclamp-convert2nwb-py-read)=
 #### Read NWB File
+Reading NWB files in Python is done via the ```NWBHDF5IO``` class. Hence, import it by calling:
+```python
+from pynwb import NWBHDF5IO
+```
+Now if you want to open the NWB file that you just saved in Python, you can issue a command
+```python
+file_path = '180126__s1c1.nwb'
+io = NWBHDF5IO(file_path, mode="r")
+nwb2 = io.read()
+```
+which will read the file passively. The action is fast and it does not load all of the data at once but rather makes it readily accessible. This is useful as it allows you to read data selectively without loading the entire file content into the computer memory.
 
+Current and voltage clamp data are accessible using commands below:
+```python
+CurrentOrVoltageClampSeries = nwb2.acquisition['PatchClampSeries001'].data[:]
+```
+
+If you want to read any of the ```DynamicTable``` objects stored in the file, the following example command will give you the entire table by converting it into a pandas ```DataFrame``` object:
+```python
+sweepMetadata = nwb2.intracellular_recordings.category_tables['sweeps'].to_dataframe()
+```
+
+To load data for one particular sweep, type in:
+```python
+sweepMetadataLabels = sweepMetadata.columns.values
+sweep1Metadata = sweepMetadata.iloc[0].values
+```
+
+To obtain a column of interest for all sweeps or just for a single one, respectively type:
+```python
+sweepLabels = sweepMetadata.loc[:,'label']
+sweepLabels = sweepMetadata.loc[0,'label']
+```
+
+Finally, the stored slice image can be accessed by issuing the following command:
+```python
+neuronImage = nwb2.acquisition['ImageCollection'].images['slice_image'].data[:]
+```
+
+Some metadata are often directly available as properties of the ```NWBFile``` object, like:
+```python
+sessionDescription = nwb2.session_description
+```
+Subject metadata are available via the command, for example:
+```python
+animalID = nwb2.subject.subject_id
+```
+For more detailed account of how you can access and manipulate ```DynamicTable``` objects refer to an external [HDMF DynamicTable Tutorial](https://hdmf.readthedocs.io/en/stable/tutorials/plot_dynamictable_tutorial.html#sphx-glr-tutorials-plot-dynamictable-tutorial-py).
 
 (tutorials-pclamp-convert2nwb-py-validate)=
 #### Validate NWB File

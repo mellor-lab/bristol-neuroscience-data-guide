@@ -18,7 +18,7 @@ gin get dervinism/calcium-imaging-mock-repo
 cd calcium-imaging-mock-repo
 gin get-content
 ```
-This is part of the real Ca2+ imaging data. The imaging was performed in hippocampal pyramidal cells during Schaffer collateral stimulation. Dendrites at different cell locations were two-photon linescan imaged. More about the project that this data is coming from can be read in the README file. The data is organised into individual imaging/recording sessions named using number IDs. It is further subdivided into slices and cells. Processed data is placed in the Analysed folder inside the MAT file. The raw data is located in two separate folders: Ephysdata for electrophysiology data and Imgdata for imaging data. README files located in calcium-imaging-mock-repo\Exp_001_SCstim_DiffLocations\201204 session folder give more detail about what sort of data is stored, variable names and their meaning, and other relevant information.
+This is part of the real Ca2+ imaging data. The imaging was performed in hippocampal pyramidal cells during Schaffer collateral stimulation. Dendrites at different cell locations were two-photon linescan imaged. More about the project that this data are coming from can be read in the README file. The data are organised into individual imaging/recording sessions named using number IDs. It is further subdivided into slices and cells. Processed data are placed in the Analysed folder inside the MAT file. The raw data are located in two separate folders: Ephysdata for electrophysiology data and Imgdata for imaging data. README files located in calcium-imaging-mock-repo\Exp_001_SCstim_DiffLocations\201204 session folder give more detail about what sort of data are stored, variable names and their meaning, and other relevant information.
 
 (tutorials-caimage-setup-repo)=
 ## Set up Your Research Data Repository
@@ -124,7 +124,7 @@ Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/201204__s2d1_004
 Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed/201204__s2d1_004_ED__1 Topden_Analysed.mat
 ```
 
-Initially, we start by recording the metadata associated with this experimental session. In this tutorial the metadata is divided into three types: Project, animal, and session metadata. The project metadata is common to all animals and experimental sessions and is defined by the part of the script below:
+Initially, we start by recording the metadata associated with this experimental session. In this tutorial the metadata are divided into three types: Project, animal, and session metadata. The project metadata are common to all animals and experimental sessions and is defined by the part of the script below:
 ```matlab
 projectName = 'Intracellular Ca2+ dynamics during plateau potentials trigerred by Schaffer collateral stimulation';
 experimenter = 'Matt Udakis';
@@ -135,7 +135,7 @@ brainArea = 'Hippocampus CA1-2';
 greenIndicator = 'Fluo5f';
 redIndicator = 'Alexa594';
 ```
-The names of most of these parameters are self-explanatory. The green and red indicators are calcium indicator types named based on the light wavelength they emit. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate imaging/recording sessions. The animal metadata is defined in the code snippet below:
+The names of most of these parameters are self-explanatory. The green and red indicators are calcium indicator types named based on the light wavelength they emit. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate imaging/recording sessions. The animal metadata are defined in the code snippet below:
 ```matlab
 animalID = 'm1';
 ageInDays = 100;
@@ -354,7 +354,7 @@ elseif strcmpi(input.dendriteID, 'top')
 end
 nwb.acquisition.set(['TwoPhotonSeries' opticalChannel dendriteID], image_series);
 ```
-The fluorescence data is added to the ```NWBFile``` object by creating a [```TwoPhotonSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/TwoPhotonSeries.html) object. ```TwoPhotonSeries``` object has the following required properties: ```data```, ```imaging_plane```, and ```starting_time_rate```. In our case, the ```data``` property contains the actual fluorescence data in a 3D array form with its dimensions described in [Table 1].(tutorials-caimage-convert2nwb-matlab-variable-table) (```Flur5_denoised``` and ```Alexa_denoised``` variables). The ```imaging_plane``` property uses the ```SoftLink``` object to link to a particular ```ImagingPlane``` object (in our case there are two: green and red). The ```starting_time_rate``` property corresponds to the rate at which individual linescans were acquired. However, it does not need to be organised this way and can refer to a different data dimension. Therefore, it is important to use ```description```, ```comments```, and ```data_continuity``` properties to explain how the data is organised. For example, data containing individual linescans is not continuous and should be described as having the step quality by the ```data_continuity``` property. The property ```scan_line_rate``` describes the rate at which individual image lines were obtained and corresponds to the second dimension of the data.
+The fluorescence data are added to the ```NWBFile``` object by creating a [```TwoPhotonSeries```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/TwoPhotonSeries.html) object. ```TwoPhotonSeries``` object has the following required properties: ```data```, ```imaging_plane```, and ```starting_time_rate```. In our case, the ```data``` property contains the actual fluorescence data in a 3D array form with its dimensions described in [Table 1].(tutorials-caimage-convert2nwb-matlab-variable-table) (```Flur5_denoised``` and ```Alexa_denoised``` variables). The ```imaging_plane``` property uses the ```SoftLink``` object to link to a particular ```ImagingPlane``` object (in our case there are two: green and red). The ```starting_time_rate``` property corresponds to the rate at which individual linescans were acquired. However, it does not need to be organised this way and can refer to a different data dimension. Therefore, it is important to use ```description```, ```comments```, and ```data_continuity``` properties to explain how the data are organised. For example, data containing individual linescans is not continuous and should be described as having the step quality by the ```data_continuity``` property. The property ```scan_line_rate``` describes the rate at which individual image lines were obtained and corresponds to the second dimension of the data.
 
 (tutorials-caimage-convert2nwb-matlab-convert-fluorescence-intensity-change)=
 #### Convert Change in Fluorescence Intensity Data
@@ -389,7 +389,7 @@ image_series = types.core.TwoPhotonSeries( ...
                '(or to individual linescans). Each linescan is 1-sec in duration with ', ...
                '20-sec intervals between two linescans. The second dimension corresponds ', ...
                'to individual lines spanning the length of the dendrite in the ROI. ', ...
-               'The data is averaged across the dendritic width.']);
+               'The data are averaged across the dendritic width.']);
 
 % Name and add the two-photon delta F series to the NWB file
 if strcmpi(input.dendriteID, 'bottom')
@@ -522,17 +522,17 @@ Stored images can be accessed by issuing the following command, for example:
 neuronImage = nwb2.acquisition.get('ImageCollection').image.get('neuron_image').loadAll.data;
 ```
 
-Finally, current clamp data is accessible in a similar way to the ```TwoPhotonSeries``` objects. For example,
+Finally, current clamp data are accessible in a similar way to the ```TwoPhotonSeries``` objects. For example,
 ```matlab
 CurrentClampSeries1 = nwb2.acquisition.get('CurrentClampSeries1').loadAll.data;
 ```
 will give you recording sweeps obtained while imaging the bottom dendrite.
 
-Some metadata is often directly available as properties of the ```NWBFile``` object, like:
+Some metadata are often directly available as properties of the ```NWBFile``` object, like:
 ```matlab
 sessionDescription = nwb2.session_description;
 ```
-Subject metadata is available via the command, for example:
+Subject metadata are available via the command, for example:
 ```matlab
 animalID = nwb2.general_subject.subject_id;
 ```
@@ -594,7 +594,7 @@ from pynwb.ophys import TwoPhotonSeries
 from pynwb.icephys import CurrentClampSeries
 ```
 
-We then record metadata associated with this experimental session. In this tutorial the metadata is divided into three types: Project, animal, and session metadata. The project metadata is common to all animals and experimental sessions and is defined by the part of the script below:
+We then record metadata associated with this experimental session. In this tutorial the metadata are divided into three types: Project, animal, and session metadata. The project metadata are common to all animals and experimental sessions and is defined by the part of the script below:
 ```python
 projectName = 'Intracellular Ca2+ dynamics during plateau potentials trigerred by Schaffer collateral stimulation'
 experimenter = 'Matt Udakis'
@@ -605,7 +605,7 @@ brainArea = 'Hippocampus CA1-2'
 greenIndicator = 'Fluo5f'
 redIndicator = 'Alexa594'
 ```
-The names of most of these parameters are self-explanatory. The green and red indicators are calcium indicator types named based on the light wavelength they emit. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate imaging/recording sessions. The animal metadata is defined in the code snippet below:
+The names of most of these parameters are self-explanatory. The green and red indicators are calcium indicator types named based on the light wavelength they emit. Next we define animal metadata. The reason to have this type of data separate is that multiple slices can be obtained from the same animal and used in separate imaging/recording sessions. The animal metadata are defined in the code snippet below:
 ```python
 animalID = 'm1'
 ageInDays = 100
@@ -804,7 +804,7 @@ image_series = TwoPhotonSeries(
 nwb.add_acquisition(image_series)
 return nwb
 ```
-The fluorescence data is added to the ```NWBFile``` object by creating a [```TwoPhotonSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.TwoPhotonSeries) object. ```TwoPhotonSeries``` object has the following required properties: ```name```, ```data```, ```imaging_plane```, and ```rate```. In our case, the ```data``` property contains the actual fluorescence data in a 3D array form with its dimensions described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table) (```Flur5_denoised``` and ```Alexa_denoised``` keys). The ```rate``` property corresponds to the rate at which individual linescans were acquired. However, it does not need to be organised this way and can refer to a different data dimension. Therefore, it is important to use ```description``` and ```comments``` properties to explain how the data is organised. For example, data containing individual linescans is not continuous and should be described as having the step quality. This is done by the ```data_continuity = step``` entry in the ```comments``` (unlike in pynwb, in matnwb this is a separate property). The property ```scan_line_rate``` describes the rate at which individual image lines were obtained and corresponds to the second dimension of the data.
+The fluorescence data are added to the ```NWBFile``` object by creating a [```TwoPhotonSeries```](https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.TwoPhotonSeries) object. ```TwoPhotonSeries``` object has the following required properties: ```name```, ```data```, ```imaging_plane```, and ```rate```. In our case, the ```data``` property contains the actual fluorescence data in a 3D array form with its dimensions described in [Table 1](tutorials-caimage-convert2nwb-matlab-variable-table) (```Flur5_denoised``` and ```Alexa_denoised``` keys). The ```rate``` property corresponds to the rate at which individual linescans were acquired. However, it does not need to be organised this way and can refer to a different data dimension. Therefore, it is important to use ```description``` and ```comments``` properties to explain how the data are organised. For example, data containing individual linescans is not continuous and should be described as having the step quality. This is done by the ```data_continuity = step``` entry in the ```comments``` (unlike in pynwb, in matnwb this is a separate property). The property ```scan_line_rate``` describes the rate at which individual image lines were obtained and corresponds to the second dimension of the data.
 
 (tutorials-caimage-convert2nwb-py-convert-fluorescence-intensity-change)=
 #### Convert Change in Fluorescence Intensity Data
@@ -849,7 +849,7 @@ image_series = TwoPhotonSeries(
               '(or to individual linescans). Each linescan is 1-sec in duration with ' +\
               '20-sec intervals between two linescans. The second dimension corresponds ' +\
               'to individual lines spanning the length of the dendrite in the ROI. ' +\
-              'The data is averaged across the dendritic width.   ' +\
+              'The data are averaged across the dendritic width.   ' +\
               'data_continuity = step')
 
 nwb.add_acquisition(image_series)
@@ -918,7 +918,7 @@ input = {
 nwb = setCClampSeries(nwb, input)
 ...
 ```
-The data is transposed so that individual recording sweeps correspond to the first dimension. The function code is given below:
+The data are transposed so that individual recording sweeps correspond to the first dimension. The function code is given below:
 ```python
 ...
 if input['dendriteID'] in 'bottom':
@@ -998,17 +998,17 @@ Stored images can be accessed by issuing the following command, for example:
 neuronImage = nwb2.acquisition['ImageCollection'].images['neuron_image'].data[:]
 ```
 
-Finally, current clamp data is accessible in a similar way to the ```TwoPhotonSeries``` objects. For example,
+Finally, current clamp data are accessible in a similar way to the ```TwoPhotonSeries``` objects. For example,
 ```python
 CurrentClampSeries1 = nwb2.acquisition['CurrentClampSeries1'].data[:]
 ```
 will give you recording sweeps obtained while imaging the bottom dendrite.
 
-Some metadata is often directly available as properties of the ```NWBFile``` object, like:
+Some metadata are often directly available as properties of the ```NWBFile``` object, like:
 ```python
 sessionDescription = nwb2.session_description
 ```
-Subject metadata is available via the command, for example:
+Subject metadata are available via the command, for example:
 ```python
 animalID = nwb2.subject.subject_id
 ```
