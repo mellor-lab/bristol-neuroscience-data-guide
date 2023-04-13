@@ -204,7 +204,7 @@ subject = types.core.Subject( ...
 nwb.general_subject = subject;
 ```
 
-(tutorials-caimage-convert2nwb-matlab-create_img_planes)=
+(tutorials-caimage-convert2nwb-matlab-create-img-planes)=
 #### Create Imaging Planes
 In order to store optical imaging data, we need to create imaging planes. First, we create [```OpticalChannel```](https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/OpticalChannel.html) objects for each calcium indicator we use. The objects contain ```description``` and ```emission_lambda``` properties. In our case we use indicators Fluo5f and Alexa594 which have their maximum emission wavelengths at approximately 516 and 616 nanometers, respectively. These wavelength roughly correspond to green and red colours. Therefore, we name the channels based on the colours their corresponding calcium indicators emit.
 ```matlab
@@ -674,7 +674,7 @@ nwb.subject = Subject(
   sex = sex)
 ```
 
-(tutorials-caimage-convert2nwb-py-create_img_planes)=
+(tutorials-caimage-convert2nwb-py-create-img-planes)=
 #### Create Imaging Planes
 In order to store optical imaging data, we need to create imaging planes. First, we create [```OpticalChannel```](https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.OpticalChannel) objects for each calcium indicator we use. The objects contain ```name```, ```description```, and ```emission_lambda``` properties. In our case we use indicators Fluo5f and Alexa594 which have their maximum emission wavelengths at approximately 516 and 616 nanometers, respectively. These wavelength roughly correspond to green and red colours. Therefore, we name the channels based on the colours their corresponding calcium indicators emit.
 ```python
