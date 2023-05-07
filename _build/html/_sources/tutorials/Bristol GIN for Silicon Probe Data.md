@@ -141,16 +141,16 @@ You can now start using MatNWB. MatNWB interface documentation can be accessed [
 
 (tutorials-silicon-probe-convert2nwb-matlab-record-metadata)=
 #### Record Metadata
-We have prepared example repositories containing single session extracellular physiology recording data collected with [Neuronexus](https://gin.g-node.org/dervinism/convert2nwbMatNnx) and [Neuropixels](https://gin.g-node.org/dervinism/convert2nwbMatNpx) probes and Matlab scripts that would convert that data to the NWB format. They can be used to familiarise with the Matlab NWB conversion scheme for spiking data combined with behavioural measurements. Both conversion scripts are very similar and, thus, we will focus on the Neuropixels use case.
+We have prepared example repositories containing single session extracellular physiology recording data collected with [Neuronexus](https://gin.g-node.org/dervinism/convert2nwbEcephysMatNnx) and [Neuropixels](https://gin.g-node.org/dervinism/convert2nwbEcephysMatNpx) probes and Matlab scripts that would convert that data to the NWB format. They can be used to familiarise with the Matlab NWB conversion scheme for spiking data combined with behavioural measurements. Both conversion scripts are very similar and, thus, we will focus on the Neuropixels use case.
 
 To donwload the Neuropixels repository, type in your terminal:
 ```
-gin get dervinism/convert2nwbMatNpx
-cd convert2nwbMatNpx
+gin get dervinism/convert2nwbEcephysMatNpx
+cd convert2nwbEcephysMatNpx
 gin get-content
 ```
 
-It will take some time to download the full repository. Once the download is complete you can open the ```convert2nwb.m``` file and and execute it right away. The script would load derived spiking and behavioural data from ```convert2nwbMatNpx/npx_derived_data/M200324_MD/M200324_MD.mat``` file, convert it to the NWB format, and save it inside ```convert2nwbMatNpx/npx_derived_data_nwb``` folder as ```ecephys_session_01.nwb``` file.
+It will take some time to download the full repository. Once the download is complete you can open the ```convert2nwb.m``` file and and execute it right away. The script would load derived spiking and behavioural data from ```convert2nwbEcephysMatNpx/npx_derived_data/M200324_MD/M200324_MD.mat``` file, convert it to the NWB format, and save it inside ```convert2nwbEcephysMatNpx/npx_derived_data_nwb``` folder as ```ecephys_session_01.nwb``` file.
 
 We will now analyse the conversion script in more detail. The script starts by executing three parameter files to initiate the conversion environment. The first parameter file ```nwbParams.m``` contains the most general type of parameters that apply to all animals and recording sessions of the experiment, like:
 ```matlab
@@ -324,7 +324,7 @@ Once the spike times are extracted, we convert them into [VectorData](https://ne
 
 (tutorials-silicon-probe-convert2nwb-matlab-load-waveforms)=
 #### Load Waveforms
-Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data are stored in the ```waveformMeans``` variable which is a cell array of average waveforms with cells corresponding to individual units. The variable is constructed after loading and reshaping the waveforms located inside the ```convert2nwbMatNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat``` files:
+Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data are stored in the ```waveformMeans``` variable which is a cell array of average waveforms with cells corresponding to individual units. The variable is constructed after loading and reshaping the waveforms located inside the ```convert2nwbEcephysMatNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat``` files:
 ```matlab
 % Load and reshape unit waveforms
 ...
@@ -532,16 +532,16 @@ Now you're ready to start working with PyNWB. The full installation instructions
 
 (tutorials-silicon-probe-convert2nwb-py-record-metadata)=
 #### Record Metadata
-Just like in the Matlab tutorial, we have prepared example repositories containing single session extracellular physiology recording data collected with [Neuronexus](https://gin.g-node.org/dervinism/convert2nwbPyNnx) and [Neuropixels](https://gin.g-node.org/dervinism/convert2nwbPyNpx) probes and Python scripts that would convert that data to NWB format. They can be used to familiarise with the Python NWB conversion scheme for spiking data combined with behavioural measurements. Both conversion scripts are very similar and, thus, we will focus on the Neuropixels use case.
+Just like in the Matlab tutorial, we have prepared example repositories containing single session extracellular physiology recording data collected with [Neuronexus](https://gin.g-node.org/dervinism/convert2nwbEcephysPyNnx) and [Neuropixels](https://gin.g-node.org/dervinism/convert2nwbEcephysPyNpx) probes and Python scripts that would convert that data to NWB format. They can be used to familiarise with the Python NWB conversion scheme for spiking data combined with behavioural measurements. Both conversion scripts are very similar and, thus, we will focus on the Neuropixels use case.
 
 To donwload the Neuropixels repository, type in your terminal:
 ```
-gin get dervinism/convert2nwbPyNpx
-cd convert2nwbPyNpx
+gin get dervinism/convert2nwbEcephysPyNpx
+cd convert2nwbEcephysPyNpx
 gin get-content
 ```
 
-It will take some time to download the full repository. Once the download is complete you can open the ```convert2nwb.py``` file and and execute it right away. The script would load derived spiking and behavioural data from ```convert2nwbPyNpx/npx_derived_data/M200324_MD/M200324_MD.mat``` file, convert it to the NWB format, and save it inside ```convert2nwbPyNpx/npx_derived_data_nwb``` folder as ```ecephys_session_01.nwb``` file.
+It will take some time to download the full repository. Once the download is complete you can open the ```convert2nwb.py``` file and and execute it right away. The script would load derived spiking and behavioural data from ```convert2nwbEcephysPyNpx/npx_derived_data/M200324_MD/M200324_MD.mat``` file, convert it to the NWB format, and save it inside ```convert2nwbEcephysPyNpx/npx_derived_data_nwb``` folder as ```ecephys_session_01.nwb``` file.
 
 We will now analyse the conversion script in more detail. The script starts by importing general and ```pynwb``` module dependencies, as well as custom functions located inside the ```localFunctions.py``` module file.
 ```python
@@ -757,7 +757,7 @@ Spike times are stored as a ragged array inside the NWB file. Because each unit 
 
 (tutorials-silicon-probe-convert2nwb-py-load-waveforms)=
 #### Load Waveforms
-Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data are stored in the ```waveformMeans``` variable which is a numpy array of average waveforms with rows corresponding to individual units (MUAs are stored as NANs). The variable is constructed after loading and reshaping the waveforms located inside the ```convert2nwbPyNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat``` files by calling the ```reshapeWaveforms``` function:
+Before converting spiking data we load unit waveforms. The waveforms data can also be stored as a ragged array, even as a double-indexed one. You can find more information [here](https://nwb-schema.readthedocs.io/en/latest/format_description.html) on how to construct such arrays. In our case, the waveforms arrays are rather simple: we are only interested in average waveforms on the probe recording channel with the largest waveform amplitude. This data are stored in the ```waveformMeans``` variable which is a numpy array of average waveforms with rows corresponding to individual units (MUAs are stored as NANs). The variable is constructed after loading and reshaping the waveforms located inside the ```convert2nwbEcephysPyNpx/npx_raw_derived_data/M200324_MD/<session-ID>/waveforms.mat``` files by calling the ```reshapeWaveforms``` function:
 ```python
 # Load data fields
 if len(waveforms):
