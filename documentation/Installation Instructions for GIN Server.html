@@ -1,0 +1,1509 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Installation Instructions for GIN Server</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css-rules.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'documentation/Installation Instructions for GIN Server';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Repository Management with GIN" href="Repository%20Management%20with%20GIN.html" />
+    <link rel="prev" title="Installation Instructions for GIN Client" href="Installation%20Instructions%20for%20GIN%20Client.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Bristol Neuroscience Data Guide
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Installation%20Instructions%20for%20GIN%20Client.html">Installation Instructions for GIN Client</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Installation Instructions for GIN Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Repository%20Management%20with%20GIN.html">Repository Management with GIN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Repository%20Management%20with%20GIN%20Web%20Interface.html">Repository Management with GIN Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Repository%20Management%20with%20WinGIN.html">Repository Management with WinGIN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Repository%20Management%20with%20GIN%20Client.html">Repository Management with GIN Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Repository%20Management%20with%20Git.html">Repository Management with Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recording%20Metadata.html">Recording Metadata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20via%20Graphical%20Interfaces.html">Bristol GIN via Graphical Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20via%20Command%20Line.html">Bristol GIN via Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20for%20Silicon%20Probe%20Data.html">Bristol GIN for Silicon Probe Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20for%20Patch%20Clamp%20Data.html">Bristol GIN for Patch Clamp Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20for%20Calcium%20Imaging%20Data.html">Bristol GIN for Calcium Imaging Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20for%20Electroencephalogram%20Data.html">Bristol GIN for Electroencephalogram Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Converting%20to%20NWB.html">Converting to NWB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Converting%20to%20BIDS.html">Converting to BIDS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/Community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/Bristol%20GIN%20Project.html">Bristol GIN Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/GIN%20Project.html">GIN Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/GIN-Tonic%20Project.html">GIN-Tonic Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/NWB%20Project.html">NWB Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/BIDS%20Project.html">BIDS Project</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/dervinism/bristol-neuroscience-data-guide" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/dervinism/bristol-neuroscience-data-guide/issues/new?title=Issue%20on%20page%20%2Fdocumentation/Installation Instructions for GIN Server.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/documentation/Installation Instructions for GIN Server.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Installation Instructions for GIN Server</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-ceph">Install Ceph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cephadm">Install Cephadm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-ceph-cluster">Install Ceph Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-ceph-cluster">Deploy Ceph Cluster</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-docker">Install Docker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-openssl">Install OpenSSL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-configure-apache-web-server">Install and Configure Apache Web Server</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-source-code">Get Source Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-apache">Install Apache</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-apache">Configure Apache</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-apache-connection">Test Apache Connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-ssh-tunneling">Set up SSH Tunneling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-git-and-git-annex">Install Git and Git-annex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-gin">Install GIN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-gin-client">Install GIN client</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-gin-installation-folders">Set-up GIN Installation Folders</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-gin-instance-file">Prepare GIN Instance File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-gin-docker-containers">Launch GIN Docker Containers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relaunch-gin-docker-containers">Relaunch GIN Docker Containers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-gin-service">Setup GIN Service</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="installation-instructions-for-gin-server">
+<span id="doc-install-server"></span><h1>Installation Instructions for GIN Server<a class="headerlink" href="#installation-instructions-for-gin-server" title="Permalink to this headline">#</a></h1>
+<p>There are five servers dedicated to Bristol GIN. Server[0] contains a Bristol GIN web frontend. Server[1] is the main node of the Bristol GIN data storage system housing <a class="reference external" href="https://ceph.io/en/">Ceph</a> installation. All five servers are part of the Ceph cluster encompassing roughly 5TB of raw storage space in total. All data stored on Bristol GIN is either backed up twice or once by the Ceph storage system. Therefore, the real storage capacity varies between roughly 1.7TB to 2.5TB.</p>
+<section id="install-ceph">
+<span id="doc-install-server-ceph"></span><h2>Install Ceph<a class="headerlink" href="#install-ceph" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://ceph.io/en/">https://ceph.io/en/</a>
+<a class="reference external" href="https://docs.ceph.com/en/octopus/">https://docs.ceph.com/en/octopus/</a>
+<a class="reference external" href="https://docs.ceph.com/en/latest/start/intro/">https://docs.ceph.com/en/latest/start/intro/</a></p>
+<section id="install-cephadm">
+<span id="doc-install-server-ceph-cephadm"></span><h3>Install Cephadm<a class="headerlink" href="#install-cephadm" title="Permalink to this headline">#</a></h3>
+<p>The Ceph cluster is installed, deployed and managed using <a class="reference external" href="https://docs.ceph.com/en/quincy/cephadm/index.html">cephadm</a> command line tools. Hence, we need to install cephadm first before we can deploy the Ceph cluster. We start by loging into Server[1]. This server is going to be the main node of the Ceph cluster.</p>
+<p>If your sudo user is not passwordless, you need to make it passwordless. Open the sudoers file by typing in the Linux terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">nano</span>
+<span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sudoers</span>
+</pre></div>
+</div>
+<p>Inside the file comment the line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">wheel</span>        <span class="n">ALL</span><span class="o">=</span><span class="p">(</span><span class="n">ALL</span><span class="p">)</span>       <span class="n">ALL</span>
+</pre></div>
+</div>
+<p>and uncomment the line below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">wheel</span>        <span class="n">ALL</span><span class="o">=</span><span class="p">(</span><span class="n">ALL</span><span class="p">)</span>       <span class="n">NOPASSWD</span><span class="p">:</span> <span class="n">ALL</span>
+</pre></div>
+</div>
+<p>Now you should be able to call sudo commands without being required to type in your password.</p>
+<p>The next is to install cephadm dependencies. We start with Python 3:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">python3</span>
+<span class="n">sudo</span> <span class="n">nano</span> <span class="o">~/.</span><span class="n">bashrc</span>
+</pre></div>
+</div>
+<p>Add <code class="docutils literal notranslate"><span class="pre">alias</span> <span class="pre">python=/usr/bin/python3</span></code> line to your bash.rc script, save it, and reload it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/.</span><span class="n">bashrc</span>
+</pre></div>
+</div>
+<p>The latter addition to .bashrc file makes Python 3 as your primary Python interpreter.</p>
+<p>Other cephadm dependencies include systemd and Podman. We install those next:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">systemd</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">podman</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://docs.docker.com/engine/install/centos">Docker</a> is yet another cephadm dependency. Docker installation is, however, optional if you have already installed Podman. In any case, the installation commands are below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span>
+<span class="n">sudo</span> <span class="n">yum</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">manager</span> \
+  <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">repo</span> \
+  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">centos</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="o">.</span><span class="n">repo</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="o">-</span><span class="n">cli</span> <span class="n">containerd</span><span class="o">.</span><span class="n">io</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">-</span><span class="n">plugin</span>
+</pre></div>
+</div>
+<p>Install the remaining cephadm dependencies: chrony, ntp, and lvm2.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">chrony</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">ntp</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">lvm2</span>
+</pre></div>
+</div>
+<p>We can now proceed with the actual cephadm installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">silent</span> <span class="o">--</span><span class="n">remote</span><span class="o">-</span><span class="n">name</span> <span class="o">--</span><span class="n">location</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ceph</span><span class="o">/</span><span class="n">ceph</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">quincy</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">cephadm</span><span class="o">/</span><span class="n">cephadm</span>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">cephadm</span>
+<span class="n">sudo</span> <span class="o">./</span><span class="n">cephadm</span> <span class="n">add</span><span class="o">-</span><span class="n">repo</span> <span class="o">--</span><span class="n">release</span> <span class="n">octopus</span>
+<span class="n">sudo</span> <span class="n">rpm</span> <span class="o">--</span><span class="kn">import</span> <span class="s1">&#39;https://download.ceph.com/keys/release.asc&#39;</span>
+<span class="n">sudo</span> <span class="o">./</span><span class="n">cephadm</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>As you can see, we did not install the latest Ceph version. This is because Linux Centos 7 operating system does not work with Ceph versions newer than Octopus.</p>
+<p>Finally, enable Ceph command line interface (CLI):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cephadm</span> <span class="n">install</span> <span class="n">ceph</span><span class="o">-</span><span class="n">common</span>
+</pre></div>
+</div>
+</section>
+<section id="install-ceph-cluster">
+<span id="doc-install-server-ceph-cluster-install"></span><h3>Install Ceph Cluster<a class="headerlink" href="#install-ceph-cluster" title="Permalink to this headline">#</a></h3>
+<p>Once cephadm is installed, install the Ceph cluster. We start by boostraping a new cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cephadm</span> <span class="n">bootstrap</span> <span class="o">--</span><span class="n">mon</span><span class="o">-</span><span class="n">ip</span> <span class="o">&lt;</span><span class="n">main</span><span class="o">-</span><span class="n">backend</span><span class="o">-</span><span class="n">server1</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">fqdn</span><span class="o">-</span><span class="n">hostname</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">overwrite</span> <span class="o">--</span><span class="n">ssh</span><span class="o">-</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Next, we add other hosts to the Ceph cluster. In order to do that, login to all servers (Server[2], Server[3], Server[4], and Server[0]) except the main one (Server[1]) and perform all prerequisite actions needed to add these servers to the Ceph cluster: setting a passwordless sudo access and installing all the required dependencies. Following that, install Ceph CLI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">ceph</span><span class="o">-</span><span class="n">common</span>
+</pre></div>
+</div>
+<p>We also need to create a logical volume on partition <code class="docutils literal notranslate"><span class="pre">dev/sdb1</span></code> of the data disk <code class="docutils literal notranslate"><span class="pre">dev/sdb</span></code> on all of our servers, including Server[1]. We start by preventing the automatic mounting of the <code class="docutils literal notranslate"><span class="pre">/dev/sdb1</span></code> partition onto <code class="docutils literal notranslate"><span class="pre">/data</span></code> folder. To do that, open <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+</pre></div>
+</div>
+<p>Inside the file replace the last line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UUID</span><span class="o">=&lt;</span><span class="n">some</span><span class="o">-</span><span class="n">UUID</span><span class="o">&gt;</span>     <span class="o">/</span><span class="n">data</span>       <span class="n">ext4</span>   <span class="n">defaults</span>
+</pre></div>
+</div>
+<p>with the line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UUID</span><span class="o">=&lt;</span><span class="n">some</span><span class="o">-</span><span class="n">UUID</span><span class="o">&gt;</span>     <span class="o">/</span><span class="n">data</span>       <span class="n">ext4</span>   <span class="n">defaults</span><span class="p">,</span><span class="n">noauto</span><span class="p">,</span><span class="n">user</span>
+</pre></div>
+</div>
+<p>Reboot the server. Finally, we create a volume group containing this partition which can be used to create a logical volume:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">vgcreate</span> <span class="n">vg1</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span>
+<span class="n">sudo</span> <span class="n">lvcreate</span> <span class="o">-</span><span class="n">l</span> <span class="mi">100</span><span class="o">%</span><span class="n">FREE</span> <span class="o">-</span><span class="n">n</span> <span class="n">lv1</span> <span class="n">vg1</span>
+</pre></div>
+</div>
+<p>Reboot each server again following the setup.</p>
+<p>Now we can add the remaining hosts to the cluster. Login to the main Ceph node (Server[1]) and setup Ceph Secure Shell (SSH) access to all additional hosts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ceph</span><span class="o">/</span><span class="n">ceph</span><span class="o">.</span><span class="n">pub</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server2</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span>
+<span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ceph</span><span class="o">/</span><span class="n">ceph</span><span class="o">.</span><span class="n">pub</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server3</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span>
+<span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ceph</span><span class="o">/</span><span class="n">ceph</span><span class="o">.</span><span class="n">pub</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server4</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span>
+<span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ceph</span><span class="o">/</span><span class="n">ceph</span><span class="o">.</span><span class="n">pub</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">frontend</span><span class="o">-</span><span class="n">server0</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Tell Ceph that the new nodes are part of the cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ceph</span> <span class="n">orch</span> <span class="n">host</span> <span class="n">add</span> <span class="o">&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server2</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server2</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">labels</span> <span class="n">_admin</span>
+<span class="n">sudo</span> <span class="n">ceph</span> <span class="n">orch</span> <span class="n">host</span> <span class="n">add</span> <span class="o">&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server3</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server3</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">labels</span> <span class="n">_admin</span>
+<span class="n">sudo</span> <span class="n">ceph</span> <span class="n">orch</span> <span class="n">host</span> <span class="n">add</span> <span class="o">&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server4</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server4</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">labels</span> <span class="n">_admin</span>
+<span class="n">sudo</span> <span class="n">ceph</span> <span class="n">orch</span> <span class="n">host</span> <span class="n">add</span> <span class="o">&lt;</span><span class="n">frontend</span><span class="o">-</span><span class="n">server0</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">frontend</span><span class="o">-</span><span class="n">server0</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">labels</span> <span class="n">_admin</span>
+</pre></div>
+</div>
+<p>Finally, add storage to the cluster by creating OSDs on all servers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ceph</span> <span class="n">orch</span> <span class="n">daemon</span> <span class="n">add</span> <span class="n">osd</span> <span class="o">&lt;</span><span class="n">main</span><span class="o">-</span><span class="n">backend</span><span class="o">-</span><span class="n">server1</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vg1</span><span class="o">/</span><span class="n">lv1</span>
+<span class="n">sudo</span> <span class="n">ceph</span> <span class="n">orch</span> <span class="n">daemon</span> <span class="n">add</span> <span class="n">osd</span> <span class="o">&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server2</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vg1</span><span class="o">/</span><span class="n">lv1</span>
+<span class="n">sudo</span> <span class="n">ceph</span> <span class="n">orch</span> <span class="n">daemon</span> <span class="n">add</span> <span class="n">osd</span> <span class="o">&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server3</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vg1</span><span class="o">/</span><span class="n">lv1</span>
+<span class="n">sudo</span> <span class="n">ceph</span> <span class="n">orch</span> <span class="n">daemon</span> <span class="n">add</span> <span class="n">osd</span> <span class="o">&lt;</span><span class="n">backend</span><span class="o">-</span><span class="n">server4</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vg1</span><span class="o">/</span><span class="n">lv1</span>
+<span class="n">sudo</span> <span class="n">ceph</span> <span class="n">orch</span> <span class="n">daemon</span> <span class="n">add</span> <span class="n">osd</span> <span class="o">&lt;</span><span class="n">frontend</span><span class="o">-</span><span class="n">server0</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vg1</span><span class="o">/</span><span class="n">lv1</span>
+</pre></div>
+</div>
+<p>Reboot the main host. The Ceph cluster is now up and running.</p>
+</section>
+<section id="deploy-ceph-cluster">
+<span id="doc-install-server-ceph-cluster-deploy"></span><h3>Deploy Ceph Cluster<a class="headerlink" href="#deploy-ceph-cluster" title="Permalink to this headline">#</a></h3>
+<p>We are going to use the Ceph cluster as a file system. For the next step we, therefore, deploy <a class="reference external" href="https://docs.ceph.com/en/quincy/cephfs/index.html">CephFS</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ceph</span> <span class="n">fs</span> <span class="n">volume</span> <span class="n">create</span> <span class="n">gin</span><span class="o">-</span><span class="n">backend</span>
+</pre></div>
+</div>
+<p>Now check the status of your cluster by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo ceph status
+  cluster:
+    id:     9be8c6b4-74d3-11ed-be0e-005056811b5d
+    health: HEALTH_OK
+
+  services:
+    mon: 5 daemons, quorum &lt;main-backend-server1-name&gt;,caas-b4bd-x0698,caas-1c47-x0696,caas-dbc9-x0700,caas-9d6b-x0699 (age 27m)
+    mgr: &lt;main-backend-server1-name&gt;.iovomf(active, since 27m), standbys: caas-b4bd-x0698.osyhxj
+    mds: gin-backend:1 {0=gin-backend.caas-1c47-x0696.ifbdko=up:active} 1 up:standby
+    osd: 5 osds: 5 up (since 27m), 5 in (since 27m)
+
+  data:
+    pools:   3 pools, 65 pgs
+    objects: 22 objects, 2.2 KiB
+    usage:   5.0 GiB used, 4.9 TiB / 4.9 TiB avail
+    pgs:     65 active+clean
+</pre></div>
+</div>
+<p>You should see a similar output indicating that you have 5 OSDs (object storage devices), 5 daemons, and roughly 5TB of raw data storage available. The actual storage space is only 33% of the raw storage because the stored data is being replicated 3 times (see <code class="docutils literal notranslate"><span class="pre">size</span></code> parameter below) by default. It is a good idea to keep this set up which allows 3 out of 5 cluster nodes to fail without affecting the stored data in theory. You can check the parameters of your data storage pool by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo ceph osd pool get cephfs.gin-backend.data all
+size: 3
+min_size: 2
+pg_num: 32
+pgp_num: 32
+crush_rule: replicated_rule
+hashpspool: true
+nodelete: false
+nopgchange: false
+nosizechange: false
+write_fadvise_dontneed: false
+noscrub: false
+nodeep-scrub: false
+use_gmt_hitset: 1
+fast_read: 0
+pg_autoscale_mode: on
+</pre></div>
+</div>
+<p>Finally, we are going to mount the newly created gin-backend volume. For that we need to login to the GIN frontend server (Server[0] or the client host). Now generate a minimal conf file for the client host, place it at a standard location, and adjust its permissions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">m</span> <span class="mi">755</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ceph</span>
+<span class="n">ssh</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">main</span><span class="o">-</span><span class="n">backend</span><span class="o">-</span><span class="n">server1</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span> <span class="s2">&quot;sudo ceph config generate-minimal-conf&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ceph</span><span class="o">/</span><span class="n">ceph</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="mi">644</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ceph</span><span class="o">/</span><span class="n">ceph</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>Create a <a class="reference external" href="https://docs.ceph.com/en/latest/rados/configuration/auth-config-ref/">cephx</a> user (the cephx protocol authenticates Ceph clients and servers to each other) and get its secret key:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">main</span><span class="o">-</span><span class="n">backend</span><span class="o">-</span><span class="n">server1</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span> <span class="s2">&quot;sudo ceph fs authorize gin-backend client.&lt;your-username&gt; / rw&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ceph</span><span class="o">/</span><span class="n">ceph</span><span class="o">.</span><span class="n">client</span><span class="o">.&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;.</span><span class="n">keyring</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="mi">600</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ceph</span><span class="o">/</span><span class="n">ceph</span><span class="o">.</span><span class="n">client</span><span class="o">.&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;.</span><span class="n">keyring</span>
+</pre></div>
+</div>
+<p>Perform the actual mounting of CephFS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">cephfs</span>
+<span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">ceph</span> <span class="o">&lt;</span><span class="nb">any</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">6789</span><span class="p">:</span><span class="o">/</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">cephfs</span> <span class="o">-</span><span class="n">o</span> <span class="n">name</span><span class="o">=&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>To permanently mount CephFS, open <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+</pre></div>
+</div>
+<p>Add the following line at the end of the file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">server0</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">6789</span><span class="p">,</span><span class="o">&lt;</span><span class="n">server1</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">6789</span><span class="p">,</span><span class="o">&lt;</span><span class="n">server2</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">6789</span><span class="p">,</span><span class="o">&lt;</span><span class="n">server3</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">6789</span><span class="p">,</span><span class="o">&lt;</span><span class="n">server4</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">6789</span><span class="p">:</span><span class="o">/</span>     <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">cephfs</span>    <span class="n">ceph</span>    <span class="n">name</span><span class="o">=&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;</span><span class="p">,</span><span class="n">noatime</span><span class="p">,</span><span class="n">_netdev</span>    <span class="mi">0</span>       <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Reboot the node. You are now set for installing GIN on your computing cluster. <code class="docutils literal notranslate"><span class="pre">/mnt/cephfs</span></code> folder will act as an interface for GIN’s backend storage.</p>
+</section>
+</section>
+<section id="install-docker">
+<span id="doc-install-server-docker"></span><h2>Install Docker<a class="headerlink" href="#install-docker" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://docs.docker.com/engine/">Docker Engine</a>, <a class="reference external" href="https://docs.docker.com/engine/reference/run/">Docker CLI</a>, and <a class="reference external" href="https://docs.docker.com/compose/">Docker Compose</a> are dependencies required for GIN installation on a server.</p>
+<p>You may have already installed all of these Docker components earlier prior to installing Ceph. In that case you can skip this section. If you did not install Docker earlier, the installation instructions for Centos 7 are straight-forward. Just execute the commands below in the terminal on the client node (Server[0]):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span>
+<span class="n">sudo</span> <span class="n">yum</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">manager</span> \
+  <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">repo</span> \
+  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">docker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">centos</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="o">.</span><span class="n">repo</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="o">-</span><span class="n">cli</span> <span class="n">containerd</span><span class="o">.</span><span class="n">io</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">-</span><span class="n">plugin</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>The final command installs all of the needed Docker components.</p>
+</section>
+<section id="install-openssl">
+<span id="doc-install-server-openssl"></span><h2>Install OpenSSL<a class="headerlink" href="#install-openssl" title="Permalink to this headline">#</a></h2>
+<p>Installing the latest OpenSSL is needed in order to install the latest Apache Web Server which supports HTTP/2 protocol. The later allows you to obtain an SSL cerificate and use https rather than http for accessing Bristol GIN. If you type in <code class="docutils literal notranslate"><span class="pre">openssl</span> <span class="pre">version</span></code> in your terminal, you would probably get <code class="docutils literal notranslate"><span class="pre">OpenSSL</span> <span class="pre">1.0.2k-fips</span></code> as an answer which is not up to date for our purposes. Thus, start by installing prerequisites for the new installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">libtool</span> <span class="n">perl</span><span class="o">-</span><span class="n">core</span> <span class="n">zlib</span><span class="o">-</span><span class="n">devel</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>Now download and install OpenSSL:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span><span class="n">L</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">openssl</span><span class="o">/</span><span class="n">openssl</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">OpenSSL_1_1_1s</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="n">OpenSSL_1_1_1s</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cd</span> <span class="n">openssl</span><span class="o">-</span><span class="n">OpenSSL_1_1_1s</span>
+<span class="o">./</span><span class="n">config</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">openssl</span> <span class="o">--</span><span class="n">openssldir</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">openssl</span> <span class="n">shared</span> <span class="n">zlib</span>
+<span class="n">make</span>
+<span class="n">make</span> <span class="n">test</span>
+</pre></div>
+</div>
+<p>You should expect tests to pass successfully (oterwise you would need to troubleshoot):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">All</span> <span class="n">tests</span> <span class="n">successful</span><span class="o">.</span>
+<span class="n">Files</span><span class="o">=</span><span class="mi">158</span><span class="p">,</span> <span class="n">Tests</span><span class="o">=</span><span class="mi">2650</span><span class="p">,</span> <span class="mi">99</span> <span class="n">wallclock</span> <span class="n">secs</span> <span class="p">(</span> <span class="mf">1.41</span> <span class="n">usr</span>  <span class="mf">0.12</span> <span class="n">sys</span> <span class="o">+</span> <span class="mf">75.45</span> <span class="n">cusr</span> <span class="mf">19.21</span> <span class="n">csys</span> <span class="o">=</span> <span class="mf">96.19</span> <span class="n">CPU</span><span class="p">)</span>
+<span class="n">Result</span><span class="p">:</span> <span class="n">PASS</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Install the software:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Add the new version to the path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">OpenSSL_1_1_1s</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">openssl</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Add the lines below to your file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># /etc/profile.d/openssl.sh</span>
+<span class="n">pathmunge</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">openssl</span><span class="o">/</span><span class="nb">bin</span>
+</pre></div>
+</div>
+<p>Link shared libraries by opening the following file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">openssl</span><span class="o">-</span><span class="mf">1.1.1</span><span class="n">c</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>Add the lines below to your file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># /etc/ld.so/conf.d/openssl-1.1.1c.conf</span>
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">openssl</span><span class="o">/</span><span class="n">lib</span>
+</pre></div>
+</div>
+<p>Finally, reload your shell and check the OpenSSL version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ exec bash
+$ openssl version
+OpenSSL 1.1.1s  1 Nov 2022
+</pre></div>
+</div>
+</section>
+<section id="install-and-configure-apache-web-server">
+<span id="doc-install-server-apache"></span><h2>Install and Configure Apache Web Server<a class="headerlink" href="#install-and-configure-apache-web-server" title="Permalink to this headline">#</a></h2>
+<p>Apache web server has to be installed as a prerequisite for GIN installation. GIN is a web app and, as such, it needs a web server software to manage its access. The installation offered by the local package manager is out of data, so we are going to install Apache from the source code.</p>
+<section id="get-source-code">
+<span id="doc-install-server-apache-source"></span><h3>Get Source Code<a class="headerlink" href="#get-source-code" title="Permalink to this headline">#</a></h3>
+<p>To start, make sure that the old version is removed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">remove</span> <span class="n">httpd</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>Install prerequisites:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">autoconf</span> <span class="n">expat</span><span class="o">-</span><span class="n">devel</span> <span class="n">libtool</span> <span class="n">libnghttp2</span><span class="o">-</span><span class="n">devel</span> <span class="n">pcre</span><span class="o">-</span><span class="n">devel</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>Download and unpack the source code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span><span class="n">L</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">apache</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mf">2.4.54</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span><span class="n">L</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">apache</span><span class="o">/</span><span class="n">apr</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mf">1.7.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="o">-</span><span class="n">L</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">apache</span><span class="o">/</span><span class="n">apr</span><span class="o">-</span><span class="n">util</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="mf">1.6.1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="mf">2.4.54</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="mf">1.7.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">zxvf</span> <span class="mf">1.6.1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">apr</span><span class="o">-</span><span class="mf">1.7.0</span> <span class="n">httpd</span><span class="o">-</span><span class="mf">2.4.54</span><span class="o">/</span><span class="n">srclib</span><span class="o">/</span><span class="n">apr</span>
+<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">apr</span><span class="o">-</span><span class="n">util</span><span class="o">-</span><span class="mf">1.6.1</span> <span class="n">httpd</span><span class="o">-</span><span class="mf">2.4.54</span><span class="o">/</span><span class="n">srclib</span><span class="o">/</span><span class="n">apr</span><span class="o">-</span><span class="n">util</span>
+</pre></div>
+</div>
+</section>
+<section id="install-apache">
+<span id="doc-install-server-apache-install"></span><h3>Install Apache<a class="headerlink" href="#install-apache" title="Permalink to this headline">#</a></h3>
+<p>Get inside httpd directory, compile, and install Apache:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">httpd</span><span class="o">-</span><span class="mf">2.4.54</span>
+<span class="o">./</span><span class="n">buildconf</span>
+<span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">ssl</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">so</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">http2</span> <span class="o">--</span><span class="n">disable</span><span class="o">-</span><span class="n">v4</span><span class="o">-</span><span class="n">mapped</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">mpm</span><span class="o">=</span><span class="n">event</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">included</span><span class="o">-</span><span class="n">apr</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">ssl</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">openssl</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span>
+<span class="n">make</span>
+<span class="n">sudo</span> <span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Below is the meaning of <code class="docutils literal notranslate"><span class="pre">configure</span></code> options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--enable-ssl</span></code> will build Apache with SSL support, so you can enable HTTPS for Bristol GIN.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--enable-so</span></code> will enable dynamically loaded modules, so you can enable and disable modules without recompilation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--enable-http2</span></code> will enable HTTP/2 support.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--disable-v4-mapped</span></code> disables handling of IPv4 connections with an IPv6 socket.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--with-mpm</span></code> will set multiprocessing modules for Apache.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--with-included-apr</span></code> It will use APR library that you copied to srclib directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--with-ssl</span></code> will point compiler to newer version of OpenSSL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--prefix</span></code> is the installation path for Apache httpd compiled package.</p></li>
+</ul>
+<p>Add Apache executables to the path by opening the following file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>and paste there following contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pathmunge</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="nb">bin</span>
+</pre></div>
+</div>
+<p>Reload the terminal and cleanup:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exec</span> <span class="n">bash</span>
+<span class="n">cd</span> <span class="o">..</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="mf">1.7.0</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="mf">1.6.1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="mf">2.4.54</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="n">apr</span><span class="o">-</span><span class="mf">1.7.0</span> <span class="n">apr</span><span class="o">-</span><span class="n">util</span><span class="o">-</span><span class="mf">1.6.1</span>
+</pre></div>
+</div>
+<p>Finally, add systemd entry. Open the following file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>and add the following text to it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">The</span> <span class="n">Apache</span> <span class="n">HTTP</span> <span class="n">Server</span>
+<span class="n">After</span><span class="o">=</span><span class="n">network</span><span class="o">.</span><span class="n">target</span>
+
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">Type</span><span class="o">=</span><span class="n">forking</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">apachectl</span> <span class="o">-</span><span class="n">k</span> <span class="n">start</span>
+<span class="n">ExecReload</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">apachectl</span> <span class="o">-</span><span class="n">k</span> <span class="n">graceful</span>
+<span class="n">ExecStop</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">apachectl</span> <span class="o">-</span><span class="n">k</span> <span class="n">graceful</span><span class="o">-</span><span class="n">stop</span>
+<span class="n">PIDFile</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">pid</span>
+<span class="n">PrivateTmp</span><span class="o">=</span><span class="n">true</span>
+
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<p>After saving, reload the systemctl daemon and start Apache:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">daemon</span><span class="o">-</span><span class="n">reload</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">httpd</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">httpd</span>
+</pre></div>
+</div>
+<p>You can confirm that Apache is running if you type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl status httpd
+● httpd.service - The Apache HTTP Server
+   Loaded: loaded (/etc/systemd/system/httpd.service; disabled; vendor preset: disabled)
+   Active: active (running) since Thu 2022-12-15 01:15:30 GMT; 26s ago
+  Process: 4084 ExecStart=/usr/local/apache2/bin/apachectl -k start (code=exited, status=0/SUCCESS)
+ Main PID: 4087 (httpd)
+   CGroup: /system.slice/httpd.service
+           ├─4087 /usr/local/apache2/bin/httpd -k start
+           ├─4088 /usr/local/apache2/bin/httpd -k start
+           ├─4089 /usr/local/apache2/bin/httpd -k start
+           └─4090 /usr/local/apache2/bin/httpd -k start
+
+Dec 15 01:15:30 caas-1c47-x0696.caas.bris.ac.uk systemd[1]: Starting The Apache HTTP Server...
+Dec 15 01:15:30 caas-1c47-x0696.caas.bris.ac.uk systemd[1]: Started The Apache HTTP Server.
+</pre></div>
+</div>
+<p>To check that Apache is transfering data, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://&lt;ip-address-of-machine-with-apache-installation&gt;
+&lt;html&gt;&lt;body&gt;&lt;h1&gt;It works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+</pre></div>
+</div>
+</section>
+<section id="configure-apache">
+<span id="doc-install-server-apache-configure"></span><h3>Configure Apache<a class="headerlink" href="#configure-apache" title="Permalink to this headline">#</a></h3>
+<p>We are going to create the basic configuration of Apache now by editing <code class="docutils literal notranslate"><span class="pre">httpd.conf</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>Inside the file replace the line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Listen</span> <span class="mi">80</span>
+</pre></div>
+</div>
+<p>with these lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Listen 80</span>
+<span class="n">Listen</span> <span class="p">[::]:</span><span class="mi">80</span>
+<span class="n">Listen</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">80</span>
+</pre></div>
+</div>
+<p>Replace the line defining <code class="docutils literal notranslate"><span class="pre">ServerName</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ServerName www.example.com:80</span>
+</pre></div>
+</div>
+<p>with the lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ServerName www.example.com:80</span>
+<span class="n">ServerName</span> <span class="o">&lt;</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">machine</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">installation</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Uncomment lines for loading proxy server modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LoadModule</span> <span class="n">proxy_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">proxy_http_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy_http</span><span class="o">.</span><span class="n">so</span>
+</pre></div>
+</div>
+<p>At the bottom of the file add the following definitions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Additional entries below</span>
+<span class="c1"># Hide Apache version from header and from error files</span>
+<span class="n">ServerTokens</span> <span class="n">prod</span>
+<span class="n">ServerSignature</span> <span class="n">off</span>
+
+<span class="c1"># Disable ETag to prevent disposing sensitive values like iNode</span>
+<span class="n">FileETag</span> <span class="n">none</span>
+
+<span class="c1"># Apache proxypass configuration</span>
+<span class="n">ProxyPass</span> <span class="s2">&quot;/&quot;</span>  <span class="s2">&quot;http://localhost:3000/&quot;</span>
+<span class="n">ProxyPassReverse</span> <span class="s2">&quot;/&quot;</span>  <span class="s2">&quot;http://localhost:3000/&quot;</span>
+
+<span class="c1"># Prevent exposing debug console</span>
+<span class="o">&lt;</span><span class="n">Location</span> <span class="o">/</span><span class="n">debug</span><span class="o">&gt;</span>
+    <span class="n">Deny</span> <span class="kn">from</span>  <span class="nn">all</span>
+<span class="o">&lt;/</span><span class="n">Location</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Finally, allow Apache to communicate via the firewall:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">firewalld</span>
+<span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">permanent</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">http</span>
+<span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">permanent</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">https</span>
+<span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">reload</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">httpd</span>
+</pre></div>
+</div>
+</section>
+<section id="test-apache-connection">
+<span id="doc-install-server-apache-test"></span><h3>Test Apache Connection<a class="headerlink" href="#test-apache-connection" title="Permalink to this headline">#</a></h3>
+<p>Once Apache is installed and configured in the most basic manner, you should test whether you can connect to Apache remotely. On your own laptop with Linux or the <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux (WSL)</a> connected to the University of Bristol (UoB) VPN type the following command into the Linux terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nmap -sT &lt;ip-address-of-machine-with-apache-installation&gt;
+Starting Nmap 7.80 ( https://nmap.org ) at 2022-12-15 14:01 GMT
+Nmap scan report for &lt;ip-address-of-machine-with-apache-installation&gt;
+Host is up (0.051s latency).
+Not shown: 996 filtered ports
+PORT     STATE  SERVICE
+22/tcp   open   ssh
+80/tcp   open   http
+443/tcp  closed https
+3389/tcp closed ms-wbt-server
+
+Nmap done: 1 IP address (1 host up) scanned in 5.84 seconds
+</pre></div>
+</div>
+<p>Command <code class="docutils literal notranslate"><span class="pre">nmap</span></code> shows open ports on the server with Apache installation that are visible to a remote computer. Apache uses port 80 for HTTP communication and we have just established that it is not blocked by the host firewall.</p>
+<p>Another useful command that you can run on the host with Apache installation is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo netstat -tlpn
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 &lt;host-ip&gt;:3300          0.0.0.0:*               LISTEN      1517/ceph-mon
+tcp        0      0 &lt;host-ip&gt;:6789          0.0.0.0:*               LISTEN      1517/ceph-mon
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      11690/httpd
+tcp        0      0 0.0.0.0:6800            0.0.0.0:*               LISTEN      1496/ceph-mds
+tcp        0      0 0.0.0.0:6801            0.0.0.0:*               LISTEN      1496/ceph-mds
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1080/sshd
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1560/master
+tcp6       0      0 :::9100                 :::*                    LISTEN      1505/node_exporter
+tcp6       0      0 :::80                   :::*                    LISTEN      11690/httpd
+tcp6       0      0 :::22                   :::*                    LISTEN      1080/sshd
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1560/master
+</pre></div>
+</div>
+<p>This command shows all network connections. The lines that are important in our case are the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tcp</span>        <span class="mi">0</span>      <span class="mi">0</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">80</span>              <span class="mf">0.0.0.0</span><span class="p">:</span><span class="o">*</span>               <span class="n">LISTEN</span>      <span class="mi">11690</span><span class="o">/</span><span class="n">httpd</span>
+<span class="n">tcp6</span>       <span class="mi">0</span>      <span class="mi">0</span> <span class="p">:::</span><span class="mi">80</span>                   <span class="p">:::</span><span class="o">*</span>                    <span class="n">LISTEN</span>      <span class="mi">11690</span><span class="o">/</span><span class="n">httpd</span>
+</pre></div>
+</div>
+<p>They tell us that IPv4 and IPv6 type connections via port 80 are unrestrictive and are reserved for Apache. Therefore, we should be able transfer data via these ports from/to our remote computer. On your laptop type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl http://&lt;ip-address-of-machine-with-apache-installation&gt;
+&lt;html&gt;&lt;body&gt;&lt;h1&gt;It works!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+</pre></div>
+</div>
+<p>The above message indicates that connection is working fine. However, if you get the following reply instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span><span class="p">:</span> <span class="p">(</span><span class="mi">56</span><span class="p">)</span> <span class="n">Recv</span> <span class="n">failure</span><span class="p">:</span> <span class="n">Connection</span> <span class="n">reset</span> <span class="n">by</span> <span class="n">peer</span>
+</pre></div>
+</div>
+<p>It indicates that your connection is being blocked by some process on the Apache host (possibly a firewall of some kind) and you need to troubleshoot.</p>
+</section>
+<section id="set-up-ssh-tunneling">
+<span id="doc-install-server-apache-ssh-tunnel"></span><h3>Set up SSH Tunneling<a class="headerlink" href="#set-up-ssh-tunneling" title="Permalink to this headline">#</a></h3>
+<p>Currently UoB Self-Service Virtual Machines do not allow HTTP or HTTPS connections. The only ports open are 22 (SSH), 80 (SSH), and 3389 (Internet Control Message Protocol, ICMP). Ports that are typically used by Apache for HTTP (port 80) and HTTPS (port 443) are currently reserved for SSH connections or blocked by the university IT Services, respectively. However, port 443 is planned to be opened for HTTPS connections some time in March. Meanwhile, for testing purposes port 80 can be used to set up SSH HTTP tunneling with local port forwarding. To do so, first we need to set up passwordless SSH access from our local computer (must be connected to the UoB VPN) to the university server with our Apache installation. Type in the following commands in the Linux terminal on your local computer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/.</span><span class="n">ssh</span>
+<span class="n">sudo</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span>
+<span class="n">sudo</span> <span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="nb">id</span> <span class="o">-</span><span class="n">i</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">machine</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">installation</span><span class="o">&gt;</span>
+<span class="n">ssh</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">machine</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">installation</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>After typing in the last command you should be able to login instantly without being asked for your password. If that is not the case, you can try an alternative set of commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/.</span><span class="n">ssh</span>
+<span class="n">sudo</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span>
+<span class="n">scp</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">machine</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">installation</span><span class="o">&gt;</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span>
+<span class="n">ssh</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">machine</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">installation</span><span class="o">&gt;</span>
+<span class="n">sudo</span> <span class="n">cat</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span>
+<span class="n">sudo</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">id_rsa</span><span class="o">.</span><span class="n">pub</span>
+<span class="n">logout</span>
+<span class="n">ssh</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">machine</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">installation</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The latter command should now log you in without prompting to enter your password. If none of these commands work, try repeating copying the public key and logging in again a number of times.</p>
+<p>To create the SSH tunnel, type in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">9090</span><span class="p">:</span><span class="n">localhost</span><span class="p">:</span><span class="mi">80</span> <span class="o">-</span><span class="n">Nf</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;@&lt;</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">machine</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">installation</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Now open a web browser and type in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">localhost</span><span class="p">:</span><span class="mi">9090</span>
+</pre></div>
+</div>
+<p>This should open a web page on the server with the Apache installation saying “It works!”. This set up works well for testing and developing the local GIN instance. However, it is not suitable for providing web services, because individual users need access rights to the server with the Apache installation so that SSH tunnels can be set up on invidual workstations.</p>
+<p>Given the considerations above and the lack of open ports on the Self Service Virtual Machines, we are going to switch off the local Apache instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">disable</span> <span class="n">httpd</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">stop</span> <span class="n">httpd</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="install-git-and-git-annex">
+<span id="doc-install-server-git"></span><h2>Install Git and Git-annex<a class="headerlink" href="#install-git-and-git-annex" title="Permalink to this headline">#</a></h2>
+<p>GIN Client installation depends on git and git-annex version cotrol systems. Therefore, it is a good idea to get them sorted before proceeding with the rest of the GIN installation. Installing recent verions of this software on Centos 7 is a bit tricky. This is an example of how to download and install git version control system on your client node (Server[0]):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo yum install epel-release -y
+sudo yum install https://repo.ius.io/ius-release-el$(rpm -E &#39;%{rhel}&#39;).rpm -y
+sudo yum install yum-plugin-replace -y
+sudo yum install git -y
+sudo yum replace git --replace-with git236 -y
+</pre></div>
+</div>
+<p>To download and install git-annex version control system, follow these steps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">wget</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">downloads</span><span class="o">.</span><span class="n">kitenet</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">annex</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="n">rpms</span><span class="o">/</span><span class="n">git</span><span class="o">-</span><span class="n">annex</span><span class="o">-</span><span class="n">standalone</span><span class="o">-</span><span class="mf">10.20221105</span><span class="o">-</span><span class="mf">1.</span><span class="n">x86_64</span><span class="o">.</span><span class="n">rpm</span>
+<span class="n">sudo</span> <span class="n">yum</span> <span class="n">localinstall</span> <span class="n">git</span><span class="o">-</span><span class="n">annex</span><span class="o">-</span><span class="n">standalone</span><span class="o">-</span><span class="mf">10.20221105</span><span class="o">-</span><span class="mf">1.</span><span class="n">x86_64</span><span class="o">.</span><span class="n">rpm</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">rm</span> <span class="n">git</span><span class="o">-</span><span class="n">annex</span><span class="o">-</span><span class="n">standalone</span><span class="o">-</span><span class="mf">10.20221105</span><span class="o">-</span><span class="mf">1.</span><span class="n">x86_64</span><span class="o">.</span><span class="n">rpm</span>
+</pre></div>
+</div>
+<p>If you get an error when downloading the RPM file, you may need to adjust the RPM filename to match the latest git-annex release available at <code class="docutils literal notranslate"><span class="pre">https://downloads.kitenet.net/git-annex/linux/current/rpms/</span></code>.</p>
+</section>
+<section id="install-gin">
+<span id="doc-install-server-gin"></span><h2>Install GIN<a class="headerlink" href="#install-gin" title="Permalink to this headline">#</a></h2>
+<p>GIN full server instalation instructions can be found <a class="reference external" href="https://gin.g-node.org/G-Node/in-house-gin#deploy-and-run-a-full-server-using-docker-compose">here</a>. We are going to go step by step through these installations adapted for our particular case.</p>
+<section id="install-gin-client">
+<span id="doc-install-server-gin-client"></span><h3>Install GIN client<a class="headerlink" href="#install-gin-client" title="Permalink to this headline">#</a></h3>
+<p>Download and install GIN client, so that you are able to download public GIN repositories needed for GIN server installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">silent</span> <span class="o">--</span><span class="n">remote</span><span class="o">-</span><span class="n">name</span> <span class="o">--</span><span class="n">location</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">G</span><span class="o">-</span><span class="n">Node</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">releases</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">linux</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">linux</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">sudo</span> <span class="n">mv</span> <span class="n">gin</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span>
+<span class="n">rm</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">rm</span> <span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">linux</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</section>
+<section id="set-up-gin-installation-folders">
+<span id="doc-install-server-gin-fodlers"></span><h3>Set-up GIN Installation Folders<a class="headerlink" href="#set-up-gin-installation-folders" title="Permalink to this headline">#</a></h3>
+<p>We need to set up certain user groups and users, as well as a particular directory structure in order to run GIN on Docker. The bash script file that will do exactly that is provided below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Provide the user that will use docker-compose to start the service</span>
+<span class="nv">DEPLOY_USER</span><span class="o">=</span>&lt;your-username-string&gt;
+
+<span class="c1"># Specify the GIN files root location</span>
+<span class="nv">DIR_GINROOT</span><span class="o">=</span>&lt;root-dir-path-string&gt;
+
+<span class="c1"># Postgres database password</span>
+<span class="nv">PGRES_PASS</span><span class="o">=</span>&lt;pgres-password-string&gt;
+
+<span class="c1"># Prepare a ginservice group if it does not exist</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="k">$(</span>getent<span class="w"> </span>group<span class="w"> </span>ginservice<span class="k">)</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;group ginservice already exists.&quot;</span>
+<span class="k">else</span>
+<span class="w">  </span>groupadd<span class="w"> </span>ginservice
+<span class="k">fi</span>
+
+<span class="c1"># Create dedicated &quot;ginuser&quot; user and add it to the &quot;docker&quot;</span>
+<span class="c1"># group; and the &quot;ginservice&quot; group; create all required </span>
+<span class="c1"># directories with this user and the &quot;ginservice&quot; group permission.</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="k">$(</span>getent<span class="w"> </span>passwd<span class="w"> </span>ginuser<span class="k">)</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;user ginuser already exists&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span>useradd<span class="w"> </span>-M<span class="w"> </span>-G<span class="w"> </span>docker,ginservice<span class="w"> </span>ginuser
+<span class="w">    </span><span class="c1"># Disable login for user ginuser</span>
+<span class="w">    </span>usermod<span class="w"> </span>-L<span class="w"> </span>ginuser
+<span class="k">fi</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="k">$(</span>getent<span class="w"> </span>passwd<span class="w"> </span>&lt;your-username&gt;<span class="k">)</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;user &lt;your-username&gt; already exists&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span>useradd<span class="w"> </span>-M<span class="w"> </span>-G<span class="w"> </span>docker,ginservice<span class="w"> </span>&lt;your-username&gt;
+<span class="w">    </span><span class="c1"># Disable login for user &lt;your-username&gt;</span>
+<span class="w">    </span>usermod<span class="w"> </span>-L<span class="w"> </span>&lt;your-username&gt;
+<span class="k">fi</span>
+
+<span class="c1"># Make sure to add the user running docker-compose to the ginservice group as well!</span>
+usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>ginservice<span class="w"> </span><span class="nv">$DEPLOY_USER</span>
+
+<span class="c1"># Make sure that required directories are empty</span>
+rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$DIR_GINROOT</span>
+
+<span class="c1"># Required directories</span>
+<span class="nv">DIR_GINCONFIG</span><span class="o">=</span><span class="nv">$DIR_GINROOT</span>/config
+<span class="nv">DIR_GINVOLUMES</span><span class="o">=</span><span class="nv">$DIR_GINROOT</span>/volumes
+<span class="nv">DIR_GINDATA</span><span class="o">=</span><span class="nv">$DIR_GINROOT</span>/gindata
+
+<span class="c1"># Create gin specific directories</span>
+<span class="c1"># The &#39;notice&#39; directory may contain a banner.md file.</span>
+<span class="c1"># The content of this file is displayed on the GIN page without a service restart e.g.</span>
+<span class="c1">#  to inform users of an upcoming service downtime.</span>
+mkdir<span class="w"> </span>-vp<span class="w"> </span><span class="nv">$DIR_GINCONFIG</span>/gogs/notice
+mkdir<span class="w"> </span>-vp<span class="w"> </span><span class="nv">$DIR_GINCONFIG</span>/postgres
+
+mkdir<span class="w"> </span>-vp<span class="w"> </span><span class="nv">$DIR_GINVOLUMES</span>/ginweb
+
+mkdir<span class="w"> </span>-vp<span class="w"> </span><span class="nv">$DIR_GINDATA</span>/gin-repositories
+mkdir<span class="w"> </span>-vp<span class="w"> </span><span class="nv">$DIR_GINDATA</span>/gin-postgresdb
+
+mkdir<span class="w"> </span>-vp<span class="w"> </span><span class="nv">$DIR_GINROOT</span>/gin-dockerfile
+
+<span class="c1"># Create an env file to specify the docker compose project name</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;COMPOSE_PROJECT_NAME=gin&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$DIR_GINROOT</span>/gin-dockerfile/.env
+
+<span class="c1"># Create postgres secret file</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;POSTGRES_PASSWORD=</span><span class="si">${</span><span class="nv">PGRES_PASS</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$DIR_GINCONFIG</span>/postgres/pgressecrets.env
+
+<span class="c1"># make sure an empty gogs config file is available; technically only required for previous versions of gogs</span>
+mkdir<span class="w"> </span><span class="nv">$DIR_GINCONFIG</span>/gogs/conf
+touch<span class="w"> </span><span class="nv">$DIR_GINCONFIG</span>/gogs/conf/app.ini
+</pre></div>
+</div>
+<p>Open a bash script file in your home directory, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="n">gin</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">folders</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Paste the contents of the file as shown above, save, and close the file. You have to provide only three parameters in this file: your username, password, and GIN installation directory. In our case, the GIN installation directory is <code class="docutils literal notranslate"><span class="pre">/home/&lt;your-username&gt;/in-house-gin</span></code>. Execute this file by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">sh</span> <span class="n">gin</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">folders</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</section>
+<section id="prepare-gin-instance-file">
+<span id="doc-install-server-gin-instance-file"></span><h3>Prepare GIN Instance File<a class="headerlink" href="#prepare-gin-instance-file" title="Permalink to this headline">#</a></h3>
+<p>We need to prepare the GIN Docker Compose instance file. First, let’s organise all GIN resources in a single folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span>
+<span class="n">mv</span> <span class="n">gin</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">folders</span><span class="o">.</span><span class="n">sh</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span>
+<span class="n">cd</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">G</span><span class="o">-</span><span class="n">Node</span><span class="o">/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">.</span><span class="n">git</span>
+<span class="n">mv</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">repo</span>
+</pre></div>
+</div>
+<p>Now copy, open, and prepare the actual file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">repo</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">sudo</span> <span class="n">nano</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<p>You need to adjust <code class="docutils literal notranslate"><span class="pre">PUID</span></code> which is the <code class="docutils literal notranslate"><span class="pre">ginuser</span></code> user ID. You can find it by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo cat /etc/passwd
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mark</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">1001</span><span class="p">:</span><span class="mi">1001</span><span class="p">:</span><span class="n">mark</span><span class="p">,,,:</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">mark</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="p">[</span><span class="o">--</span><span class="p">]</span> <span class="o">-</span> <span class="p">[</span><span class="o">--</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="p">]</span> <span class="p">[</span><span class="o">-----</span><span class="p">]</span> <span class="p">[</span><span class="o">--------</span><span class="p">]</span> <span class="p">[</span><span class="o">--------</span><span class="p">]</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">|</span>    <span class="o">|</span>     <span class="o">|</span>         <span class="o">|</span>        <span class="o">|</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">|</span>    <span class="o">|</span>     <span class="o">|</span>         <span class="o">|</span>        <span class="o">+-&gt;</span> <span class="mf">7.</span> <span class="n">Login</span> <span class="n">shell</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">|</span>    <span class="o">|</span>     <span class="o">|</span>         <span class="o">+----------&gt;</span> <span class="mf">6.</span> <span class="n">Home</span> <span class="n">directory</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">|</span>    <span class="o">|</span>     <span class="o">+--------------------&gt;</span> <span class="mf">5.</span> <span class="n">GECOS</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">|</span>    <span class="o">+--------------------------&gt;</span> <span class="mf">4.</span> <span class="n">GID</span>
+<span class="o">|</span>    <span class="o">|</span>   <span class="o">+-------------------------------&gt;</span> <span class="mf">3.</span> <span class="n">UID</span>
+<span class="o">|</span>    <span class="o">+-----------------------------------&gt;</span> <span class="mf">2.</span> <span class="n">Password</span>
+<span class="o">+----------------------------------------&gt;</span> <span class="mf">1.</span> <span class="n">Username</span>
+</pre></div>
+</div>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">ginuser</span></code> line and pick the third entry (UID).</p>
+<p>PGID (<code class="docutils literal notranslate"><span class="pre">ginservice</span></code> group ID) is another entry that you need to specify. The following command will help you to find it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">group</span>
+</pre></div>
+</div>
+<p>Simlarly as before, locate the line starting with <code class="docutils literal notranslate"><span class="pre">ginservice</span></code> and pick the third entry.</p>
+<p>Next, make sure the set <code class="docutils literal notranslate"><span class="pre">ipv4_address</span></code> (e.g., 12.34.56.78), <code class="docutils literal notranslate"><span class="pre">subnet</span></code> (e.g., 12.34.56.0/16), and <code class="docutils literal notranslate"><span class="pre">gateway</span></code> (e.g., 12.34.56.254) matches the IP set in your apache webserver (<code class="docutils literal notranslate"><span class="pre">ServerName</span></code> entry in /etc/httpd/conf/httpd.conf file) configuration. Type in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ifconfig</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">eth0:inet</span></code> entry will give you your IP address. Enter this value into the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file.</p>
+<p>You should also change the location where repositories are being stored. Hence change the line below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">../</span><span class="n">gindata</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">repositories</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">repos</span><span class="p">:</span><span class="n">rw</span>
+</pre></div>
+</div>
+<p>into this line with repository location pointing to the Ceph storage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">cephfs</span><span class="p">:</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">repos</span><span class="p">:</span><span class="n">rw</span>
+</pre></div>
+</div>
+<p>When GIN repositories are going to be stored in this location, they are going to be stored as “bare” git (annex) repositories.</p>
+<p>Add the Apache container to the GIN instance file by adding the following lines at the bottom of the services list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apache</span><span class="p">:</span>
+  <span class="n">image</span><span class="p">:</span> <span class="n">httpd</span><span class="p">:</span><span class="mf">2.4.54</span>
+  <span class="n">restart</span><span class="p">:</span> <span class="n">always</span>
+  <span class="n">ports</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s2">&quot;80:80&quot;</span>
+    <span class="o">-</span> <span class="s2">&quot;443:443&quot;</span>
+</pre></div>
+</div>
+<p>Finally, comment out all <code class="docutils literal notranslate"><span class="pre">networks</span></code> entries in the GIN instance file.</p>
+<p>Once you finish editing the Docker Compose GIN instance file, copy the file to <code class="docutils literal notranslate"><span class="pre">$DIR_GINROOT/gin-dockerfile</span></code> directory, like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cp</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">dockerfile</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>To ensure the docker services have access to the recently created directories, change all file ownership and permissions in those directories to ginservice group:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">ginuser</span><span class="p">:</span><span class="n">ginservice</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="o">-</span><span class="n">R</span> <span class="n">g</span><span class="o">+</span><span class="n">rw</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-gin-docker-containers">
+<span id="doc-install-server-gin-docker-containers"></span><h3>Launch GIN Docker Containers<a class="headerlink" href="#launch-gin-docker-containers" title="Permalink to this headline">#</a></h3>
+<p>All required GIN Docker containers can be downloaded by executing the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">dockerfile</span><span class="o">/</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">docker</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<p>You should see the following output, if all goes successfully:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[+] Running 36/36
+ ⠿ db Pulled                                                                            16.8s
+   ⠿ bff3e048017e Pull complete                                                          8.5s
+   ⠿ e3e180bf7c2b Pull complete                                                          8.9s
+   ⠿ 62eff3cc0cff Pull complete                                                          9.0s
+   ⠿ 3d90a128d4ff Pull complete                                                          9.2s
+   ⠿ ba4ce0c5ab29 Pull complete                                                          9.9s
+   ⠿ a8f4b87076a9 Pull complete                                                         10.2s
+   ⠿ 4b437d281a7e Pull complete                                                         10.3s
+   ⠿ f1841d9dcb17 Pull complete                                                         10.4s
+   ⠿ bf897300657d Pull complete                                                         13.6s
+   ⠿ 3bfdfb831df4 Pull complete                                                         13.6s
+   ⠿ c44ac1fcc543 Pull complete                                                         13.7s
+   ⠿ 9ad3441d354a Pull complete                                                         13.7s
+   ⠿ 2d79312566dd Pull complete                                                         13.8s
+ ⠿ apache Pulled                                                                        13.4s
+   ⠿ 3f4ca61aafcd Pull complete                                                          8.0s
+   ⠿ 2e3d233b6299 Pull complete                                                          8.2s
+   ⠿ 6d859023da80 Pull complete                                                          8.6s
+   ⠿ f856a04699cc Pull complete                                                         10.3s
+   ⠿ ec3bbe99d2b1 Pull complete                                                         10.4s
+ ⠿ web Pulled                                                                           14.5s
+   ⠿ cbdbe7a5bc2a Pull complete                                                          0.7s
+   ⠿ f80baed5aab5 Pull complete                                                          0.9s
+   ⠿ 89a388a79898 Pull complete                                                          4.1s
+   ⠿ ed5cc09825c1 Pull complete                                                          4.4s
+   ⠿ 5cb6da02d7ec Pull complete                                                          4.5s
+   ⠿ 43ec29b48c77 Pull complete                                                          4.5s
+   ⠿ 7e446e441c17 Pull complete                                                          5.2s
+   ⠿ defb6c422296 Pull complete                                                         10.0s
+   ⠿ 88d0869d42fa Pull complete                                                         10.2s
+   ⠿ b478dc392bf5 Pull complete                                                         10.3s
+   ⠿ 496764bd3222 Pull complete                                                         10.4s
+   ⠿ e92de83a3850 Pull complete                                                         10.5s
+   ⠿ c4ca3f12302e Pull complete                                                         10.6s
+   ⠿ 391654d516ba Pull complete                                                         11.6s
+   ⠿ 366413088261 Pull complete                                                         11.7s
+</pre></div>
+</div>
+<p>Launch the database container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo docker compose up -d db
+[+] Running 3/3
+ ⠿ Network gin_net      Created                                                         0.2s
+ ⠿ Volume &quot;gin_gintmp&quot;  Created                                                         0.0s
+ ⠿ Container gin-db-1   Started                                                         0.3s
+</pre></div>
+</div>
+<p>Set up the postgres database container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">gin</span><span class="o">-</span><span class="n">db</span><span class="o">-</span><span class="mi">1</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="n">su</span> <span class="o">-</span><span class="n">l</span> <span class="n">postgres</span>
+<span class="n">createuser</span> <span class="o">-</span><span class="n">P</span> <span class="n">gin</span>
+<span class="c1"># enter a password for the new role and note it; it will later be used on the initial gin setup page</span>
+<span class="n">createdb</span> <span class="o">-</span><span class="n">O</span> <span class="n">gin</span> <span class="n">gin</span>
+<span class="n">exit</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+<p>Launch database, web, and apache containers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo docker compose up -d
+[+] Running 3/3
+ ⠿ Container gin-apache-1  Started                                                      0.5s
+ ⠿ Container gin-db-1      Running                                                      0.0s
+ ⠿ Container gin-web-1     Started                                                      0.6s
+</pre></div>
+</div>
+<p>Reconfigure the apache docker container. First, get the default configuration file from the apache container and edit it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">cp</span> <span class="n">gin</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">conf</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span>
+<span class="n">sudo</span> <span class="n">nano</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>Inside the file replace the line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Listen</span> <span class="mi">80</span>
+</pre></div>
+</div>
+<p>with these lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Listen 80</span>
+<span class="n">Listen</span> <span class="p">[::]:</span><span class="mi">80</span>
+<span class="n">Listen</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">80</span>
+</pre></div>
+</div>
+<p>Comment the line giving away system admin email, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ServerAdmin you@example.com</span>
+</pre></div>
+</div>
+<p>Replace the line defining <code class="docutils literal notranslate"><span class="pre">ServerName</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ServerName www.example.com:80</span>
+</pre></div>
+</div>
+<p>with the lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ServerName www.example.com:80</span>
+<span class="n">ServerName</span> <span class="o">&lt;</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">machine</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">installation</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Uncomment lines for loading proxy server modules:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LoadModule</span> <span class="n">proxy_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">proxy_http_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy_http</span><span class="o">.</span><span class="n">so</span>
+</pre></div>
+</div>
+<p>At the bottom of the file add the following definitions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Additional entries below</span>
+<span class="c1"># Hide Apache version from header and from error files</span>
+<span class="n">ServerTokens</span> <span class="n">prod</span>
+<span class="n">ServerSignature</span> <span class="n">off</span>
+
+<span class="c1"># Disable ETag to prevent disposing sensitive values like iNode</span>
+<span class="n">FileETag</span> <span class="n">none</span>
+
+<span class="c1"># Apache proxypass configuration</span>
+<span class="n">ProxyPass</span> <span class="s2">&quot;/&quot;</span>  <span class="s2">&quot;http://gin-web-1:3000/&quot;</span>
+<span class="n">ProxyPassReverse</span> <span class="s2">&quot;/&quot;</span>  <span class="s2">&quot;http://gin-web-1:3000/&quot;</span>
+
+<span class="c1"># Prevent exposing debug console</span>
+<span class="o">&lt;</span><span class="n">Location</span> <span class="o">/</span><span class="n">debug</span><span class="o">&gt;</span>
+    <span class="n">Deny</span> <span class="kn">from</span>  <span class="nn">all</span>
+<span class="o">&lt;/</span><span class="n">Location</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Copy the edited Apache configuration to the docker apache container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">cp</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">conf</span> <span class="n">gin</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">gin</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="mi">1</span> <span class="n">apachectl</span> <span class="n">graceful</span>
+</pre></div>
+</div>
+<p>Both database, web, and apache containers should now be running with no problem. You can see them by typing (while inside the folder with the GIN instance file):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo docker compose ps
+NAME          IMAGE                 COMMAND                 SERVICE  CREATED      STATUS      PORTS
+gin-apache-1  httpd:2.4.54          &quot;httpd-foreground&quot;      apache   2 hours ago  Up 2 hours  0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp
+gin-db-1      postgres:11           &quot;docker-entrypoint.s…&quot;  db       2 hours ago  Up 2 hours  5432/tcp
+gin-web-1     gnode/gin-web:latest  &quot;/app/gogs/docker/st…&quot;  web      2 hours ago  Up 2 hours  3000/tcp, 0.0.0.0:2121-&gt;22/tcp, :::2121-&gt;22/tcp
+</pre></div>
+</div>
+<p>The command output indicates the running status of all containers. If this is not the case, you should identify the cause of it and relaunch the containers after fixing it. Condensed instruction for relaunching containers are provided in the next subsection. Otherwise, if containers are runnig fine, skip the next subsection, and connect to the GIN service.</p>
+</section>
+<section id="relaunch-gin-docker-containers">
+<span id="doc-install-server-gin-docker-containers-relaunch"></span><h3>Relaunch GIN Docker Containers<a class="headerlink" href="#relaunch-gin-docker-containers" title="Permalink to this headline">#</a></h3>
+<p>In case something goes wrong with your GIN Docker containers and they need to be wiped out and reinstated, run the lines below (obviously make sure you fix the cause of the failure beforehand and reboot the machine if needed):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">dockerfile</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">docker</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="n">down</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">system</span> <span class="n">prune</span> <span class="o">--</span><span class="nb">all</span> <span class="o">--</span><span class="n">force</span>
+
+<span class="n">cd</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span>
+<span class="n">sudo</span> <span class="n">sh</span> <span class="n">gin</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">folders</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">sudo</span> <span class="n">cp</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">dockerfile</span><span class="o">/</span>
+<span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">ginuser</span><span class="p">:</span><span class="n">ginservice</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="o">-</span><span class="n">R</span> <span class="n">g</span><span class="o">+</span><span class="n">rw</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span>
+
+<span class="n">cd</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">dockerfile</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="n">pull</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span> <span class="n">db</span>
+
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">gin</span><span class="o">-</span><span class="n">db</span><span class="o">-</span><span class="mi">1</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="n">su</span> <span class="o">-</span><span class="n">l</span> <span class="n">postgres</span>
+<span class="n">createuser</span> <span class="o">-</span><span class="n">P</span> <span class="n">gin</span>
+<span class="n">createdb</span> <span class="o">-</span><span class="n">O</span> <span class="n">gin</span> <span class="n">gin</span>
+<span class="n">exit</span>
+<span class="n">exit</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">cp</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">conf</span> <span class="n">gin</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">gin</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="mi">1</span> <span class="n">apachectl</span> <span class="n">graceful</span>
+</pre></div>
+</div>
+</section>
+<section id="setup-gin-service">
+<span id="doc-install-server-gin-setup"></span><h3>Setup GIN Service<a class="headerlink" href="#setup-gin-service" title="Permalink to this headline">#</a></h3>
+<p>To set up the GIN Service, you have to launch the install page. You would find it by typing the Bristol GIN domain name into the web browser followed by http or https port into the web browser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">machine</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">installation</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">http</span><span class="o">-</span><span class="ow">or</span><span class="o">-</span><span class="n">https</span><span class="o">-</span><span class="n">port</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>On the setup page, set the following fields with the corresponding values. For other setup options please refer to the gogs documentation.</p>
+<ul class="simple">
+<li><p>db: postgreSQL</p></li>
+<li><p>host: gin-db-1:5432</p></li>
+<li><p>user: gin</p></li>
+<li><p>password: &lt;used-during-database-setup-and-in-gin-docker-folders.sh-file&gt;</p></li>
+<li><p>database name: gin</p></li>
+<li><p>app name: GIN dev</p></li>
+<li><p>repo root: as defined in the GIN instance file on the container side (e.g., <code class="docutils literal notranslate"><span class="pre">/data/repos</span></code>)</p></li>
+<li><p>domain: <code class="docutils literal notranslate"><span class="pre">&lt;ip-address-of-machine-with-apache-installation&gt;</span></code></p></li>
+</ul>
+<p>Now go to the Bristol GIN domain and register a new account. This user will also have admin privileges. The figure below shows an example:</p>
+<a class="reference internal image-reference" href="../_images/Fig01-gin-setup.png" id="fig-gin-server-setup"><img alt="../_images/Fig01-gin-setup.png" class="align-center" id="fig-gin-server-setup" src="../_images/Fig01-gin-setup.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 1. Register Your Account</strong></p>
+<p>After signing in you should see an empty account. Next, stop all the Docker containers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">dockerfile</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="n">down</span>
+</pre></div>
+</div>
+<p>and replace the old app.ini file with the one from <code class="docutils literal notranslate"><span class="pre">~/in-house-gin-repo/resources</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">mv</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">gogs</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">app</span><span class="o">.</span><span class="n">ini</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span><span class="n">old</span><span class="o">-</span><span class="n">app</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">cp</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">repo</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">app</span><span class="o">.</span><span class="n">ini</span> <span class="o">.</span>
+<span class="n">sudo</span> <span class="n">nano</span> <span class="n">app</span><span class="o">.</span><span class="ow">in</span>
+</pre></div>
+</div>
+<p>Set the following variables as below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">APP_NAME</span> <span class="o">=</span> <span class="n">GIN</span> <span class="n">dev</span>
+<span class="n">HOST</span> <span class="o">=</span> <span class="n">gin</span><span class="o">-</span><span class="n">db</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">5432</span>
+<span class="n">PASSWD</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">used</span><span class="o">-</span><span class="n">during</span><span class="o">-</span><span class="n">database</span><span class="o">-</span><span class="n">setup</span><span class="o">-</span><span class="ow">and</span><span class="o">-</span><span class="ow">in</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">folders</span><span class="o">.</span><span class="n">sh</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;</span>
+<span class="n">DOMAIN</span> <span class="o">=</span> <span class="mf">172.18.18.50</span>
+<span class="n">HTTP_PORT</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">ROOT_URL</span> <span class="o">=</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">172.18.18.50</span>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">old</span><span class="o">-</span><span class="n">value</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>and copy the adjusted file to the right location:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cp</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span><span class="n">app</span><span class="o">.</span><span class="n">ini</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">gogs</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Copy the <code class="docutils literal notranslate"><span class="pre">public</span></code> and <code class="docutils literal notranslate"><span class="pre">templates</span></code> directories from <code class="docutils literal notranslate"><span class="pre">~/in-house-gin-repo</span></code> to <code class="docutils literal notranslate"><span class="pre">~/in-house-gin/config/gogs</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">repo</span><span class="o">/</span><span class="n">public</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">gogs</span><span class="o">/</span>
+<span class="n">sudo</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">repo</span><span class="o">/</span><span class="n">templates</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">gogs</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>This directory is specified via the docker-compose.yml file to hold custom frontend templates for the GIN instance.</p>
+<p>Adjust file permissions for all added and modified files on the server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">ginuser</span><span class="p">:</span><span class="n">ginservice</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span>
+</pre></div>
+</div>
+<p>Stop any running container and restart the full service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">dockerfile</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="n">down</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">compose</span> <span class="n">logs</span> <span class="o">-</span><span class="n">f</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is work in progress. Current priority!</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./documentation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Installation%20Instructions%20for%20GIN%20Client.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Installation Instructions for GIN Client</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Repository%20Management%20with%20GIN.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Repository Management with GIN</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-ceph">Install Ceph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cephadm">Install Cephadm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-ceph-cluster">Install Ceph Cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-ceph-cluster">Deploy Ceph Cluster</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-docker">Install Docker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-openssl">Install OpenSSL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-configure-apache-web-server">Install and Configure Apache Web Server</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-source-code">Get Source Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-apache">Install Apache</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-apache">Configure Apache</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-apache-connection">Test Apache Connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-ssh-tunneling">Set up SSH Tunneling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-git-and-git-annex">Install Git and Git-annex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-gin">Install GIN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-gin-client">Install GIN client</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-gin-installation-folders">Set-up GIN Installation Folders</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-gin-instance-file">Prepare GIN Instance File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-gin-docker-containers">Launch GIN Docker Containers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relaunch-gin-docker-containers">Relaunch GIN Docker Containers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-gin-service">Setup GIN Service</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Martynas Dervinis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

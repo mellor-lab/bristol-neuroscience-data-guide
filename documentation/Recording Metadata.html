@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Recording Metadata</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css-rules.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'documentation/Recording Metadata';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bristol GIN via Graphical Interfaces" href="../tutorials/Bristol%20GIN%20via%20Graphical%20Interfaces.html" />
+    <link rel="prev" title="Repository Management with Git" href="Repository%20Management%20with%20Git.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Bristol Neuroscience Data Guide
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Installation%20Instructions%20for%20GIN%20Client.html">Installation Instructions for GIN Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installation%20Instructions%20for%20GIN%20Server.html">Installation Instructions for GIN Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Repository%20Management%20with%20GIN.html">Repository Management with GIN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Repository%20Management%20with%20GIN%20Web%20Interface.html">Repository Management with GIN Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Repository%20Management%20with%20WinGIN.html">Repository Management with WinGIN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Repository%20Management%20with%20GIN%20Client.html">Repository Management with GIN Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Repository%20Management%20with%20Git.html">Repository Management with Git</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Recording Metadata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20via%20Graphical%20Interfaces.html">Bristol GIN via Graphical Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20via%20Command%20Line.html">Bristol GIN via Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20for%20Silicon%20Probe%20Data.html">Bristol GIN for Silicon Probe Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20for%20Patch%20Clamp%20Data.html">Bristol GIN for Patch Clamp Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20for%20Calcium%20Imaging%20Data.html">Bristol GIN for Calcium Imaging Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Bristol%20GIN%20for%20Electroencephalogram%20Data.html">Bristol GIN for Electroencephalogram Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Converting%20to%20NWB.html">Converting to NWB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/Converting%20to%20BIDS.html">Converting to BIDS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../resources/Community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/Bristol%20GIN%20Project.html">Bristol GIN Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/GIN%20Project.html">GIN Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/GIN-Tonic%20Project.html">GIN-Tonic Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/NWB%20Project.html">NWB Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/BIDS%20Project.html">BIDS Project</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/dervinism/bristol-neuroscience-data-guide" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/dervinism/bristol-neuroscience-data-guide/issues/new?title=Issue%20on%20page%20%2Fdocumentation/Recording Metadata.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/documentation/Recording Metadata.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Recording Metadata</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-metadata-in-nwb-format">Recording Metadata in NWB Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-metadata-in-bids-format">Recording Metadata in BIDS Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-metadata-in-odml-format">Recording Metadata in odML Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-metadata-in-dandi-schema">Recording Metadata in DANDI Schema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-metadata-in-openminds-format">Recording Metadata in openMINDS Format</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="recording-metadata">
+<span id="doc-metadata"></span><h1>Recording Metadata<a class="headerlink" href="#recording-metadata" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<span id="doc-metadata-intro"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>There are several metadata schemes currently being used to describe different types of neuroscience data but no single standard has emerged. For example, the <a class="reference external" href="https://www.nwb.org/">Neurodata Without Borders (NWB)</a> format that is becoming increasingly popular for storing neurophysiology and associated behavioural data generated by intracellular and extracellular electrophysiology experiments and optical physiology experiments also stores accompanying metadata in the same file. Moreover, the <a class="reference external" href="https://bids.neuroimaging.io/">Brain Imaging Data Structure (BIDS)</a> format widely used to structure neuroimaging and EEG data and associated behavioural and other data also has its own associated metadata standard. There are also efforts on the way to establish a more generic standard that could be suitable for any type of neuroscience data like the <a class="reference external" href="https://g-node.github.io/python-odml/">open metadataMarkup Language (odML)</a>.</p>
+<p>NWB and BIDS metadata formats may be particularly suitable for certain neuroscience data and they are becoming increasingly popular in their respective areas. For this reason it is advisable to follow their standard if you are working with neurophysiology or neuroimaging data. You can also follow the odML format which is less descriptive. You may also be using your own custom templates to record metadata and saving it in Matlab or Python files. If you are converting your neurophysiology data to the NWB format, you would also be converting your metadata into this format as part of it. Whichever approach you are using is your own choice and we are not going to make strict recommendations on how you should record your metadata. As long as metadata is rich and hierarchically organised or convertible to hierarchical form (e.g., dataset/experiment/subject/session/trial), it should be sufficient.</p>
+<p>There are, however, important advantages to avoiding custom approaches. Adopting a standard makes your data more accessible to your collaborators and other researchers. You would also increase your data interoperability and make it easier to integrate into a database. Moreover, adopting a <strong>minimal metadata schema</strong> at the dataset level would likely make your dataset more searchable and discoverable. Therefore, below we provide a brief description and resources for several emerging metadata standards.</p>
+</section>
+<section id="recording-metadata-in-nwb-format">
+<span id="doc-metadata-nwb"></span><h2>Recording Metadata in NWB Format<a class="headerlink" href="#recording-metadata-in-nwb-format" title="Permalink to this headline">#</a></h2>
+<p>The advantage of using the NWB format is having your metadata stored inside the same files containing your data. Available entries allow you to record rich metadata regarding the experiment, subjects, sessions, recording instruments, trials, and distinct datatypes. For example, you can record rich metadata regarding individual silicon probe channels and individual units in the extracellular electrophysiology context.</p>
+<p>The full description of available metadata classes and properties is given by the <a class="reference external" href="https://nwb-schema.readthedocs.io/en/latest/index.html">NWB Format Specification</a>.</p>
+<p>There is also a tutorial available online: <a class="reference external" href="https://training.incf.org/lesson/intracellular-electrophysiology-structured-metadata-nwb">Intracellular electrophysiology structured metadata in NWB</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This subsection is work in progress. It will be developed in parallel to the tutorials for different neuroscience data types.</p>
+</div>
+</section>
+<section id="recording-metadata-in-bids-format">
+<span id="doc-metadata-bids"></span><h2>Recording Metadata in BIDS Format<a class="headerlink" href="#recording-metadata-in-bids-format" title="Permalink to this headline">#</a></h2>
+<p>BIDS format uses JSON and TSV files to record metadata. You can read more about the usage of these formats within the BIDS context <a class="reference external" href="https://bids-standard.github.io/bids-starter-kit/folders_and_files/metadata.html">here</a>.</p>
+<p>BIDS starter kit is available <a class="reference external" href="https://bids-standard.github.io/bids-starter-kit/index.html">here</a>.</p>
+<p>The full BIDS documentation is available <a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/">here</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This subsection is work in progress. Currently not priority.</p>
+</div>
+</section>
+<section id="recording-metadata-in-odml-format">
+<span id="doc-metadata-odml"></span><h2>Recording Metadata in odML Format<a class="headerlink" href="#recording-metadata-in-odml-format" title="Permalink to this headline">#</a></h2>
+<p>The <a class="reference external" href="https://g-node.github.io/python-odml/">open metadataMarkup Language (odML)</a> is a comprehensive format that stores rich metadata at multiple description levels (e.g., dataset/experiment/subject/session/trial). Unlike NWB and BIDS however, it is intended to be broad enough to include all neuroscience data. Currently it is the only pure neuroscience metadata format with a schema that is not limited to the dataset description only. The downside of adopting this format is redundancy. If you are already organising your data according to NWB or BIDS schemas, you would be duplicating your efforts in terms of information storage, as well as the need to learn a new programming interface. If you have not adopted any of the two formats, then odML is worth considering.</p>
+<p>The entire metadata framework is called <a class="reference external" href="https://doi.org/10.3389/fninf.2019.00062">odMLtables</a>. It is based on the XML format but also supports JSON and YAML formats and can even be converted into tabular XLS and CSV formats. It has both Matlab and Python application programmming interfaces and a graphical user interface. There is both an online <a class="reference external" href="https://odmltables.readthedocs.io/en/latest/">documentation</a> and a <a class="reference external" href="https://odmltables.readthedocs.io/en/latest/tutorial.html">tutorial</a> explaining the basic uses of odMLtables for recording your metadata.</p>
+</section>
+<section id="recording-metadata-in-dandi-schema">
+<span id="doc-metadata-dandi"></span><h2>Recording Metadata in DANDI Schema<a class="headerlink" href="#recording-metadata-in-dandi-schema" title="Permalink to this headline">#</a></h2>
+<p>The <a class="reference external" href="https://github.com/dandi/schema">DANDI Schema</a> provides a <strong>minimal metadata schema</strong> for NWB and BIDS datasets and is intended to enhance searchability and visibility of these datasets. The DANDI Schema uses JSON for Linking Data (JASON-LD) format to encode metadata and, therefore, provides both human and machine readability. The metadata files are typically generated during the process of uploading a repository onto the <a class="reference external" href="https://dandiarchive.org/">DANDI Archive</a> which is a platform storing neuroscience data in both NWB and BIDS formats. Alternatively, metadata can be generated and validated using a Python programming interface available to download <a class="reference external" href="https://github.com/dandi/dandi-schema">here</a>. Currently this schema is limited to <a class="reference external" href="https://www.dandiarchive.org/handbook/11_view/#viewing-dandisets">dandisets</a> only and whether it gains bigger traction within the neuroscience community remains to be seen.</p>
+</section>
+<section id="recording-metadata-in-openminds-format">
+<span id="doc-metadata-openminds"></span><h2>Recording Metadata in openMINDS Format<a class="headerlink" href="#recording-metadata-in-openminds-format" title="Permalink to this headline">#</a></h2>
+<p>The <a class="reference external" href="https://ebrains.eu/news/new-openminds-metadata-models/">Open Metadata Initiative for Neuroscience Data Structures (openMINDS)</a> is a <strong>minimal metadata schema</strong> for neuroscience datasets developed by the <a class="reference external" href="https://www.humanbrainproject.eu/en/">Human Brain Project</a> and the <a class="reference external" href="https://ebrains.eu/">EBRAINS</a> data sharing platform. Its developement and adoption is intended to make neuroscience datasets easier to find, as well as expose other dataset level information. The openMINDS team has provided a <a class="reference external" href="https://github.com/HumanBrainProject/openMINDS_generator">Python package</a> to make their metadata schemes programmable. The <a class="reference external" href="https://github.com/HumanBrainProject/openMINDS">openMINDS project</a> is in its early stage and, therefore, is still largely in development. It remains to be seen whether this metadata format gains wider acceptance among neuroscientists.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./documentation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Repository%20Management%20with%20Git.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Repository Management with Git</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../tutorials/Bristol%20GIN%20via%20Graphical%20Interfaces.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bristol GIN via Graphical Interfaces</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-metadata-in-nwb-format">Recording Metadata in NWB Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-metadata-in-bids-format">Recording Metadata in BIDS Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-metadata-in-odml-format">Recording Metadata in odML Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-metadata-in-dandi-schema">Recording Metadata in DANDI Schema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-metadata-in-openminds-format">Recording Metadata in openMINDS Format</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Martynas Dervinis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
