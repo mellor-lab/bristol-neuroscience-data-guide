@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Installation Instructions for GIN Client</title>
   
@@ -45,6 +45,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Installation Instructions for GIN Server" href="Installation%20Instructions%20for%20GIN%20Server.html" />
     <link rel="prev" title="Welcome to Bristol Neuroscience Data Guide" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -404,15 +405,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="installation-instructions-for-gin-client">
-<span id="doc-install"></span><h1>Installation Instructions for GIN Client<a class="headerlink" href="#installation-instructions-for-gin-client" title="Permalink to this headline">#</a></h1>
+<span id="doc-install"></span><h1>Installation Instructions for GIN Client<a class="headerlink" href="#installation-instructions-for-gin-client" title="Permalink to this heading">#</a></h1>
 <section id="wingin-installation">
-<span id="doc-install-wingin"></span><h2>WinGIN Installation<a class="headerlink" href="#wingin-installation" title="Permalink to this headline">#</a></h2>
+<span id="doc-install-wingin"></span><h2>WinGIN Installation<a class="headerlink" href="#wingin-installation" title="Permalink to this heading">#</a></h2>
 <p>Download <a class="reference external" href="https://gin.g-node.org/G-Node/wingin-installers/raw/master/WinGIN-install.exe">WinGIN-install.exe</a> and <a class="reference external" href="https://gin.g-node.org/G-Node/wingin-installers/raw/master/Setup.msi">Setup.msi</a> files to a local directory. Run WinGIN-install.exe and follow the steps. At the end of the installation, you will be asked to install Dokan. If Dokan is already installed, you may skip this step by either unchecking the checkbox or cancelling the Dokan (un)install window that will appear. Launch WinGIN and wait for it to download and extract GIN CLI. In your start menu WinGIN will appear as GinClientApp.</p>
 </section>
 <section id="gin-client-installation">
-<span id="doc-install-gin-client"></span><h2>GIN Client Installation<a class="headerlink" href="#gin-client-installation" title="Permalink to this headline">#</a></h2>
+<span id="doc-install-gin-client"></span><h2>GIN Client Installation<a class="headerlink" href="#gin-client-installation" title="Permalink to this heading">#</a></h2>
 <section id="on-linux">
-<span id="doc-install-gin-client-linux"></span><h3>On Linux<a class="headerlink" href="#on-linux" title="Permalink to this headline">#</a></h3>
+<span id="doc-install-gin-client-linux"></span><h3>On Linux<a class="headerlink" href="#on-linux" title="Permalink to this heading">#</a></h3>
 <p><a class="reference external" href="https://gin.g-node.org/G-Node/gin-cli-releases/raw/master/gin-cli-latest.deb">Download the bundle file</a> containig GIN client, git, and git-annex. To install it, either double-click the file (if you are using graphical interface) or change your current working directory to the file location and execute the following line in the terminal</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">latest</span><span class="o">.</span><span class="n">deb</span>
 </pre></div>
@@ -425,9 +426,9 @@ document.write(`
 </section>
 </section>
 <section id="git-installation">
-<span id="doc-install-git"></span><h2>Git Installation<a class="headerlink" href="#git-installation" title="Permalink to this headline">#</a></h2>
+<span id="doc-install-git"></span><h2>Git Installation<a class="headerlink" href="#git-installation" title="Permalink to this heading">#</a></h2>
 <section id="doc-install-git-linux">
-<span id="id1"></span><h3>On Linux<a class="headerlink" href="#doc-install-git-linux" title="Permalink to this headline">#</a></h3>
+<span id="id1"></span><h3>On Linux<a class="headerlink" href="#doc-install-git-linux" title="Permalink to this heading">#</a></h3>
 <p>To install git on a Linux machine, simply type in the terminal</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">git</span>
 </pre></div>
@@ -439,9 +440,9 @@ document.write(`
 </section>
 </section>
 <section id="git-annex-installation">
-<span id="doc-install-git-annex"></span><h2>Git-Annex Installation<a class="headerlink" href="#git-annex-installation" title="Permalink to this headline">#</a></h2>
+<span id="doc-install-git-annex"></span><h2>Git-Annex Installation<a class="headerlink" href="#git-annex-installation" title="Permalink to this heading">#</a></h2>
 <section id="doc-install-git-annex-linux">
-<span id="id2"></span><h3>On Linux<a class="headerlink" href="#doc-install-git-annex-linux" title="Permalink to this headline">#</a></h3>
+<span id="id2"></span><h3>On Linux<a class="headerlink" href="#doc-install-git-annex-linux" title="Permalink to this heading">#</a></h3>
 <p>To install git-annex on a Linux machine, simply type in the terminal</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">git</span><span class="o">-</span><span class="n">annex</span>
 </pre></div>
