@@ -356,7 +356,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -372,6 +374,22 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gin-account">Create GIN Account</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-mock-data">Download Mock Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bids-compatible-folder-structure">Create BIDS Compatible Folder Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-and-edit-data-files">Copy and Edit Data Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bids-compatible-metadata-files">Create BIDS-compatible Metadata Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-your-bids-eeg-dataset">Validate your BIDS EEG Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-your-bids-eeg-dataset-to-gin">Upload your BIDS EEG Dataset to GIN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -383,10 +401,87 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bristol-gin-for-electroencephalogram-data">
 <span id="tutorials-eeg"></span><h1>Bristol GIN for Electroencephalogram Data<a class="headerlink" href="#bristol-gin-for-electroencephalogram-data" title="Permalink to this headline">#</a></h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This section is work in progress. Current priority!</p>
+<section id="create-gin-account">
+<span id="tutorials-eeg-create-account"></span><h2>Create GIN Account<a class="headerlink" href="#create-gin-account" title="Permalink to this headline">#</a></h2>
+<p>In order to be able to follow this tutorial, you need to have a GIN account either on Bristol GIN or on the public GIN service. GIN web interface documentation has it all explained <a class="reference internal" href="../documentation/Repository%20Management%20with%20GIN%20Web%20Interface.html#doc-gin-web-register"><span class="std std-ref">here</span></a>.</p>
+<p>After creating the account, login to it by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">login</span>
+</pre></div>
 </div>
+</section>
+<section id="download-mock-data">
+<span id="tutorials-eeg-download-data"></span><h2>Download Mock Data<a class="headerlink" href="#download-mock-data" title="Permalink to this headline">#</a></h2>
+<p>We are going to download a small electroencephalography (EEG) recording dataset example available in <a class="reference external" href="https://gin.g-node.org/dervinism/UoB_BIDS_dataset_example">dervinism/UoB_BIDS_dataset_example</a> repository. To get the data, type in the lines below to your terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span> <span class="n">dervinism</span><span class="o">/</span><span class="n">UoB_BIDS_dataset_example</span>
+<span class="n">cd</span> <span class="n">UoB_BIDS_dataset_example</span>
+<span class="n">gin</span> <span class="n">get</span><span class="o">-</span><span class="n">content</span>
+</pre></div>
+</div>
+<p>We are going to work with the source data stored in <code class="docutils literal notranslate"><span class="pre">UoB_BIDS_dataset_example\sourcedata</span></code> folder and in the process convert it into the folder structure contained within <code class="docutils literal notranslate"><span class="pre">UoB_BIDS_dataset_example</span></code>.</p>
+<p>Here is a brief description of the data. Participants in this study were wearing EEG caps and the data was acquired while they were listening to a stream of syllables composed of standard and deviant sounds presented ad different fixed frequencies (e.g. [ba-ba-ba-ba-pa-ba-ba-ba-ba-pa-ba-ba…]). The EEG experiment was run using the so-called Frequency Tagging, by combining an oddball paradigm with Fast Periodic Auditory Stimulation (FPAS), a technique used to explore passive and automatic perception. The task tested the participants’ ability to perceive non-native phonological contrasts. Data was collected using Brain Vision recorder.</p>
+</section>
+<section id="create-bids-compatible-folder-structure">
+<span id="tutorials-eeg-folder-structure"></span><h2>Create BIDS Compatible Folder Structure<a class="headerlink" href="#create-bids-compatible-folder-structure" title="Permalink to this headline">#</a></h2>
+<p>For EEG data management we are going to follow the <a class="reference external" href="https://bids.neuroimaging.io/">Brain Imaging Data Structure (BIDS)</a> format. It is the most widely used format within the field of neuroimaging, including EEG recording. The format itself is a folder structure rather than a file format and it supports the use of multiple different commonly used file formats within the neuroimaging field. Specifically regarding the EEG data, the European Data Format (<code class="docutils literal notranslate"><span class="pre">EDF</span></code>), BrainVision Core Data Format, the format used by the MATLAB toolbox EEGLAB (<code class="docutils literal notranslate"><span class="pre">.set</span></code> and <code class="docutils literal notranslate"><span class="pre">.fdt</span></code> files), and the Biosemi format (<code class="docutils literal notranslate"><span class="pre">.bdf</span></code>) are all supported. Examples of the BIDS folder structure used in imaging studies (<a class="reference internal" href="#fig-gin-eeg-bids-folder-structure-neuroimaging"><span class="std std-ref">Figure 1</span></a>) and, more specifically, in EEG studies (<a class="reference internal" href="#fig-gin-eeg-bids-folder-structure-eeg"><span class="std std-ref">Figure 2</span></a>) are provided below.</p>
+<a class="reference internal image-reference" href="../_images/Fig01-bids-folder-structure-neuroimaging.png" id="fig-gin-eeg-bids-folder-structure-neuroimaging"><img alt="../_images/Fig01-bids-folder-structure-neuroimaging.png" class="align-center" id="fig-gin-eeg-bids-folder-structure-neuroimaging" src="../_images/Fig01-bids-folder-structure-neuroimaging.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 1. BIDS Folder Structure for Neuroimaging Data Example</strong></p>
+<a class="reference internal image-reference" href="../_images/Fig02-bids-folder-structure-eeg.png" id="fig-gin-eeg-bids-folder-structure-eeg"><img alt="../_images/Fig02-bids-folder-structure-eeg.png" class="align-center" id="fig-gin-eeg-bids-folder-structure-eeg" src="../_images/Fig02-bids-folder-structure-eeg.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 2. BIDS Folder Structure for EEG Data Example</strong></p>
+<p>In our case, we are going to create 4 new folders and one subfolder within our new data repository as shown in the figure below.</p>
+<a class="reference internal image-reference" href="../_images/Fig03-create-bids-folder-structure-step1.png" id="fig-gin-eeg-create-bids-folder-structure-step1"><img alt="../_images/Fig03-create-bids-folder-structure-step1.png" class="align-center" id="fig-gin-eeg-create-bids-folder-structure-step1" src="../_images/Fig03-create-bids-folder-structure-step1.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 3. Create BIDS Folder Structure Suitable for our Data</strong></p>
+</section>
+<section id="copy-and-edit-data-files">
+<span id="tutorials-eeg-copy-files"></span><h2>Copy and Edit Data Files<a class="headerlink" href="#copy-and-edit-data-files" title="Permalink to this headline">#</a></h2>
+<p>After creating BIDS compatible folder structure, copy/move data and analysis files to appropriate folders. Jupyter Notebook containing Python analysis script should be placed in the <code class="docutils literal notranslate"><span class="pre">code</span></code> folder. <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> and <code class="docutils literal notranslate"><span class="pre">README</span></code> files should be place at the root directory. The raw data files - <code class="docutils literal notranslate"><span class="pre">Dario_EXP4_P_03.eeg</span></code>, <code class="docutils literal notranslate"><span class="pre">Dario_EXP4_P_03.vmrk</span></code>, and <code class="docutils literal notranslate"><span class="pre">Dario_EXP4_P_03.vhdr</span></code> - should be placed inside <code class="docutils literal notranslate"><span class="pre">sub01/eeg</span></code> folder.</p>
+<p>The raw data files should follow the following convention:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sub</span><span class="o">-&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="p">[</span><span class="n">_ses</span><span class="o">-&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="p">]</span><span class="n">_task</span><span class="o">-&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="p">[</span><span class="n">_acq</span><span class="o">-&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="p">][</span><span class="n">_run</span><span class="o">-&lt;</span><span class="n">index</span><span class="o">&gt;</span><span class="p">]</span><span class="n">_eeg</span><span class="o">.&lt;</span><span class="n">extension</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Hence, we rename our data files to comply with the naming convention as follows: <code class="docutils literal notranslate"><span class="pre">sub-01_task-fpasOddball_eeg.eeg</span></code>, <code class="docutils literal notranslate"><span class="pre">sub-01_task-fpasOddball_eeg.vmrk</span></code>, and <code class="docutils literal notranslate"><span class="pre">sub-01_task-fpasOddball_eeg.vhdr</span></code>. The full documentation on BIDS compatible EEG data structure can be found <a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/03-electroencephalography.html">here</a>.</p>
+<p>Finaly, edit data files to replace any obsolete paths with corrected paths as in the file <code class="docutils literal notranslate"><span class="pre">sub-01_task-fpasOddball_eeg.vhdr</span></code> lines</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DataFile</span><span class="o">=</span><span class="n">Dario_EXP4_P_03</span><span class="o">.</span><span class="n">eeg</span>
+<span class="n">MarkerFile</span><span class="o">=</span><span class="n">Dario_EXP4_P_03</span><span class="o">.</span><span class="n">vmrk</span>
+</pre></div>
+</div>
+<p>should be replaced by</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DataFile</span><span class="o">=</span><span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_task</span><span class="o">-</span><span class="n">fpasOddball_eeg</span><span class="o">.</span><span class="n">eeg</span>
+<span class="n">MarkerFile</span><span class="o">=</span><span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_task</span><span class="o">-</span><span class="n">fpasOddball_eeg</span><span class="o">.</span><span class="n">vmrk</span>
+</pre></div>
+</div>
+<p>Do not forget to place all of the original files within the <code class="docutils literal notranslate"><span class="pre">sourcedata</span></code> folder.</p>
+</section>
+<section id="create-bids-compatible-metadata-files">
+<span id="tutorials-eeg-create-metadata-files"></span><h2>Create BIDS-compatible Metadata Files<a class="headerlink" href="#create-bids-compatible-metadata-files" title="Permalink to this headline">#</a></h2>
+<p>Our data was acquired and saved in the BrainVision Core Data Format. This is convenient because we can rely on BrainVision’s BIDS converter to generate correct metadata files. The converter is available <a class="reference external" href="https://www.brainproducts.com/support-resources/bv2bids/">here</a> and can be executed after downloading without the need to install it. Simply call the executive file in the Windows command line and indicate the header file and and the destination folder as below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BV2BIDS</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">hdr</span> <span class="o">&lt;</span><span class="n">repository</span><span class="o">-</span><span class="n">root</span><span class="o">-</span><span class="n">directory</span><span class="o">&gt;/</span><span class="n">sub01</span><span class="o">/</span><span class="n">eeg</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_task</span><span class="o">-</span><span class="n">fpasOddball_eeg</span><span class="o">.</span><span class="n">vhdr</span> <span class="o">-</span><span class="n">dst</span> <span class="o">&lt;</span><span class="n">destination</span><span class="o">-</span><span class="n">folder</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The BIDS converter should generate the files shown in the figure below.</p>
+<a class="reference internal image-reference" href="../_images/Fig04-create-bids-metadata.png" id="fig-gin-eeg-create-bids-metadata"><img alt="../_images/Fig04-create-bids-metadata.png" class="align-center" id="fig-gin-eeg-create-bids-metadata" src="../_images/Fig04-create-bids-metadata.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 4. Output of BrainVision’s BIDS Converter</strong></p>
+<p>Now copy <code class="docutils literal notranslate"><span class="pre">CHANGES</span></code> and <code class="docutils literal notranslate"><span class="pre">dataset_description.json</span></code> files to the root repository directory. Files inside <code class="docutils literal notranslate"><span class="pre">sub-01/eeg</span></code> folder should be copied to the corresponding folder within the data repository folder. Do not forget to edit <code class="docutils literal notranslate"><span class="pre">dataset_description.json</span></code> file to indicate the repository name. The coordinate system inside <code class="docutils literal notranslate"><span class="pre">sub-01_task-sub01taskfpasOddballeeg_coordsystem.json</span></code> file should be changed from <code class="docutils literal notranslate"><span class="pre">BESA</span></code> to <code class="docutils literal notranslate"><span class="pre">CapTrak</span></code>. Feel free to edit other <code class="docutils literal notranslate"><span class="pre">JSON</span></code> files. The final repository should have all the files listed in the figure below.</p>
+<a class="reference internal image-reference" href="../_images/Fig05-final-repo-structure.png" id="fig-gin-eeg-final-repo-structure"><img alt="../_images/Fig05-final-repo-structure.png" class="align-center" id="fig-gin-eeg-final-repo-structure" src="../_images/Fig05-final-repo-structure.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 5. Final EEG Data Repository Structure</strong></p>
+</section>
+<section id="validate-your-bids-eeg-dataset">
+<span id="tutorials-eeg-validate-bids-dataset"></span><h2>Validate your BIDS EEG Dataset<a class="headerlink" href="#validate-your-bids-eeg-dataset" title="Permalink to this headline">#</a></h2>
+<p>You should always check whether your newly created BIDS dataset is actually valid. BIDS validators can be downloaded and the dataset can be tested locally. Alternatively, a very convenient way is to use a web validator available <a class="reference external" href="https://bids-standard.github.io/bids-validator/">here</a>. After running our dataset validation, there should be no major errors as in the output below.</p>
+<a class="reference internal image-reference" href="../_images/Fig06-bids-repo-validation.png" id="fig-gin-eeg-bids-repo-validation"><img alt="../_images/Fig06-bids-repo-validation.png" class="align-center" id="fig-gin-eeg-bids-repo-validation" src="../_images/Fig06-bids-repo-validation.png" style="width: 690px;" /></a>
+<p>       <strong>Figure 5. Final EEG Data Repository Structure</strong></p>
+</section>
+<section id="upload-your-bids-eeg-dataset-to-gin">
+<span id="tutorials-eeg-upload-repo"></span><h2>Upload your BIDS EEG Dataset to GIN<a class="headerlink" href="#upload-your-bids-eeg-dataset-to-gin" title="Permalink to this headline">#</a></h2>
+<p>Uploading a BIDS-compatible data repository to GIN is identical to uploading datasets acquired in other data recording modalities. Examples of how to do this are available for other modalities and extensive tutorials describing how to use GIN are available for both <a class="reference internal" href="Bristol%20GIN%20via%20Command%20Line.html#tutorials-cli"><span class="std std-ref">command line</span></a> and <a class="reference internal" href="Bristol%20GIN%20via%20Graphical%20Interfaces.html#tutorials-gui"><span class="std std-ref">web</span></a> interfaces.</p>
+</section>
+<section id="resources">
+<span id="tutorials-eeg-resources"></span><h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<p>This tutorial touches the BIDS data format only briefly. Extensive discussion of the BIDS data folder format is provided in the <a class="reference external" href="https://bids.neuroimaging.io/">official website</a> of the format and in its <a class="reference external" href="https://bids-specification.readthedocs.io/en/stable/">official documentation</a>. It is also useful to read the <a class="reference external" href="https://doi.org/10.1038/sdata.2016.44">original paper</a> that introduced BIDS for neuroimaging data and a <a class="reference external" href="https://doi.org/10.1038/s41597-019-0104-8">companion paper</a> that described the application of BIDS to the EEG data.</p>
+</section>
+<section id="acknowledgements">
+<span id="tutorials-eeg-acknowledgements"></span><h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
+<p>This tutorial was made possible with the kind help of <a class="reference external" href="https://research-information.bris.ac.uk/en/persons/dario-fuentes-grandon">Dario Fuentes Grandon</a> who provided EEG recording data samples.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -447,6 +542,28 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-gin-account">Create GIN Account</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-mock-data">Download Mock Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bids-compatible-folder-structure">Create BIDS Compatible Folder Structure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-and-edit-data-files">Copy and Edit Data Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bids-compatible-metadata-files">Create BIDS-compatible Metadata Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-your-bids-eeg-dataset">Validate your BIDS EEG Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-your-bids-eeg-dataset-to-gin">Upload your BIDS EEG Dataset to GIN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
