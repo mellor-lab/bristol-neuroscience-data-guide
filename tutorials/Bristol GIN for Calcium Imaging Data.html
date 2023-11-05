@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Bristol GIN for Calcium Imaging Data</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Bristol GIN for Electroencephalogram Data" href="Bristol%20GIN%20for%20Electroencephalogram%20Data.html" />
     <link rel="prev" title="Bristol GIN for Patch Clamp Data" href="Bristol%20GIN%20for%20Patch%20Clamp%20Data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -434,9 +433,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bristol-gin-for-calcium-imaging-data">
-<span id="tutorials-caimage"></span><h1>Bristol GIN for Calcium Imaging Data<a class="headerlink" href="#bristol-gin-for-calcium-imaging-data" title="Permalink to this heading">#</a></h1>
+<span id="tutorials-caimage"></span><h1>Bristol GIN for Calcium Imaging Data<a class="headerlink" href="#bristol-gin-for-calcium-imaging-data" title="Permalink to this headline">#</a></h1>
 <section id="create-gin-account">
-<span id="tutorials-caimage-create-account"></span><h2>Create GIN Account<a class="headerlink" href="#create-gin-account" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-caimage-create-account"></span><h2>Create GIN Account<a class="headerlink" href="#create-gin-account" title="Permalink to this headline">#</a></h2>
 <p>In order to be able to follow this tutorial, you need to have a GIN account either on Bristol GIN or on the public GIN service. GIN web interface documentation has it all explained <a class="reference internal" href="../documentation/Repository%20Management%20with%20GIN%20Web%20Interface.html#doc-gin-web-register"><span class="std std-ref">here</span></a>.</p>
 <p>After creating the account, login to it by typing:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">login</span>
@@ -444,7 +443,7 @@ document.write(`
 </div>
 </section>
 <section id="download-mock-data">
-<span id="tutorials-caimage-download-data"></span><h2>Download Mock Data<a class="headerlink" href="#download-mock-data" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-caimage-download-data"></span><h2>Download Mock Data<a class="headerlink" href="#download-mock-data" title="Permalink to this headline">#</a></h2>
 <p>We are going to download Ca2+ imaging data available in <a class="reference external" href="https://gin.g-node.org/explore/repos?q=calcium-imaging-mock-repo">dervinism/calcium-imaging-mock-repo</a> repository. To get the data, type in the lines below to your terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span> <span class="n">dervinism</span><span class="o">/</span><span class="n">calcium</span><span class="o">-</span><span class="n">imaging</span><span class="o">-</span><span class="n">mock</span><span class="o">-</span><span class="n">repo</span>
 <span class="n">cd</span> <span class="n">calcium</span><span class="o">-</span><span class="n">imaging</span><span class="o">-</span><span class="n">mock</span><span class="o">-</span><span class="n">repo</span>
@@ -454,7 +453,7 @@ document.write(`
 <p>This is part of the real Ca2+ imaging data. The imaging was performed in hippocampal pyramidal cells during Schaffer collateral stimulation. Dendrites at different cell locations were two-photon linescan imaged. More about the project that this data are coming from can be read in the README file. The data are organised into individual imaging/recording sessions named using number IDs. It is further subdivided into slices and cells. Processed data are placed in the Analysed folder inside the MAT file. The raw data are located in two separate folders: Ephysdata for electrophysiology data and Imgdata for imaging data. README files located in calcium-imaging-mock-repo\Exp_001_SCstim_DiffLocations\201204 session folder give more detail about what sort of data are stored, variable names and their meaning, and other relevant information.</p>
 </section>
 <section id="set-up-your-research-data-repository">
-<span id="tutorials-caimage-setup-repo"></span><h2>Set up Your Research Data Repository<a class="headerlink" href="#set-up-your-research-data-repository" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-caimage-setup-repo"></span><h2>Set up Your Research Data Repository<a class="headerlink" href="#set-up-your-research-data-repository" title="Permalink to this headline">#</a></h2>
 <p>You should rename your repository, delete the .git folder located inside the repository root folder, and update your README file if needed. Once this is done, issue the command below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">init</span>
 </pre></div>
@@ -462,7 +461,7 @@ document.write(`
 <p>This would intialise the local repository.</p>
 </section>
 <section id="upload-repository">
-<span id="tutorials-caimage-upload-repo"></span><h2>Upload Repository<a class="headerlink" href="#upload-repository" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-caimage-upload-repo"></span><h2>Upload Repository<a class="headerlink" href="#upload-repository" title="Permalink to this headline">#</a></h2>
 <p>The next step is to create a remote repository with the same name and associate it with the local repository. You can simply do it by typing in your terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">remote</span> <span class="n">your</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span> <span class="n">gin</span><span class="p">:</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">/</span><span class="n">your</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span> <span class="o">--</span><span class="n">default</span>
 </pre></div>
@@ -486,7 +485,7 @@ document.write(`
 <p>When you use the web interface, you can specify the commit message title (no more than 50 characters by convention) and the commit message body (no more than 72 characters by convention).</p>
 </section>
 <section id="remove-content-of-your-local-research-data-repository">
-<span id="tutorials-caimage-remove-content"></span><h2>Remove Content of Your Local Research Data Repository<a class="headerlink" href="#remove-content-of-your-local-research-data-repository" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-caimage-remove-content"></span><h2>Remove Content of Your Local Research Data Repository<a class="headerlink" href="#remove-content-of-your-local-research-data-repository" title="Permalink to this headline">#</a></h2>
 <p>One advantage of using GIN for your data repository mangement is that you do not need to keep duplicate repositories in order to prevent accidental detrimental changes to your main repository. One reason for that is having version control system. The other reason is that you can safely remove the content of your local repository and replace it with pointers to original files. As a result you can save space on your local hard-drive. To remove the local content type the following line in your terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">content</span>
 </pre></div>
@@ -512,12 +511,12 @@ document.write(`
 </div>
 </section>
 <section id="convert-your-data-to-standardised-format">
-<span id="tutorials-caimage-convert2nwb"></span><h2>Convert Your Data to Standardised Format<a class="headerlink" href="#convert-your-data-to-standardised-format" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-caimage-convert2nwb"></span><h2>Convert Your Data to Standardised Format<a class="headerlink" href="#convert-your-data-to-standardised-format" title="Permalink to this headline">#</a></h2>
 <p>In order to increase your research data’s adherence to the <a class="reference external" href="https://www.go-fair.org/fair-principles/">FAIR principles</a> of scientific data management and, in particular, to increase the interoperability of your data and chances of it being reused beyond its original purpose of collection, it is highly advisable to convert your data into one of the more popular standard file formats for neuroscience data. One such format is the <a class="reference external" href="https://www.nwb.org/">Neurodata Without Borders (NWB)</a> which is highly suitable for most of the neurophysiology data. Programming interfaces in both Matlab and Python are available for converting your data. Here we are going to provide explanations of how you can convert your data in both programming languages. While showing you examples of that, we will continue our focus on the calcium imaging data.</p>
 <section id="convert-to-nwb-using-matlab">
-<span id="tutorials-caimage-convert2nwb-matlab"></span><h3>Convert to NWB Using Matlab<a class="headerlink" href="#convert-to-nwb-using-matlab" title="Permalink to this heading">#</a></h3>
+<span id="tutorials-caimage-convert2nwb-matlab"></span><h3>Convert to NWB Using Matlab<a class="headerlink" href="#convert-to-nwb-using-matlab" title="Permalink to this headline">#</a></h3>
 <section id="install-matnwb-toolbox">
-<span id="tutorials-caimage-convert2nwb-matlab-install-matnwb"></span><h4>Install MatNWB Toolbox<a class="headerlink" href="#install-matnwb-toolbox" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-install-matnwb"></span><h4>Install MatNWB Toolbox<a class="headerlink" href="#install-matnwb-toolbox" title="Permalink to this headline">#</a></h4>
 <p>To begin with the Matlab demonstration, you would need to install <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/">MatNWB toolbox</a>. To download the toolbox, type in your terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NeurodataWithoutBorders</span><span class="o">/</span><span class="n">matnwb</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
@@ -531,7 +530,7 @@ document.write(`
 <p>You can now start using MatNWB. MatNWB interface documentation can be accessed <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/index.html">here</a>.</p>
 </section>
 <section id="record-metadata">
-<span id="tutorials-caimage-convert2nwb-matlab-record-metadata"></span><h4>Record Metadata<a class="headerlink" href="#record-metadata" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-record-metadata"></span><h4>Record Metadata<a class="headerlink" href="#record-metadata" title="Permalink to this headline">#</a></h4>
 <p>Inside the calcium imaging repository there is a folder with the Matlab file that you can execute in order to convert the data of one particular imaging/recording session into the NWB format. The script is located inside the <code class="docutils literal notranslate"><span class="pre">Exp_001_SCstim_DiffLocations/201204/Slice_00/Cell_001/nwb</span></code> folder in the file named <code class="docutils literal notranslate"><span class="pre">convert2nwbCaImg.m</span></code> and, if executed, it would convert the data stored in the files below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Exp_001_SCstim_DiffLocations</span><span class="o">/</span><span class="mi">201204</span><span class="o">/</span><span class="n">Slice_002</span><span class="o">/</span><span class="n">Cell_001</span><span class="o">/</span><span class="n">Analysed</span><span class="o">/</span><span class="mi">201204</span><span class="n">__s2d1_004_ED__1</span> <span class="n">Botden_Analysed</span><span class="o">.</span><span class="n">mat</span>
 <span class="n">Exp_001_SCstim_DiffLocations</span><span class="o">/</span><span class="mi">201204</span><span class="o">/</span><span class="n">Slice_002</span><span class="o">/</span><span class="n">Cell_001</span><span class="o">/</span><span class="n">Analysed</span><span class="o">/</span><span class="mi">201204</span><span class="n">__s2d1_004_ED__1</span> <span class="n">Midden_Analysed</span><span class="o">.</span><span class="n">mat</span>
@@ -617,7 +616,7 @@ document.write(`
 </div>
 </section>
 <section id="create-imaging-planes">
-<span id="tutorials-caimage-convert2nwb-matlab-create-img-planes"></span><h4>Create Imaging Planes<a class="headerlink" href="#create-imaging-planes" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-create-img-planes"></span><h4>Create Imaging Planes<a class="headerlink" href="#create-imaging-planes" title="Permalink to this headline">#</a></h4>
 <p>In order to store optical imaging data, we need to create imaging planes. First, we create <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/OpticalChannel.html"><code class="docutils literal notranslate"><span class="pre">OpticalChannel</span></code></a> objects for each calcium indicator we use. The objects contain <code class="docutils literal notranslate"><span class="pre">description</span></code> and <code class="docutils literal notranslate"><span class="pre">emission_lambda</span></code> properties. In our case we use indicators Fluo5f and Alexa594 which have their maximum emission wavelengths at approximately 516 and 616 nanometers, respectively. These wavelength roughly correspond to green and red colours. Therefore, we name the channels based on the colours their corresponding calcium indicators emit.</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">green_optical_channel</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">types</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">OpticalChannel</span><span class="p">(</span><span class="w"> </span><span class="k">...</span>
 <span class="w">  </span><span class="s">&#39;description&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">&#39;green channel corresponding to &#39;</span><span class="w"> </span><span class="n">greenIndicator</span><span class="p">],</span><span class="w"> </span><span class="k">...</span>
@@ -664,7 +663,7 @@ document.write(`
 <p>The <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/ImagingPlane.html"><code class="docutils literal notranslate"><span class="pre">ImagingPlane</span></code></a> object defines various properties of imaging planes used to generate the optical physiology data. Required properties include <code class="docutils literal notranslate"><span class="pre">excitation_lambda</span></code> (the wavelength used to excite calcium indicators in nm), <code class="docutils literal notranslate"><span class="pre">indicator</span></code>, <code class="docutils literal notranslate"><span class="pre">location</span></code> (brain area where the imaging plane is located), <code class="docutils literal notranslate"><span class="pre">optical_channel</span></code> (previously created <code class="docutils literal notranslate"><span class="pre">OpticalChannel</span></code> objects), and <code class="docutils literal notranslate"><span class="pre">device</span></code> (a link to the <code class="docutils literal notranslate"><span class="pre">Device</span></code> object defining the two-photon microscope). You may have noticed that the <code class="docutils literal notranslate"><span class="pre">device</span></code> property is set as a <code class="docutils literal notranslate"><span class="pre">Softlink</span></code> object which is used to link to an already existing NWB object (in our case) or to an object within an NWB file using a path. It is also useful to provide <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">imaging_rate</span></code> (the rate at which individual linescans are obtained), and any other properties you deem necessary. Such properties may include <code class="docutils literal notranslate"><span class="pre">origin_coords</span></code> defining physical location of the first element of the imaging plane relative to some reference point (e.g., bregma; defined by the <code class="docutils literal notranslate"><span class="pre">reference_frame</span></code> property) and <code class="docutils literal notranslate"><span class="pre">grid_spacing</span></code> to define the distance between individual pixels within the imaging plane.</p>
 </section>
 <section id="load-imaging-recording-data">
-<span id="tutorials-caimage-convert2nwb-matlab-load-data"></span><h4>Load Imaging/Recording Data<a class="headerlink" href="#load-imaging-recording-data" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-load-data"></span><h4>Load Imaging/Recording Data<a class="headerlink" href="#load-imaging-recording-data" title="Permalink to this headline">#</a></h4>
 <p>The next part of the conversion script loads aggregated and preprocessed data stored inside the three MAT files in the <code class="docutils literal notranslate"><span class="pre">Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed</span></code> folder:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Load data</span>
 <span class="n">dendrite</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;Bot&#39;</span><span class="p">;</span>
@@ -680,7 +679,7 @@ document.write(`
 </div>
 <p>Three MAT files correspond to three imaged regions of interest (ROIs) of the neuron. The first region of interest, refered to as the bottom dendrite, is the pyramidal cell dendrite located in the Stratum Oriens (SO) of the CA1-2 region of the hippocampus. This information is available in the <code class="docutils literal notranslate"><span class="pre">sessionNotes</span></code> variable. The remaining two files refered to as middle and top dendrite data correspond to ROIs located in the Stratum Radiatum (SR) and Stratum Lacunosum Moleculare (SLM), respectively.</p>
 <p>The table below describes the variables inside the files.</p>
-<table class="table" id="tutorials-caimage-convert2nwb-matlab-variable-table">
+<table class="colwidths-auto table" id="tutorials-caimage-convert2nwb-matlab-variable-table">
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
@@ -749,7 +748,7 @@ document.write(`
 </div>
 </section>
 <section id="convert-fluorescence-data">
-<span id="tutorials-caimage-convert2nwb-matlab-convert-fluorescence"></span><h4>Convert Fluorescence Data<a class="headerlink" href="#convert-fluorescence-data" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-convert-fluorescence"></span><h4>Convert Fluorescence Data<a class="headerlink" href="#convert-fluorescence-data" title="Permalink to this headline">#</a></h4>
 <p>We convert the fluorescence data by invoking <code class="docutils literal notranslate"><span class="pre">setTwoPhotonSeries</span></code> function as shown below:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span><span class="p">.</span><span class="n">indicator</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">greenIndicator</span><span class="p">;</span>
 <span class="nb">input</span><span class="p">.</span><span class="n">imagingPlane</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">green_imaging_plane</span><span class="p">;</span>
@@ -800,7 +799,7 @@ document.write(`
 <p>The fluorescence data are added to the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> object by creating a <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/TwoPhotonSeries.html"><code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code></a> object. <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> object has the following required properties: <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">imaging_plane</span></code>, and <code class="docutils literal notranslate"><span class="pre">starting_time_rate</span></code>. In our case, the <code class="docutils literal notranslate"><span class="pre">data</span></code> property contains the actual fluorescence data in a 3D array form with its dimensions described in [Table 1].(tutorials-caimage-convert2nwb-matlab-variable-table) (<code class="docutils literal notranslate"><span class="pre">Flur5_denoised</span></code> and <code class="docutils literal notranslate"><span class="pre">Alexa_denoised</span></code> variables). The <code class="docutils literal notranslate"><span class="pre">imaging_plane</span></code> property uses the <code class="docutils literal notranslate"><span class="pre">SoftLink</span></code> object to link to a particular <code class="docutils literal notranslate"><span class="pre">ImagingPlane</span></code> object (in our case there are two: green and red). The <code class="docutils literal notranslate"><span class="pre">starting_time_rate</span></code> property corresponds to the rate at which individual linescans were acquired. However, it does not need to be organised this way and can refer to a different data dimension. Therefore, it is important to use <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">comments</span></code>, and <code class="docutils literal notranslate"><span class="pre">data_continuity</span></code> properties to explain how the data are organised. For example, data containing individual linescans is not continuous and should be described as having the step quality by the <code class="docutils literal notranslate"><span class="pre">data_continuity</span></code> property. The property <code class="docutils literal notranslate"><span class="pre">scan_line_rate</span></code> describes the rate at which individual image lines were obtained and corresponds to the second dimension of the data.</p>
 </section>
 <section id="convert-change-in-fluorescence-intensity-data">
-<span id="tutorials-caimage-convert2nwb-matlab-convert-fluorescence-intensity-change"></span><h4>Convert Change in Fluorescence Intensity Data<a class="headerlink" href="#convert-change-in-fluorescence-intensity-data" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-convert-fluorescence-intensity-change"></span><h4>Convert Change in Fluorescence Intensity Data<a class="headerlink" href="#convert-change-in-fluorescence-intensity-data" title="Permalink to this headline">#</a></h4>
 <p>In addition to converting the denoised fluorescence signal we are also going to convert the change in fluorescence intensity data (delta fluorescence). The delta F estimate is derived from the Alexa594 calcium indicator data or the red colour channel signal. It is stored using the <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> object similar to the denoised raw fluorescence data as described in the previous subsection. We perform conversion for all three ROIs as shown below:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add optical physiology data: delta fluorescence</span>
 <span class="nb">input</span><span class="p">.</span><span class="n">indicator</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">redIndicator</span><span class="p">;</span>
@@ -848,7 +847,7 @@ document.write(`
 <p>All <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> objects are stored within the <code class="docutils literal notranslate"><span class="pre">acquisition</span></code> data interface of the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> object. However, this is not the only way of storing ROI fluorescence data. Alternatively, this type of data could be stored by defining an image mask used to extract ROI data from the wider fluorescence imaging data. If this is how you have obtained your own data, then it is worth consulting a different calcium imaging tutorial available <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/ophys.html">here</a>.</p>
 </section>
 <section id="convert-static-fluorescence-images">
-<span id="tutorials-caimage-convert2nwb-matlab-convert-images"></span><h4>Convert Static Fluorescence Images<a class="headerlink" href="#convert-static-fluorescence-images" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-convert-images"></span><h4>Convert Static Fluorescence Images<a class="headerlink" href="#convert-static-fluorescence-images" title="Permalink to this headline">#</a></h4>
 <p>As a final step of converting your calcium imaging data you may want to add static neuron and ROI images to your NWB file. Static colour images can be stored as <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/RGBImage.html"><code class="docutils literal notranslate"><span class="pre">RGBImage</span></code></a> objects with the <code class="docutils literal notranslate"><span class="pre">data</span></code> property containing an array that has the spatial dimensions plus the third dimension corresponding to colour (three planes of RGB values; <code class="docutils literal notranslate"><span class="pre">Neuron</span></code> variable described in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>):</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">neuron_image</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">types</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">RGBImage</span><span class="p">(</span><span class="w"> </span><span class="k">...</span>
 <span class="w">    </span><span class="s">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">data1</span><span class="p">.</span><span class="n">Analysed_data</span><span class="p">.</span><span class="n">Neuron</span><span class="p">,</span><span class="w"> </span><span class="k">...</span><span class="c">  % required: [height, width, colour]</span>
@@ -879,7 +878,7 @@ document.write(`
 <p>This completes the conversion of the calcium imaging data into the NWB format.</p>
 </section>
 <section id="convert-intracellular-electrophysiology-recording-data">
-<span id="tutorials-caimage-convert2nwb-matlab-convert-icephys"></span><h4>Convert Intracellular Electrophysiology Recording Data<a class="headerlink" href="#convert-intracellular-electrophysiology-recording-data" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-convert-icephys"></span><h4>Convert Intracellular Electrophysiology Recording Data<a class="headerlink" href="#convert-intracellular-electrophysiology-recording-data" title="Permalink to this headline">#</a></h4>
 <p>The calcium imaging data during this experiment were acquired in parallel to simultaneous intracellular somatic current clamp recordings in the imaged neuron. The recording sweeps are stored in the <code class="docutils literal notranslate"><span class="pre">Ephys_data</span></code> variable described in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>. The variable contains recording sweeps corresponding to all three ROI imaging data. Note that the sweeps cover the first 950 ms of corresponding calcium imaging linescans. Analogously to the imaging data, we start by creating the recording device Amplifier_Multiclamp_700A:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Create the recording device object</span>
 <span class="n">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">types</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">Device</span><span class="p">(</span><span class="w"> </span><span class="k">...</span>
@@ -938,7 +937,7 @@ document.write(`
 <p>The <code class="docutils literal notranslate"><span class="pre">CurrentClampSeries</span></code> is similar to the <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> object. The difference is that, while creating the former, we need to provide a link to the electrode object and, since there is no <code class="docutils literal notranslate"><span class="pre">scan_line_rate</span></code> property, we need to add the <code class="docutils literal notranslate"><span class="pre">timestamps</span></code> variable corresponding to the second dimension of the electrophysiology data (<code class="docutils literal notranslate"><span class="pre">Ephys_Time</span></code> and <code class="docutils literal notranslate"><span class="pre">Ephys_data</span></code> variables defined in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>, respectively).</p>
 </section>
 <section id="save-nwb-file">
-<span id="tutorials-caimage-convert2nwb-matlab-save"></span><h4>Save NWB File<a class="headerlink" href="#save-nwb-file" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-save"></span><h4>Save NWB File<a class="headerlink" href="#save-nwb-file" title="Permalink to this headline">#</a></h4>
 <p>We call the <code class="docutils literal notranslate"><span class="pre">nwbExport</span></code> function to save our data in the NWB format:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Save the converted NWB file</span>
 <span class="n">nwbExport</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">sessionID</span><span class="w"> </span><span class="s">&#39;.nwb&#39;</span><span class="p">]);</span>
@@ -946,7 +945,7 @@ document.write(`
 </div>
 </section>
 <section id="read-nwb-file">
-<span id="tutorials-caimage-convert2nwb-matlab-read"></span><h4>Read NWB File<a class="headerlink" href="#read-nwb-file" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-read"></span><h4>Read NWB File<a class="headerlink" href="#read-nwb-file" title="Permalink to this headline">#</a></h4>
 <p>Now if you want to open the NWB file that you just saved in Matlab, you can issue a command</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">nwb2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">nwbRead</span><span class="p">(</span><span class="s">&#39;m1_201204_s2_c1.nwb&#39;</span><span class="p">);</span>
 </pre></div>
@@ -977,11 +976,11 @@ document.write(`
 <p>More on reading optical physiology data stored in NWB files can be found in an external tutorial <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/ophys.html#H_3917738A">here</a>.</p>
 </section>
 <section id="validate-nwb-file">
-<span id="tutorials-caimage-convert2nwb-matlab-validate"></span><h4>Validate NWB File<a class="headerlink" href="#validate-nwb-file" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-validate"></span><h4>Validate NWB File<a class="headerlink" href="#validate-nwb-file" title="Permalink to this headline">#</a></h4>
 <p>MatNWB does not provide its own NWB file validator. However, you can validate NWB files generated using Matlab in Python. For instructions on how to do it, refer to the corresponding <a class="reference internal" href="#tutorials-caimage-convert2nwb-py-validate"><span class="std std-ref">PyNWB validation section</span></a> of the tutorial.</p>
 </section>
 <section id="resources">
-<span id="tutorials-caimage-convert2nwb-matlab-resources"></span><h4>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-matlab-resources"></span><h4>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h4>
 <p>This section explained how you can use Matlab to convert your calcium imaging and accompanying current clamp data into NWB files. It is not an exhaustive overview of Matnwb toolbox optical physiology functionality. There are other potential use cases involving imaging in multiple neurons while simultaneously recording behavioural data, for example. There is a number of externally available tutorials covering some aspects of converting data obtained in optical physiology experiments to the NWB file format using Matlab:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/intro.html">Intro to NWB Tutorial</a></p></li>
@@ -995,9 +994,9 @@ document.write(`
 </section>
 </section>
 <section id="convert-to-nwb-using-python">
-<span id="tutorials-caimage-convert2nwb-py"></span><h3>Convert to NWB Using Python<a class="headerlink" href="#convert-to-nwb-using-python" title="Permalink to this heading">#</a></h3>
+<span id="tutorials-caimage-convert2nwb-py"></span><h3>Convert to NWB Using Python<a class="headerlink" href="#convert-to-nwb-using-python" title="Permalink to this headline">#</a></h3>
 <section id="install-pynwb">
-<span id="tutorials-caimage-convert2nwb-py-install"></span><h4>Install PyNWB<a class="headerlink" href="#install-pynwb" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-caimage-convert2nwb-py-install"></span><h4>Install PyNWB<a class="headerlink" href="#install-pynwb" title="Permalink to this headline">#</a></h4>
 <p>To convert your extracellular electrophysiology data, you will need to install PyNWB first. To do so, type in your terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pynwb</span>
 </pre></div>
@@ -1005,7 +1004,7 @@ document.write(`
 <p>Now you’re ready to start working with PyNWB. The full installation instructions are available <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/install_users.html">here</a>.</p>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-record-metadata">
-<span id="id1"></span><h4>Record Metadata<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-record-metadata" title="Permalink to this heading">#</a></h4>
+<span id="id1"></span><h4>Record Metadata<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-record-metadata" title="Permalink to this headline">#</a></h4>
 <p>Inside the calcium imaging repository there is a folder with a Python file that you can execute in order to convert the data of one particular imaging/recording session into the NWB format. The script is located inside the <code class="docutils literal notranslate"><span class="pre">Exp_001_SCstim_DiffLocations/201204/Slice_00/Cell_001/nwb</span></code> folder in the file named <code class="docutils literal notranslate"><span class="pre">convert2nwbCaImg.py</span></code> and, if executed, it would convert the data stored in the files below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Exp_001_SCstim_DiffLocations</span><span class="o">/</span><span class="mi">201204</span><span class="o">/</span><span class="n">Slice_002</span><span class="o">/</span><span class="n">Cell_001</span><span class="o">/</span><span class="n">Analysed</span><span class="o">/</span><span class="mi">201204</span><span class="n">__s2d1_004_ED__1</span> <span class="n">Botden_Analysed</span><span class="o">.</span><span class="n">mat</span>
 <span class="n">Exp_001_SCstim_DiffLocations</span><span class="o">/</span><span class="mi">201204</span><span class="o">/</span><span class="n">Slice_002</span><span class="o">/</span><span class="n">Cell_001</span><span class="o">/</span><span class="n">Analysed</span><span class="o">/</span><span class="mi">201204</span><span class="n">__s2d1_004_ED__1</span> <span class="n">Midden_Analysed</span><span class="o">.</span><span class="n">mat</span>
@@ -1112,7 +1111,7 @@ document.write(`
 </div>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-create-img-planes">
-<span id="id2"></span><h4>Create Imaging Planes<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-create-img-planes" title="Permalink to this heading">#</a></h4>
+<span id="id2"></span><h4>Create Imaging Planes<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-create-img-planes" title="Permalink to this headline">#</a></h4>
 <p>In order to store optical imaging data, we need to create imaging planes. First, we create <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.OpticalChannel"><code class="docutils literal notranslate"><span class="pre">OpticalChannel</span></code></a> objects for each calcium indicator we use. The objects contain <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code>, and <code class="docutils literal notranslate"><span class="pre">emission_lambda</span></code> properties. In our case we use indicators Fluo5f and Alexa594 which have their maximum emission wavelengths at approximately 516 and 616 nanometers, respectively. These wavelength roughly correspond to green and red colours. Therefore, we name the channels based on the colours their corresponding calcium indicators emit.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">green_optical_channel</span> <span class="o">=</span> <span class="n">OpticalChannel</span><span class="p">(</span>
   <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;OpticalChannel&quot;</span><span class="p">,</span>
@@ -1158,7 +1157,7 @@ document.write(`
 <p>The <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.ImagingPlane"><code class="docutils literal notranslate"><span class="pre">ImagingPlane</span></code></a> object defines various properties of imaging planes used to generate the optical physiology data. Required properties include <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">excitation_lambda</span></code> (the wavelength used to excite calcium indicators in nm), <code class="docutils literal notranslate"><span class="pre">indicator</span></code>, <code class="docutils literal notranslate"><span class="pre">location</span></code> (brain area where the imaging plane is located), <code class="docutils literal notranslate"><span class="pre">optical_channel</span></code> (previously created <code class="docutils literal notranslate"><span class="pre">OpticalChannel</span></code> objects), and <code class="docutils literal notranslate"><span class="pre">device</span></code> (a previously created <code class="docutils literal notranslate"><span class="pre">Device</span></code> object defining the two-photon microscope). It is also useful to provide <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">imaging_rate</span></code> (the rate at which individual linescans are obtained), and any other properties you deem necessary. Such properties may include <code class="docutils literal notranslate"><span class="pre">origin_coords</span></code> defining physical location of the first element of the imaging plane relative to some reference point (e.g., bregma; defined by the <code class="docutils literal notranslate"><span class="pre">reference_frame</span></code> property) and <code class="docutils literal notranslate"><span class="pre">grid_spacing</span></code> to define the distance between individual pixels within the imaging plane.</p>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-load-data">
-<span id="id3"></span><h4>Load Imaging/Recording Data<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-load-data" title="Permalink to this heading">#</a></h4>
+<span id="id3"></span><h4>Load Imaging/Recording Data<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-load-data" title="Permalink to this headline">#</a></h4>
 <p>The next part of the conversion script loads aggregated and preprocessed data stored inside the three MAT files in the <code class="docutils literal notranslate"><span class="pre">Exp_001_SCstim_DiffLocations/201204/Slice_002/Cell_001/Analysed</span></code> folder:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
 <span class="n">dendrite</span> <span class="o">=</span> <span class="s1">&#39;Bot&#39;</span>
@@ -1187,7 +1186,7 @@ document.write(`
 </div>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-convert-fluorescence">
-<span id="id4"></span><h4>Convert Fluorescence Data<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-convert-fluorescence" title="Permalink to this heading">#</a></h4>
+<span id="id4"></span><h4>Convert Fluorescence Data<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-convert-fluorescence" title="Permalink to this headline">#</a></h4>
 <p>We convert the fluorescence data by invoking <code class="docutils literal notranslate"><span class="pre">setTwoPhotonSeries</span></code> function as shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;indicator&#39;</span><span class="p">:</span> <span class="n">greenIndicator</span><span class="p">,</span>
@@ -1242,7 +1241,7 @@ document.write(`
 <p>The fluorescence data are added to the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> object by creating a <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.ophys.html#pynwb.ophys.TwoPhotonSeries"><code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code></a> object. <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> object has the following required properties: <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">imaging_plane</span></code>, and <code class="docutils literal notranslate"><span class="pre">rate</span></code>. In our case, the <code class="docutils literal notranslate"><span class="pre">data</span></code> property contains the actual fluorescence data in a 3D array form with its dimensions described in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a> (<code class="docutils literal notranslate"><span class="pre">Flur5_denoised</span></code> and <code class="docutils literal notranslate"><span class="pre">Alexa_denoised</span></code> keys). The <code class="docutils literal notranslate"><span class="pre">rate</span></code> property corresponds to the rate at which individual linescans were acquired. However, it does not need to be organised this way and can refer to a different data dimension. Therefore, it is important to use <code class="docutils literal notranslate"><span class="pre">description</span></code> and <code class="docutils literal notranslate"><span class="pre">comments</span></code> properties to explain how the data are organised. For example, data containing individual linescans is not continuous and should be described as having the step quality. This is done by the <code class="docutils literal notranslate"><span class="pre">data_continuity</span> <span class="pre">=</span> <span class="pre">step</span></code> entry in the <code class="docutils literal notranslate"><span class="pre">comments</span></code> (unlike in pynwb, in matnwb this is a separate property). The property <code class="docutils literal notranslate"><span class="pre">scan_line_rate</span></code> describes the rate at which individual image lines were obtained and corresponds to the second dimension of the data.</p>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-convert-fluorescence-intensity-change">
-<span id="id5"></span><h4>Convert Change in Fluorescence Intensity Data<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-convert-fluorescence-intensity-change" title="Permalink to this heading">#</a></h4>
+<span id="id5"></span><h4>Convert Change in Fluorescence Intensity Data<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-convert-fluorescence-intensity-change" title="Permalink to this headline">#</a></h4>
 <p>In addition to converting the denoised fluorescence signal we are also going to convert the change in fluorescence intensity data (delta fluorescence). The delta F estimate is derived from the Alexa594 calcium indicator data or the red colour channel signal. It is stored using the <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> object similar to the denoised raw fluorescence data as described in the previous subsection. We perform conversion for all three ROIs as shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add optical physiology data: Delta fluorescence</span>
 <span class="nb">input</span> <span class="o">=</span> <span class="p">{</span>
@@ -1294,7 +1293,7 @@ document.write(`
 <p>All <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> objects are stored within the <code class="docutils literal notranslate"><span class="pre">acquisition</span></code> data interface of the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> object. However, this is not the only way of storing ROI fluorescence data. Alternatively, this type of data could be stored by defining an image mask used to extract ROI data from the wider fluorescence imaging data. If this is how you have obtained your own data, then it is worth consulting a different calcium imaging tutorial available <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/tutorials/domain/ophys.html#sphx-glr-tutorials-domain-ophys-py">here</a>.</p>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-convert-images">
-<span id="id6"></span><h4>Convert Static Fluorescence Images<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-convert-images" title="Permalink to this heading">#</a></h4>
+<span id="id6"></span><h4>Convert Static Fluorescence Images<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-convert-images" title="Permalink to this headline">#</a></h4>
 <p>As a final step of converting your calcium imaging data you may want to add static neuron and ROI images to your NWB file. Static colour images can be stored as <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.image.html#pynwb.image.RGBImage"><code class="docutils literal notranslate"><span class="pre">RGBImage</span></code></a> objects with the <code class="docutils literal notranslate"><span class="pre">data</span></code> property containing an array that has the spatial dimensions plus the third dimension corresponding to colour (three planes of RGB values; <code class="docutils literal notranslate"><span class="pre">Neuron</span></code> key described in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">neuron_image</span> <span class="o">=</span> <span class="n">RGBImage</span><span class="p">(</span>
   <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;neuron_image&#39;</span><span class="p">,</span>
@@ -1322,7 +1321,7 @@ document.write(`
 <p>This completes the conversion of the calcium imaging data into the NWB format.</p>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-convert-icephys">
-<span id="id7"></span><h4>Convert Intracellular Electrophysiology Recording Data<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-convert-icephys" title="Permalink to this heading">#</a></h4>
+<span id="id7"></span><h4>Convert Intracellular Electrophysiology Recording Data<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-convert-icephys" title="Permalink to this headline">#</a></h4>
 <p>The calcium imaging data during this experiment were acquired in parallel to simultaneous intracellular somatic current clamp recordings in the imaged neuron. The recording sweeps are stored in the <code class="docutils literal notranslate"><span class="pre">Ephys_data</span></code> variable described in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>. The variable contains recording sweeps corresponding to all three ROI imaging data. Note that the sweeps cover the first 950 ms of corresponding calcium imaging linescans. Analogously to the imaging data, we start by creating the recording device Amplifier_Multiclamp_700A:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the recording device object</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">create_device</span><span class="p">(</span>
@@ -1400,7 +1399,7 @@ document.write(`
 <p>The <code class="docutils literal notranslate"><span class="pre">CurrentClampSeries</span></code> is similar to the <code class="docutils literal notranslate"><span class="pre">TwoPhotonSeries</span></code> object. The difference is that, while creating the former, we need to provide an electrode object and, since there is no <code class="docutils literal notranslate"><span class="pre">scan_line_rate</span></code> property, we need to add the <code class="docutils literal notranslate"><span class="pre">timestamps</span></code> key corresponding to the second dimension of the electrophysiology data (<code class="docutils literal notranslate"><span class="pre">Ephys_Time</span></code> and <code class="docutils literal notranslate"><span class="pre">Ephys_data</span></code> variables defined in <a class="reference internal" href="#tutorials-caimage-convert2nwb-matlab-variable-table"><span class="std std-ref">Table 1</span></a>, respectively).</p>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-save">
-<span id="id8"></span><h4>Save NWB File<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-save" title="Permalink to this heading">#</a></h4>
+<span id="id8"></span><h4>Save NWB File<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-save" title="Permalink to this headline">#</a></h4>
 <p>We use the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.html?highlight=NWBHDF5IO#pynwb.NWBHDF5IO"><code class="docutils literal notranslate"><span class="pre">NWBHDF5IO</span></code></a> class to save our data in the NWB format:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">sessionID</span> <span class="o">+</span> <span class="s1">&#39;.nwb&#39;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">io</span><span class="p">:</span>
   <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
@@ -1408,7 +1407,7 @@ document.write(`
 </div>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-read">
-<span id="id9"></span><h4>Read NWB File<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-read" title="Permalink to this heading">#</a></h4>
+<span id="id9"></span><h4>Read NWB File<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-read" title="Permalink to this headline">#</a></h4>
 <p>Reading NWB files in Python is done via the <code class="docutils literal notranslate"><span class="pre">NWBHDF5IO</span></code> class. Hence, import it by calling:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
 </pre></div>
@@ -1445,7 +1444,7 @@ document.write(`
 <p>More on reading optical physiology data stored in NWB files can be found in an external tutorial <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/tutorials/domain/ophys.html#read-the-nwbfile">here</a>.</p>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-validate">
-<span id="id10"></span><h4>Validate NWB File<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-validate" title="Permalink to this heading">#</a></h4>
+<span id="id10"></span><h4>Validate NWB File<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-validate" title="Permalink to this headline">#</a></h4>
 <p>For validating NWB files use command line and type in</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pynwb</span><span class="o">.</span><span class="n">validate</span> <span class="n">m1_201204_s2_c1</span><span class="o">.</span><span class="n">nwb</span>
 </pre></div>
@@ -1459,7 +1458,7 @@ document.write(`
 <p>For more details on the validation process, refer to an external <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/validation.html">resource</a>.</p>
 </section>
 <section id="tutorials-caimage-convert2nwb-py-resources">
-<span id="id11"></span><h4>Resources<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-resources" title="Permalink to this heading">#</a></h4>
+<span id="id11"></span><h4>Resources<a class="headerlink" href="#tutorials-caimage-convert2nwb-py-resources" title="Permalink to this headline">#</a></h4>
 <p>This section explained how you can use Python to convert your calcium imaging and accompanying current clamp data into NWB files. It is not an exhaustive overview of PyNWB module’s optical physiology functionality. There are other potential use cases involving imaging in multiple neurons while simultaneously recording behavioural data, for example. There is a number of externally available tutorials covering some aspects of converting data obtained in optical physiology experiments to the NWB file format using Python:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pynwb.readthedocs.io/en/stable/tutorials/general/file.html#sphx-glr-tutorials-general-file-py">NWB File Basics Tutorial</a></p></li>
@@ -1473,12 +1472,12 @@ document.write(`
 </section>
 </section>
 <section id="examine-nwb-file-structure-using-hdfview">
-<span id="tutorials-caimage-convert2nwb-hdfview"></span><h3>Examine NWB File Structure Using HDFView<a class="headerlink" href="#examine-nwb-file-structure-using-hdfview" title="Permalink to this heading">#</a></h3>
+<span id="tutorials-caimage-convert2nwb-hdfview"></span><h3>Examine NWB File Structure Using HDFView<a class="headerlink" href="#examine-nwb-file-structure-using-hdfview" title="Permalink to this headline">#</a></h3>
 <p>You can use <a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview">HDF View</a> software to visualise the structure of your NWB files using a simple graphical interface.</p>
 </section>
 </section>
 <section id="upload-your-standardised-data-to-remote-repository">
-<span id="tutorials-caimage-upload-nwb"></span><h2>Upload Your Standardised Data to Remote Repository<a class="headerlink" href="#upload-your-standardised-data-to-remote-repository" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-caimage-upload-nwb"></span><h2>Upload Your Standardised Data to Remote Repository<a class="headerlink" href="#upload-your-standardised-data-to-remote-repository" title="Permalink to this headline">#</a></h2>
 <p>Let’s say that you have completed the conversion of your data to the NWB format and now want to upload the converted file to the remote repository. First of all, move the NWB files to appropriate folder within your local repository:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">m1_201204_s2_c1</span><span class="o">.</span><span class="n">nwb</span> <span class="o">../</span><span class="n">Analysed</span><span class="o">/</span>
 </pre></div>
@@ -1493,7 +1492,7 @@ document.write(`
 </div>
 </section>
 <section id="roll-back-repository-to-an-earlier-version">
-<span id="tutorials-caimage-roll-back"></span><h2>Roll back Repository to an Earlier Version<a class="headerlink" href="#roll-back-repository-to-an-earlier-version" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-caimage-roll-back"></span><h2>Roll back Repository to an Earlier Version<a class="headerlink" href="#roll-back-repository-to-an-earlier-version" title="Permalink to this headline">#</a></h2>
 <p>Now let’s assume you are not happy with the converted NWB file and you want to roll back to an earlier version of your repository prior to the conversion. Before we can do that, we need to find out the latest commit IDs by typing:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">version</span> <span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">count</span> <span class="mi">2</span>
 </pre></div>
@@ -1524,7 +1523,7 @@ document.write(`
 <p>Rolling back versions may produce some unintuitive results. Rolling back versions replaces new files with their earlier versions. However, if those files were not present in previous versions, they are kept in the rolled back version. Therefore, the new files have to be deleted manually after the roll back. This may seem like a bug but it actually is an intentional behaviour.</p>
 </section>
 <section id="acknowledgements">
-<span id="tutorials-caimage-acknowledge"></span><h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-caimage-acknowledge"></span><h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
 <p>This tutorial was made possible with the kind help of <a class="reference external" href="https://www.linkedin.com/in/matt-udakis-21070485/?originalSubdomain=uk">Matt Udakis</a> who provided calcium imaging/intracellular recording data samples.</p>
 </section>
 </section>

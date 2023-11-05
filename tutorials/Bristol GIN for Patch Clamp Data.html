@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Bristol GIN for Patch Clamp Data</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Bristol GIN for Calcium Imaging Data" href="Bristol%20GIN%20for%20Calcium%20Imaging%20Data.html" />
     <link rel="prev" title="Bristol GIN for Silicon Probe Data" href="Bristol%20GIN%20for%20Silicon%20Probe%20Data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -444,9 +443,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bristol-gin-for-patch-clamp-data">
-<span id="tutorials-pclamp"></span><h1>Bristol GIN for Patch Clamp Data<a class="headerlink" href="#bristol-gin-for-patch-clamp-data" title="Permalink to this heading">#</a></h1>
+<span id="tutorials-pclamp"></span><h1>Bristol GIN for Patch Clamp Data<a class="headerlink" href="#bristol-gin-for-patch-clamp-data" title="Permalink to this headline">#</a></h1>
 <section id="create-gin-account">
-<span id="tutorials-pclamp-create-account"></span><h2>Create GIN Account<a class="headerlink" href="#create-gin-account" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-pclamp-create-account"></span><h2>Create GIN Account<a class="headerlink" href="#create-gin-account" title="Permalink to this headline">#</a></h2>
 <p>In order to be able to follow this tutorial, you need to have a GIN account either on Bristol GIN or on the public GIN service. GIN web interface documentation has it all explained <a class="reference internal" href="../documentation/Repository%20Management%20with%20GIN%20Web%20Interface.html#doc-gin-web-register"><span class="std std-ref">here</span></a>.</p>
 <p>After creating the account, login to it by typing:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">login</span>
@@ -454,7 +453,7 @@ document.write(`
 </div>
 </section>
 <section id="download-mock-data">
-<span id="tutorials-pclamp-download-data"></span><h2>Download Mock Data<a class="headerlink" href="#download-mock-data" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-pclamp-download-data"></span><h2>Download Mock Data<a class="headerlink" href="#download-mock-data" title="Permalink to this headline">#</a></h2>
 <p>We are going to download intracellular electrophysiology recording data available in <a class="reference external" href="https://gin.g-node.org/dervinism/icephys_mock_repo">dervinism/icephys_mock_repo</a> repository. To get the data, type in the lines below to your terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">get</span> <span class="n">dervinism</span><span class="o">/</span><span class="n">icephys_mock_repo</span>
 <span class="n">cd</span> <span class="n">icephys_mock_repo</span>
@@ -470,7 +469,7 @@ document.write(`
 </ul>
 </section>
 <section id="set-up-your-research-data-repository">
-<span id="tutorials-pclamp-setup-repo"></span><h2>Set up Your Research Data Repository<a class="headerlink" href="#set-up-your-research-data-repository" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-pclamp-setup-repo"></span><h2>Set up Your Research Data Repository<a class="headerlink" href="#set-up-your-research-data-repository" title="Permalink to this headline">#</a></h2>
 <p>You should rename your repository, delete the .git folder located inside the repository root folder, and update your README file if needed. Once this is done, issue the command below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">init</span>
 </pre></div>
@@ -478,7 +477,7 @@ document.write(`
 <p>This would intialise the local repository.</p>
 </section>
 <section id="upload-repository">
-<span id="tutorials-pclamp-upload-repo"></span><h2>Upload Repository<a class="headerlink" href="#upload-repository" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-pclamp-upload-repo"></span><h2>Upload Repository<a class="headerlink" href="#upload-repository" title="Permalink to this headline">#</a></h2>
 <p>The next step is to create a remote repository with the same name and associate it with the local repository. You can simply do it by typing in your terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">add</span><span class="o">-</span><span class="n">remote</span> <span class="n">your</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span> <span class="n">gin</span><span class="p">:</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">/</span><span class="n">your</span><span class="o">-</span><span class="n">repo</span><span class="o">-</span><span class="n">name</span> <span class="o">--</span><span class="n">default</span>
 </pre></div>
@@ -502,7 +501,7 @@ document.write(`
 <p>When you use the web interface, you can specify the commit message title (no more than 50 characters by convention) and the commit message body (no more than 72 characters by convention).</p>
 </section>
 <section id="remove-content-of-your-local-research-data-repository">
-<span id="tutorials-pclamp-remove-content"></span><h2>Remove Content of Your Local Research Data Repository<a class="headerlink" href="#remove-content-of-your-local-research-data-repository" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-pclamp-remove-content"></span><h2>Remove Content of Your Local Research Data Repository<a class="headerlink" href="#remove-content-of-your-local-research-data-repository" title="Permalink to this headline">#</a></h2>
 <p>One advantage of using GIN for your data repository mangement is that you do not need to keep duplicate repositories in order to prevent accidental detrimental changes to your main repository. One reason for that is having version control system. The other reason is that you can safely remove the content of your local repository and replace it with pointers to original files. As a result you can save space on your local hard-drive. To remove the local content, type the following line in your terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gin</span> <span class="n">remove</span><span class="o">-</span><span class="n">content</span>
 </pre></div>
@@ -528,12 +527,12 @@ document.write(`
 </div>
 </section>
 <section id="convert-your-data-to-standardised-format">
-<span id="tutorials-pclamp-convert2nwb"></span><h2>Convert Your Data to Standardised Format<a class="headerlink" href="#convert-your-data-to-standardised-format" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-pclamp-convert2nwb"></span><h2>Convert Your Data to Standardised Format<a class="headerlink" href="#convert-your-data-to-standardised-format" title="Permalink to this headline">#</a></h2>
 <p>In order to increase your research data’s adherence to the <a class="reference external" href="https://www.go-fair.org/fair-principles/">FAIR principles</a> of scientific data management and, in particular, to increase the interoperability of your data and chances of it being reused beyond its original purpose of collection, it is highly advisable to convert your data into one of the more popular standard file formats for neuroscience data. One such format is the <a class="reference external" href="https://www.nwb.org/">Neurodata Without Borders (NWB)</a> which is highly suitable for most of the neurophysiology data. Programming interfaces in both Matlab and Python are available for converting your data. Here we are going to provide explanations of how you can convert your data in both programming languages. While showing you examples of that, we will continue our focus on the intracellular electrophysiology data.</p>
 <section id="convert-to-nwb-using-matlab">
-<span id="tutorials-pclamp-convert2nwb-matlab"></span><h3>Convert to NWB Using Matlab<a class="headerlink" href="#convert-to-nwb-using-matlab" title="Permalink to this heading">#</a></h3>
+<span id="tutorials-pclamp-convert2nwb-matlab"></span><h3>Convert to NWB Using Matlab<a class="headerlink" href="#convert-to-nwb-using-matlab" title="Permalink to this headline">#</a></h3>
 <section id="install-matnwb-toolbox">
-<span id="tutorials-pclamp-convert2nwb-matlab-install-matnwb"></span><h4>Install MatNWB Toolbox<a class="headerlink" href="#install-matnwb-toolbox" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-install-matnwb"></span><h4>Install MatNWB Toolbox<a class="headerlink" href="#install-matnwb-toolbox" title="Permalink to this headline">#</a></h4>
 <p>To begin with the Matlab demonstration, you would need to install <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/">MatNWB toolbox</a>. To download the toolbox, type in your terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NeurodataWithoutBorders</span><span class="o">/</span><span class="n">matnwb</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
@@ -547,7 +546,7 @@ document.write(`
 <p>You can now start using MatNWB. MatNWB interface documentation can be accessed <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/index.html">here</a>.</p>
 </section>
 <section id="record-metadata">
-<span id="tutorials-pclamp-convert2nwb-matlab-record-metadata"></span><h4>Record Metadata<a class="headerlink" href="#record-metadata" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-record-metadata"></span><h4>Record Metadata<a class="headerlink" href="#record-metadata" title="Permalink to this headline">#</a></h4>
 <p>Inside the intracellular electrophysiology repository there is a folder with the Matlab file that you can execute in order to convert the data of one particular imaging/recording session into the NWB format. The script is located inside the <code class="docutils literal notranslate"><span class="pre">180126/Slice1/Cell1/180126/nwb</span></code> folder in the file named <code class="docutils literal notranslate"><span class="pre">convert2nwbpClamp.m</span></code> and, if executed, it would convert the data stored in the file <code class="docutils literal notranslate"><span class="pre">180126/Slice1/Cell1/180126__s1c1_001_ED.mat</span></code>.</p>
 <p>Initially, we start by recording the metadata associated with this experimental session. In this tutorial the metadata are divided into three types: Project, animal, and session metadata. The project metadata are common to all animals and experimental sessions and is defined by the part of the script below:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">projectName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;Inhibitory plasticity experiment in CA1&#39;</span><span class="p">;</span>
@@ -633,7 +632,7 @@ document.write(`
 </div>
 </section>
 <section id="load-patch-clamp-recording-data">
-<span id="tutorials-pclamp-convert2nwb-matlab-load-data"></span><h4>Load Patch Clamp Recording Data<a class="headerlink" href="#load-patch-clamp-recording-data" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-load-data"></span><h4>Load Patch Clamp Recording Data<a class="headerlink" href="#load-patch-clamp-recording-data" title="Permalink to this headline">#</a></h4>
 <p>The next part of the conversion script loads aggregated and preprocessed data stored inside the <code class="docutils literal notranslate"><span class="pre">180126/Slice1/Cell1/180126__s1c1_001_ED.mat</span></code> file:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">load</span><span class="p">([</span><span class="s">&#39;..\&#39;</span><span class="w"> </span><span class="nb">year</span><span class="w"> </span><span class="nb">month</span><span class="w"> </span><span class="nb">day</span><span class="w"> </span><span class="s">&#39;__s&#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">sliceNumber</span><span class="p">)</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">cellNumber</span><span class="p">)</span><span class="w"> </span><span class="s">&#39;_001_ED.mat&#39;</span><span class="p">]);</span>
 <span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">.([</span><span class="s">&#39;V&#39;</span><span class="w"> </span><span class="nb">year</span><span class="w"> </span><span class="nb">month</span><span class="w"> </span><span class="nb">day</span><span class="w"> </span><span class="s">&#39;__s&#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">sliceNumber</span><span class="p">)</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">cellNumber</span><span class="p">)</span><span class="w"> </span><span class="s">&#39;_001_wave_data&#39;</span><span class="p">]);</span>
@@ -643,7 +642,7 @@ document.write(`
 </pre></div>
 </div>
 <p>The data contains both voltage and current clamp recordings obtained in a pyramidal cell located in the hippocampal CA1 region while inhibitory cells in the vicinity are being stimulated by direct current, or optogenitically, or both. The table below describes variables inside the file.</p>
-<table class="table" id="tutorials-pclamp-convert2nwb-matlab-variable-table">
+<table class="colwidths-auto table" id="tutorials-pclamp-convert2nwb-matlab-variable-table">
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Variable</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
@@ -684,7 +683,7 @@ document.write(`
 </table>
 <p><strong>Table 1. Preprocessed Data</strong></p>
 <p>The two critical variables are <code class="docutils literal notranslate"><span class="pre">frameinfo</span></code> and <code class="docutils literal notranslate"><span class="pre">values</span></code>. The latter is a data matrix with one dimension corresponding to time and the other to the sweep number. <code class="docutils literal notranslate"><span class="pre">frameinfo</span></code> is further organised on the sweep basis and data columns with the following labels:</p>
-<table class="table" id="tutorials-pclamp-convert2nwb-matlab-sweep-table">
+<table class="colwidths-auto table" id="tutorials-pclamp-convert2nwb-matlab-sweep-table">
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Label</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
@@ -765,7 +764,7 @@ document.write(`
 <p>We need information about runs because we are going to organise data hierarchically based on the stimulation protocol, runs of repeated stimulation protocols (repetitions), and groups of runs (or experimental conditions, in other words).</p>
 </section>
 <section id="convert-intracellular-electrophysiology-recording-data">
-<span id="tutorials-pclamp-convert2nwb-matlab-convert-icephys"></span><h4>Convert Intracellular Electrophysiology Recording Data<a class="headerlink" href="#convert-intracellular-electrophysiology-recording-data" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-convert-icephys"></span><h4>Convert Intracellular Electrophysiology Recording Data<a class="headerlink" href="#convert-intracellular-electrophysiology-recording-data" title="Permalink to this headline">#</a></h4>
 <p>We start data conversion by creating the electrode object and providing a few metadata entries about the recording setup. First, we create the recording device Amplifier_Multiclamp_700A of the <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/Device.html"><code class="docutils literal notranslate"><span class="pre">Device</span></code></a> class type:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span>#<span class="w"> </span><span class="n">Create</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">recording</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="n">object</span>
 <span class="n">device</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">types</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">Device</span><span class="p">(</span><span class="w"> </span><span class="k">...</span>
@@ -890,7 +889,7 @@ document.write(`
 <p>We use the same data for stimuli and responses as stimuli data has not been recorded. Later when creating recordings table we are going to indicate that stimulation data does not really exist.</p>
 </section>
 <section id="create-intracellular-recordings-table">
-<span id="tutorials-pclamp-convert2nwb-matlab-recordings-table"></span><h4>Create Intracellular Recordings Table<a class="headerlink" href="#create-intracellular-recordings-table" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-recordings-table"></span><h4>Create Intracellular Recordings Table<a class="headerlink" href="#create-intracellular-recordings-table" title="Permalink to this headline">#</a></h4>
 <p>It is useful to group stimuli and responses together, as well as associate them with important metadata. By doing so we make it easier to access these time series objects based on their metadata properties and appropriately process and analyse them collectively as required. The <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/IntracellularRecordingsTable.html"><code class="docutils literal notranslate"><span class="pre">IntracellularRecordingsTable</span></code></a> class allows to do just that. It is a subclass of <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/AlignedDynamicTable.html"><code class="docutils literal notranslate"><span class="pre">AlignedDynamicTable</span></code></a> class that can group multiple objects of <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/DynamicTable.html"><code class="docutils literal notranslate"><span class="pre">DynamicTable</span></code></a> type. In the case of intracellular recordings, it groups together electrode metadata (<a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/IntracellularElectrodesTable.html"><code class="docutils literal notranslate"><span class="pre">IntracellularElectrodesTable</span></code></a>), with stimuli (<a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/IntracellularStimuliTable.html"><code class="docutils literal notranslate"><span class="pre">IntracellularStimuliTable</span></code></a>), responses (<a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/IntracellularResponsesTable.html"><code class="docutils literal notranslate"><span class="pre">IntracellularResponsesTable</span></code></a>), and any other custom metadata. We start by creating <code class="docutils literal notranslate"><span class="pre">IntracellularElectrodesTable</span></code>:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Create intracellular recording table</span>
 <span class="n">icRecTable</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">types</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">IntracellularRecordingsTable</span><span class="p">(</span><span class="w"> </span><span class="k">...</span>
@@ -973,10 +972,10 @@ document.write(`
 <p>Like the predefined categories, custom categories must have the same number of rows as categories that already form the main table.</p>
 </section>
 <section id="group-intracellular-recording-sweeps">
-<span id="tutorials-pclamp-convert2nwb-matlab-group-sweeps"></span><h4>Group Intracellular Recording Sweeps<a class="headerlink" href="#group-intracellular-recording-sweeps" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-group-sweeps"></span><h4>Group Intracellular Recording Sweeps<a class="headerlink" href="#group-intracellular-recording-sweeps" title="Permalink to this headline">#</a></h4>
 <p>NWB files provide a way to group intracellular recordings in a hierarchical manner. You can indicate which recordings were obtained simultaneously, if any. You can further group the simultaneous recordings into sequential recordings and runs (or repetitions). Finally you can group runs into experimental conditions. All these groupings are <code class="docutils literal notranslate"><span class="pre">DynamicTable</span></code> classes that allow adding custom metadata entries. Specifying metadata at different hierarchy levels avoids specifying this information for every recording sweep. If you decide to use these optional groupings, using a particular grouping type implies that you also use groupings of lower hierarchy.</p>
 <section id="group-simultaneously-recorded-sweeps">
-<span id="tutorials-pclamp-convert2nwb-matlab-group-sweeps-simultaneous"></span><h5>Group Simultaneously Recorded Sweeps<a class="headerlink" href="#group-simultaneously-recorded-sweeps" title="Permalink to this heading">#</a></h5>
+<span id="tutorials-pclamp-convert2nwb-matlab-group-sweeps-simultaneous"></span><h5>Group Simultaneously Recorded Sweeps<a class="headerlink" href="#group-simultaneously-recorded-sweeps" title="Permalink to this headline">#</a></h5>
 <p>The data used in this tutorial have no recordings that were obtained simultaneously. Therefore, each sweep serves as the only member of individual instances of simultaneous recordings. The reason why we still have to create simultaneous recordings group to organise the sweeps is that we intend to use groupings of higher order. We use the <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/SimultaneousRecordingsTable.html"><code class="docutils literal notranslate"><span class="pre">SimultaneousRecordingsTable</span></code></a> to group simultaneously acquired sweeps and the code demonstrating how to do it is shown below:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Group simultaneous recordings</span>
 <span class="c">% Group indices of simultaneous recordings: There are no simultaneous</span>
@@ -1016,7 +1015,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">SimultaneousRecordingsTable</span></code> requires <code class="docutils literal notranslate"><span class="pre">IntracellularRecordingsTable</span></code> data to be referenced by <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/VectorIndex.html"><code class="docutils literal notranslate"><span class="pre">VectorIndex</span></code></a> and organised as <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+hdmf_common/VectorData.html"><code class="docutils literal notranslate"><span class="pre">VectorData</span></code></a>. This is achieved by <code class="docutils literal notranslate"><span class="pre">create_indexed_column</span></code> utility function. <code class="docutils literal notranslate"><span class="pre">recVectorData</span></code> and <code class="docutils literal notranslate"><span class="pre">recVectorInd</span></code> objects can then be fed into the <code class="docutils literal notranslate"><span class="pre">SimultaneousRecordingsTable</span></code> function together with the simultaneous sweep tag array used to form a custom <code class="docutils literal notranslate"><span class="pre">simultaneous_recording_tag</span></code> column.</p>
 </section>
 <section id="group-sequentially-recorded-sweeps">
-<span id="tutorials-pclamp-convert2nwb-matlab-group-sweeps-sequential"></span><h5>Group Sequentially Recorded Sweeps<a class="headerlink" href="#group-sequentially-recorded-sweeps" title="Permalink to this heading">#</a></h5>
+<span id="tutorials-pclamp-convert2nwb-matlab-group-sweeps-sequential"></span><h5>Group Sequentially Recorded Sweeps<a class="headerlink" href="#group-sequentially-recorded-sweeps" title="Permalink to this headline">#</a></h5>
 <p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/SequentialRecordingsTable.html"><code class="docutils literal notranslate"><span class="pre">SequentialRecordingsTable</span></code></a> is the next level in the groupings hierarchy. We use it to group sweeps that have the same stimulation protocol within individual runs. To begin, we create groups of simultaneous recordings indices <code class="docutils literal notranslate"><span class="pre">seqSweeps</span></code> and <code class="docutils literal notranslate"><span class="pre">stimulusType</span></code> labels corresponding to these groups. The code demonstrating how to do it is below:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Group indices of sequential recordings</span>
 <span class="n">seqSweeps</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{};</span>
@@ -1074,7 +1073,7 @@ document.write(`
 </div>
 </section>
 <section id="group-recordings-into-runs">
-<span id="tutorials-pclamp-convert2nwb-matlab-group-sweeps-repetitions"></span><h5>Group Recordings into Runs<a class="headerlink" href="#group-recordings-into-runs" title="Permalink to this heading">#</a></h5>
+<span id="tutorials-pclamp-convert2nwb-matlab-group-sweeps-repetitions"></span><h5>Group Recordings into Runs<a class="headerlink" href="#group-recordings-into-runs" title="Permalink to this headline">#</a></h5>
 <p>We used stimulation type to group sweeps into 7 sequential recordings groups. We can further group these sequential recordings into runs using <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/RepetitionsTable.html"><code class="docutils literal notranslate"><span class="pre">RepetitionsTable</span></code></a> class. Typically, this class is used to group recordings with different stimuli into sequences that can be repeated. The code showing how we group 7 sequential recordings into runs is below:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Group recordings into runs</span>
 <span class="c">% Group indices of individual runs</span>
@@ -1106,7 +1105,7 @@ document.write(`
 </div>
 </section>
 <section id="group-runs-into-experimental-conditions">
-<span id="tutorials-pclamp-convert2nwb-matlab-group-sweeps-conditions"></span><h5>Group Runs into Experimental Conditions<a class="headerlink" href="#group-runs-into-experimental-conditions" title="Permalink to this heading">#</a></h5>
+<span id="tutorials-pclamp-convert2nwb-matlab-group-sweeps-conditions"></span><h5>Group Runs into Experimental Conditions<a class="headerlink" href="#group-runs-into-experimental-conditions" title="Permalink to this headline">#</a></h5>
 <p>Runs form the basis for the highest order grouping implemented by the <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/ExperimentalConditionsTable.html"><code class="docutils literal notranslate"><span class="pre">ExperimentalConditionsTable</span></code></a> class. We use this class to group our runs, as well as to add the experimental conditions <code class="docutils literal notranslate"><span class="pre">tag</span></code> to the <code class="docutils literal notranslate"><span class="pre">ExperimentalConditionsTable</span></code>:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Group runs into experimental conditions</span>
 <span class="c">% Group indices for different conditions</span>
@@ -1143,7 +1142,7 @@ document.write(`
 </section>
 </section>
 <section id="add-recording-slice-image">
-<span id="tutorials-pclamp-convert2nwb-matlab-add-image"></span><h4>Add Recording Slice Image<a class="headerlink" href="#add-recording-slice-image" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-add-image"></span><h4>Add Recording Slice Image<a class="headerlink" href="#add-recording-slice-image" title="Permalink to this headline">#</a></h4>
 <p>During the recording the brain slice was photographed and saved as grayscale image inside <code class="docutils literal notranslate"><span class="pre">180126/Slice1/Cell1/180126</span> <span class="pre">s1c1.jpg</span></code> file. We can read this image using Matlab’s <code class="docutils literal notranslate"><span class="pre">imread</span></code> function and store it inside the <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/GrayscaleImage.html"><code class="docutils literal notranslate"><span class="pre">GrayscaleImage</span></code></a> object:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">sliceImage</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">imread</span><span class="p">([</span><span class="s">&#39;..\&#39;</span><span class="w"> </span><span class="nb">year</span><span class="w"> </span><span class="nb">month</span><span class="w"> </span><span class="nb">day</span><span class="w"> </span><span class="s">&#39; s&#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">sliceNumber</span><span class="p">)</span><span class="w"> </span><span class="s">&#39;c&#39;</span><span class="w"> </span><span class="nb">num2str</span><span class="p">(</span><span class="n">cellNumber</span><span class="p">)</span><span class="w"> </span><span class="s">&#39;.jpg&#39;</span><span class="p">]);</span>
 
@@ -1164,7 +1163,7 @@ document.write(`
 </div>
 </section>
 <section id="save-nwb-file">
-<span id="tutorials-pclamp-convert2nwb-matlab-save"></span><h4>Save NWB File<a class="headerlink" href="#save-nwb-file" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-save"></span><h4>Save NWB File<a class="headerlink" href="#save-nwb-file" title="Permalink to this headline">#</a></h4>
 <p>We call the <code class="docutils literal notranslate"><span class="pre">nwbExport</span></code> function to save our data in the NWB format:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Save the converted NWB file</span>
 <span class="n">nwbExport</span><span class="p">(</span><span class="n">nwb</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">sessionID</span><span class="w"> </span><span class="s">&#39;.nwb&#39;</span><span class="p">]);</span>
@@ -1172,7 +1171,7 @@ document.write(`
 </div>
 </section>
 <section id="read-nwb-file">
-<span id="tutorials-pclamp-convert2nwb-matlab-read"></span><h4>Read NWB File<a class="headerlink" href="#read-nwb-file" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-read"></span><h4>Read NWB File<a class="headerlink" href="#read-nwb-file" title="Permalink to this headline">#</a></h4>
 <p>Now if you want to open the NWB file that you just saved in Matlab, you can issue a command</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">nwb2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">nwbRead</span><span class="p">(</span><span class="s">&#39;180126__s1c1.nwb&#39;</span><span class="p">);</span>
 </pre></div>
@@ -1210,11 +1209,11 @@ document.write(`
 <p>For more detailed account of how you can access and manipulate <code class="docutils literal notranslate"><span class="pre">DynamicTable</span></code> objects refer to an external <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/dynamic_tables.html">MatNWB DynamicTables Tutorial</a>.</p>
 </section>
 <section id="validate-nwb-file">
-<span id="tutorials-pclamp-convert2nwb-matlab-validate"></span><h4>Validate NWB File<a class="headerlink" href="#validate-nwb-file" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-validate"></span><h4>Validate NWB File<a class="headerlink" href="#validate-nwb-file" title="Permalink to this headline">#</a></h4>
 <p>MatNWB does not provide its own NWB file validator. However, you can validate NWB files generated using Matlab in Python. For instructions on how to do it, refer to the corresponding <a class="reference internal" href="#tutorials-pclamp-convert2nwb-py-validate"><span class="std std-ref">PyNWB validation section</span></a> of the tutorial.</p>
 </section>
 <section id="resources">
-<span id="tutorials-pclamp-convert2nwb-matlab-resources"></span><h4>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-matlab-resources"></span><h4>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h4>
 <p>This section explained how you can use Matlab to convert your intracellular electrophysiology data into NWB files. It is not an exhaustive overview of Matnwb toolbox icephys functionality and there is a number of externally available tutorials covering some aspects of converting data obtained using voltage and/or current clamp to the NWB file format using Matlab or other related aspects:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/tutorials/html/intro.html">Intro to NWB Tutorial</a></p></li>
@@ -1227,9 +1226,9 @@ document.write(`
 </section>
 </section>
 <section id="convert-to-nwb-using-python">
-<span id="tutorials-pclamp-convert2nwb-py"></span><h3>Convert to NWB Using Python<a class="headerlink" href="#convert-to-nwb-using-python" title="Permalink to this heading">#</a></h3>
+<span id="tutorials-pclamp-convert2nwb-py"></span><h3>Convert to NWB Using Python<a class="headerlink" href="#convert-to-nwb-using-python" title="Permalink to this headline">#</a></h3>
 <section id="install-pynwb">
-<span id="tutorials-pclamp-convert2nwb-py-install"></span><h4>Install PyNWB<a class="headerlink" href="#install-pynwb" title="Permalink to this heading">#</a></h4>
+<span id="tutorials-pclamp-convert2nwb-py-install"></span><h4>Install PyNWB<a class="headerlink" href="#install-pynwb" title="Permalink to this headline">#</a></h4>
 <p>To convert your extracellular electrophysiology data, you will need to install PyNWB first. To do so, type in your terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pynwb</span>
 </pre></div>
@@ -1237,7 +1236,7 @@ document.write(`
 <p>Now you’re ready to start working with PyNWB. The full installation instructions are available <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/install_users.html">here</a>.</p>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-record-metadata">
-<span id="id1"></span><h4>Record Metadata<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-record-metadata" title="Permalink to this heading">#</a></h4>
+<span id="id1"></span><h4>Record Metadata<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-record-metadata" title="Permalink to this headline">#</a></h4>
 <p>Inside the intracellular electrophysiology repository there is a folder with the Matlab file that you can execute in order to convert the data of one particular recording session into the NWB format. The script is located inside the <code class="docutils literal notranslate"><span class="pre">180126/Slice1/Cell1/180126/nwb</span></code> folder in the file named <code class="docutils literal notranslate"><span class="pre">convert2nwbpClamp.py</span></code> and, if executed, it would convert the data stored in the file <code class="docutils literal notranslate"><span class="pre">180126/Slice1/Cell1/180126__s1c1_001_ED.mat</span></code>.</p>
 <p>We will now analyse the conversion script in more detail. The script starts by importing general and pynwb module dependencies, as well as custom functions located inside the <code class="docutils literal notranslate"><span class="pre">localFunctions.py</span></code> module file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.io</span>
@@ -1341,7 +1340,7 @@ document.write(`
 </div>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-load-data">
-<span id="id2"></span><h4>Load Patch Clamp Recording Data<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-load-data" title="Permalink to this heading">#</a></h4>
+<span id="id2"></span><h4>Load Patch Clamp Recording Data<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-load-data" title="Permalink to this headline">#</a></h4>
 <p>The next part of the conversion script loads aggregated and preprocessed data stored inside the <code class="docutils literal notranslate"><span class="pre">180126/Slice1/Cell1/180126__s1c1_001_ED.mat</span></code> file:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;../&#39;</span> <span class="o">+</span> <span class="n">year</span> <span class="o">+</span> <span class="n">month</span> <span class="o">+</span> <span class="n">day</span> <span class="o">+</span> <span class="s1">&#39;__s&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sliceNumber</span><span class="p">)</span> <span class="o">+</span> \
   <span class="s1">&#39;c&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cellNumber</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_001_ED.mat&#39;</span><span class="p">,</span> <span class="n">squeeze_me</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;V&#39;</span> <span class="o">+</span> <span class="n">year</span> <span class="o">+</span> <span class="n">month</span> <span class="o">+</span> <span class="n">day</span> <span class="o">+</span> \
@@ -1402,7 +1401,7 @@ document.write(`
 <p>We need information about runs because we are going to organise data hierarchically based on the stimulation protocol, runs of repeated stimulation protocols (repetitions), and groups of runs (or experimental conditions, in other words).</p>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-convert-icephys">
-<span id="id3"></span><h4>Convert Intracellular Electrophysiology Recording Data<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-convert-icephys" title="Permalink to this heading">#</a></h4>
+<span id="id3"></span><h4>Convert Intracellular Electrophysiology Recording Data<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-convert-icephys" title="Permalink to this headline">#</a></h4>
 <p>We start data conversion by creating the electrode object and providing a few metadata entries about the recording setup. First, we create the recording device Amplifier_Multiclamp_700A of the <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.device.html#pynwb.device.Device"><code class="docutils literal notranslate"><span class="pre">Device</span></code></a> class type:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">nwb</span><span class="o">.</span><span class="n">create_device</span><span class="p">(</span>
   <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Amplifier_Multiclamp_700A&#39;</span><span class="p">,</span>
@@ -1531,7 +1530,7 @@ document.write(`
 <p>We use the same data for stimuli and responses as stimuli data has not been recorded. Later when creating recordings table we are going to indicate that stimulation data does not really exist.</p>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-recordings-table">
-<span id="id4"></span><h4>Create Intracellular Recordings Table<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-recordings-table" title="Permalink to this heading">#</a></h4>
+<span id="id4"></span><h4>Create Intracellular Recordings Table<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-recordings-table" title="Permalink to this headline">#</a></h4>
 <p>It is useful to group stimuli and responses together, as well as associate them with important metadata. By doing so we make it easier to access these time series objects based on their metadata properties and appropriately process and analyse them collectively as required. The <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.IntracellularRecordingsTable"><code class="docutils literal notranslate"><span class="pre">IntracellularRecordingsTable</span></code></a> class allows to do just that. It is a subclass of <a class="reference external" href="https://hdmf.readthedocs.io/en/stable/hdmf.common.alignedtable.html#hdmf.common.alignedtable.AlignedDynamicTable"><code class="docutils literal notranslate"><span class="pre">AlignedDynamicTable</span></code></a> class that can group multiple objects of <a class="reference external" href="https://hdmf.readthedocs.io/en/stable/hdmf.common.table.html#hdmf.common.table.DynamicTable"><code class="docutils literal notranslate"><span class="pre">DynamicTable</span></code></a> type. In the case of intracellular recordings, it groups together electrode metadata (<a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.IntracellularElectrodesTable"><code class="docutils literal notranslate"><span class="pre">IntracellularElectrodesTable</span></code></a>), with stimuli (<a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.IntracellularStimuliTable"><code class="docutils literal notranslate"><span class="pre">IntracellularStimuliTable</span></code></a>), responses (<a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.IntracellularResponsesTable"><code class="docutils literal notranslate"><span class="pre">IntracellularResponsesTable</span></code></a>), and any other custom metadata. We start by creating <code class="docutils literal notranslate"><span class="pre">IntracellularElectrodesTable</span></code> and adding recordings one by one using <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.file.html#pynwb.file.NWBFile.add_intracellular_recording"><code class="docutils literal notranslate"><span class="pre">add_intracellular_recording</span></code></a> function of the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> object:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create intracellular recordings table</span>
 <span class="n">rowIndices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -1594,10 +1593,10 @@ document.write(`
 </div>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-group-sweeps">
-<span id="id5"></span><h4>Group Intracellular Recording Sweeps<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-group-sweeps" title="Permalink to this heading">#</a></h4>
+<span id="id5"></span><h4>Group Intracellular Recording Sweeps<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-group-sweeps" title="Permalink to this headline">#</a></h4>
 <p>NWB files provide a way to group intracellular recordings in a hierarchical manner. You can indicate which recordings were obtained simultaneously, if any. You can further group the simultaneous recordings into sequential recordings and runs (or repetitions). Finally you can group runs into experimental conditions. All these groupings are <code class="docutils literal notranslate"><span class="pre">DynamicTable</span></code> classes that allow adding custom metadata entries. Specifying metadata at different hierarchy levels avoids specifying this information for every recording sweep. If you decide to use these optional groupings, using a particular grouping type implies that you also use groupings of lower hierarchy.</p>
 <section id="tutorials-pclamp-convert2nwb-py-group-sweeps-simultaneous">
-<span id="id6"></span><h5>Group Simultaneously Recorded Sweeps<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-group-sweeps-simultaneous" title="Permalink to this heading">#</a></h5>
+<span id="id6"></span><h5>Group Simultaneously Recorded Sweeps<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-group-sweeps-simultaneous" title="Permalink to this headline">#</a></h5>
 <p>The data used in this tutorial have no recordings that were obtained simultaneously. Therefore, each sweep serves as the only member of individual instances of simultaneous recordings. The reason why we still have to create simultaneous recordings group to organise the sweeps is that we intend to use groupings of higher order. We use the <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.SimultaneousRecordingsTable"><code class="docutils literal notranslate"><span class="pre">SimultaneousRecordingsTable</span></code></a> to group simultaneously acquired sweeps and the code demonstrating how to do it is shown below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group simultaneous recordings</span>
 <span class="c1"># Create a simultaneous recordings table with a custom column</span>
@@ -1618,7 +1617,7 @@ document.write(`
 <p>As you noticed, we added a custom <code class="docutils literal notranslate"><span class="pre">simultaneous_recording_tag</span></code> column to the table and we added in <code class="docutils literal notranslate"><span class="pre">rowIndices</span></code> of the <code class="docutils literal notranslate"><span class="pre">IntracellularRecordingsTable</span></code> sweep by sweep. <code class="docutils literal notranslate"><span class="pre">SimultaneousRecordingsTable</span></code> and other groupings of increasing hierarchical order use indices of the previous groupings as references that ultimately have row indices of <code class="docutils literal notranslate"><span class="pre">IntracellularRecordingsTable</span></code> at their basis.</p>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-group-sweeps-sequential">
-<span id="id7"></span><h5>Group Sequentially Recorded Sweeps<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-group-sweeps-sequential" title="Permalink to this heading">#</a></h5>
+<span id="id7"></span><h5>Group Sequentially Recorded Sweeps<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-group-sweeps-sequential" title="Permalink to this headline">#</a></h5>
 <p><a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.SequentialRecordingsTable"><code class="docutils literal notranslate"><span class="pre">SequentialRecordingsTable</span></code></a> is the next level in the groupings hierarchy. We use it to group sweeps that have the same stimulation protocol within individual runs. We add sequential recordings consisting of lists of row indices of simultaneous recordings one by one by invoking <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.file.html#pynwb.file.NWBFile.add_icephys_sequential_recording"><code class="docutils literal notranslate"><span class="pre">add_icephys_sequential_recording</span></code></a> function of the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> object. We also specify the stimulus type associated with each sequential recordings group:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group sequential recordings using the same type of stimulus</span>
 <span class="c1"># Group indices of sequential recordings in a sequential recordings table</span>
@@ -1646,7 +1645,7 @@ document.write(`
 </div>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-group-sweeps-repetitions">
-<span id="id8"></span><h5>Group Recordings into Runs<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-group-sweeps-repetitions" title="Permalink to this heading">#</a></h5>
+<span id="id8"></span><h5>Group Recordings into Runs<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-group-sweeps-repetitions" title="Permalink to this headline">#</a></h5>
 <p>We used stimulation type to group sweeps into 7 sequential recordings groups. We can further group these sequential recordings into runs using <a class="reference external" href="https://neurodatawithoutborders.github.io/matnwb/doc/+types/+core/RepetitionsTable.html"><code class="docutils literal notranslate"><span class="pre">RepetitionsTable</span></code></a> class. Typically, this class is used to group recordings with different stimuli into sequences that can be repeated. The code showing how we group 7 sequential recordings into runs is below:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group recordings into runs</span>
 <span class="c1"># Group indices of individual runs</span>
@@ -1661,7 +1660,7 @@ document.write(`
 </div>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-group-sweeps-conditions">
-<span id="id9"></span><h5>Group Runs into Experimental Conditions<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-group-sweeps-conditions" title="Permalink to this heading">#</a></h5>
+<span id="id9"></span><h5>Group Runs into Experimental Conditions<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-group-sweeps-conditions" title="Permalink to this headline">#</a></h5>
 <p>Runs form the basis for the highest order grouping implemented by the <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.icephys.html#pynwb.icephys.ExperimentalConditionsTable"><code class="docutils literal notranslate"><span class="pre">ExperimentalConditionsTable</span></code></a> class. We use this class to group our runs, as well as to add the experimental conditions <code class="docutils literal notranslate"><span class="pre">tag</span></code> to the <code class="docutils literal notranslate"><span class="pre">ExperimentalConditionsTable</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group runs into experimental conditions</span>
 <span class="c1"># Group indices, tags, and descriptions for different conditions</span>
@@ -1682,7 +1681,7 @@ document.write(`
 </section>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-add-image">
-<span id="id10"></span><h4>Add Recording Slice Image<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-add-image" title="Permalink to this heading">#</a></h4>
+<span id="id10"></span><h4>Add Recording Slice Image<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-add-image" title="Permalink to this headline">#</a></h4>
 <p>During the recording the brain slice was photographed and saved as a grayscale image inside <code class="docutils literal notranslate"><span class="pre">180126/Slice1/Cell1/180126</span> <span class="pre">s1c1.jpg</span></code> file. We can read this image using <code class="docutils literal notranslate"><span class="pre">cv2.imread</span></code> function and store it inside the <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.image.html#pynwb.image.GrayscaleImage"><code class="docutils literal notranslate"><span class="pre">GrayscaleImage</span></code></a> object:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">imageFilename</span> <span class="o">=</span> <span class="s1">&#39;../&#39;</span> <span class="o">+</span> <span class="n">year</span> <span class="o">+</span> <span class="n">month</span> <span class="o">+</span> <span class="n">day</span> <span class="o">+</span> <span class="s1">&#39; s&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sliceNumber</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;c&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cellNumber</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.jpg&#39;</span>
 <span class="n">sliceImage</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">imageFilename</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
@@ -1704,7 +1703,7 @@ document.write(`
 </div>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-save">
-<span id="id11"></span><h4>Save NWB File<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-save" title="Permalink to this heading">#</a></h4>
+<span id="id11"></span><h4>Save NWB File<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-save" title="Permalink to this headline">#</a></h4>
 <p>We use the <code class="docutils literal notranslate"><span class="pre">NWBFile</span></code> <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/pynwb.html?highlight=NWBHDF5IO#pynwb.NWBHDF5IO"><code class="docutils literal notranslate"><span class="pre">NWBHDF5IO</span></code></a> class to save our data in the NWB format:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">sessionID</span> <span class="o">+</span> <span class="s1">&#39;.nwb&#39;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">io</span><span class="p">:</span>
   <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">nwb</span><span class="p">)</span>
@@ -1712,7 +1711,7 @@ document.write(`
 </div>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-read">
-<span id="id12"></span><h4>Read NWB File<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-read" title="Permalink to this heading">#</a></h4>
+<span id="id12"></span><h4>Read NWB File<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-read" title="Permalink to this headline">#</a></h4>
 <p>Reading NWB files in Python is done via the <code class="docutils literal notranslate"><span class="pre">NWBHDF5IO</span></code> class. Hence, import it by calling:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pynwb</span> <span class="kn">import</span> <span class="n">NWBHDF5IO</span>
 </pre></div>
@@ -1757,7 +1756,7 @@ document.write(`
 <p>For more detailed account of how you can access and manipulate <code class="docutils literal notranslate"><span class="pre">DynamicTable</span></code> objects refer to an external <a class="reference external" href="https://hdmf.readthedocs.io/en/stable/tutorials/plot_dynamictable_tutorial.html#sphx-glr-tutorials-plot-dynamictable-tutorial-py">HDMF DynamicTable Tutorial</a>.</p>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-validate">
-<span id="id13"></span><h4>Validate NWB File<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-validate" title="Permalink to this heading">#</a></h4>
+<span id="id13"></span><h4>Validate NWB File<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-validate" title="Permalink to this headline">#</a></h4>
 <p>For validating NWB files use command line and type in</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pynwb</span><span class="o">.</span><span class="n">validate</span> <span class="mi">180126</span><span class="n">__s1c1</span><span class="o">.</span><span class="n">nwb</span>
 </pre></div>
@@ -1771,7 +1770,7 @@ document.write(`
 <p>For more details on the validation process, refer to an external <a class="reference external" href="https://pynwb.readthedocs.io/en/stable/validation.html">resource</a>.</p>
 </section>
 <section id="tutorials-pclamp-convert2nwb-py-resources">
-<span id="id14"></span><h4>Resources<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-resources" title="Permalink to this heading">#</a></h4>
+<span id="id14"></span><h4>Resources<a class="headerlink" href="#tutorials-pclamp-convert2nwb-py-resources" title="Permalink to this headline">#</a></h4>
 <p>This section explained how you can use Matlab to convert your intracellular electrophysiology data into NWB files. It is not an exhaustive overview of Matnwb toolbox icephys functionality and there is a number of externally available tutorials covering some aspects of converting data obtained using voltage and/or current clamp to the NWB file format using Matlab or other related aspects:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pynwb.readthedocs.io/en/stable/tutorials/general/file.html#sphx-glr-tutorials-general-file-py">NWB File Basics Tutorial</a></p></li>
@@ -1784,20 +1783,20 @@ document.write(`
 </section>
 </section>
 <section id="examine-nwb-file-structure-using-hdfview">
-<span id="tutorials-pclamp-convert2nwb-hdfview"></span><h3>Examine NWB File Structure Using HDFView<a class="headerlink" href="#examine-nwb-file-structure-using-hdfview" title="Permalink to this heading">#</a></h3>
+<span id="tutorials-pclamp-convert2nwb-hdfview"></span><h3>Examine NWB File Structure Using HDFView<a class="headerlink" href="#examine-nwb-file-structure-using-hdfview" title="Permalink to this headline">#</a></h3>
 <p>You can use <a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview">HDF View</a> software to visualise the structure of your NWB files using a simple graphical interface.</p>
 </section>
 </section>
 <section id="upload-your-standardised-data-to-remote-repository">
-<span id="tutorials-pclamp-upload-nwb"></span><h2>Upload Your Standardised Data to Remote Repository<a class="headerlink" href="#upload-your-standardised-data-to-remote-repository" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-pclamp-upload-nwb"></span><h2>Upload Your Standardised Data to Remote Repository<a class="headerlink" href="#upload-your-standardised-data-to-remote-repository" title="Permalink to this headline">#</a></h2>
 <p>A very similar <a class="reference internal" href="Bristol%20GIN%20for%20Silicon%20Probe%20Data.html#tutorials-silicon-probe-upload-nwb"><span class="std std-ref">subsection</span></a> is available for extracellular electrophysiology data, as well as a <a class="reference internal" href="Bristol%20GIN%20for%20Calcium%20Imaging%20Data.html#tutorials-caimage-upload-nwb"><span class="std std-ref">subsection</span></a> dealing with calcium imaging data. Analogously, you should be able to apply them to your intracellular electrophysiology data.</p>
 </section>
 <section id="roll-back-repository-to-an-earlier-version">
-<span id="tutorials-pclamp-roll-back"></span><h2>Roll back Repository to an Earlier Version<a class="headerlink" href="#roll-back-repository-to-an-earlier-version" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-pclamp-roll-back"></span><h2>Roll back Repository to an Earlier Version<a class="headerlink" href="#roll-back-repository-to-an-earlier-version" title="Permalink to this headline">#</a></h2>
 <p>A similar <a class="reference internal" href="Bristol%20GIN%20for%20Silicon%20Probe%20Data.html#tutorials-silicon-probe-roll-back"><span class="std std-ref">subsection</span></a> is available for extracellular electrophysiology data, as well as a <a class="reference internal" href="Bristol%20GIN%20for%20Calcium%20Imaging%20Data.html#tutorials-caimage-roll-back"><span class="std std-ref">subsection</span></a> dealing with calcium imaging data. Analogously, you should be able to apply them to your intracellular electrophysiology data.</p>
 </section>
 <section id="acknowledgements">
-<span id="tutorials-pclamp-acknowledge"></span><h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this heading">#</a></h2>
+<span id="tutorials-pclamp-acknowledge"></span><h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
 <p>This tutorial was made possible with the kind help of <a class="reference external" href="https://www.linkedin.com/in/matt-udakis-21070485/?originalSubdomain=uk">Matt Udakis</a> who provided intracellular recording data samples.</p>
 </section>
 </section>

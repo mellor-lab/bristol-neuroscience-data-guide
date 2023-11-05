@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Installation Instructions for GIN Server</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Repository Management with GIN" href="Repository%20Management%20with%20GIN.html" />
     <link rel="prev" title="Installation Instructions for GIN Client" href="Installation%20Instructions%20for%20GIN%20Client.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -418,15 +417,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="installation-instructions-for-gin-server">
-<span id="doc-install-server"></span><h1>Installation Instructions for GIN Server<a class="headerlink" href="#installation-instructions-for-gin-server" title="Permalink to this heading">#</a></h1>
+<span id="doc-install-server"></span><h1>Installation Instructions for GIN Server<a class="headerlink" href="#installation-instructions-for-gin-server" title="Permalink to this headline">#</a></h1>
 <p>There are five servers dedicated to Bristol GIN. Server[0] contains a Bristol GIN web frontend. Server[1] is the main node of the Bristol GIN data storage system housing <a class="reference external" href="https://ceph.io/en/">Ceph</a> installation. All five servers are part of the Ceph cluster encompassing roughly 5TB of raw storage space in total. All data stored on Bristol GIN is either backed up twice or once by the Ceph storage system. Therefore, the real storage capacity varies between roughly 1.7TB to 2.5TB.</p>
 <section id="install-ceph">
-<span id="doc-install-server-ceph"></span><h2>Install Ceph<a class="headerlink" href="#install-ceph" title="Permalink to this heading">#</a></h2>
+<span id="doc-install-server-ceph"></span><h2>Install Ceph<a class="headerlink" href="#install-ceph" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://ceph.io/en/">https://ceph.io/en/</a>
 <a class="reference external" href="https://docs.ceph.com/en/octopus/">https://docs.ceph.com/en/octopus/</a>
 <a class="reference external" href="https://docs.ceph.com/en/latest/start/intro/">https://docs.ceph.com/en/latest/start/intro/</a></p>
 <section id="install-cephadm">
-<span id="doc-install-server-ceph-cephadm"></span><h3>Install Cephadm<a class="headerlink" href="#install-cephadm" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-ceph-cephadm"></span><h3>Install Cephadm<a class="headerlink" href="#install-cephadm" title="Permalink to this headline">#</a></h3>
 <p>The Ceph cluster is installed, deployed and managed using <a class="reference external" href="https://docs.ceph.com/en/quincy/cephadm/index.html">cephadm</a> command line tools. Hence, we need to install cephadm first before we can deploy the Ceph cluster. We start by loging into Server[1]. This server is going to be the main node of the Ceph cluster.</p>
 <p>If your sudo user is not passwordless, you need to make it passwordless. Open the sudoers file by typing in the Linux terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">update</span>
@@ -487,7 +486,7 @@ document.write(`
 </div>
 </section>
 <section id="install-ceph-cluster">
-<span id="doc-install-server-ceph-cluster-install"></span><h3>Install Ceph Cluster<a class="headerlink" href="#install-ceph-cluster" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-ceph-cluster-install"></span><h3>Install Ceph Cluster<a class="headerlink" href="#install-ceph-cluster" title="Permalink to this headline">#</a></h3>
 <p>Once cephadm is installed, install the Ceph cluster. We start by boostraping a new cluster:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cephadm</span> <span class="n">bootstrap</span> <span class="o">--</span><span class="n">mon</span><span class="o">-</span><span class="n">ip</span> <span class="o">&lt;</span><span class="n">main</span><span class="o">-</span><span class="n">backend</span><span class="o">-</span><span class="n">server1</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">fqdn</span><span class="o">-</span><span class="n">hostname</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">overwrite</span> <span class="o">--</span><span class="n">ssh</span><span class="o">-</span><span class="n">user</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;</span>
 </pre></div>
@@ -539,7 +538,7 @@ document.write(`
 <p>Reboot the main host. The Ceph cluster is now up and running.</p>
 </section>
 <section id="deploy-ceph-cluster">
-<span id="doc-install-server-ceph-cluster-deploy"></span><h3>Deploy Ceph Cluster<a class="headerlink" href="#deploy-ceph-cluster" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-ceph-cluster-deploy"></span><h3>Deploy Ceph Cluster<a class="headerlink" href="#deploy-ceph-cluster" title="Permalink to this headline">#</a></h3>
 <p>We are going to use the Ceph cluster as a file system. For the next step we, therefore, deploy <a class="reference external" href="https://docs.ceph.com/en/quincy/cephfs/index.html">CephFS</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ceph</span> <span class="n">fs</span> <span class="n">volume</span> <span class="n">create</span> <span class="n">gin</span><span class="o">-</span><span class="n">backend</span>
 </pre></div>
@@ -610,7 +609,7 @@ pg_autoscale_mode: on
 </section>
 </section>
 <section id="install-docker">
-<span id="doc-install-server-docker"></span><h2>Install Docker<a class="headerlink" href="#install-docker" title="Permalink to this heading">#</a></h2>
+<span id="doc-install-server-docker"></span><h2>Install Docker<a class="headerlink" href="#install-docker" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://docs.docker.com/engine/">Docker Engine</a>, <a class="reference external" href="https://docs.docker.com/engine/reference/run/">Docker CLI</a>, and <a class="reference external" href="https://docs.docker.com/compose/">Docker Compose</a> are dependencies required for GIN installation on a server.</p>
 <p>You may have already installed all of these Docker components earlier prior to installing Ceph. In that case you can skip this section. If you did not install Docker earlier, the installation instructions for Centos 7 are straight-forward. Just execute the commands below in the terminal on the client node (Server[0]):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span>
@@ -623,7 +622,7 @@ pg_autoscale_mode: on
 <p>The final command installs all of the needed Docker components.</p>
 </section>
 <section id="install-openssl">
-<span id="doc-install-server-openssl"></span><h2>Install OpenSSL<a class="headerlink" href="#install-openssl" title="Permalink to this heading">#</a></h2>
+<span id="doc-install-server-openssl"></span><h2>Install OpenSSL<a class="headerlink" href="#install-openssl" title="Permalink to this headline">#</a></h2>
 <p>Installing the latest OpenSSL is needed in order to install the latest Apache Web Server which supports HTTP/2 protocol. The later allows you to obtain an SSL cerificate and use https rather than http for accessing Bristol GIN. If you type in <code class="docutils literal notranslate"><span class="pre">openssl</span> <span class="pre">version</span></code> in your terminal, you would probably get <code class="docutils literal notranslate"><span class="pre">OpenSSL</span> <span class="pre">1.0.2k-fips</span></code> as an answer which is not up to date for our purposes. Thus, start by installing prerequisites for the new installation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">libtool</span> <span class="n">perl</span><span class="o">-</span><span class="n">core</span> <span class="n">zlib</span><span class="o">-</span><span class="n">devel</span> <span class="o">-</span><span class="n">y</span>
 </pre></div>
@@ -677,10 +676,10 @@ OpenSSL 1.1.1s  1 Nov 2022
 </div>
 </section>
 <section id="install-and-configure-apache-web-server">
-<span id="doc-install-server-apache"></span><h2>Install and Configure Apache Web Server<a class="headerlink" href="#install-and-configure-apache-web-server" title="Permalink to this heading">#</a></h2>
+<span id="doc-install-server-apache"></span><h2>Install and Configure Apache Web Server<a class="headerlink" href="#install-and-configure-apache-web-server" title="Permalink to this headline">#</a></h2>
 <p>Apache web server has to be installed as a prerequisite for GIN installation. GIN is a web app and, as such, it needs a web server software to manage its access. The installation offered by the local package manager is out of data, so we are going to install Apache from the source code.</p>
 <section id="get-source-code">
-<span id="doc-install-server-apache-source"></span><h3>Get Source Code<a class="headerlink" href="#get-source-code" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-apache-source"></span><h3>Get Source Code<a class="headerlink" href="#get-source-code" title="Permalink to this headline">#</a></h3>
 <p>To start, make sure that the old version is removed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">yum</span> <span class="n">remove</span> <span class="n">httpd</span> <span class="o">-</span><span class="n">y</span>
 </pre></div>
@@ -702,7 +701,7 @@ OpenSSL 1.1.1s  1 Nov 2022
 </div>
 </section>
 <section id="install-apache">
-<span id="doc-install-server-apache-install"></span><h3>Install Apache<a class="headerlink" href="#install-apache" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-apache-install"></span><h3>Install Apache<a class="headerlink" href="#install-apache" title="Permalink to this headline">#</a></h3>
 <p>Get inside httpd directory, compile, and install Apache:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">httpd</span><span class="o">-</span><span class="mf">2.4.54</span>
 <span class="o">./</span><span class="n">buildconf</span>
@@ -787,7 +786,7 @@ Dec 15 01:15:30 caas-1c47-x0696.caas.bris.ac.uk systemd[1]: Started The Apache H
 </div>
 </section>
 <section id="configure-apache">
-<span id="doc-install-server-apache-configure"></span><h3>Configure Apache<a class="headerlink" href="#configure-apache" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-apache-configure"></span><h3>Configure Apache<a class="headerlink" href="#configure-apache" title="Permalink to this headline">#</a></h3>
 <p>We are going to create the basic configuration of Apache now by editing <code class="docutils literal notranslate"><span class="pre">httpd.conf</span></code> file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">conf</span><span class="o">/</span><span class="n">httpd</span><span class="o">.</span><span class="n">conf</span>
 </pre></div>
@@ -845,7 +844,7 @@ Dec 15 01:15:30 caas-1c47-x0696.caas.bris.ac.uk systemd[1]: Started The Apache H
 </div>
 </section>
 <section id="test-apache-connection">
-<span id="doc-install-server-apache-test"></span><h3>Test Apache Connection<a class="headerlink" href="#test-apache-connection" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-apache-test"></span><h3>Test Apache Connection<a class="headerlink" href="#test-apache-connection" title="Permalink to this headline">#</a></h3>
 <p>Once Apache is installed and configured in the most basic manner, you should test whether you can connect to Apache remotely. On your own laptop with Linux or the <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux (WSL)</a> connected to the University of Bristol (UoB) VPN type the following command into the Linux terminal:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nmap -sT &lt;ip-address-of-machine-with-apache-installation&gt;
 Starting Nmap 7.80 ( https://nmap.org ) at 2022-12-15 14:01 GMT
@@ -896,7 +895,7 @@ tcp6       0      0 ::1:25                  :::*                    LISTEN      
 <p>It indicates that your connection is being blocked by some process on the Apache host (possibly a firewall of some kind) and you need to troubleshoot.</p>
 </section>
 <section id="set-up-ssh-tunneling">
-<span id="doc-install-server-apache-ssh-tunnel"></span><h3>Set up SSH Tunneling<a class="headerlink" href="#set-up-ssh-tunneling" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-apache-ssh-tunnel"></span><h3>Set up SSH Tunneling<a class="headerlink" href="#set-up-ssh-tunneling" title="Permalink to this headline">#</a></h3>
 <p>Currently UoB Self-Service Virtual Machines do not allow HTTP or HTTPS connections. The only ports open are 22 (SSH), 80 (SSH), and 3389 (Internet Control Message Protocol, ICMP). Ports that are typically used by Apache for HTTP (port 80) and HTTPS (port 443) are currently reserved for SSH connections or blocked by the university IT Services, respectively. However, port 443 is planned to be opened for HTTPS connections some time in March. Meanwhile, for testing purposes port 80 can be used to set up SSH HTTP tunneling with local port forwarding. To do so, first we need to set up passwordless SSH access from our local computer (must be connected to the UoB VPN) to the university server with our Apache installation. Type in the following commands in the Linux terminal on your local computer:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/.</span><span class="n">ssh</span>
 <span class="n">sudo</span> <span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span>
@@ -932,7 +931,7 @@ tcp6       0      0 ::1:25                  :::*                    LISTEN      
 </section>
 </section>
 <section id="install-git-and-git-annex">
-<span id="doc-install-server-git"></span><h2>Install Git and Git-annex<a class="headerlink" href="#install-git-and-git-annex" title="Permalink to this heading">#</a></h2>
+<span id="doc-install-server-git"></span><h2>Install Git and Git-annex<a class="headerlink" href="#install-git-and-git-annex" title="Permalink to this headline">#</a></h2>
 <p>GIN Client installation depends on git and git-annex version cotrol systems. Therefore, it is a good idea to get them sorted before proceeding with the rest of the GIN installation. Installing recent verions of this software on Centos 7 is a bit tricky. This is an example of how to download and install git version control system on your client node (Server[0]):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo yum install epel-release -y
 sudo yum install https://repo.ius.io/ius-release-el$(rpm -E &#39;%{rhel}&#39;).rpm -y
@@ -951,10 +950,10 @@ sudo yum replace git --replace-with git236 -y
 <p>If you get an error when downloading the RPM file, you may need to adjust the RPM filename to match the latest git-annex release available at <code class="docutils literal notranslate"><span class="pre">https://downloads.kitenet.net/git-annex/linux/current/rpms/</span></code>.</p>
 </section>
 <section id="install-gin">
-<span id="doc-install-server-gin"></span><h2>Install GIN<a class="headerlink" href="#install-gin" title="Permalink to this heading">#</a></h2>
+<span id="doc-install-server-gin"></span><h2>Install GIN<a class="headerlink" href="#install-gin" title="Permalink to this headline">#</a></h2>
 <p>GIN full server instalation instructions can be found <a class="reference external" href="https://gin.g-node.org/G-Node/in-house-gin#deploy-and-run-a-full-server-using-docker-compose">here</a>. We are going to go step by step through these installations adapted for our particular case.</p>
 <section id="install-gin-client">
-<span id="doc-install-server-gin-client"></span><h3>Install GIN client<a class="headerlink" href="#install-gin-client" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-gin-client"></span><h3>Install GIN client<a class="headerlink" href="#install-gin-client" title="Permalink to this headline">#</a></h3>
 <p>Download and install GIN client, so that you are able to download public GIN repositories needed for GIN server installation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">silent</span> <span class="o">--</span><span class="n">remote</span><span class="o">-</span><span class="n">name</span> <span class="o">--</span><span class="n">location</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gin</span><span class="o">.</span><span class="n">g</span><span class="o">-</span><span class="n">node</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">G</span><span class="o">-</span><span class="n">Node</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">releases</span><span class="o">/</span><span class="n">raw</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">linux</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
 <span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">gin</span><span class="o">-</span><span class="n">cli</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">linux</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
@@ -965,7 +964,7 @@ sudo yum replace git --replace-with git236 -y
 </div>
 </section>
 <section id="set-up-gin-installation-folders">
-<span id="doc-install-server-gin-fodlers"></span><h3>Set-up GIN Installation Folders<a class="headerlink" href="#set-up-gin-installation-folders" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-gin-fodlers"></span><h3>Set-up GIN Installation Folders<a class="headerlink" href="#set-up-gin-installation-folders" title="Permalink to this headline">#</a></h3>
 <p>We need to set up certain user groups and users, as well as a particular directory structure in order to run GIN on Docker. The bash script file that will do exactly that is provided below:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
@@ -1049,7 +1048,7 @@ touch<span class="w"> </span><span class="nv">$DIR_GINCONFIG</span>/gogs/conf/ap
 </div>
 </section>
 <section id="prepare-gin-instance-file">
-<span id="doc-install-server-gin-instance-file"></span><h3>Prepare GIN Instance File<a class="headerlink" href="#prepare-gin-instance-file" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-gin-instance-file"></span><h3>Prepare GIN Instance File<a class="headerlink" href="#prepare-gin-instance-file" title="Permalink to this headline">#</a></h3>
 <p>We need to prepare the GIN Docker Compose instance file. First, let’s organise all GIN resources in a single folder:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span>
 <span class="n">mv</span> <span class="n">gin</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">folders</span><span class="o">.</span><span class="n">sh</span> <span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">-</span><span class="n">resources</span><span class="o">/</span>
@@ -1120,7 +1119,7 @@ touch<span class="w"> </span><span class="nv">$DIR_GINCONFIG</span>/gogs/conf/ap
 </div>
 </section>
 <section id="launch-gin-docker-containers">
-<span id="doc-install-server-gin-docker-containers"></span><h3>Launch GIN Docker Containers<a class="headerlink" href="#launch-gin-docker-containers" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-gin-docker-containers"></span><h3>Launch GIN Docker Containers<a class="headerlink" href="#launch-gin-docker-containers" title="Permalink to this headline">#</a></h3>
 <p>All required GIN Docker containers can be downloaded by executing the following commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">dockerfile</span><span class="o">/</span>
 <span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">docker</span>
@@ -1261,7 +1260,7 @@ gin-web-1     gnode/gin-web:latest  &quot;/app/gogs/docker/st…&quot;  web     
 <p>The command output indicates the running status of all containers. If this is not the case, you should identify the cause of it and relaunch the containers after fixing it. Condensed instruction for relaunching containers are provided in the next subsection. Otherwise, if containers are runnig fine, skip the next subsection, and connect to the GIN service.</p>
 </section>
 <section id="relaunch-gin-docker-containers">
-<span id="doc-install-server-gin-docker-containers-relaunch"></span><h3>Relaunch GIN Docker Containers<a class="headerlink" href="#relaunch-gin-docker-containers" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-gin-docker-containers-relaunch"></span><h3>Relaunch GIN Docker Containers<a class="headerlink" href="#relaunch-gin-docker-containers" title="Permalink to this headline">#</a></h3>
 <p>In case something goes wrong with your GIN Docker containers and they need to be wiped out and reinstated, run the lines below (obviously make sure you fix the cause of the failure beforehand and reboot the machine if needed):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="ow">in</span><span class="o">-</span><span class="n">house</span><span class="o">-</span><span class="n">gin</span><span class="o">/</span><span class="n">gin</span><span class="o">-</span><span class="n">dockerfile</span>
 <span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">docker</span>
@@ -1292,7 +1291,7 @@ gin-web-1     gnode/gin-web:latest  &quot;/app/gogs/docker/st…&quot;  web     
 </div>
 </section>
 <section id="setup-gin-service">
-<span id="doc-install-server-gin-setup"></span><h3>Setup GIN Service<a class="headerlink" href="#setup-gin-service" title="Permalink to this heading">#</a></h3>
+<span id="doc-install-server-gin-setup"></span><h3>Setup GIN Service<a class="headerlink" href="#setup-gin-service" title="Permalink to this headline">#</a></h3>
 <p>To set up the GIN Service, you have to launch the install page. You would find it by typing the Bristol GIN domain name into the web browser followed by http or https port into the web browser:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">machine</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">installation</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">http</span><span class="o">-</span><span class="ow">or</span><span class="o">-</span><span class="n">https</span><span class="o">-</span><span class="n">port</span><span class="o">&gt;</span>
 </pre></div>
