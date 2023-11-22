@@ -106,6 +106,8 @@ You should always check whether your newly created BIDS dataset is actually vali
 ## Upload your BIDS EEG Dataset to GIN
 Uploading a BIDS-compatible data repository to GIN is identical to uploading datasets acquired in other data recording modalities. Examples of how to do this are available for other modalities and extensive tutorials describing how to use GIN are available for both [command line](tutorials-cli) and [web](tutorials-gui) interfaces.
 
+Once the repository is uploaded, anyone who wishes to download can run the analysis code inside the jupyter notebook ```/code/FREQUENCY_TAGGING-ANALYSIS-GIN_VERSION.ipynb``` on their system as the file currently stands. Ideally, should run without errors if correct dependencies are installed.
+
 (tutorials-eeg-resources)=
 ## Resources
 This tutorial touches the BIDS data format only briefly. Extensive discussion of the BIDS data folder format is provided in the [official website](https://bids.neuroimaging.io/) of the format and in its [official documentation](https://bids-specification.readthedocs.io/en/stable/). It is also useful to read the [original paper](https://doi.org/10.1038/sdata.2016.44) that introduced BIDS for neuroimaging data and a [companion paper](https://doi.org/10.1038/s41597-019-0104-8) that described the application of BIDS to the EEG data.
